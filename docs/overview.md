@@ -38,7 +38,7 @@ Function Mesh works in the following way.
 
 3. The pod talks to Pulsar.
 
-The benefits of this approach is that both the metadata and running state are actually stored directly on the Kubernetes API server.
+The benefit of this approach is that both the metadata and running state are actually stored directly on the Kubernetes API server.
 
 The following diagram illustrates the architecture for Function Mesh.
 

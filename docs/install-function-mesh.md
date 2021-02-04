@@ -24,7 +24,7 @@ This example shows how to use the `install.sh` command to install Function Mesh 
 curl -sSL https://github.com/streamnative/function-mesh/releases/download/v0.1.2/install.sh | bash
 ```
 
-After executing the above command, you should be able to see the output indicating that the Function Mesh pod is up and running. For details, see [verity installation](#verify-installation).
+After executing the above command, you should be able to see the output indicating that the Function Mesh pod is up and running. For details, see [verify installation](#verify-installation).
 
 > **Note**
 >

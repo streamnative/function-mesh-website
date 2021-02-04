@@ -28,7 +28,7 @@ After executing the above command, you should be able to see the output indicati
 
 > **Note**
 >
-> The `install.sh` command is suitable for trying Function Mesh out. If you want to use Function Mesh in production or other serious scenarios, Helm is the recommended deployment method. For details, see [install Function Mesh through Helm](#install-function-mesh-through-helm).
+> The `install.sh` command is suitable for trying Function Mesh out. If you want to use Function Mesh in production or other mission-critical scenarios, Helm is the recommended deployment method. For details, see [install Function Mesh through Helm](#install-function-mesh-through-helm).
 
 ## Install Function Mesh through Helm
 

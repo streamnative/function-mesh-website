@@ -22,7 +22,7 @@ module.exports = {
           position: 'left',
         },
         {
-          to: 'docs/installation',
+          to: 'docs/',
           label: 'Installation',
           position: 'left',
         },
@@ -42,11 +42,7 @@ module.exports = {
             {
               label: 'Style Guide',
               to: 'docs/',
-            },
-            {
-              label: 'Second Doc',
-              to: 'docs/doc2/',
-            },
+            }
           ],
         },
         {

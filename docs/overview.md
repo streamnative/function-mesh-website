@@ -42,7 +42,7 @@ The benefit of this approach is that both the metadata and running state are act
 
 The following diagram illustrates the architecture for Function Mesh.
 
-![](/static/image/function-mesh-architecture.png)
+![](../static/image/function-mesh-architecture.png)
 
 # Documentation
 

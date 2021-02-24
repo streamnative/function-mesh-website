@@ -1,10 +1,10 @@
 module.exports = {
   docs: [
     'overview',
-    'installation',
+    'install-function-mesh',
     {
       type: 'category',
-      label: 'configure',
+      label: 'Configure',
       items: ['configure/pulsar-functions', 'configure/pulsar-connector', 'configure/function-mesh'],
     },
   ],

@@ -1,29 +1,33 @@
 module.exports = {
-  title: 'Function Mesh',
-  tagline: 'A collection of functions collaborated together to process data with clearly-defined stages on Kubernetes environments',
-  url: 'https://functionmesh.io',
+  title: 'Pulsar Function Mesh Website',
+  tagline: 'The tagline of my site',
+  url: 'https://function-mesh.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
-  organizationName: 'function-mesh', // Usually your GitHub org/user name.
-  projectName: 'functionmesh.io', // Usually your repo name.
+  organizationName: 'facebook', // Usually your GitHub org/user name.
+  projectName: 'docusaurus', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'Function Mesh',
+      title: 'My Site',
       logo: {
-        alt: 'Function Mesh Logo',
+        alt: 'My Site Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
           to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Documentation',
+          activeBasePath: 'overview',
+          label: 'Overview',
           position: 'left',
         },
-        {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          to: 'docs/',
+          label: 'Installation',
+          position: 'left',
+        },
+        {
+          href: 'https://github.com/streamnative/function-mesh',
           label: 'GitHub',
           position: 'right',
         },
@@ -33,16 +37,12 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Documentation',
+          title: 'Docs',
           items: [
             {
-              label: 'Overview',
+              label: 'Style Guide',
               to: 'docs/',
-            },
-            {
-              label: 'Installation Guide',
-              to: 'docs/doc2/',
-            },
+            }
           ],
         },
         {
@@ -51,6 +51,10 @@ module.exports = {
             {
               label: 'Stack Overflow',
               href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+            },
+            {
+              label: 'Discord',
+              href: 'https://discordapp.com/invite/docusaurus',
             },
             {
               label: 'Twitter',

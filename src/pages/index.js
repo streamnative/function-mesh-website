@@ -12,18 +12,20 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_mountain.svg',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Be easily deployed directly on Kubernetes clusters, including [Minikube](https://github.com/kubernetes/minikube) and [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/), without special dependencies. 
+        Allow one function to talk to multiple different Pulsar clusters, which are defined as config maps.
+        Support function registry for function package management. We are going to introduce the Pulsar registry in Pulsar 2.8.0 for function package management. Then, the function package can be reused by different functions.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Integrated with Kubernetes',
     imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Integrate with Kubernetes secrets seamlessly to read secrets directly.
+        Leverage the Kubernetes’s auto-scaler to auto-scale instances for functions based on the CPU usage. In future, Function Mesh will support auto-scaling based on the backlog.
+        Utilize the full power scheduling capability provided by Kubernetes. Therefore, users do not need to write any customized codes to communicate with the Kubernetes API server.
       </>
     ),
   },

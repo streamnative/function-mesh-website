@@ -1,6 +1,7 @@
 module.exports = {
   someSidebar: {
-    Docusaurus: ['overview', 'install-function-mesh', 'doc3'],
-    Features: ['mdx'],
+    Overview: ['overview'],
+    Installation: ['install-function-mesh'],
+    Configure: ['pulsar-functions', 'pulsar-connector', 'function-mesh'],
   },
 };

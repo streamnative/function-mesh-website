@@ -135,7 +135,7 @@ In the `.yaml` file for the Function Mesh you want to create, you need to set va
 - `apiVersion`: the API version used to create the object
 - `kind`: the kind of the object to be created
 - `metadata`: data that uniquely identify the object, including the `name` of the object to be created
-- `spec`: the state desired for the object, including specifications about each Pulsar Functions.
+- `spec`: the state desired for the object, including specifications about each Pulsar Functions
 
 The specifications about a function mesh are a combination of specifications about Pulsar Functions, Source, and Sink. You can check through the following links.
 

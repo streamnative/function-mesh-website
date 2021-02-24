@@ -17,13 +17,17 @@ module.exports = {
       items: [
         {
           to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Docs',
+          activeBasePath: 'overview',
+          label: 'Overview',
           position: 'left',
         },
-        {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          to: 'docs/',
+          label: 'Installation',
+          position: 'left',
+        },
+        {
+          href: 'https://github.com/streamnative/function-mesh',
           label: 'GitHub',
           position: 'right',
         },
@@ -38,11 +42,7 @@ module.exports = {
             {
               label: 'Style Guide',
               to: 'docs/',
-            },
-            {
-              label: 'Second Doc',
-              to: 'docs/doc2/',
-            },
+            }
           ],
         },
         {
@@ -71,7 +71,7 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/streamnative/function-mesh',
             },
           ],
         },

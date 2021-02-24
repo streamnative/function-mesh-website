@@ -2,6 +2,7 @@
 title: Overview
 category: overview
 id: overview
+slug: /
 ---
 # What is Function Mesh
 

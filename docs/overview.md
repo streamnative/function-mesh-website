@@ -49,7 +49,7 @@ The following diagram illustrates the architecture for Function Mesh.
 
 - [Overview](/overview.md)
 - [Installation](/install-function-mesh.md)
-- Configure
+- Configuration
   - [Configure Pulsar Functions](/configure/pulsar-functions.md)
   - [Configure Pulsar Connectors](/configure/pulsar-connector.md)
   - [Configure Function Mesh](/configure/function-mesh.md)

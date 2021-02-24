@@ -2,13 +2,14 @@
 title: Configure Pulsar Functions
 category: configure
 id: pulsar-functions
+slug: /
 ---
 Pulsar Functions is a succinct computing abstraction that Apache Pulsar allows users to express simple ETL and streaming tasks.
 
 # Prerequisites
 
 - Create a Kubernetes cluster.
-- Create a pulsar cluster.
+- Create a Pulsar cluster.
 - Install FunctionMesh operator and CRD into Kubernetes.
 
 # Steps

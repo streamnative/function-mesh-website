@@ -11,7 +11,7 @@ This document describes how to create Function Mesh through a `.yaml` file.
 # Prerequisites
 
 - Create a Kubernetes cluster.
-- Create a pulsar cluster.
+- Create a Pulsar cluster.
 - Install FunctionMesh operator and CRD into Kubernetes.
 
 # Steps

@@ -5,20 +5,20 @@ id: pulsar-connector
 ---
 
 
-Pulsar IO connectors consist of Source and Sink. Sources pass through data from external systems into Pulsar while Sinks output data from Pulsar into external systems. Function Mesh supports defining Sources and Sinks through the Function CRD.
+Pulsar IO connectors consist of source and sink. Sources pass through data from external systems into Pulsar while sinks output data from Pulsar into external systems. Function Mesh supports defining Sources and Sinks through the Function CRD.
 
 # Prerequisites
 
 - Create a Kubernetes cluster.
-- Create a pulsar cluster.
+- Create a Pulsar cluster.
 - Install FunctionMesh operator and CRD into Kubernetes.
-- Set up the external Source/Sink system to communicate with the Pulsar connector.
+- Set up the external source/sink system to communicate with the Pulsar connector.
 
-# Create Source
+# Create source
 
-To create a Source, follow these steps.
+To create a source, follow these steps.
 
-1. Define a Source named `source-sample` by using a YAML file and save the YAML file `source-sample.yaml`.
+1. Define a source named `source-sample` by using a YAML file and save the YAML file `source-sample.yaml`.
 
     ```yml
     apiVersion: cloud.streamnative.io/v1alpha1
@@ -70,15 +70,15 @@ To create a Source, follow these steps.
       brokerServiceURL: pulsar://test-pulsar-broker.default.svc.cluster.local:6650
     ```
 
-    For details about fields used for creating the Source, see [available fields for Source](#available-fields-for-source).
+    For details about fields used for creating the source, see [available fields for source](#available-fields-for-source).
 
-2. Apply the YAML file to create the Source.
+2. Apply the YAML file to create the source.
 
     ```shell
     kubectl apply -f /path/to/source-sample.yaml
     ```
 
-3. Check whether the Source is created successfully.
+3. Check whether the source is created successfully.
 
     ```shell
     kubectl get all
@@ -101,11 +101,11 @@ To create a Source, follow these steps.
     horizontalpodautoscaler.autoscaling/source-sample   Source/source-sample   <unknown>/80%   1         1         0          3s
     ```
 
-# Create Sink
+# Create sink
 
-To create a Sink, follow these steps.
+To create a sink, follow these steps.
 
-1. Define a Sink named `sink-sample` by using a YAML file and save the YAML file `sink-sample.yaml`.
+1. Define a sink named `sink-sample` by using a YAML file and save the YAML file `sink-sample.yaml`.
 
     ```yaml
     apiVersion: cloud.streamnative.io/v1alpha1
@@ -154,15 +154,15 @@ To create a Sink, follow these steps.
       brokerServiceURL: pulsar://test-pulsar-broker.default.svc.cluster.local:6650
     ```
 
-    For details about fields used for creating the Sink, see [available fields for Sink](#available-fields-for-sink).
+    For details about fields used for creating the sink, see [available fields for sink](#available-fields-for-sink).
 
-2. Apply the YAML file to create the Sink.
+2. Apply the YAML file to create the sink.
 
     ```shell
     kubectl apply -f /path/to/sink-sample.yaml
     ```
 
-3. Check whether the Sink is created successfully.
+3. Check whether the sink is created successfully.
 
     ```shell
     kubectl get all
@@ -187,57 +187,57 @@ To create a Sink, follow these steps.
 
 # Available fields
 
-This section lists available fields for Source and Sink.
+This section lists available fields for source and sink.
 
-## Available fields for Source
+## Available fields for source
 
-In the `.yaml` file for the Source you want to create, you need to set values for the the following fields:
+In the `.yaml` file for the source you want to create, you need to set values for the the following fields:
 
 - `apiVersion`: the API version used to create the object
 - `kind`: the kind of the object to be created
 - `metadata`: data that uniquely identify the object, including the `name` of the object to be created
-- `spec`: the state desired for the object, including specifications about the Source
+- `spec`: the state desired for the object, including specifications about the source
 
-The following lists specifications about the Source.
+The following lists specifications about the source.
 
-- `Name`: the name of the the Source
-- `ClassName`: the class name of the the Source
+- `Name`: the name of the the source
+- `ClassName`: the class name of the the source
 - `Tenant`: the tenant for the Pulsar cluster
 - `ClusterName`: the name of Pulsar cluster
-- `SourceType`: the type of the Source
-- `SinkType`: the type pf the Sink
+- `SourceType`: the type of the source
+- `SinkType`: the type of the sink
 - `Replicas`: the number of Pulsar instances that you want to run this Pulsar Functions
 - `MaxReplicas`: the maximum number of Pulsar instances that you want to run for this Pulsar Functions. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller will automatically scale the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled.
-- `Output`: the topic from which messages are dispatched, including producer configurations. 
-- `SourceConfig`: configurations about the Source.
+- `Output`: the topic from which messages are dispatched, including producer configurations
+- `SourceConfig`: configurations about the source
 - `pulsarConfig`: Pulsar clusters referred by the Pulsar Functions. Each Pulsar cluster is defined as a `ConfigMap`. The `ConfigMap` contains configurations for the specific cluster. This allows you to use Pulsar Functions across multiple clusters.
 - `Resources`: the resources used by the Pulsar Functions, including required and maximum CPU and memory resources.
 - `SecretsMap`: secret configurations. Function Mesh leverages the Kubernetes secret and you can just reference the Kubernetes secret in the Pulsar Functions configuration. That would improve the whole security for your Pulsar Functions.
-- `ProcessingGuarantee`: configurations of processing Guarantee, supporting 
-- `RuntimeFlag`:
+- `ProcessingGuarantee`: configurations of processing Guarantee
+- `RuntimeFlag`: the Kubernetes Runtime flags
 - `VolumeMounts`: Pod volumes to mount into the container's filesystem, including the `mountPath` and the `name`
 
-## Available fields for Sink
+## Available fields for sink
 
-In the `.yaml` file for the SInk you want to create, you need to set values for the the following fields:
+In the `.yaml` file for the sink you want to create, you need to set values for the the following fields:
 
 - `apiVersion`: the API version used to create the object
 - `kind`: the kind of the object to be created
 - `metadata`: data that uniquely identify the object, including the `name` of the object to be created
-- `spec`: the state desired for the object, including specifications about the Sink
+- `spec`: the state desired for the object, including specifications about the sink
 
-The following lists specifications about the Sink.
+The following lists specifications about the sink.
 
-- `Name`: the name of the the Source/Sink
-- `ClassName`: the class name of the the Source/Sink
+- `Name`: the name of the the sink
+- `ClassName`: the class name of the the sink
 - `ClusterName`: the name of Pulsar cluster
 - `Tenant`: the tenant for the Pulsar cluster
-- `SourceType`: the type of the Source
-- `SinkType`: the type pf the Sink
+- `SourceType`: the type of the source
+- `SinkType`: the type of the sink
 - `Replicas`: the number of Pulsar instances that you want to run this Pulsar Functions
 - `MaxReplicas`: the maximum number of Pulsar instances that you want to run for this Pulsar Functions. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller will automatically scale the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled.
-- `Input`: the topic to which messages are sent. 
-- `sinkConfig`: configurations about the Sink.
+- `Input`: the topic to which messages are sent
+- `sinkConfig`: configurations about the sink
 - `resources`: the resources used by the Pulsar Functions, including required and maximum CPU and memory resources.
 - `SecretsMap`: secret configurations. Function Mesh leverages the Kubernetes secret and you can just reference the Kubernetes secret in the Pulsar Functions configuration. That would improve the whole security for your Pulsar Functions.
 - `VolumeMounts`: Pod volumes to mount into the container's filesystem, including the `mountPath` and the `name`

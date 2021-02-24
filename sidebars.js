@@ -4,8 +4,8 @@ module.exports = {
     'install-function-mesh',
     {
       type: 'category',
-      label: 'Configure',
-      items: ['configure/pulsar-functions', 'configure/pulsar-connector', 'configure/function-mesh'],
+      label: 'Configuration',
+      items: ['configuration/pulsar-functions', 'configuration/pulsar-connector', 'configuration/function-mesh'],
     },
   ],
 }

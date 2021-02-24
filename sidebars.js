@@ -1,7 +1,11 @@
 module.exports = {
-  someSidebar: {
-    Overview: ['overview'],
-    Installation: ['install-function-mesh'],
-    Configure: ['pulsar-functions', 'pulsar-connector', 'function-mesh'],
-  },
-};
+  docs: [
+    'overview',
+    'installation',
+    {
+      type: 'category',
+      label: 'configure',
+      items: ['configure/pulsar-functions', 'configure/pulsar-connector', 'configure/function-mesh'],
+    },
+  ],
+}

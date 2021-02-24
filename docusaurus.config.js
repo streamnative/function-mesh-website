@@ -1,24 +1,24 @@
 module.exports = {
-  title: 'Pulsar Function Mesh Website',
-  tagline: 'The tagline of my site',
-  url: 'https://function-mesh.org',
+  title: 'Function Mesh',
+  tagline: 'A collection of functions collaborated together to process data with clearly-defined stages on Kubernetes environments',
+  url: 'https://functionmesh.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'function-mesh', // Usually your GitHub org/user name.
+  projectName: 'functionmesh.io', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'Function Mesh',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Function Mesh Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
           to: 'docs/',
           activeBasePath: 'docs',
-          label: 'Docs',
+          label: 'Documentation',
           position: 'left',
         },
         {to: 'blog', label: 'Blog', position: 'left'},
@@ -33,14 +33,14 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Documentation',
           items: [
             {
-              label: 'Style Guide',
+              label: 'Overview',
               to: 'docs/',
             },
             {
-              label: 'Second Doc',
+              label: 'Installation Guide',
               to: 'docs/doc2/',
             },
           ],
@@ -51,10 +51,6 @@ module.exports = {
             {
               label: 'Stack Overflow',
               href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
             },
             {
               label: 'Twitter',
@@ -71,7 +67,7 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/streamnative/function-mesh',
             },
           ],
         },

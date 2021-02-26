@@ -13,9 +13,9 @@ const features = [
     description: (
       <>
         <ul>
-          <li>Be easily deployed directly on Kubernetes clusters, including{' '} <a href="https://github.com/kubernetes/minikube">Minikube</a> and{' '} <a href="https://kind.sigs.k8s.io/docs/user/quick-start/">Kind</a>.</li>
-          <li>Allow one function to talk to multiple different Pulsar clusters, which are defined as config maps.</li>
-          <li>Support function registry for function package management. We are going to introduce the Pulsar registry in Pulsar 2.8.0 for function package management. Then, the function package can be reused by different functions.</li>
+          <li>Easy deployment to Kubernetes clusters, including{' '} <a href="https://github.com/kubernetes/minikube">Minikube</a> and{' '} <a href="https://kind.sigs.k8s.io/docs/user/quick-start/">Kind</a>.</li>
+          <li>Directly talking to multiple Pulsar clusters, with config maps defined.</li>
+          <li>Future Supporting function registry for function package management.</li>
         </ul>
       </>
     ),
@@ -26,9 +26,22 @@ const features = [
     description: (
       <>
         <ul>
+          <li>Leverage the Kubernetes's auto-scaler to auto-scale instances for functions based on the CPU usage and more.</li>
+          <li>Utilize the full scheduling capability provided by Kubernetes to be high available.</li>
           <li>Integrate with Kubernetes secrets seamlessly to read secrets directly.</li>
-          <li>Leverage the Kubernetes’s auto-scaler to auto-scale instances for functions based on the CPU usage. In future, Function Mesh will support auto-scaling based on the backlog.</li>
-          <li>Utilize the full power scheduling capability provided by Kubernetes. Therefore, users do not need to write any customized codes to communicate with the Kubernetes API server.</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    title: 'Great Tools at hand',
+    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    description: (
+      <>
+        <ul>
+          <li>Manage multiple functions in one place with the FunctionMesh{' '}<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">CustomResourceDefinitions</a>{' '}(CRD). </li>
+          <li>Support multiple language runtime, including Java, Python, Golang and more.</li>
+          <li>Provide rich connectors talking to various data systems.</li>
         </ul>
       </>
     ),

@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Function Mesh',
-  tagline: 'A collection of functions collaborated together to process data with clearly-defined stages on Kubernetes environments',
+  tagline: 'A collection of Pulsar Functions collaborated together to process data in cloud native way',
   url: 'https://functionmesh.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',

@@ -244,7 +244,7 @@ This table lists sub-fields available for the `pod` field.
 | `SecurityContext` | The `SecurityContext` holds pod-level security attributes and common container settings. |
 | `ImagePullSecrets` | It is a list of references to secrets in the same namespace for pulling any of the images used by this pod. If specified, these secrets are passed to individual puller implementations for them to use. |
 | `Hostname` | The hostname of the pod. |
-| `Subdomain` | If specified, the fully qualified pod is in a format of "<hostname>.<subdomain>.<pod namespace>.svc.<cluster domain>". Otherwise, the pod does not have a domain name at all. |
+| `Subdomain` | If specified, the fully qualified pod is in a format of `hostname.subdomain.pod-namespace.svc.cluster-domain`. Otherwise, the pod does not have a domain name at all. |
 | `Affinity` | If specified, the pod's scheduling constraints. |
 | `SchedulerName` | If specified, the pod is dispatched by a specified scheduler. Otherwise, the pod is dispatched by the default scheduler. |
 | `Tolerations` | Allow (but do not require) the pods to schedule onto nodes with matching taints. |
@@ -323,7 +323,7 @@ This table lists sub-fields available for the `pod` field.
 | `SecurityContext` | The `SecurityContext` holds pod-level security attributes and common container settings. |
 | `ImagePullSecrets` | It is a list of references to secrets in the same namespace for pulling any of the images used by this pod. If specified, these secrets are passed to individual puller implementations for them to use. |
 | `Hostname` | The hostname of the pod. |
-| `Subdomain` | If specified, the fully qualified pod is in a format of "<hostname>.<subdomain>.<pod namespace>.svc.<cluster domain>". Otherwise, the pod does not have a domain name at all. |
+| `Subdomain` | If specified, the fully qualified pod is in a format of `hostname.subdomain.pod-namespace.svc.cluster-domain`. Otherwise, the pod does not have a domain name at all. |
 | `Affinity` | If specified, the pod's scheduling constraints. |
 | `SchedulerName` | If specified, the pod is dispatched by a specified scheduler. Otherwise, the pod is dispatched by the default scheduler. |
 | `Tolerations` | Allow (but do not require) the pods to schedule onto nodes with matching taints. |

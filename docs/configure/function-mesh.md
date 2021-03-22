@@ -132,5 +132,5 @@ To create a Function Mesh, follow these steps.
 
 The specifications about a Function Mesh are a combination of specifications about Pulsar Functions, source, and sink. For detailed specifications about Pulsar Functions, source, and sink, check the following links.
 
-- [Available fields for Pulsar Functions](/configuration/configure-pulsar-functions.md#available-fields)
-- [Available fields for source and sink](/configuration/configure-pulsar-connectors.md#available-fields)
+- [Available fields for Pulsar Functions](/configure/pulsar-functions.md#available-fields)
+- [Available fields for source and sink](/configure/pulsar-connector.md#available-fields)

@@ -10,6 +10,15 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(to right, rgba(35, 14, 143, 100), rgba(15, 11, 54, 100));
+}
+
+.heroBanner > img {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 
 @media screen and (max-width: 966px) {
@@ -22,6 +31,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.buttons > a {
+  background: linear-gradient(to right, rgba(0,194,255,1), rgba(0,147,255,1));
+  border-radius: 27px;
+  color: #ffffff!important;
+  border: none;
+  z-index: 99;
+  font-weight: 500;
 }
 
 .features {

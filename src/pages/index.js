@@ -9,7 +9,7 @@ import styles from './styles.module.css';
 const features = [
   {
     title: 'Easy to Use',
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
+    imageUrl: 'img/undraw_docusaurus_mountain.png',
     description: (
       <>
         <ul>
@@ -22,7 +22,7 @@ const features = [
   },
   {
     title: 'Integrated with Kubernetes',
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    imageUrl: 'img/undraw_docusaurus_react.png',
     description: (
       <>
         <ul>
@@ -35,7 +35,7 @@ const features = [
   },
   {
     title: 'Great Tools at hand',
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    imageUrl: 'img/undraw_docusaurus_tree.png',
     description: (
       <>
         <ul>

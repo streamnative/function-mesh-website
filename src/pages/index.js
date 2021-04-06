@@ -9,7 +9,7 @@ import styles from './styles.module.css';
 const features = [
   {
     title: 'Easy to Use',
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
+    imageUrl: 'img/undraw_docusaurus_mountain.png',
     description: (
       <>
         <ul>
@@ -22,7 +22,7 @@ const features = [
   },
   {
     title: 'Integrated with Kubernetes',
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    imageUrl: 'img/undraw_docusaurus_react.png',
     description: (
       <>
         <ul>
@@ -35,7 +35,7 @@ const features = [
   },
   {
     title: 'Great Tools at hand',
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    imageUrl: 'img/undraw_docusaurus_tree.png',
     description: (
       <>
         <ul>
@@ -66,11 +66,13 @@ function Feature({imageUrl, title, description}) {
 function Home() {
   const context = useDocusaurusContext();
   const {siteConfig = {}} = context;
+  const bannerBackground = 'image/background_line.png'
   return (
     <Layout
       title={`A collection of functions collaborated to process data on Kubernetes`}
       description="Description will go into a meta tag in <head />">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
+        <img src={bannerBackground} />
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>

@@ -5,13 +5,14 @@ id: pulsar-functions
 ---
 Pulsar Functions is a succinct computing abstraction that Apache Pulsar enables users to express simple ETL and streaming tasks. Currently, Function Mesh supports using Java, Python, or Go programming language to define a YAML file of the FUnctions.
 
-# Prerequisites
+## Prerequisites
 
-- Create a Kubernetes cluster.
-- Create a Pulsar cluster.
+- Create and connect to a [Kubernetes cluster](https://kubernetes.io/).
+- Create a [Pulsar cluster](https://pulsar.apache.org/docs/en/kubernetes-helm/) in the Kubernetes cluster.
+- Install the Function Mesh Operator and CRD into Kubernetes cluster.
 - Install FunctionMesh operator and CRD into Kubernetes.
 
-# Steps
+## Steps
 
 Function Mesh supports using the Functions CRD to define Pulsar Functions. This example launches a single Pulsar Functions inside Kubernetes with auto-scaling turned on.
 
@@ -122,9 +123,9 @@ Function Mesh supports using the Functions CRD to define Pulsar Functions. This 
     horizontalpodautoscaler.autoscaling/java-function-sample   Function/java-function-sample   <unknown>/80%   1         5         0          14s
     ```
 
-# Available fields
+## Available fields
 
-In the `.yaml` file for the Pulsar Functions you want to create, you need to set values for the following fields.
+In the `.yaml` file for the Pulsar Functions that you want to create, you need to set values for the following fields.
 
 This table lists common fields used in the `.yaml` file, which is used to create the Pulsar Functions.
 

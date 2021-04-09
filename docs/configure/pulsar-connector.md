@@ -7,14 +7,14 @@ id: pulsar-connector
 
 Pulsar IO connectors consist of source and sink. Sources pass through data from external systems into Pulsar while sinks output data from Pulsar into external systems. Function Mesh supports defining ources and Sinks through the Function CRD.
 
-# Prerequisites
+## Prerequisites
 
-- Create a Kubernetes cluster.
-- Create a Pulsar cluster.
-- Install FunctionMesh operator and CRD into Kubernetes.
+- Create and connect to a [Kubernetes cluster](https://kubernetes.io/).
+- Create a [Pulsar cluster](https://pulsar.apache.org/docs/en/kubernetes-helm/) in the Kubernetes cluster.
+- Install the Function Mesh Operator and CRD into Kubernetes cluster.
 - Set up the external source or sink system to communicate with the Pulsar connector.
 
-# Create source
+## Create source
 
 To create a source, follow these steps.
 
@@ -101,7 +101,7 @@ To create a source, follow these steps.
     horizontalpodautoscaler.autoscaling/source-sample   Source/source-sample   <unknown>/80%   1         1         0          3s
     ```
 
-# Create sink
+## Create sink
 
 To create a sink, follow these steps.
 
@@ -185,13 +185,13 @@ To create a sink, follow these steps.
     horizontalpodautoscaler.autoscaling/sink-sample   Sink/sink-sample   <unknown>/80%   1         1         0          3s
     ```
 
-# Available fields
+## Available fields
 
-This section lists available fields for source and sink.
+This section lists available fields for the source and the sink.
 
-## Available fields for source
+### Available fields for source
 
-In the `.yaml` file for the source you want to create, you need to set values for the the following fields.
+In the `.yaml` file for the source that you want to create, you need to set values for the the following fields.
 
 This table lists common fields used in the `.yaml` file, which is used to create the source.
 
@@ -259,9 +259,9 @@ This table lists sub-fields available for the `pod` field.
 | `Overhead` | The resource overhead associated with running a pod for a given `RuntimeClass`.|
 | `TopologySpreadConstraints` | It describes how a group of pods spread across topology domains. |
 
-## Available fields for sink
+### Available fields for sink
 
-In the `.yaml` file for the sink you want to create, you need to set values for the the following fields:
+In the `.yaml` file for the sink that you want to create, you need to set values for the the following fields:
 
 This table lists common fields used in the `.yaml` file, which is used to create the sink.
 

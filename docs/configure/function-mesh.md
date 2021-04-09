@@ -8,13 +8,13 @@ Function Mesh is a collection of functions collaborated together to process data
 
 This document describes how to create Function Mesh through a `.yaml` file.
 
-# Prerequisites
+## Prerequisites
 
-- Create a Kubernetes cluster.
-- Create a Pulsar cluster.
-- Install FunctionMesh operator and CRD into Kubernetes.
+- Create and connect to a [Kubernetes cluster](https://kubernetes.io/).
+- Create a [Pulsar cluster](https://pulsar.apache.org/docs/en/kubernetes-helm/) in the Kubernetes cluster.
+- Install the Function Mesh Operator and CRD into Kubernetes cluster.
 
-# Steps
+## Steps
 
 To create a Function Mesh, follow these steps.
 
@@ -128,7 +128,7 @@ To create a Function Mesh, follow these steps.
     horizontalpodautoscaler.autoscaling/functionmesh-sample-ex2   Function/functionmesh-sample-ex2   <unknown>/80%   1         1         0          14s
     ```
 
-# Available fields
+## Available fields
 
 The specifications about a Function Mesh are a combination of specifications about Pulsar Functions, source, and sink. For detailed specifications about Pulsar Functions, source, and sink, check the following links.
 

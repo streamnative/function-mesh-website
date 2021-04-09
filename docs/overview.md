@@ -4,7 +4,6 @@ category: overview
 id: overview
 slug: /
 ---
-# What is Function Mesh
 
 Pulsar Functions is a succinct computing abstraction that Apache Pulsar allows users to express simple ETL and streaming tasks. However, Pulsar Functions has the following issues:
 
@@ -19,7 +18,7 @@ At the current stage, Function Mesh has the following components:
 - Functions CRD: it is used to define Pulsar Functions, Source, Sink, and Function Mesh.
 - Functions controller: it is used to watch the CRDs and reconcile Pulsar Functions, Source, Sink, and Function Mesh in Kubernetes.
 
-# Features
+## Features
 
 - Be easily deployed directly on Kubernetes clusters, including [Minikube](https://github.com/kubernetes/minikube) and [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/), without special dependencies.
 - Use [CustomResourceDefinitions (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) to define Functions, Source, Sink, and Mesh. Using CRD makes Function Mesh naturally integrate with the Kubernetes ecosystem.
@@ -29,7 +28,7 @@ At the current stage, Function Mesh has the following components:
 - Allow one function to talk to multiple different Pulsar clusters, which are defined as config maps.
 - Support function registry for function package management. We are going to introduce the Pulsar registry in Pulsar 2.8.0 for function package management. Then, the function package can be reused by different functions.
 
-# Architecture
+## Architecture
 
 Function Mesh works in the following way.
 
@@ -45,7 +44,7 @@ The following diagram illustrates the architecture for Function Mesh.
 
 ![](../static/image/function-mesh-architecture.png)
 
-# Documentation
+## Documentation
 
 - [Overview](/overview.md)
 - [Installation](/install-function-mesh.md)

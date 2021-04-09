@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Function Mesh',
-  tagline: 'A collection of Pulsar Functions collaborated together to process data in cloud native way',
+  tagline: 'Collaborating Pulsar Functions in Cloud-Native way',
   url: 'https://functionmesh.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -8,6 +8,9 @@ module.exports = {
   organizationName: 'function-mesh', // Usually your GitHub org/user name.
   projectName: 'functionmesh.io/', // Usually your repo name.
   themeConfig: {
+    colorMode: {
+      disableSwitch: true,
+    },
     navbar: {
       title: 'Function Mesh',
       logo: {
@@ -48,13 +51,9 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
+              label: 'Google Group',
+              href: 'https://groups.google.com/a/streamnative.io/g/function-mesh',
+            }
           ],
         },
         {
@@ -67,7 +66,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} StreamNative, Inc.`,
     },
   },
   presets: [
@@ -78,13 +77,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+            'https://github.com/streamnative/function-mesh-website/tree/main',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

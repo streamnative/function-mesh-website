@@ -6,11 +6,11 @@ id: function-overview
 
 **Pulsar Functions** are lightweight compute processes that can perform the following operations:
 
-- consume messages from one or more Pulsar topics.
+- Consume messages from one or more Pulsar topics.
 
-- apply a user-supplied processing logic to each message.
+- Apply a user-supplied processing logic to each message.
 
-- publish the results of the computation to another topic.
+- Publish the results of the computation to another topic.
 
 Pulsar Functions are computing infrastructure of Pulsar messaging system. With Pulsar Functions, you can create complex processing logic without deploying a separate neighboring system, such as [Apache Storm](http://storm.apache.org/), [Apache Heron](https://heron.incubator.apache.org/), or [Apache Flink](https://flink.apache.org/).  
 

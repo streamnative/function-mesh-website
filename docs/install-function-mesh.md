@@ -1,12 +1,16 @@
 ---
-title: Install Function Mesh
+title: Installation
 category: installation
 id: install-function-mesh
 ---
 
 This document describes how to install Function Mesh based on your application in Kubernetes and how to start Function Mesh Proxy in case you want to use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
 
-## Prerequisites
+## Install Function Mesh
+
+This section describes how to install Function Mesh based on your application in Kubernetes.
+
+### Prerequisites
 
 Before installing Function Mesh, ensure to perform the following operations.
 
@@ -16,7 +20,7 @@ Before installing Function Mesh, ensure to perform the following operations.
 - Deploy [Pulsar Functions](https://pulsar.apache.org/docs/en/functions-overview/).
 - (Optional) enable [Role-based Access Control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
-## Install Function Mesh through `install.sh` script
+### Install Function Mesh through `install.sh` script
 
 This example shows how to use the `install.sh` command to install Function Mesh on your laptop (Linux or Mac OS), including a local [kind](https://kind.sigs.k8s.io/) cluster, all the Custom Resource Definitions (CRDs), required service account configuration, and Function Mesh components.
 
@@ -30,7 +34,7 @@ After executing the above command, you should be able to see the output indicati
 >
 > The `install.sh` command is suitable for trying Function Mesh out. If you want to deploy Function Mesh in production or other mission-critical scenarios, it is recommended to install Function Mesh through Helm.
 
-## Install Function Mesh through Helm
+### Install Function Mesh through Helm
 
 This example shows how to install Function Mesh through [Helm](https://helm.sh/).
 

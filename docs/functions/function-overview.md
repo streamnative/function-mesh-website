@@ -1,6 +1,6 @@
 ---
 title: Pulsar Functions overview
-category: Functions
+category: functions
 id: function-overview
 ---
 

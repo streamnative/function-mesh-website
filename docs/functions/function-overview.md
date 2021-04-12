@@ -2,6 +2,7 @@
 title: Pulsar Functions overview
 category: functions
 id: function-overview
+slug: /
 ---
 
 **Pulsar Functions** are lightweight compute processes that can perform the following operations:

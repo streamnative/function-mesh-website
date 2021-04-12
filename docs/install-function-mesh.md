@@ -8,7 +8,7 @@ This document describes how to install Function Mesh based on your application i
 
 ## Install Function Mesh
 
-This section describes how to install Function Mesh based on your application in Kubernetes.
+This section describes how to install Function Mesh through the `install.sh` script or through the Helm.
 
 ### Prerequisites
 
@@ -126,7 +126,7 @@ helm delete function-mesh
 
 ## Work with `pulsar-admin` CLI tool
 
-To make users continue to use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar functions and connectors, Function Mesh also supports Function Mesh Proxy. Function Mesh Proxy runs together with the Pulsar broker and is used to forward requests to the Kubernetes cluster. After Function Mesh Proxy is started, you can use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
+Function Mesh supports Function Mesh Proxy, which can forward requests to the Kubernetes cluster. After Function Mesh Proxy is started, users can use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
 
 > **Note**
 >

@@ -25,7 +25,7 @@ Pulsar Functions provide a wide range of functionality, and the core programming
 
 - Write logs to a **log topic**, which is mainly used for debugging issues.
 
-![Pulsar Functions Programing Model](./assets/pulsar-functions-overview.png)
+![Pulsar Functions Programing Model](../assets/pulsar-functions-overview.png)
 
 ## Processing guarantees
 

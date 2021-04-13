@@ -2,7 +2,6 @@
 title: Overview
 category: overview
 id: overview
-slug: /
 ---
 
 Pulsar Functions is a succinct computing abstraction that Apache Pulsar allows users to express simple ETL and streaming tasks. However, Pulsar Functions has the following issues:
@@ -48,6 +47,10 @@ The following diagram illustrates the architecture for Function Mesh.
 
 - [Overview](/overview.md)
 - [Installation](/install-function-mesh.md)
+- Functions
+  - [Pulsar Functions overview](/functions/function-overview.md)
+- Connectors
+  - [Pulsar connectors overview](/connectors/pulsar-io-overview.md)
 - Configuration
   - [Configure Pulsar Functions](/configure/pulsar-functions.md)
   - [Configure Pulsar Connectors](/configure/pulsar-connector.md)

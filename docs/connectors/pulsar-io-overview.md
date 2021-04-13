@@ -16,13 +16,13 @@ Pulsar IO connectors consists **source** and **sink**. This diagram illustrates 
 
 A source is an application that ingests data from an external system into Pulsar. Common sources include other messaging systems and firehose-style data pipeline APIs.
 
-For a complete list of Pulsar built-in source connectors, see [source connector](io-connectors.md#source-connector).
+For a complete list of source connectors, see [source connector](https://hub.streamnative.io/).
 
 ## Sink
 
 A sink is an application that egresses data from Pulsar to an external system. Common sinks include other messaging systems, as well as SQL and NoSQL databases.
 
-For a complete list of Pulsar built-in sink connectors, see [sink connector](io-connectors.md#sink-connector).
+For a complete list of sink connectors, see [sink connector](https://hub.streamnative.io/).
 
 ## Processing guarantee
 

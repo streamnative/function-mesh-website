@@ -10,7 +10,7 @@ Messaging systems are most powerful when you can easily use them with external s
 
 Pulsar IO connectors consists **source** and **sink**. This diagram illustrates the relationship between source, Pulsar, and sink.
 
-![Pulsar IO connector](./assets/pulsar-io.png)
+![Pulsar IO connector](../assets/pulsar-io.png)
 
 ## Source
 

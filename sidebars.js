@@ -4,6 +4,11 @@ module.exports = {
     'install-function-mesh',
     {
       type: 'category',
+      label: 'Functions',
+      items: ['functions/function-overview'],
+    },
+    {
+      type: 'category',
       label: 'Connectors',
       items: ['connectors/pulsar-io-overview'],
     },   

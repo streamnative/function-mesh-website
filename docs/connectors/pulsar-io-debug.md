@@ -4,6 +4,8 @@ category: connectors
 id: pulsar-io-debug
 ---
 
+This document describes how to debug Pulsar connectors through pod logs, connector log topics, or `pulsar-admin` commands.
+
 ## Use Pod logs
 
 Logs in Kubernetes give you insight into resources such as nodes, pods, containers, deployments and replica sets. This insight allows you to observe the interactions between those resources and see the effects that one action has on another. Pod logs record events happening in a cluster, which can be very useful for debugging. Before debugging a pod, you need to ensure the Pod is already scheduled and running.
@@ -18,7 +20,7 @@ In addition, you can use the following command to check the specific Pod.
 
 For the use of `kubectl` commands, see [here](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands).
 
-## Use log topic
+## Use log topics
 
 In Pulsar connectors, you can generate log information defined in connectors to a specified log topic. You can configure consumers to consume messages from a specified log topic to check the log information.
 
@@ -71,49 +73,33 @@ For more information, see [Pulsar source CLIs](http://pulsar.apache.org/tools/pu
 
 You can get the information of a Pulsar connector.
 
-<!--DOCUSAURUS_CODE_TABS-->
+- The `pulsar-admin sources get` command is used to get the information of a Pulsar source connector.
 
-<!--Source-->
+    ```bash
+    pulsar-admin sources get options
+    ```
 
-The `pulsar-admin sources get` command is used to get the information of a Pulsar source connector.
+- The `pulsar-admin sinks get` command is used to get the information of a Pulsar sink connector.
 
-```bash
-pulsar-admin sources get options
-```
-
-<!--Sink-->
-
-The `pulsar-admin sinks get` command is used to get the information of a Pulsar sink connector.
-
-```bash
-pulsar-admin sinks get options
-```
-
-<!--END_DOCUSAURUS_CODE_TABS-->
+    ```bash
+    pulsar-admin sinks get options
+    ```
 
 ### `status`
 
 You can get the current status of a Pulsar connector.
 
-<!--DOCUSAURUS_CODE_TABS-->
+- The `pulsar-admin sources status` command is used to check the current status of a Pulsar source connector.
 
-<!--Source-->
+    ```bash
+    pulsar-admin sources status options
+    ```
 
-The `pulsar-admin sources status` command is used to check the current status of a Pulsar source connector.
+- The `pulsar-admin sinks status` command is used to check the current status of a Pulsar sink connector.
 
-```bash
-pulsar-admin sources status options
-```
-
-<!--Sink-->
-
-The `pulsar-admin sinks status` command is used to check the current status of a Pulsar sink connector.
-
-```bash
-pulsar-admin sinks status options
-```
-
-<!--END_DOCUSAURUS_CODE_TABS-->
+    ```bash
+    pulsar-admin sinks status options
+    ```
 
 ### `topics stats`
 

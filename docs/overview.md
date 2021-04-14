@@ -41,7 +41,7 @@ The benefit of this approach is that both the metadata and running state are act
 
 The following diagram illustrates the architecture for Function Mesh.
 
-![](../static/image/function-mesh-architecture.png)
+![Function Mech Architecture](../docs/assets/function-mesh-architecture.png)
 
 ## Documentation
 
@@ -51,6 +51,8 @@ The following diagram illustrates the architecture for Function Mesh.
   - [Pulsar Functions overview](/functions/function-overview.md)
 - Connectors
   - [Pulsar connectors overview](/connectors/pulsar-io-overview.md)
+  - [Monitoring](/connectors/pulsar-io-monitoring.md)
+  - [Troubleshooting](/connectors/pulsar-io-debug.md)
 - Configuration
   - [Configure Pulsar Functions](/configure/pulsar-functions.md)
   - [Configure Pulsar Connectors](/configure/pulsar-connector.md)

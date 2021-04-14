@@ -14,7 +14,7 @@ With Kubernetes [Horizontal Pod Autoscaler (HPA)](https://kubernetes.io/docs/tas
 
 For resources with HPA configured, the HPA controller monitors the resource's Pods to determine if it needs to change the number of Pod replicas. In most cases, where the controller takes the mean of a per-pod metric value, it calculates whether adding or removing replicas would move the current value closer to the target value.
 
-![](../assets/scaling.png)
+![scaling](../assets/scaling.png)
 
 ## Manual scaling
 

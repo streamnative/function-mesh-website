@@ -105,9 +105,9 @@ You can get the current status of a Pulsar connector.
 
 - The `pulsar-admin sources status` command is used to check the current status of a Pulsar source connector.
 
-```bash
-pulsar-admin sources status options
-```
+    ```bash
+    pulsar-admin sources status options
+    ```
 
 - The `pulsar-admin sinks status` command is used to check the current status of a Pulsar sink connector.
 

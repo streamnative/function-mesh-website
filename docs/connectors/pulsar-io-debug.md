@@ -4,11 +4,11 @@ category: connectors
 id: pulsar-io-debug
 ---
 
-This document describes how to debug Pulsar connectors through pod logs, connector log topics, or `pulsar-admin` commands.
+This document describes how to debug Pulsar connectors through Pod logs, connector log topics, and `pulsar-admin` commands.
 
 ## Use Pod logs
 
-Logs in Kubernetes give you insight into resources such as nodes, pods, containers, deployments and replica sets. This insight allows you to observe the interactions between those resources and see the effects that one action has on another. Pod logs record events happening in a cluster, which can be very useful for debugging. Before debugging a pod, you need to ensure the Pod is already scheduled and running.
+Logs in Kubernetes give you insight into resources such as nodes, Pods, containers, deployments and replica sets. This insight allows you to observe the interactions between those resources and see the effects that one action has on another. Pod logs record events happening in a cluster, which can be very useful for debugging. Before debugging a Pod, you need to ensure the Pod is already scheduled and running.
 
 The built-in way to check logs on your Kubernetes cluster is with `kubectl` CLI commands. You can use the `kubectl logs pod POD_NAME -n NAMESPACE_NAME` to check logs of the affected container. In addition, you can use `kubectl logs pod POD_NAME -n NAMESPACE_NAME --previous` to retrieve logs from a previous instantiation of a container.
 

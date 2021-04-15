@@ -1,5 +1,5 @@
 ---
-title: Monitoring
+title: Monitor Pulsar connectors
 category: connectors
 id: pulsar-io-monitoring
 ---

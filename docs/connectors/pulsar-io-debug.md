@@ -1,5 +1,5 @@
 ---
-title: Troubleshooting
+title: Debug Pulsar connectors
 category: connectors
 id: pulsar-io-debug
 ---

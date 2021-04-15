@@ -18,7 +18,7 @@ For resources with HPA configured, the HPA controller monitors the resource's Po
 
 ## Manual scaling
 
-In CRDs, the `replicas` parameter is used to specify the number of Pods (Pulsar instances) that are quired for running Pulsar functions, sources, or sinks. You can set the number of Pods based on the CPU threshold. When the target CPU threshold is reached, you can scale the Pods through either of the two ways:
+In CRDs, the `replicas` parameter is used to specify the number of Pods (Pulsar instances) that are required for running Pulsar functions, sources, or sinks. You can set the number of Pods based on the CPU threshold. When the target CPU threshold is reached, you can scale the Pods through either of the two ways:
 
 - Use the `kubectl scale --replicas` command. The CLI command does not change the `replicas` configuration in the CRD. If you use the `kunectl apply -f` command to re-submit the CRD file, the CLI configuration may be overwritten.
 
@@ -29,7 +29,7 @@ In CRDs, the `replicas` parameter is used to specify the number of Pods (Pulsar 
 
 ## Autoscaling
 
-As mentioned in the previous section, Function Mesh supports automatically scaling Pods (Pulsar instances) based on the CPU utilization. By default, autoscaling is disabled (The value of the `maxReplicas` parameter is set to 0). To enable autoscaling, you can specify the `maxReplicas` parameter and set a value for it in the CRD. This value should be greater than the value of the `replicas` parameter.
+Function Mesh supports scaling Pods (Pulsar instances) based on the CPU utilization automatically. By default, autoscaling is disabled (The value of the `maxReplicas` parameter is set to `0`). To enable autoscaling, you can specify the `maxReplicas` parameter and set a value for it in the CRD. This value should be greater than the value of the `replicas` parameter.
 
 **Example**
 

@@ -55,3 +55,5 @@ The following diagram illustrates the architecture for Function Mesh.
   - [Configure Pulsar Functions](/configure/pulsar-functions.md)
   - [Configure Pulsar Connectors](/configure/pulsar-connector.md)
   - [Configure Function Mesh](/configure/function-mesh.md)
+- Migration
+  - [Migrate Pulsar Functions](/migration/migrate-function.md)

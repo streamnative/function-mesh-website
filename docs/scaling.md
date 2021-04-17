@@ -34,7 +34,7 @@ Function Mesh supports scaling Pods (Pulsar instances) based on the CPU utilizat
 **Example**
 
 ```yml
-apiVersion: cloud.streamnative.io/v1alpha1
+apiVersion: compute.functionmesh.io/v1alpha1
 kind: Source
 metadata:
     name: source-sample

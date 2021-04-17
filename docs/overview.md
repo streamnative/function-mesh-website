@@ -53,6 +53,7 @@ The following diagram illustrates the architecture for Function Mesh.
   - [Pulsar connectors overview](/connectors/pulsar-io-overview.md)
   - [Monitor Pulsar connectors](/connectors/pulsar-io-monitoring.md)
   - [Debug Pulsar connectors](/connectors/pulsar-io-debug.md)
+- [Scaling](/scaling.md)
 - Configuration
   - [Configure Pulsar Functions](/configure/pulsar-functions.md)
   - [Configure Pulsar Connectors](/configure/pulsar-connector.md)

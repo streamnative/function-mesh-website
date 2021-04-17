@@ -8,7 +8,7 @@ This document describes how to monitor Pulsar connectors (sources and sinks) wit
 
 ## Monitoring with Prometheus
 
-Prometheus is a monitoring and alerting system. It handles the multi-dimensional data. When you deploy Pulsar in a Kubernetes cluster, the monitoring is setup automatically.
+Prometheus is a monitoring and alerting system. It handles the multi-dimensional data. When you deploy Function Mesh in a Kubernetes cluster, the monitoring is setup automatically.
 
 All the Pulsar connector metrics are labelled with the following labels:
 

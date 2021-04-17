@@ -8,7 +8,7 @@ This document describes how to monitor Pulsar functions with Prometheus and `pul
 
 ## Monitoring with Prometheus
 
-Prometheus is a monitoring and alerting system. It handles the multi-dimensional data. When you deploy Pulsar in a Kubernetes cluster, the monitoring is setup automatically.
+Prometheus is a monitoring and alerting system. It handles the multi-dimensional data. When you deploy Function Mesh in a Kubernetes cluster, the monitoring is setup automatically.
 
 ### Pulsar Function metrics
 

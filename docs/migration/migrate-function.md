@@ -12,7 +12,7 @@ Function Mesh provides a tool, which is used to migrate Pulsar Functions from th
 
 ## Steps
 
-1. Build the tool from the source code.
+1. Build the tool.
 
    1. Define a `pulsarctl.properties` configuration file for the tool.
 
@@ -34,7 +34,7 @@ Function Mesh provides a tool, which is used to migrate Pulsar Functions from th
 
        Replace the `PATH` variable with the absolute path to the `pulsarctl.properties` configuration file.
 
-   3. Build the tool from the source.
+   3. Build the tool from the source code.
 
        ```bash
        git clone https://github.com/streamnative/function-mesh
@@ -42,7 +42,7 @@ Function Mesh provides a tool, which is used to migrate Pulsar Functions from th
        go build
        ```
 
-2. Generate the YAML file which can be used to create the function in Function Mesh.
+2. Generate the YAML file which is used to create the function in Function Mesh.
 
     ```bash
     ./tools

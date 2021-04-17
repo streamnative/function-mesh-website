@@ -22,5 +22,6 @@ module.exports = {
       label: 'Migration',
       items: ['migration/migrate-function'],
     },
+    'scaling',
   ],
 }

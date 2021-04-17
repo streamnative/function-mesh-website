@@ -10,7 +10,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Connectors',
-      items: ['connectors/pulsar-io-overview'],
+      items: ['connectors/pulsar-io-overview', 'connectors/run-connector'],
     },   
     {
       type: 'category',

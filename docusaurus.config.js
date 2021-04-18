@@ -43,7 +43,7 @@ module.exports = {
             },
             {
               label: 'Configuration Guide',
-              to: 'https://functionmesh.io/docs/configure/function-mesh',
+              to: 'https://functionmesh.io/docs/function-mesh/run-function-mesh',
             },            
           ],
         },

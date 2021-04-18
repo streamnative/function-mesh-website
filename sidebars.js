@@ -5,7 +5,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Functions',
-      items: ['functions/function-overview'],
+      items: ['functions/function-overview', 'functions/run-function'],
     },
     {
       type: 'category',

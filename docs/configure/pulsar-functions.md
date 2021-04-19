@@ -19,7 +19,7 @@ Function Mesh supports using the Functions CRD to define Pulsar Functions. This 
 1. Define a Pulsar Functions named `function-sample` by using a YAML file and save the YAML file `function-sample.yaml`.
 
     ```yml
-    apiVersion: cloud.streamnative.io/v1alpha1
+    apiVersion: compute.functionmesh.io/v1alpha1
     kind: Function
     metadata:
       name: java-function-sample

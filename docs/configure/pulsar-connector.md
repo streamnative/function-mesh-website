@@ -21,7 +21,7 @@ To create a source, follow these steps.
 1. Define a source named `source-sample` by using a YAML file and save the YAML file `source-sample.yaml`.
 
     ```yml
-    apiVersion: cloud.streamnative.io/v1alpha1
+    apiVersion: compute.functionmesh.io/v1alpha1
     kind: Source
     metadata:
       name: source-sample
@@ -108,7 +108,7 @@ To create a sink, follow these steps.
 1. Define a sink named `sink-sample` by using a YAML file and save the YAML file `sink-sample.yaml`.
 
     ```yaml
-    apiVersion: cloud.streamnative.io/v1alpha1
+    apiVersion: compute.functionmesh.io/v1alpha1
     kind: Sink
     metadata:
       name: sink-sample

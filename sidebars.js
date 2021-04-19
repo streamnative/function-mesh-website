@@ -17,6 +17,11 @@ module.exports = {
       label: 'Configuration',
       items: ['configure/pulsar-functions', 'configure/pulsar-connector', 'configure/function-mesh'],
     },
+    {
+      type: 'category',
+      label: 'Migration',
+      items: ['migration/migrate-function'],
+    },
     'scaling',
   ],
 }

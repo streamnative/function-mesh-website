@@ -114,9 +114,18 @@ import TabItem from '@theme/TabItem';
     ```
 
     After the Java function is packaged, a `target` directory is created automatically. Open the `target` directory to check if there is a JAR package similar to `java-function-1.0-SNAPSHOT.jar`.</TabItem>
-  <TabItem value="python">This is an orange 🍊</TabItem>
-  <TabItem value="go">This is a banana 🍌</TabItem>
+  <TabItem value="python">This is an orange.</TabItem>
+  <TabItem value="go">This is a banana.</TabItem>
 </Tabs>;
+</li>
+  114 | </ol>
+  115 | <h4 {...{"id":"java"}}>{`Java`}</h4>
+  </li>
+  114 | </ol>
+  115 | <h4 {...{"id":"python"}}>{`Python`}</h4>
+  </li>
+  114 | </ol>
+  115 | <h4 {...{"id":"go"}}>{`Go`}</h4>
 
 #### Java
 

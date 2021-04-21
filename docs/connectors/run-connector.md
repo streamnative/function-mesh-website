@@ -4,13 +4,13 @@ category: connectors
 id: run-connector
 ---
 
-Pulsar IO connectors consist of source and sink connectors. Source connectors pass through data from external systems into Pulsar while sink connectors output data from Pulsar into external systems. Function Mesh supports defining sources and sink connectors through Function CRDs.
+Pulsar IO connectors consist of source and sink connectors. Source connectors pass through data from external systems into Pulsar while sink connectors output data from Pulsar into external systems. Function Mesh supports defining sources and sink connectors through source or sink CRDs.
 
 This document describes how to run a Pulsar connector.
 
 ## Package Pulsar connectors
 
-After developing and testing your connector, you need to package it so that it can be submitted to a Function Mesh.
+After developing and testing your connector, you need to package it so that it can be submitted to a Pulsar cluster.
 
 ### NAR and uber JAR packages
 
@@ -91,7 +91,7 @@ This example shows how to upload the NAR package of the `my-sink` connector to t
 bin/pulsar-admin packages upload sink://public/default/my-sink@1.0 --path "/path/to/package-file" --description PACKAGE_DESCRIPTION
 ```
 
-Then, you can define Function Mesh CRDs by specifying the uploaded connector package.
+Then, you can define source or sink CRDs by specifying the uploaded connector package.
 
 ### Docker images
 
@@ -123,7 +123,7 @@ Then, you can push the connector Docker image into an image registry (such as th
 
 ## Submit Pulsar connectors
 
-This section describes how to submit a Pulsar connector through the Function Mesh CRD.
+This section describes how to submit a Pulsar connector through a source or sink CRD.
 
 ### Prerequisites
 
@@ -136,7 +136,7 @@ This section describes how to submit a Pulsar connector through the Function Mes
 
 StreamNative provides ready-to-use Docker images for Pulsar built-in connectors and StreamNative-managed connectors. These images are public at the [Docker Hub](https://hub.docker.com/), with the image name in a format of `streamnative/pulsar-io-CONNECTOR-NAME:TAG`, such as [`streamnative/pulsar-io-hbase:2.7.1`](https://hub.docker.com/r/streamnative/pulsar-io-hbase). You can check all supported connectors on the [StreamNative Hub](https://hub.streamnative.io/).
 
-For Pulsar built-in connectors and StreamNative-managed connectors, you can create them by specifying the Docker image at the Function Mesh CRDs.
+For Pulsar built-in connectors and StreamNative-managed connectors, you can create them by specifying the Docker image in the source or sink CRDs.
 
 1. Define a sink connector named `sink-sample` by using a YAML file and save the YAML file `sink-sample.yaml`.
 

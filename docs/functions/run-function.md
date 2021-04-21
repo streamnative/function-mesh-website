@@ -25,7 +25,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs
-  defaultValue="apple"
+  defaultValue="java"
   values={[
     {label: 'Java', value: 'java'},
     {label: 'Python', value: 'python'},
@@ -117,15 +117,6 @@ import TabItem from '@theme/TabItem';
   <TabItem value="python">This is an orange.</TabItem>
   <TabItem value="go">This is a banana.</TabItem>
 </Tabs>;
-</li>
-  114 | </ol>
-  115 | <h4 {...{"id":"java"}}>{`Java`}</h4>
-  </li>
-  114 | </ol>
-  115 | <h4 {...{"id":"python"}}>{`Python`}</h4>
-  </li>
-  114 | </ol>
-  115 | <h4 {...{"id":"go"}}>{`Go`}</h4>
 
 #### Java
 

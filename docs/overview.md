@@ -49,10 +49,12 @@ The following diagram illustrates the architecture for Function Mesh.
 - [Installation](/install-function-mesh.md)
 - Functions
   - [Pulsar Functions overview](/functions/function-overview.md)
+  - [Pulsar Functions CRD configurations](/functions/function-crd.md)
   - [Monitor Pulsar Functions](/functions/function-monitor.md)
   - [Debug Pulsar Functions](/functions/function-debug.md)
 - Connectors
   - [Pulsar connectors overview](/connectors/pulsar-io-overview.md)
+  - [Pulsar connector CRD configurations](/connectors/pulsar-io-crd.md)
   - [Monitor Pulsar connectors](/connectors/pulsar-io-monitoring.md)
   - [Debug Pulsar connectors](/connectors/pulsar-io-debug.md)
 - [Scaling](/scaling.md)

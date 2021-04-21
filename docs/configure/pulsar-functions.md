@@ -10,7 +10,6 @@ Pulsar Functions is a succinct computing abstraction that Apache Pulsar enables 
 - Create and connect to a [Kubernetes cluster](https://kubernetes.io/).
 - Create a [Pulsar cluster](https://pulsar.apache.org/docs/en/kubernetes-helm/) in the Kubernetes cluster.
 - Install the Function Mesh Operator and CRD into Kubernetes cluster.
-- Install FunctionMesh operator and CRD into Kubernetes.
 
 ## Steps
 

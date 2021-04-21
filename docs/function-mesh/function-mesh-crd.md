@@ -1,6 +1,6 @@
 ---
 title: Function Mesh CRD configurations
-category:function-mesh
+category: function-mesh
 id: mesh-crd-config
 ---
 

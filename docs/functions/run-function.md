@@ -12,16 +12,20 @@ This document describes how to run a Pulsar function.
 
 After developing and testing your Pulsar function, you need to package it so that it can be submitted to a Pulsar cluster.
 
-### Create Function packages
+### Function packages
+
+This section describes how to package a Pulsar function and upload it to the Pulsar package management service.
+
+#### Create Function packages
 
 This section describes how to create packages for Java, Python, and Go functions.
 
-#### Prerequisites
+##### Prerequisites
 
 - Apache Pulsar 2.8.0 or higher
 - Function Mesh v0.1.3 or higher
 
-#### Java
+##### Java
 
 To package a function in Java, follow these steps.
 
@@ -108,27 +112,13 @@ To package a function in Java, follow these steps.
 
     After the Java function is packaged, a `target` directory is created automatically. Open the `target` directory to check if there is a JAR package similar to `java-function-1.0-SNAPSHOT.jar`.
 
-#### Python
+##### Python
 
 Python Function supports the following three formats:
 
 - One Python file
 - ZIP file
 - PIP
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-<Tabs
-  defaultValue="apple"
-  values={[
-    {label: 'Apple', value: 'apple'},
-    {label: 'Orange', value: 'orange'},
-    {label: 'Banana', value: 'banana'},
-  ]}>
-  <TabItem value="apple">This is an apple 🍎</TabItem>
-  <TabItem value="orange">This is an orange 🍊</TabItem>
-  <TabItem value="banana">This is a banana 🍌</TabItem>
-</Tabs>;
 
 - **One Python file**
 
@@ -215,7 +205,7 @@ import TabItem from '@theme/TabItem';
         # e.g: ./generate.sh /path/to/python /path/to/python/output 1.0.0
         ```
 
-#### Go
+##### Go
 
 To package a function in Go, follow these steps.
 
@@ -282,7 +272,7 @@ This example shows how to upload the package of the `my-function@0.1` function t
 bin/pulsar-admin packages upload function://my-tenant/my-ns/my-function@0.1 --path "/path/to/package-file" --description PACKAGE_DESCRIPTION
 ```
 
-Then, you can define Function Mesh CRDs by specifying the uploaded function package.
+Then, you can define Function CRDs by specifying the uploaded function package.
 
 ### Docker images
 
@@ -316,7 +306,7 @@ Function Mesh supports using the Functions CRD to define Pulsar Functions.
 
 1. Define a function by using a YAML file and save the YAML file.
 
-   - This example shows how to publish a `java-function-sample` function to Function Mesh by using a JAR package called `function://my-tenant/my-ns/my-function@0.1`.
+   - This example shows how to publish a `java-function-sample` function to a Pulsar cluster by using a JAR package called `function://my-tenant/my-ns/my-function@0.1`.
 
         ```yaml
         apiVersion: compute.functionmesh.io/v1alpha1
@@ -346,7 +336,7 @@ Function Mesh supports using the Functions CRD to define Pulsar Functions.
             jarLocation: function://my-tenant/my-ns/my-function@0.1 # function package URL
         ```
 
-   - This example shows how to publish a `java-function-sample` function to Function Mesh by using a docker image.
+   - This example shows how to publish a `java-function-sample` function to a Pulsar cluster by using a docker image.
 
       ```yaml
       apiVersion: compute.functionmesh.io/v1alpha1

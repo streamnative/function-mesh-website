@@ -53,7 +53,7 @@ The output topics of a Pulsar Function. This table lists options available for t
 | `Topics` | The output topic of a Pulsar Function (If none is specified, no output is written). | 
 | `SinkSerdeClassName` | The map of output topics to SerDe class names (as a JSON string). |
 | `SinkSchemaType` | The built-in schema type or custom schema class name to be used for messages sent by the function.|
-| `ProducerConf` | The producer specifications. The producer specifications. Available options: <br>- `MaxPendingMessages`: the maximum number of pending messages. <br>- `MaxPendingMessagesAcrossPartitions`: the maximum number of pending messages across partitions. <br>- `UseThreadLocalProducers`: configure whether the producer uses a thread. <br>- `CryptoConfig`: cryptography configurations of the producer. <br>- `BatchBuilder`: support key-based batcher. 
+| `ProducerConf` | The producer specifications. Available options: <br />- `MaxPendingMessages`: the maximum number of pending messages. <br />- `MaxPendingMessagesAcrossPartitions`: the maximum number of pending messages across partitions. <br />- `UseThreadLocalProducers`: configure whether the producer uses a thread. <br />- `CryptoConfig`: cryptography configurations of the producer. <br />- `BatchBuilder`: support key-based batcher. 
 | `CustomSchemaSinks` | The map of output topics to Schema class names (as a JSON string). |
 
 ### Resources
@@ -166,7 +166,7 @@ The input topics of a Pulsar Function. The following table lists options availab
 | `Topics` | The configuration of the topic from which messages are fetched. |
 | `CustomSerdeSources` | The map of input topics to SerDe class names (as a JSON string). |
 | `CustomSchemaSources` | The map of input topics to Schema class names (as a JSON string). |
-| `SourceSpecs` | The map of source specifications to consumer specifications. Consumer specifications include these options: <br>- `SchemaType`: the built-in schema type or custom schema class name to be used for messages fetched by the connector. <br>- `SerdeClassName`: the SerDe class to be used for messages fetched by the connector. <br>- `IsRegexPattern`: configure whether the input topic adopts a Regex pattern. <br>- `SchemaProperties`: the schema properties for messages fetched by the connector. <br>- `ConsumerProperties`: the consumer properties for messages fetched by the connector. <br>- `ReceiverQueueSize`: the size of the consumer receive queue. <br> - `CryptoConfig`: cryptography configurations of the consumer. |
+| `SourceSpecs` | The map of source specifications to consumer specifications. Consumer specifications include these options: <br />- `SchemaType`: the built-in schema type or custom schema class name to be used for messages fetched by the connector. <br />- `SerdeClassName`: the SerDe class to be used for messages fetched by the connector. <br />- `IsRegexPattern`: configure whether the input topic adopts a Regex pattern. <br />- `SchemaProperties`: the schema properties for messages fetched by the connector. <br />- `ConsumerProperties`: the consumer properties for messages fetched by the connector. <br />- `ReceiverQueueSize`: the size of the consumer receive queue. <br /> - `CryptoConfig`: cryptography configurations of the consumer. |
 
 ### Resources
 

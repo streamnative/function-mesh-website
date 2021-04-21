@@ -21,103 +21,6 @@ This section describes how to create packages for Java, Python, and Go functions
 - Apache Pulsar 2.8.0 or higher
 - Function Mesh v0.1.3 or higher
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs
-  defaultValue="java"
-  values={[
-    {label: 'Java', value: 'java'},
-    {label: 'Python', value: 'python'},
-    {label: 'Go', value: 'go'},
-  ]}>
-  <TabItem value="java">
-1. Create a new Maven project with a `pom.xml` file. In the following code sample, the value of `mainClass` is your package name.
-
-    ```Java
-    <?xml version="1.0" encoding="UTF-8"?>
-    <project xmlns="http://maven.apache.org/POM/4.0.0"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-        <modelVersion>4.0.0</modelVersion>
-
-        <groupId>java-function</groupId>
-        <artifactId>java-function</artifactId>
-        <version>1.0-SNAPSHOT</version>
-
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.pulsar</groupId>
-                <artifactId>pulsar-functions-api</artifactId>
-                <version>2.6.0</version>
-            </dependency>
-        </dependencies>
-
-        <build>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <configuration>
-                        <appendAssemblyId>false</appendAssemblyId>
-                        <descriptorRefs>
-                            <descriptorRef>jar-with-dependencies</descriptorRef>
-                        </descriptorRefs>
-                        <archive>
-                        <manifest>
-                            <mainClass>org.example.test.ExclamationFunction</mainClass>
-                        </manifest>
-                    </archive>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>make-assembly</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>assembly</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>8</source>
-                        <target>8</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </build>
-
-    </project>
-    ```
-
-2. Write a Java function.
-
-    ```java
-    package org.example.test;
-
-    import java.util.function.Function;
-
-    public class ExclamationFunction implements Function<String, String> {
-        @Override
-        public String apply(String s) {
-            return "This is my function!";
-        }
-    }
-    ```
-
-3. Package the Java function.
-
-    ```bash
-    mvn package
-    ```
-
-    After the Java function is packaged, a `target` directory is created automatically. Open the `target` directory to check if there is a JAR package similar to `java-function-1.0-SNAPSHOT.jar`.</TabItem>
-  <TabItem value="python">This is an orange.</TabItem>
-  <TabItem value="go">This is a banana.</TabItem>
-</Tabs>;
-
 #### Java
 
 To package a function in Java, follow these steps.
@@ -212,6 +115,20 @@ Python Function supports the following three formats:
 - One Python file
 - ZIP file
 - PIP
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+<Tabs
+  defaultValue="apple"
+  values={[
+    {label: 'Apple', value: 'apple'},
+    {label: 'Orange', value: 'orange'},
+    {label: 'Banana', value: 'banana'},
+  ]}>
+  <TabItem value="apple">This is an apple 🍎</TabItem>
+  <TabItem value="orange">This is an orange 🍊</TabItem>
+  <TabItem value="banana">This is a banana 🍌</TabItem>
+</Tabs>;
 
 - **One Python file**
 

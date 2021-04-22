@@ -6,22 +6,22 @@ id: run-connector
 
 Pulsar IO connectors consist of source and sink connectors. Source connectors pass through data from external systems into Pulsar while sink connectors output data from Pulsar into external systems. Function Mesh supports defining sources and sink connectors through source or sink CRDs.
 
-This document describes how to run a Pulsar connector.
+This document describes how to run a Pulsar connector. To run a Pulsar connector in Function Mesh, you need to package the connector and then submit it to a Pulsar cluster.
 
 ## Package Pulsar connectors
 
-After developing and testing your connector, you need to package it so that it can be submitted to a Pulsar cluster.
+After developing and testing your connector, you need to package it so that it can be submitted to a Pulsar cluster. You can package a Pulsar connector to a NAR/JAR package or a Docker image.
 
-### NAR and uber JAR packages
+### NAR or uber JAR packages
 
-This section describes how to package a Pulsar connector to a NAR or JAR package and upload it to the Pulsar package management service.
+This section describes how to package a Pulsar connector to a NAR or JAR package and upload it to the [Pulsar package management service](http://pulsar.apache.org/docs/en/next/admin-api-packages/).
 
 #### Prerequisites
 
 - Apache Pulsar 2.8.0 or higher
 - Function Mesh v0.1.3 or higher
 
-#### Create NAR and uber JAR packages
+#### Build NAR and uber JAR packages
 
 - **NAR packages**
 
@@ -104,6 +104,8 @@ StreamNative provides ready-to-use Docker images for Pulsar built-in connectors 
 
 #### Build Docker images
 
+To build a Docker image, follow these steps.
+
 1. Package your connector to a [NAR package](#nar-package) or [JAR package](#uber-jar-package).
 
 2. Define a `Dockerfile`.
@@ -123,7 +125,7 @@ Then, you can push the connector Docker image into an image registry (such as th
 
 ## Submit Pulsar connectors
 
-This section describes how to submit a Pulsar connector through a source or sink CRD.
+After packaging your Pulsar Functions, you can submit your Pulsar Functions to a Pulsar cluster. This section describes how to submit a Pulsar connector through a source or sink CRD.
 
 ### Prerequisites
 

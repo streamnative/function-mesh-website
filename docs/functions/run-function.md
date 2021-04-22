@@ -6,19 +6,19 @@ id: run-function
 
 Pulsar Functions is a succinct computing abstraction that Apache Pulsar enables users to express simple ETL and streaming tasks. Currently, Function Mesh supports using Java, Python, or Go programming language to define a YAML file of the Functions.
 
-This document describes how to run a Pulsar function.
+This document describes how to run a Pulsar function. To run a Pulsar Function in Function Mesh, you need to package the function and then submit it to a Pulsar cluster.
 
 ## Package Pulsar Functions
 
-After developing and testing your Pulsar function, you need to package it so that it can be submitted to a Pulsar cluster.
+After developing and testing your Pulsar function, you need to package it so that it can be submitted to a Pulsar cluster. You can package Pulsar Functions to NAR/JAR packages or Docker images.
 
 ### Function packages
 
-This section describes how to package a Pulsar function and upload it to the Pulsar package management service.
+This section describes how to package a Pulsar function and upload it to the [Pulsar package management service](http://pulsar.apache.org/docs/en/next/admin-api-packages/).
 
-#### Create Function packages
+#### Build Function packages
 
-This section describes how to create packages for Java, Python, and Go functions.
+This section describes how to build packages for Java, Python, and Go functions.
 
 ##### Prerequisites
 
@@ -114,11 +114,10 @@ To package a function in Java, follow these steps.
 
 ##### Python
 
-Python Function supports the following three formats:
+Python Function supports the following formats:
 
 - One Python file
 - ZIP file
-- PIP
 
 - **One Python file**
 
@@ -165,45 +164,6 @@ Python Function supports the following three formats:
     └── src
         └── exclamation.py
     ```
-
-- **PIP**
-
-    The PIP method is only supported in Kubernetes runtime. To package a function with **PIP** in Python, follow these steps.
-
-    1. Configure the `functions_worker.yml` file.
-
-        ```text
-        #### Kubernetes Runtime ####
-        installUserCodeDependencies: true
-        ```
-
-    2. Write your Python Function.
-
-        ```python
-        from pulsar import Function
-        import js2xml
-
-        # The classic ExclamationFunction that appends an exclamation at the end
-        # of the input
-        class ExclamationFunction(Function):
-        def __init__(self):
-          pass
-
-        def process(self, input, context):
-          // add your logic
-          return input + '!'
-        ```
-
-        You can introduce additional dependencies. When Python Function detects that the file currently used is the `whl` file and the `installUserCodeDependencies` parameter is specified, the system uses the `pip install` command to install the dependencies required in Python Function.
-
-    3. Generate the `whl` file.
-
-        ```shell script
-        $ cd $PULSAR_HOME/pulsar-functions/scripts/python
-        $ chmod +x generate.sh
-        $ ./generate.sh <path of your Python Function> <path of the whl output dir> <the version of whl>
-        # e.g: ./generate.sh /path/to/python /path/to/python/output 1.0.0
-        ```
 
 ##### Go
 
@@ -264,9 +224,9 @@ To package a function in Go, follow these steps.
 
 #### Upload Function packages
 
-Use the `pulsar-admin` CLI tool to upload the package to the package management service.
+Use the `pulsar-admin` CLI tool to upload the package to the [Pulsar package management service](http://pulsar.apache.org/docs/en/next/admin-api-packages/).
 
-This example shows how to upload the package of the `my-function@0.1` function to the package management service.
+This example shows how to upload the package of the `my-function@0.1` function to the [Pulsar package management service](http://pulsar.apache.org/docs/en/next/admin-api-packages/).
 
 ```bash
 bin/pulsar-admin packages upload function://my-tenant/my-ns/my-function@0.1 --path "/path/to/package-file" --description PACKAGE_DESCRIPTION
@@ -285,6 +245,8 @@ StreamNative provides ready-to-use Docker images for Pulsar built-in connectors 
 
 #### Build Docker images
 
+To build a Docker image, follow these steps.
+
 1. Package your Pulsar function. For details, see [package Pulsar functions](#package-pulsar-functions).
 
 2. Define a `Dockerfile`.
@@ -302,7 +264,7 @@ Then, you can push the function Docker image into an image registry (such as the
 
 ## Submit Pulsar Functions
 
-Function Mesh supports using the Functions CRD to define Pulsar Functions.
+After packaging your Pulsar Functions, you can submit your Pulsar Functions to a Pulsar cluster. This section describes how to submit a Pulsar Function through a Function CRD. Function Mesh supports using the Functions CRD to define Pulsar Functions.
 
 1. Define a function by using a YAML file and save the YAML file.
 

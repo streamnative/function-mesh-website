@@ -27,7 +27,7 @@ This section describes how to package a Pulsar connector to a NAR or JAR package
 
     This section describes how to package a Pulsar connector to a NAR package. **NAR** stands for NiFi Archive, which is a custom packaging mechanism used by [Apache NiFi](https://nifi.apache.org/), to provide a bit of Java `ClassLoader` isolation.
 
-    1. Create a NAR package for a connector by using the [nifi-nar-maven-plugin](https://mvnrepository.com/artifact/org.apache.nifi/nifi-nar-maven-plugin).
+    1. Build a NAR package for a connector by using the [nifi-nar-maven-plugin](https://mvnrepository.com/artifact/org.apache.nifi/nifi-nar-maven-plugin).
 
     2. Include this [nifi-nar-maven-plugin](https://mvnrepository.com/artifact/org.apache.nifi/nifi-nar-maven-plugin) in the Maven project for your connector.
 
@@ -83,9 +83,9 @@ This section describes how to package a Pulsar connector to a NAR or JAR package
 
 #### Upload NAR or JAR packages
 
-Use the `pulsar-admin` CLI tool to upload the NAR or uber JAR package to the package management service.
+Use the `pulsar-admin` CLI tool to upload the NAR or uber JAR package to the [Pulsar package management service](http://pulsar.apache.org/docs/en/next/admin-api-packages/).
 
-This example shows how to upload the NAR package of the `my-sink` connector to the package management service.
+This example shows how to upload the NAR package of the `my-sink` connector to the [Pulsar package management service](http://pulsar.apache.org/docs/en/next/admin-api-packages/).
 
 ```bash
 bin/pulsar-admin packages upload sink://public/default/my-sink@1.0 --path "/path/to/package-file" --description PACKAGE_DESCRIPTION
@@ -125,7 +125,7 @@ Then, you can push the connector Docker image into an image registry (such as th
 
 ## Submit Pulsar connectors
 
-After packaging your Pulsar Functions, you can submit your Pulsar Functions to a Pulsar cluster. This section describes how to submit a Pulsar connector through a source or sink CRD.
+After packaging your Pulsar connectors, you can submit your Pulsar connectors to a Pulsar cluster. This section describes how to submit a Pulsar connector through a source or sink CRD. Function Mesh supports using the source or sink CRD to define Pulsar connectors.
 
 ### Prerequisites
 

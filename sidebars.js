@@ -17,11 +17,11 @@ module.exports = {
       label: 'Function Mesh',
       items: ['function-mesh/run-function-mesh'],
     },
+    'scaling',
     {
       type: 'category',
       label: 'Migration',
       items: ['migration/migrate-function'],
     },
-    'scaling',
   ],
 }

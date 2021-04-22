@@ -202,7 +202,7 @@ For self-built connectors, you can create them based on how you package them.
 
        ```yaml
       apiVersion: compute.functionmesh.io/v1alpha1
-      kind: Function
+      kind: Sink
       metadata:
         name: my-sink-package-sample
         namespace: default
@@ -232,7 +232,7 @@ For self-built connectors, you can create them based on how you package them.
 
      ```yaml
       apiVersion: compute.functionmesh.io/v1alpha1
-      kind: Function
+      kind: Sink
       metadata:
         name: my-sink-image-sample
         namespace: default

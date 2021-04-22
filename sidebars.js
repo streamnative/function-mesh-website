@@ -5,12 +5,12 @@ module.exports = {
     {
       type: 'category',
       label: 'Functions',
-      items: ['functions/function-overview', 'functions/run-function', 'functions/function-monitor', 'functions/function-debug'],
+      items: ['functions/function-overview', 'functions/function-crd', 'functions/run-function', 'functions/function-monitor', 'functions/function-debug'],
     },
     {
       type: 'category',
       label: 'Connectors',
-      items: ['connectors/pulsar-io-overview', 'connectors/run-connector', 'connectors/pulsar-io-monitoring', 'connectors/pulsar-io-debug'],
+      items: ['connectors/pulsar-io-overview', 'connectors/pulsar-io-crd', 'connectors/run-connector', 'connectors/pulsar-io-monitoring', 'connectors/pulsar-io-debug'],
     },   
     {
       type: 'category',

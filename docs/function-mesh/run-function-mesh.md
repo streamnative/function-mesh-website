@@ -1,6 +1,6 @@
 ---
 title: Run Function Mesh
-category: configure
+category: function-mesh
 id: run-function-mesh
 ---
 

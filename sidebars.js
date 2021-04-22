@@ -14,14 +14,14 @@ module.exports = {
     },   
     {
       type: 'category',
-      label: 'Configuration',
-      items: ['configure/pulsar-functions', 'configure/pulsar-connector', 'configure/function-mesh'],
+      label: 'Function Mesh',
+      items: ['function-mesh/run-function-mesh'],
     },
+    'scaling',
     {
       type: 'category',
       label: 'Migration',
       items: ['migration/migrate-function'],
     },
-    'scaling',
   ],
 }

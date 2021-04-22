@@ -236,7 +236,7 @@ Then, you can define Function CRDs by specifying the uploaded function package.
 
 ### Docker images
 
-StreamNative provides ready-to-use Docker images for Pulsar built-in connectors and StreamNative-managed connectors. For non built-in connectors, you can build Docker images for them.
+This section describes how to package a Pulsar Function to a Docker image.
 
 #### Prerequisites
 

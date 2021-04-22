@@ -4,7 +4,7 @@ category: functions
 id: function-crd
 ---
 
-This document lists CRD configurations available for Pulsar Functions. The CRD configurations for Pulsar Functions consists of Function configurations and common CRD configurations.
+This document lists CRD configurations available for Pulsar Functions. The CRD configurations for Pulsar Functions consist of Function configurations and common CRD configurations.
 
 ## Function configurations
 
@@ -16,8 +16,8 @@ This table lists Pulsar Function configurations.
 | `classname` | The class name of a Pulsar Function. |
 | `tenant` | The tenant of a Pulsar Function. |
 | `namespace` | The namespace of a Pulsar Function. |
-| `Replicas`| The number of Pulsar instances that you want to run this Pulsar Functions. |
-| `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this Pulsar Functions. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller automatically scales the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
+| `Replicas`| The number of Pulsar instances that you want to run this Pulsar Function. |
+| `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this Pulsar Function. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller automatically scales the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
 | `Timeout` | The message timeout in milliseconds. |
 | `DeadLetterTopic` | The topic where all messages that were not processed successfully are sent. This parameter is not supported in Python Functions. |
 | `FuncConfig` | The map to a ConfigMap specifying the configuration of a Pulsar function. |

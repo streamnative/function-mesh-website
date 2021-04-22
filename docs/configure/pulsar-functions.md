@@ -142,8 +142,8 @@ This table lists sub-fields available for the `spec` field.
 | `ClassName`| The class name of the Pulsar Functions. |
 | `SourceType`| The type of incoming messages. |
 | `SinkType`| The type pf the outgoing messages. |
-| `Replicas`| The number of Pulsar instances that you want to run this Pulsar Functions. |
-| `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this Pulsar Functions. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller automatically scales the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
+| `Replicas`| The number of Pulsar instances that you want to run this Pulsar Function. |
+| `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this Pulsar Function. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller automatically scales the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
 | `Input` | The configuration of topic from which messages are fetched. |
 | `Output` | The configuration of topic to which messages are sent. |
 | `LogTopic` | The topic to which logs are output. |

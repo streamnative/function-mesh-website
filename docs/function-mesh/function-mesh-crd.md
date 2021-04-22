@@ -1,7 +1,7 @@
 ---
 title: Function Mesh CRD configurations
 category: function-mesh
-id: mesh-crd-config
+id: function-mesh-crd
 ---
 
 This document lists CRD configurations available for Function Mesh. The CRD configurations for Function Mesh consist of Function configurations and common CRD configurations.

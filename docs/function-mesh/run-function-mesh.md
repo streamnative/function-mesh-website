@@ -8,25 +8,15 @@ Function Mesh is a collection of functions collaborated together to process data
 
 This document describes how to run Function Mesh through a `.yaml` file and submit Pulsar connectors and Pulsar functions through the Function Mesh CRD.
 
-## Package Pulsar connectors
-
-For details about how to package Pulsar connectors, see [package Pulsar connectors](/connectors/run-connector.md#package-pulsar-connectors).
-
-## Package Pulsar Functions
-
-For details about how to package Pulsar Functions, see [package Pulsar Functions](/functions/run-function.md#package-pulsar-functions).
-
-## Submit Function Mesh
-
-This section describes how to submit Pulsar connectors and Pulsar functions through Function Mesh CRDs.
-
-### Prerequisites
+## Prerequisites
 
 - Create and connect to a [Kubernetes cluster](https://kubernetes.io/).
 - Create a [Pulsar cluster](https://pulsar.apache.org/docs/en/kubernetes-helm/) in the Kubernetes cluster.
 - Install the Function Mesh Operator and CRD into Kubernetes cluster.
+- package Pulsar Functions, see [package Pulsar Functions](/functions/run-function.md#package-pulsar-functions).
+- Package Pulsar connectors. For details, see [package Pulsar connectors](/connectors/run-connector.md#package-pulsar-connectors).
 
-### Steps
+## Steps
 
 To create a Function Mesh, follow these steps.
 

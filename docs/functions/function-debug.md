@@ -76,7 +76,7 @@ As shown in the example above, you can get the logger via `context.getLogger()` 
 
     > **Note**
     >
-    > To use the `pulsar-admin` CLI tool to monitor Pulsar functions and connectors, you should start Function Mesh Proxy in advance. For details, see [work with `pulsar-admin` CLI tool](/install-function-mesh.md#work-with-pulsar-admin-cli-tool).
+    > To use the `pulsar-admin` CLI tool to monitor Pulsar functions and connectors, you should start Function Mesh Worker service in advance. For details, see [work with `pulsar-admin` CLI tool](/install-function-mesh.md#work-with-pulsar-admin-cli-tool).
 
     ```bash
     bin/pulsar-admin functions create \

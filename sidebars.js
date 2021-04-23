@@ -20,25 +20,24 @@ module.exports = {
     'scaling',
     {
       type: 'category',
-      label: 'Function Mesh',
+      label: 'Migration',
+      items: ['migration/migrate-function'],
+    },
+    {
+      type: 'category',
+      label: 'Pulsar connectors',
       items: [
-        'function-mesh/run-function-mesh',
+        'connectors/pulsar-io-overview', ,
         {
           Docs: [
-            'function-mesh/function-mesh-crd',
-            'function-mesh/function-mesh-crd',
-            'function-mesh/run-function-mesh',
-            'function-mesh/run-function-mesh',
-            'function-mesh/run-function-mesh',
-            'function-mesh/run-function-mesh',
+            'connectors/pulsar-io-crd',
+            'connectors/run-connector',
+            'connectors/pulsar-io-monitoring',
+            'connectors/pulsar-io-debug',
           ],
         },
       ]
     },
-    {
-      type: 'category',
-      label: 'Migration',
-      items: ['migration/migrate-function'],
-    },
+    'test',
   ],
 }

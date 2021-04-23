@@ -20,9 +20,25 @@ module.exports = {
     'scaling',
     {
       type: 'category',
+      label: 'Function Mesh',
+      items: [
+        'function-mesh/run-function-mesh',
+        {
+          Docs: [
+            'function-mesh/function-mesh-crd',
+            'function-mesh/function-mesh-crd',
+            'function-mesh/run-function-mesh',
+            'function-mesh/run-function-mesh',
+            'function-mesh/run-function-mesh',
+            'function-mesh/run-function-mesh',
+          ],
+        },
+      ]
+    },
+    {
+      type: 'category',
       label: 'Migration',
       items: ['migration/migrate-function'],
     },
-    'test',
   ],
 }

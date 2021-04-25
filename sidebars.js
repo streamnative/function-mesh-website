@@ -23,5 +23,18 @@ module.exports = {
       label: 'Migration',
       items: ['migration/migrate-function'],
     },
+    {
+      type: 'category',
+      label: 'Tab',
+      collapsed: false,
+      items: [
+        'tab/tab-test',
+        {
+          type: 'category',
+          label: 'Tab Test',
+          items: ['tab/test-doc/doc1', 'tab/test-doc/doc2', 'tab/test-doc/markdown-doc3'],
+        },
+      ],
+    },
   ],
 }

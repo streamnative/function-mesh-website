@@ -31,7 +31,7 @@ module.exports = {
         'tab/tab-test',
         {
           type: 'category',
-          label: 'Tab Test',
+          label: 'Test Docs',
           items: ['tab/test-doc/doc1', 'tab/test-doc/doc2', 'tab/test-doc/markdown-doc3'],
         },
       ],

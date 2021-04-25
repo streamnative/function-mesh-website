@@ -22,7 +22,7 @@ To create a Function Mesh, follow these steps.
 
 1. Define a Function Mesh named `functionmesh-sample` by using a YAML file and save the YAML file `functionmesh-sample.yaml`.
 
-    ```yaml
+    ```yml
     apiVersion: compute.functionmesh.io/v1alpha1
     kind: FunctionMesh
     metadata:
@@ -32,13 +32,12 @@ To create a Function Mesh, follow these steps.
         name: sink-sample
         image: streamnative/pulsar-io-elastic-search:2.7.1 # using connector image here
         className: org.apache.pulsar.io.elasticsearch.ElasticSearchSink
-        sourceType: "[B"
-        sinkType: "[B"
         replicas: 1
         maxReplicas: 1
         input:
           topics:
           - persistent://public/default/input
+          typeClassName: "[B"
         sinkConfig:
           elasticSearchUrl: "http://quickstart-es-http.default.svc.cluster.local:9200"
           indexName: "my_index"
@@ -62,16 +61,16 @@ To create a Function Mesh, follow these steps.
       functions:
         name: ex1
         className: org.apache.pulsar.functions.api.examples.ExclamationFunction
-        sourceType: java.lang.String
-        sinkType: java.lang.String
         replicas: 1
         maxReplicas: 1
         logTopic: persistent://public/default/logging-function-log
         input:
           topics:
             - persistent://public/default/functionmesh-input-topic
+          typeClassName: java.lang.String
         output:
           topic: persistent://public/default/mid-topic
+          typeClassName: java.lang.String
         pulsar:
           pulsarConfig: "mesh-test-pulsar"
         java:

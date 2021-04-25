@@ -270,7 +270,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
 
    - This example shows how to publish a `java-function-sample` function to a Pulsar cluster by using a JAR package called `function://my-tenant/my-ns/my-function@0.1`.
 
-        ```yaml
+        ```yml
         apiVersion: compute.functionmesh.io/v1alpha1
         kind: Function
         metadata:
@@ -279,8 +279,6 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
         spec:
           image: streamnative/pulsar-functions-java-runner:2.7.1 # using java function runner
           className: org.apache.pulsar.functions.api.examples.ExclamationFunction
-          sourceType: java.lang.String
-          sinkType: java.lang.String
           forwardSourceMessageProperty: true
           MaxPendingAsyncRequests: 1000
           replicas: 1
@@ -289,8 +287,10 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
           input:
             topics:
             - persistent://public/default/java-function-input-topic
+            typeClassName: java.lang.String
           output:
             topic: persistent://public/default/java-function-output-topic
+            typeClassName: java.lang.String
           pulsar:
             pulsarConfig: "test-pulsar"
           java:
@@ -300,7 +300,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
 
    - This example shows how to publish a `java-function-sample` function to a Pulsar cluster by using a docker image.
 
-      ```yaml
+      ```yml
       apiVersion: compute.functionmesh.io/v1alpha1
       kind: Function
       metadata:
@@ -309,8 +309,6 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
       spec:
         image: streamnative/example-function-image:latest # using function image here
         className: org.apache.pulsar.functions.api.examples.ExclamationFunction
-        sourceType: java.lang.String
-        sinkType: java.lang.String
         forwardSourceMessageProperty: true
         MaxPendingAsyncRequests: 1000
         replicas: 1
@@ -319,8 +317,10 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
         input:
           topics:
           - persistent://public/default/java-function-input-topic
+          typeClassName: java.lang.String
         output:
           topic: persistent://public/default/java-function-output-topic
+          typeClassName: java.lang.String
         pulsar:
           pulsarConfig: "test-pulsar"
         java:
@@ -330,7 +330,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
 
     When you use Function Mesh with Docker images, you need to define the executable location in the CRD YAML file. Here are the settings for different Pulsar function runtime.
 
-    ```yaml
+    ```yml
       java: # Java runtime
         jar: example-function.jar
       python: # Python runtime

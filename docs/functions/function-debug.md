@@ -58,18 +58,23 @@ As shown in the example above, you can get the logger via `context.getLogger()` 
     apiVersion: cloud.streamnative.io/v1alpha1
     kind: Function
     metadata:
-    name: java-function-sample
-    namespace: default
+      name: java-function-sample
+      namespace: default
     spec:
-    className: org.apache.pulsar.functions.api.examples.ExclamationFunction
-    sourceType: java.lang.String
-    sinkType: java.lang.String
-    forwardSourceMessageProperty: true
-    MaxPendingAsyncRequests: 1000
-    replicas: 1
-    maxReplicas: 5
-    logTopic: persistent://public/default/logging-function-logs
-    # Other function configs
+      className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+      forwardSourceMessageProperty: true
+      MaxPendingAsyncRequests: 1000
+      replicas: 1
+      maxReplicas: 5
+      logTopic: persistent://public/default/logging-function-logs
+      input:
+        topics:
+        - persistent://public/default/java-function-input-topic
+        typeClassName: java.lang.String
+      output:
+        topic: persistent://public/default/java-function-output-topic
+        typeClassName: java.lang.String
+      # Other function configs
     ```
 
 - This example shows how to specify the log topic through the `pulsar-admin` CLI tool.

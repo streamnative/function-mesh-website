@@ -37,12 +37,26 @@ Function Mesh supports scaling Pods (Pulsar instances) based on the CPU utilizat
 apiVersion: compute.functionmesh.io/v1alpha1
 kind: Source
 metadata:
-    name: source-sample
+  name: source-sample
 spec:
-    className: org.apache.pulsar.io.debezium.mongodb.DebeziumMongoDbSource
-    sourceType: org.apache.pulsar.common.schema.KeyValue
-    sinkType: org.apache.pulsar.common.schema.KeyValue
-    replicas: 1
-    maxReplicas: 5
-    # Other configurations
+  className: org.apache.pulsar.io.debezium.mongodb.DebeziumMongoDbSource
+  replicas: 1
+  maxReplicas: 5
+  replicas: 1
+  maxReplicas: 1
+  output:
+    producerConf:
+      maxPendingMessages: 1000
+      maxPendingMessagesAcrossPartitions: 50000
+      useThreadLocalProducers: true
+    topic: persistent://public/default/destination
+    typeClassName: org.apache.pulsar.common.schema.KeyValue
+  resources:
+    limits:
+      cpu: "0.2"
+      memory: 1.1G
+    requests:
+      cpu: "0.1"
+      memory: 1G
+  # Other configurations
 ```

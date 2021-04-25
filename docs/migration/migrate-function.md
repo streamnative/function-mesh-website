@@ -63,22 +63,22 @@ Function Mesh provides a tool, which is used to migrate Pulsar Functions from th
         apiVersion: compute.functionmesh.io/v1alpha1
         kind: Function
         metadata:
-        creationTimestamp: null
-        name: function-sample
-        namespace: default
+          creationTimestamp: null
+          name: function-sample
+          namespace: default
         spec:
-        autoAck: true
-        className: org.apache.pulsar.functions.api.examples.ExclamationFunction
-        cleanupSubscription: true
-        clusterName: standalone
-        funcConfig:
+          autoAck: true
+          className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+          cleanupSubscription: true
+          clusterName: standalone
+          funcConfig:
             PublishTopic: test_result
-        input:
+          input:
             sourceSpecs:
             test_src: {}
             topics:
             - test_src
-        # other function config
+          # other function config
         ```
 
 After the YAML file is generated, you can use the `kubectl apply -f` command to create the function.

@@ -4,7 +4,7 @@ category: installation
 id: install-function-mesh
 ---
 
-This document describes how to install Function Mesh based on your application in Kubernetes and how to start Function Mesh Worker service in case you want to use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
+This document describes how to install Function Mesh based on your application in Kubernetes and how to start Mesh Worker service in case you want to use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
 
 ## Install Function Mesh
 
@@ -126,18 +126,18 @@ helm delete function-mesh
 
 ## Work with `pulsar-admin` CLI tool
 
-Function Mesh supports Function Mesh Worker service, which can forward requests to the Kubernetes cluster. After Function Mesh Worker service is started, users can use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
+Function Mesh supports Mesh Worker service, which can forward requests to the Kubernetes cluster. After Mesh Worker service is started, users can use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
 
 > **Note**
 >
-> Function Mesh Worker service is only available for Pulsar 2.8.0 or higher.
+> Mesh Worker service is only available for Pulsar 2.8.0 or higher.
 
-To start Function Mesh Worker service, follow these steps.
+To start Mesh Worker service, follow these steps.
 
-1. Add the following Function Mesh Worker service configuration to your `functions_worker.yml` configuration file.
+1. Add the following Mesh Worker service configuration to your `functions_worker.yml` configuration file.
 
     ```bash
-    functionsWorkerServiceNarPackage: /YOUR-NAR-PATH/java-proxy-{version}.nar
+    functionsWorkerServiceNarPackage: /YOUR-NAR-PATH/mesh-worker-service-{version}.nar
     ```
 
     Replace the `YOUR-NAR-PATH` variable with your real local path.
@@ -160,7 +160,7 @@ To start Function Mesh Worker service, follow these steps.
     helm install function-mesh --values charts/function-mesh-operator/values.yaml charts/function-mesh-operator --namespace=function-mesh
     ```
 
-4. Verify whether the Function Mesh Worker service is started successfully.
+4. Verify whether the Mesh Worker service is started successfully.
 
     ```bash
     ./bin/pulsar-admin --admin-url  WEB_SERVICE_URL functions status --tenant TENANT_NAME --namespace NAMESPACE_NAME --name FUNCTION_NAME

@@ -45,7 +45,7 @@ In Pulsar connectors, you can generate log information defined in connectors to 
 
     > **Note**
     >
-    > To use the `pulsar-admin` CLI tool to monitor Pulsar functions and connectors, you should start Function Mesh Worker service in advance. For details, see [work with `pulsar-admin` CLI tool](/install-function-mesh.md#work-with-pulsar-admin-cli-tool).
+    > To use the `pulsar-admin` CLI tool to monitor Pulsar functions and connectors, you should start Mesh Worker service in advance. For details, see [work with `pulsar-admin` CLI tool](/install-function-mesh.md#work-with-pulsar-admin-cli-tool).
 
     ```bash
     bin/pulsar-admin sinks create \
@@ -57,7 +57,7 @@ In Pulsar connectors, you can generate log information defined in connectors to 
 
 > **Note**
 >
-> To use the `pulsar-admin` CLI tool to monitor Pulsar functions and connectors, you should start Function Mesh Worker service in advance. For details, see [work with `pulsar-admin` CLI tool](/install-function-mesh.md#work-with-pulsar-admin-cli-tool).
+> To use the `pulsar-admin` CLI tool to monitor Pulsar functions and connectors, you should start Mesh Worker service in advance. For details, see [work with `pulsar-admin` CLI tool](/install-function-mesh.md#work-with-pulsar-admin-cli-tool).
 
 To debug a Pulsar connector, you can perform the following operations.
 

@@ -32,7 +32,11 @@ In CRDs, the `replicas` parameter is used to specify the number of Pods (Pulsar 
 
 Function Mesh supports scaling Pods (Pulsar instances) based on the CPU utilization automatically. By default, autoscaling is disabled (The value of the `maxReplicas` parameter is set to `0`). To enable autoscaling, you can specify the `maxReplicas` parameter and set a value for it in the CRD. This value should be greater than the value of the `replicas` parameter.
 
-- This example shows how to auto-scale the number of Pods for running a Pulsar source connector by specifying the `maxReplicas` to `5`.
+### Auto-scale Pulsar connectors
+
+This example shows how to auto-scale the number of Pods for running a Pulsar source connector to `5`.
+
+1. Specify the the `maxReplicas` to `5` in the Pulsar source CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar source connector.
 
     **Example**
 
@@ -64,7 +68,17 @@ Function Mesh supports scaling Pods (Pulsar instances) based on the CPU utilizat
       # Other configurations
     ```
 
-- This example shows how to auto-scale the number of Pods for running Pulsar Functions by specifying the `maxReplicas` to `8`.
+2. Apply the configurations.
+
+    ```bash
+    kubectl apply -f path/to/source-sample.yaml
+    ```
+
+### Auto-scale Pulsar Functions
+
+This example shows how to auto-scale the number of Pods running Pulsar Functions to `8`.
+
+1. Specify the the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
 
     ```yml
     apiVersion: cloud.streamnative.io/v1alpha1
@@ -87,4 +101,10 @@ Function Mesh supports scaling Pods (Pulsar instances) based on the CPU utilizat
         topic: persistent://public/default/java-function-output-topic
         typeClassName: java.lang.String
       # Other function configs
+    ```
+
+2. Apply the configurations.
+
+    ```bash
+    kubectl apply -f path/to/source-sample.yaml
     ```

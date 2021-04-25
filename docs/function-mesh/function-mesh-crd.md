@@ -11,4 +11,5 @@ This document lists CRD configurations available for Function Mesh. The CRD conf
 The Function Mesh configurations are a combination of Pulsar Function configurations, Pulsar source configurations and Pulsar sink configurations. For details, see the following documentation.
 
 - [Pulsar Function configurations](/functions/function-crd.md)
-- [Pulsar connector configurations](/connectors/pulsar-io-crd.md)
+- [Source connector configurations](/connectors/io-crd-config/source-crd-config.md)
+- [Sink connector configurations](/connectors/io-crd-config/sink-crd-config.md)

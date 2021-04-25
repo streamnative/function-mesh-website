@@ -10,8 +10,21 @@ module.exports = {
     {
       type: 'category',
       label: 'Connectors',
-      items: ['connectors/pulsar-io-overview', 'connectors/pulsar-io-crd', 'connectors/run-connector', 'connectors/pulsar-io-monitoring', 'connectors/pulsar-io-debug'],
-    },   
+      items: [
+        'connectors/pulsar-io-overview',
+        {
+          type: 'category',
+          label: 'Pulsar connector CRD configurations',
+          items: [
+            'connectors/io-crd-config/source-crd-config', 
+            'connectors/io-crd-config/sink-crd-config'
+          ],
+        },
+        'connectors/run-connector',
+        'connectors/pulsar-io-monitoring',
+        'connectors/pulsar-io-debug',
+      ]
+    },
     {
       type: 'category',
       label: 'Function Mesh',

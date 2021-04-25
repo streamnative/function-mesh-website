@@ -55,6 +55,9 @@ The following diagram illustrates the architecture for Function Mesh.
   - [Debug Pulsar Functions](/functions/function-debug.md)
 - Connectors
   - [Pulsar connectors overview](/connectors/pulsar-io-overview.md)
+  - Pulsar connector CRD configurations
+    - [Source CRD configurations](/connectors/io-crd-config/source-crd-config.md)
+    - [Sink CRD configurations](/connectors/io-crd-config/sink-crd-config.md)
   - [Pulsar connector CRD configurations](/connectors/pulsar-io-crd.md)
   - [Run Pulsar connectors](/connectors/run-connector.md)
   - [Monitor Pulsar connectors](/connectors/pulsar-io-monitoring.md)

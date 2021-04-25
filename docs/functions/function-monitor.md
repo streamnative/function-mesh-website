@@ -41,11 +41,8 @@ pulsar_function_user_metric_ | Summary|The user-defined metrics.
 To monitor a Pulsar function, you can perform the following operations.
 
 * [Get the information of a Pulsar function](#get).
-
 * [Get a list of running Pulsar functions](#list).
-
 * [Get the current status of a Pulsar function](#status).
-
 * [Get the current stats of a Pulsar function](#stats).
 
 For more information, see [Pulsar Functions CLIs](http://pulsar.apache.org/tools/pulsar-admin/2.8.0-SNAPSHOT/#functions).

@@ -94,13 +94,9 @@ As shown in the example above, you can get the logger via `context.getLogger()` 
 To debug a Pulsar function, you can perform the following operations.
 
 * [Get the information of a Pulsar function](#get).
-
 * [Get a list of running Pulsar functions](#list).
-
 * [Get the current status of a Pulsar function](#status).
-
 * [Get the current stats of a Pulsar function](#stats).
-
 * [Trigger the specified Pulsar Function](#trigger).
 
 For more information, see [Pulsar Functions CLIs](http://pulsar.apache.org/tools/pulsar-admin/2.8.0-SNAPSHOT/#functions).

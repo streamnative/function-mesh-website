@@ -270,7 +270,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
 
    - This example shows how to publish a `java-function-sample` function to a Pulsar cluster by using a JAR package called `function://my-tenant/my-ns/my-function@0.1`.
 
-        ```yml
+        ```yaml
         apiVersion: compute.functionmesh.io/v1alpha1
         kind: Function
         metadata:
@@ -300,7 +300,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
 
    - This example shows how to publish a `java-function-sample` function to a Pulsar cluster by using a docker image.
 
-      ```yml
+      ```yaml
       apiVersion: compute.functionmesh.io/v1alpha1
       kind: Function
       metadata:
@@ -330,7 +330,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
 
     When you use Function Mesh with Docker images, you need to define the executable location in the CRD YAML file. Here are the settings for different Pulsar function runtime.
 
-    ```yml
+    ```yaml
       java: # Java runtime
         jar: example-function.jar
       python: # Python runtime

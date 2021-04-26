@@ -54,7 +54,7 @@ As shown in the example above, you can get the logger via `context.getLogger()` 
 
 - This example shows how to specify the log topic through the CRD.
 
-    ```yml
+    ```yaml
     apiVersion: cloud.streamnative.io/v1alpha1
     kind: Function
     metadata:

@@ -22,7 +22,7 @@ To create a Function Mesh, follow these steps.
 
 1. Define a Function Mesh named `functionmesh-sample` by using a YAML file and save the YAML file `functionmesh-sample.yaml`.
 
-    ```yml
+    ```yaml
     apiVersion: compute.functionmesh.io/v1alpha1
     kind: FunctionMesh
     metadata:

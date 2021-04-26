@@ -26,7 +26,7 @@ In Pulsar connectors, you can generate log information defined in connectors to 
 
 - This example shows how to specify the log topic through the YAML file.
 
-    ```yml
+    ```yaml
     apiVersion: cloud.streamnative.io/v1alpha1
     kind: Source
     metadata:

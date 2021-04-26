@@ -59,7 +59,7 @@ Function Mesh provides a tool, which is used to migrate Pulsar Functions from th
 
     This is an example of the generated YAML file.
 
-        ```yml
+        ```yaml
         apiVersion: compute.functionmesh.io/v1alpha1
         kind: Function
         metadata:

@@ -43,7 +43,7 @@ This section describes how to package a Pulsar connector to a NAR or JAR package
 
     3. Create a `resources/META-INF/services/pulsar-io.yaml` file with the following contents.
 
-    ```yml
+    ```yaml
     name: connector name
     description: connector description
     sourceClass: fully qualified class name (only if source connector)
@@ -144,7 +144,7 @@ For Pulsar built-in connectors and StreamNative-managed connectors, you can crea
 
     This example shows how to publish a `elastic-search` sink to Function Mesh by using a docker image.
 
-    ```yml
+    ```yaml
     apiVersion: compute.functionmesh.io/v1alpha1
     kind: Sink
     metadata:
@@ -200,7 +200,7 @@ For self-built connectors, you can create them based on how you package them.
 
    - This example shows how to publish a sink connector named `my-sink-package-sample` connector to Function Mesh by using a package.
 
-       ```yml
+       ```yaml
       apiVersion: compute.functionmesh.io/v1alpha1
       kind: Sink
       metadata:
@@ -229,7 +229,7 @@ For self-built connectors, you can create them based on how you package them.
 
    - This example shows how to publish a sink connector named `my-sink-image-sample` connector to Function Mesh by using a Docker image.
 
-     ```yml
+     ```yaml
       apiVersion: compute.functionmesh.io/v1alpha1
       kind: Sink
       metadata:

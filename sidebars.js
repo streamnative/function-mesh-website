@@ -5,7 +5,21 @@ module.exports = {
     {
       type: 'category',
       label: 'Functions',
-      items: ['functions/function-overview', 'functions/function-crd', 'functions/run-function', 'functions/function-monitor', 'functions/function-debug'],
+      items: [
+        'functions/function-overview',
+        'functions/function-crd',
+        {
+          type: 'category',
+          label: 'Run Pulsar Functions',
+          items: [
+            'functions/run-function/run-java-function',
+            'functions/run-function/run-python-function',
+            'functions/run-function/run-go-function',
+          ],
+        },
+        'functions/function-monitor', 
+        'functions/function-debug'
+      ],
     },
     {
       type: 'category',

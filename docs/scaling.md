@@ -36,7 +36,7 @@ Function Mesh supports scaling Pods (Pulsar instances) based on the CPU utilizat
 
 This example shows how to auto-scale the number of Pods running Pulsar Functions to `8`.
 
-1. Specify the the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
+1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
 
     ```yml
     apiVersion: cloud.streamnative.io/v1alpha1

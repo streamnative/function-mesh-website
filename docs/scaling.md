@@ -75,7 +75,7 @@ This example shows how to auto-scale the number of Pods for running a Pulsar sou
 
     **Example**
 
-    ```yml
+    ```yaml
     apiVersion: compute.functionmesh.io/v1alpha1
     kind: Source
     metadata:

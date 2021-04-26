@@ -69,7 +69,6 @@ function Home() {
   const bannerBackground = 'image/background_line.png'
   return (
     <Layout
-      title={`A collection of functions collaborated to process data on Kubernetes`}
       description="Description will go into a meta tag in <head />">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <img src={bannerBackground} />

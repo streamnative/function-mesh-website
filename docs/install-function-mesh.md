@@ -137,7 +137,7 @@ To start Function Mesh Worker service, follow these steps.
 1. Add the following Function Mesh Worker service configuration to your `functions_worker.yml` configuration file.
 
     ```bash
-    functionsWorkerServiceNarPackage: /YOUR-NAR-PATH/java-proxy-{version}.nar
+    functionsWorkerServiceNarPackage: /YOUR-NAR-PATH/function-mesh-worker-service-{version}.nar
     ```
 
     Replace the `YOUR-NAR-PATH` variable with your real local path.

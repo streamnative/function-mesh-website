@@ -60,9 +60,7 @@ pulsar_sink_user_metric_ | Summary|The user-defined metrics.
 To monitor a Pulsar connector, you can perform the following operations.
 
 * [Get the information of a Pulsar connector](#get).
-
 * [Get a list of running Pulsar connectors](#list).
-
 * [Get the current status of a Pulsar connector](#status).
 
 For more information, see [Pulsar source CLIs](http://pulsar.apache.org/tools/pulsar-admin/2.8.0-SNAPSHOT/#sources) and  [Pulsar sink CLIs](http://pulsar.apache.org/tools/pulsar-admin/2.8.0-SNAPSHOT/#sinks).

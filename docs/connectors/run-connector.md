@@ -150,16 +150,14 @@ For Pulsar built-in connectors and StreamNative-managed connectors, you can crea
     metadata:
       name: sink-sample
     spec:
-      image: streamnative/pulsar-io-elastic-search
-      :2.7.1 # using connector image here
+      image: streamnative/pulsar-io-elastic-search:2.7.1 # using connector image here
       className: org.apache.pulsar.io.elasticsearch.ElasticSearchSink
-      sourceType: "[B"
-      sinkType: "[B"
       replicas: 1
       maxReplicas: 1
       input:
         topics:
         - persistent://public/default/input
+        typeClassName: "[B"
       sinkConfig:
         elasticSearchUrl: "http://quickstart-es-http.default.svc.cluster.local:9200"
         indexName: "my_index"
@@ -211,8 +209,6 @@ For self-built connectors, you can create them based on how you package them.
       spec:
         image: streamnative/pulsar-functions-java-runner:2.7.1 # using java function runner
         className: org.example.MySink
-        sourceType: java.lang.String
-        sinkType: java.lang.String
         forwardSourceMessageProperty: true
         MaxPendingAsyncRequests: 1000
         replicas: 1
@@ -221,6 +217,7 @@ For self-built connectors, you can create them based on how you package them.
         input:
           topics:
           - persistent://public/default/input
+          typeClassName: java.lang.String
         sinkConfig:
           myconfig: "test-config"
         pulsar:
@@ -240,9 +237,6 @@ For self-built connectors, you can create them based on how you package them.
         namespace: default
       spec:
         image: myorg/pulsar-io-my-sink:2.7.1 # using self built image
-        className: org.example.MySink
-        sourceType: java.lang.String
-        sinkType: java.lang.String
         forwardSourceMessageProperty: true
         MaxPendingAsyncRequests: 1000
         replicas: 1
@@ -251,6 +245,7 @@ For self-built connectors, you can create them based on how you package them.
         input:
           topics:
           - persistent://public/default/input
+          typeClassName: java.lang.String
         sinkConfig:
           myconfig: "test-config"
         pulsar:

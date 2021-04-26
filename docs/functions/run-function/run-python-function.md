@@ -117,7 +117,7 @@ Then, you can push the Functions Docker image into an image registry (such as th
 
 ## Submit Python Functions
 
-After packaging your Pulsar Functions, you can submit your Pulsar Functions to a Pulsar cluster. This section describes how to submit a Python Functions through a Functions CRD. Function Mesh supports using the Functions CRD to define Pulsar Functions.
+After packaging your Pulsar Functions, you can submit your Pulsar Functions to a Pulsar cluster. This section describes how to submit a Python Functions through a Functions CRD. You can use the `image` field to specify the runner image use for creating the Python Functions. You can also specify the location where the package or the Docker image is stored.
 
 1. Define a Python Functions by using a YAML file and save the YAML file.
 

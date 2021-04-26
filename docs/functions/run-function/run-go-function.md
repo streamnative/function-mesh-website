@@ -124,7 +124,7 @@ Then, you can push the Functions Docker image into an image registry (such as th
 
 ## Submit Go Functions
 
-After packaging your Pulsar Go Functions, you can submit your Go Functions to a Pulsar cluster. This section describes how to submit a Go Functions through a Function CRD. Function Mesh supports using the Functions CRD to define GO Functions.
+After packaging your Pulsar Go Functions, you can submit your Go Functions to a Pulsar cluster. This section describes how to submit a Go Functions through a Function CRD. You can use the `image` field to specify the runner image use for creating the Go Functions. You can also specify the location where the package or the Docker image is stored.
 
 1. Define a Go Functions by using a YAML file and save the YAML file.
 

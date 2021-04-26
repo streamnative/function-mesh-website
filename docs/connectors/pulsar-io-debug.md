@@ -26,19 +26,30 @@ In Pulsar connectors, you can generate log information defined in connectors to 
 
 - This example shows how to specify the log topic through the YAML file.
 
-    ```yml
+    ```yaml
     apiVersion: cloud.streamnative.io/v1alpha1
     kind: Source
     metadata:
-    name: source-sample
+      name: source-sample
     spec:
-    className: org.apache.pulsar.io.debezium.mongodb.DebeziumMongoDbSource
-    sourceType: org.apache.pulsar.common.schema.KeyValue
-    sinkType: org.apache.pulsar.common.schema.KeyValue
-    replicas: 1
-    maxReplicas: 3
-    logTopic: persistent://public/default/logging-function-logs
-    # Other source configs
+      className: org.apache.pulsar.io.debezium.mongodb.DebeziumMongoDbSource
+      replicas: 1
+      maxReplicas: 3
+      output:
+        producerConf:
+          maxPendingMessages: 1000
+          maxPendingMessagesAcrossPartitions: 50000
+          useThreadLocalProducers: true
+        topic: persistent://public/default/destination
+        typeClassName: org.apache.pulsar.common.schema.KeyValue
+      resources:
+        limits:
+          cpu: "0.2"
+          memory: 1.1G
+        requests:
+          cpu: "0.1"
+          memory: 1G
+      # Other source configs
     ```
 
 - This example shows how to specify the log topic through the `pulsar-admin` CLI tool.
@@ -62,9 +73,7 @@ In Pulsar connectors, you can generate log information defined in connectors to 
 To debug a Pulsar connector, you can perform the following operations.
 
 * [Get the information of a Pulsar connector](#get).
-
 * [Get the current status of a Pulsar connector](#status).
-
 * [Get the stats for a topic and its connected producer and consumer](#topics-stats).
 
 For more information, see [Pulsar source CLIs](http://pulsar.apache.org/tools/pulsar-admin/2.8.0-SNAPSHOT/#sources) and  [Pulsar sink CLIs](http://pulsar.apache.org/tools/pulsar-admin/2.8.0-SNAPSHOT/#sinks).

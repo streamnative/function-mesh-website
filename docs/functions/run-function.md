@@ -279,8 +279,6 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
         spec:
           image: streamnative/pulsar-functions-java-runner:2.7.1 # using java function runner
           className: org.apache.pulsar.functions.api.examples.ExclamationFunction
-          sourceType: java.lang.String
-          sinkType: java.lang.String
           forwardSourceMessageProperty: true
           MaxPendingAsyncRequests: 1000
           replicas: 1
@@ -289,8 +287,10 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
           input:
             topics:
             - persistent://public/default/java-function-input-topic
+            typeClassName: java.lang.String
           output:
             topic: persistent://public/default/java-function-output-topic
+            typeClassName: java.lang.String
           pulsar:
             pulsarConfig: "test-pulsar"
           java:
@@ -309,8 +309,6 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
       spec:
         image: streamnative/example-function-image:latest # using function image here
         className: org.apache.pulsar.functions.api.examples.ExclamationFunction
-        sourceType: java.lang.String
-        sinkType: java.lang.String
         forwardSourceMessageProperty: true
         MaxPendingAsyncRequests: 1000
         replicas: 1
@@ -319,8 +317,10 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
         input:
           topics:
           - persistent://public/default/java-function-input-topic
+          typeClassName: java.lang.String
         output:
           topic: persistent://public/default/java-function-output-topic
+          typeClassName: java.lang.String
         pulsar:
           pulsarConfig: "test-pulsar"
         java:

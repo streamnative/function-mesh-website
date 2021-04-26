@@ -38,7 +38,7 @@ This example shows how to auto-scale the number of Pods running Pulsar Functions
 
 1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
 
-    ```yml
+    ```yaml
     apiVersion: cloud.streamnative.io/v1alpha1
     kind: Function
     metadata:

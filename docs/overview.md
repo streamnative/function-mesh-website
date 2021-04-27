@@ -41,7 +41,7 @@ The benefit of this approach is that both the metadata and running state are act
 
 The following diagram illustrates the architecture for Function Mesh.
 
-![Function Mech Architecture](../docs/assets/function-mesh-architecture.png)
+![Function Mech Architecture](./assets/function-mesh-architecture.png)
 
 ## Documentation
 

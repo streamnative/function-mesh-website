@@ -4,6 +4,8 @@ category: installation
 id: install-function-mesh
 ---
 
+import PickVersion from '@site/src/components/PickVersion'
+
 This document describes how to install Function Mesh based on your application in Kubernetes and how to start Function Mesh Worker service in case you want to use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
 
 ## Install Function Mesh
@@ -24,9 +26,12 @@ Before installing Function Mesh, ensure to perform the following operations.
 
 This example shows how to use the `install.sh` command to install Function Mesh on your laptop (Linux or Mac OS), including a local [kind](https://kind.sigs.k8s.io/) cluster, all the Custom Resource Definitions (CRDs), required service account configuration, and Function Mesh components.
 
-```shell
-curl -sSL https://github.com/streamnative/function-mesh/releases/download/v0.1.2/install.sh | bash
-```
+<!-- ```shell
+curl -sSL https://github.com/streamnative/function-mesh/releases/download/{{pulsar_version}}/install.sh | bash
+``` -->
+<PickVersion className="language-bash">
+  curl -sSL https://github.com/streamnative/function-mesh/releases/download/pulsar_version/install.sh | bash
+</PickVersion>
 
 After executing the above command, you should be able to see the output indicating that the Function Mesh pod is up and running. For details, see [verify installation](#verify-installation).
 

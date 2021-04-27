@@ -101,7 +101,6 @@ function Home() {
           </section>
         )}
       </main>
-      <PickVersion></PickVersion>
     </Layout>
   );
 }

@@ -34,9 +34,8 @@ const PickVersion = ({ children, className }) => {
       {() => {
         const { versions } = usePluginData('docusaurus-plugin-content-docs')
         const latestStableVersion = versions.filter((d) => d.isLast)[0].name
-        // const activeVersion = versions.filter((d) => pathname.includes(d.name)).map((d) => d.name)[0]
-        // const activeVersion = usePickVersion()
-        const rendered = children.replace('pulsar_version', 'v' + latestStableVersion)
+        // const rendered = children.replace('pulsar_version', 'v' + latestStableVersion)
+        const rendered = latestStableVersion === 'current' ? children.replace('pulsar_version', 'latest') : children.replace('pulsar_version', 'v' + version)
 
         return <Result>{rendered}</Result>
       }}

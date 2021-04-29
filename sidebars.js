@@ -28,7 +28,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Function Mesh',
-      items: ['function-mesh/function-mesh-crd', 'function-mesh/run-function-mesh'],
+      items: ['function-mesh/function-mesh-overview', 'function-mesh/function-mesh-crd', 'function-mesh/run-function-mesh'],
     },
     'scaling',
     {

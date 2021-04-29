@@ -4,7 +4,11 @@ category: migration
 id: migrate-function
 ---
 
-Function Mesh provides a tool, which is used to migrate Pulsar Functions from the function worker of a Pulsar cluster to Function Mesh. The tool encapsulates the `pulsarctl` configurations, which is used to transfer Pulsar configurations.
+Pulsar supports submitting Pulsar Functions to a Kubernetes cluster through the Functions worker. But, Pulsar only supports launching and tracking them manually one by one. However, Function Mesh supports submitting and managing a bundle of Pulsar Function, which reduces the management and operation efforts.
+
+If you have run Pulsar Functions in a Kubernetes cluster and want to migrate them to Function Mesh, Function Mesh provides you a tool, which is used to migrate Pulsar Functions from the function worker of a Pulsar cluster to Function Mesh. To transfer Pulsar cluster configurations, this tool encapsulates the `pulsarctl` configurations.
+
+This document describes how to build the tool from the source code and how to use the tool to migrate Pulsar Functions from an existing cluster to Function Mesh.
 
 ## Prerequisites
 

@@ -168,7 +168,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
           namespace: default
         spec:
           image: streamnative/pulsar-functions-java-runner:2.7.1 # using java function runner
-          className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+          className: exclamation_function.ExclamationFunction
           forwardSourceMessageProperty: true
           MaxPendingAsyncRequests: 1000
           replicas: 1
@@ -198,7 +198,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
         namespace: default
       spec:
         image: streamnative/example-function-image:latest # using function image here
-        className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+        className: exclamation_function.ExclamationFunction
         forwardSourceMessageProperty: true
         MaxPendingAsyncRequests: 1000
         replicas: 1

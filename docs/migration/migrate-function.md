@@ -68,7 +68,7 @@ Function Mesh provides a tool, which is used to migrate Pulsar Functions from th
           namespace: default
         spec:
           autoAck: true
-          className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+          className: exclamation_function.ExclamationFunction
           cleanupSubscription: true
           clusterName: standalone
           funcConfig:

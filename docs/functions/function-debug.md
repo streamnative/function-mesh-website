@@ -61,7 +61,7 @@ As shown in the example above, you can get the logger via `context.getLogger()` 
       name: java-function-sample
       namespace: default
     spec:
-      className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+      className: exclamation_function.ExclamationFunction
       forwardSourceMessageProperty: true
       MaxPendingAsyncRequests: 1000
       replicas: 1

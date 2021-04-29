@@ -131,7 +131,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
           namespace: default
         spec:
           image: streamnative/pulsar-functions-python-runner:2.7.1 # using python function runner
-          className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+          className: exclamation_function.ExclamationFunction
           forwardSourceMessageProperty: true
           MaxPendingAsyncRequests: 1000
           replicas: 1
@@ -148,7 +148,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
             pulsarConfig: "test-pulsar"
           python:
               py: exclamation_function.py
-              pyLocation: public/default/nlu-test-py-function
+              pyLocation: ""
               # use package name:
               # pyLocation: function://public/default/nul-py-test-function@v1
           # to be delete & use admission hook
@@ -164,7 +164,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
         namespace: default
       spec:
         image: streamnative/example-function-image:latest # using function image here
-        className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+        className: exclamation_function.ExclamationFunction
         forwardSourceMessageProperty: true
         MaxPendingAsyncRequests: 1000
         replicas: 1
@@ -181,7 +181,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
           pulsarConfig: "test-pulsar"
         python:
             py: exclamation_function.py
-            pyLocation: public/default/nlu-test-py-function
+            pyLocation: ""
             # use package name:
             # pyLocation: function://public/default/nul-py-test-function@v1
             # to be delete & use admission hook

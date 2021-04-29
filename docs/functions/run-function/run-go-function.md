@@ -138,7 +138,7 @@ After packaging your Pulsar Go Functions, you can submit your Go Functions to a 
           namespace: default
         spec:
           image: streamnative/pulsar-functions-go-runner:2.7.1 # using go function runner
-          className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+          className: exclamation_function.ExclamationFunction
           forwardSourceMessageProperty: true
           MaxPendingAsyncRequests: 1000
           replicas: 1
@@ -155,7 +155,7 @@ After packaging your Pulsar Go Functions, you can submit your Go Functions to a 
             pulsarConfig: "test-pulsar"
           golang:
             go: go_func_all
-            goLocation: public/default/nlu-test-go-function
+            goLocation: ""
             # use package name:
             # goLocation: function://public/default/nul-test-go-function@v1
             # to be delete & use admission hook
@@ -171,7 +171,7 @@ After packaging your Pulsar Go Functions, you can submit your Go Functions to a 
         namespace: default
       spec:
         image: streamnative/example-function-image:latest # using function image here
-        className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+        className: exclamation_function.ExclamationFunction
         forwardSourceMessageProperty: true
         MaxPendingAsyncRequests: 1000
         replicas: 1
@@ -188,7 +188,7 @@ After packaging your Pulsar Go Functions, you can submit your Go Functions to a 
           pulsarConfig: "test-pulsar"
         golang:
           go: go_func_all
-          goLocation: public/default/nlu-test-go-function
+          goLocation: ""
           # use package name:
           # goLocation: function://public/default/nul-test-go-function@v1
           # to be delete & use admission hook

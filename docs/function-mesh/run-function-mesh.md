@@ -60,7 +60,7 @@ To create a Function Mesh, follow these steps.
         autoAck: true
       functions:
         name: ex1
-        className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+        className: exclamation_function.ExclamationFunction
         replicas: 1
         maxReplicas: 1
         logTopic: persistent://public/default/logging-function-log

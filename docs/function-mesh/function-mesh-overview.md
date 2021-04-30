@@ -1,5 +1,5 @@
 ---
-title: Function Mesh Overview
+title: Function Mesh overview
 category: function-mesh
 id: function-mesh-overview
 ---
@@ -8,7 +8,7 @@ This document gives a brief introduction into Function Mesh.
 
 ## What is Function Mesh
 
-Function Mesh is a Kubernetes operator that enables users to run [Pulsar Functions](/functions/function-overview.md) and [connectors](/connectors/pulsar-io-overview.md) natively on Kubernetes, unlocking the full power of Kubernetes’ features and resources.
+Function Mesh is a Kubernetes operator that enables users to run [Pulsar Functions](/functions/function-overview.md) and [Pulsar connectors](/connectors/pulsar-io-overview.md) natively on Kubernetes, unlocking the full power of Kubernetes’ features and resources.
 
 By providing a serverless framework that enables users to organize a collection of Pulsar Functions and connectors, Function Mesh simplifies the process of creating complex streaming jobs. Function Mesh is a valuable tool for users who are seeking cloud-native serverless streaming solutions. Key benefits include:
 

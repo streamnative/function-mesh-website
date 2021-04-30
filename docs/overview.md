@@ -36,7 +36,7 @@ To solve these issues, we developed Function Mesh to run Pulsar Functions in the
 
 ## Function Mesh
 
-Function Mesh is a Kubernetes operator that enables users to run [Pulsar Functions](/functions/function-overview.md) and [connectors](/connectors/pulsar-io-overview.md) natively on Kubernetes. Function Mesh leverages the powerful scheduling functionality provided by Kubernetes to ensure that functions are resilient to failures, can be scheduled properly at any time, as well as utilize many available Kubernetes tools.
+Function Mesh is a Kubernetes operator that enables users to run [Pulsar Functions](/functions/function-overview.md) and [Pulsar connectors](/connectors/pulsar-io-overview.md) natively on Kubernetes. Function Mesh leverages the powerful scheduling functionality provided by Kubernetes to ensure that functions are resilient to failures, can be scheduled properly at any time, as well as utilize many available Kubernetes tools.
 
 Function Mesh is a serverless framework to orchestrate multiple Pulsar Functions and I/O connectors for complex streaming jobs. Function Mesh help users organize a collection of Pulsar Functions and connectors and it simplifies the process of creating complex streaming jobs.
 
@@ -150,7 +150,7 @@ This is a Function Mesh CRD example, which is used to submit the ElasticSearch s
     data:
       webServiceURL: http://test-pulsar-broker.default.svc.cluster.local:8080
       brokerServiceURL: pulsar://test-pulsar-broker.default.svc.cluster.local:6650
-    ```
+```
 
 ## Documentation
 
@@ -171,7 +171,7 @@ This is a Function Mesh CRD example, which is used to submit the ElasticSearch s
   - [Monitor Pulsar connectors](/connectors/pulsar-io-monitoring.md)
   - [Debug Pulsar connectors](/connectors/pulsar-io-debug.md)
 - Function Mesh
-  - [Function Mesh Overview](/function-mesh/function-mesh-overview.md)
+  - [Function Mesh overview](/function-mesh/function-mesh-overview.md)
   - [Function Mesh CRD configurations](/function-mesh/function-mesh-crd.md)
   - [Run Function Mesh](/function-mesh/run-function-mesh.md)
 - [Scaling](/scaling.md)

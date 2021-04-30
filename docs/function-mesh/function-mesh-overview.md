@@ -32,4 +32,4 @@ Function Mesh works in this way, and both the metadata and running state are sto
 
 The following diagram illustrates how Function Mesh works.
 
-![Function Mesh](./assets/function-mesh-overview.png)
+![Function Mesh](./../assets/function-mesh-overview.png)

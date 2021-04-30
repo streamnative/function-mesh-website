@@ -14,7 +14,7 @@ The Function Mesh configurations are a combination of Pulsar Function configurat
 - [Source connector CRD configurations](/connectors/io-crd-config/source-crd-config.md)
 - [Sink connector CRD configurations](/connectors/io-crd-config/sink-crd-config.md)
 
-This example shows how to submit the ElasticSearch sink connector and a Pulsar Functions to a Pulsar cluster through the Function Mesh CRD.
+This is a Function Mesh CRD example, which is used to submit the ElasticSearch sink connector and a Pulsar Functions to a Pulsar cluster.
 
 ```yaml
     apiVersion: compute.functionmesh.io/v1alpha1

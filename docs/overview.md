@@ -159,7 +159,10 @@ This is a Function Mesh CRD example, which is used to submit the ElasticSearch s
 - Functions
   - [Pulsar Functions overview](/functions/function-overview.md)
   - [Pulsar Functions CRD configurations](/functions/function-crd.md)
-  - [Run Pulsar Functions](/functions/run-function.md)
+  - Run Pulsar Functions
+    - [Run Java Functions](/functions/run-function/run-java-function.md)
+    - [Run Python Functions](/functions/run-function/run-python-function.md)
+    - [Run Go Functions](/functions/run-function/run-go-function.md)
   - [Monitor Pulsar Functions](/functions/function-monitor.md)
   - [Debug Pulsar Functions](/functions/function-debug.md)
 - Connectors

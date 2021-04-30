@@ -8,20 +8,82 @@ Pulsar IO connectors consist of source and sink connectors. Source connectors pa
 
 This document describes how to run a Pulsar connector. To run a Pulsar connector in Function Mesh, you need to package the connector and then submit it to a Pulsar cluster.
 
-## Package Pulsar connectors
+## Pulsar built-in connectors and StreamNative-managed connectors
+
+StreamNative provides ready-to-use Docker images for Pulsar built-in connectors and StreamNative-managed connectors. These images are public at the [Docker Hub](https://hub.docker.com/), with the image name in a format of `streamnative/pulsar-io-CONNECTOR-NAME:TAG`, such as [`streamnative/pulsar-io-hbase:2.7.1`](https://hub.docker.com/r/streamnative/pulsar-io-hbase). You can check all supported connectors on the [StreamNative Hub](https://hub.streamnative.io/).
+
+For Pulsar built-in connectors and StreamNative-managed connectors, you can create them by specifying the Docker image in the source or sink CRDs.
+
+1. Define a sink connector named `sink-sample` by using a YAML file and save the YAML file `sink-sample.yaml`.
+
+    This example shows how to publish a `elastic-search` sink to Function Mesh by using a docker image.
+
+    ```yaml
+    apiVersion: compute.functionmesh.io/v1alpha1
+    kind: Sink
+    metadata:
+      name: sink-sample
+    spec:
+      image: streamnative/pulsar-io-elastic-search:2.7.1 # using connector image here
+      className: org.apache.pulsar.io.elasticsearch.ElasticSearchSink
+      replicas: 1
+      maxReplicas: 1
+      input:
+        topics:
+        - persistent://public/default/input
+        typeClassName: "[B"
+      sinkConfig:
+        elasticSearchUrl: "http://quickstart-es-http.default.svc.cluster.local:9200"
+        indexName: "my_index"
+        typeName: "doc"
+        username: "elastic"
+        password: "wJ757TmoXEd941kXm07Z2GW3"
+      pulsar:
+        pulsarConfig: "test-sink"
+      resources:
+        limits:
+        cpu: "0.2"
+        memory: 1.1G
+        requests:
+        cpu: "0.1"
+        memory: 1G
+      java:
+        jar: connectors/pulsar-io-elastic-search-2.7.1.nar # the NAR location in image
+        jarLocation: "" # leave empty since we will not download package from Pulsar Packages
+      clusterName: test-pulsar
+      autoAck: true
+    ```
+
+2. Apply the YAML file to create the sink.
+
+    ```bash
+    kubectl apply -f /path/to/sink-sample.yaml
+    ```
+
+3. Check whether the sink is created successfully.
+
+    ```bash
+    kubectl get all
+    ```
+
+## Self-built connectors
+
+To run a self-built connector, you need to package it to an external package (NAR package or uber JAR package) or a Docker image and then submit the connector to a Pulsar cluster through source or sink CRDs.
+
+### Package self-built connectors
 
 After developing and testing your connector, you need to package it so that it can be submitted to a Pulsar cluster. You can package a Pulsar connector to a NAR/JAR package or a Docker image.
 
-### NAR or uber JAR packages
+#### NAR or uber JAR packages
 
 This section describes how to package a Pulsar connector to a NAR or JAR package and upload it to the [Pulsar package management service](http://pulsar.apache.org/docs/en/next/admin-api-packages/).
 
-#### Prerequisites
+##### Prerequisites
 
 - Apache Pulsar 2.8.0 or higher
 - Function Mesh v0.1.3 or higher
 
-#### Build NAR and uber JAR packages
+##### Build NAR and uber JAR packages
 
 - **NAR packages**
 
@@ -93,16 +155,16 @@ bin/pulsar-admin packages upload sink://public/default/my-sink@1.0 --path "/path
 
 Then, you can define source or sink CRDs by specifying the uploaded connector package.
 
-### Docker images
+#### Docker images
 
 StreamNative provides ready-to-use Docker images for Pulsar built-in connectors and StreamNative-managed connectors. For non built-in connectors, you can build Docker images for them.
 
-#### Prerequisites
+##### Prerequisites
 
 - Apache Pulsar 2.7.0 or higher
 - Function Mesh v0.1.3 or higher
 
-#### Build Docker images
+##### Build Docker images
 
 To build a Docker image, follow these steps.
 
@@ -123,76 +185,16 @@ To build a Docker image, follow these steps.
 
 Then, you can push the connector Docker image into an image registry (such as the [Docker Hub](https://hub.docker.com/), or any private registry) and use the connector Docker image to configure and submit the connector to Function Mesh.
 
-## Submit Pulsar connectors
+### Submit self-built connectors
 
 After packaging your Pulsar connectors, you can submit your Pulsar connectors to a Pulsar cluster. This section describes how to submit a Pulsar connector through a source or sink CRD. Function Mesh supports using the source or sink CRD to define Pulsar connectors.
 
-### Prerequisites
+#### Prerequisites
 
 - Create and connect to a [Kubernetes cluster](https://kubernetes.io/).
 - Create a [Pulsar cluster](https://pulsar.apache.org/docs/en/kubernetes-helm/) in the Kubernetes cluster.
 - Install the Function Mesh Operator and CRD into Kubernetes cluster.
 - Set up the external source or sink system to communicate with the Pulsar connector.
-
-### Pulsar built-in connectors and StreamNative-managed connectors
-
-StreamNative provides ready-to-use Docker images for Pulsar built-in connectors and StreamNative-managed connectors. These images are public at the [Docker Hub](https://hub.docker.com/), with the image name in a format of `streamnative/pulsar-io-CONNECTOR-NAME:TAG`, such as [`streamnative/pulsar-io-hbase:2.7.1`](https://hub.docker.com/r/streamnative/pulsar-io-hbase). You can check all supported connectors on the [StreamNative Hub](https://hub.streamnative.io/).
-
-For Pulsar built-in connectors and StreamNative-managed connectors, you can create them by specifying the Docker image in the source or sink CRDs.
-
-1. Define a sink connector named `sink-sample` by using a YAML file and save the YAML file `sink-sample.yaml`.
-
-    This example shows how to publish a `elastic-search` sink to Function Mesh by using a docker image.
-
-    ```yaml
-    apiVersion: compute.functionmesh.io/v1alpha1
-    kind: Sink
-    metadata:
-      name: sink-sample
-    spec:
-      image: streamnative/pulsar-io-elastic-search:2.7.1 # using connector image here
-      className: org.apache.pulsar.io.elasticsearch.ElasticSearchSink
-      replicas: 1
-      maxReplicas: 1
-      input:
-        topics:
-        - persistent://public/default/input
-        typeClassName: "[B"
-      sinkConfig:
-        elasticSearchUrl: "http://quickstart-es-http.default.svc.cluster.local:9200"
-        indexName: "my_index"
-        typeName: "doc"
-        username: "elastic"
-        password: "wJ757TmoXEd941kXm07Z2GW3"
-      pulsar:
-        pulsarConfig: "test-sink"
-      resources:
-        limits:
-        cpu: "0.2"
-        memory: 1.1G
-        requests:
-        cpu: "0.1"
-        memory: 1G
-      java:
-        jar: connectors/pulsar-io-elastic-search-2.7.1.nar # the NAR location in image
-        jarLocation: "" # leave empty since we will not download package from Pulsar Packages
-      clusterName: test-pulsar
-      autoAck: true
-    ```
-
-2. Apply the YAML file to create the sink.
-
-    ```bash
-    kubectl apply -f /path/to/sink-sample.yaml
-    ```
-
-3. Check whether the sink is created successfully.
-
-    ```bash
-    kubectl get all
-    ```
-
-### Self-built connectors
 
 For self-built connectors, you can create them based on how you package them.
 

@@ -10,6 +10,10 @@ If you have run Pulsar Functions in a Kubernetes cluster and want to migrate the
 
 This document describes how to build the tool from the source code and how to use the tool to migrate Pulsar Functions from an existing cluster to Function Mesh.
 
+> **Note**
+>
+> Currently, this migration tool is a beta version.
+
 ## Prerequisites
 
 - Go 1.15 or higher

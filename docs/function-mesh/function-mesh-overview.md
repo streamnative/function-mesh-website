@@ -12,9 +12,9 @@ Function Mesh is a Kubernetes operator that enables users to run [Pulsar Functio
 
 By providing a serverless framework that enables users to organize a collection of Pulsar Functions and connectors, Function Mesh simplifies the process of creating complex streaming jobs. Function Mesh is a valuable tool for users who are seeking cloud-native serverless streaming solutions. Key benefits include:
 
-- Enable users of Pulsar Functions and connectors to utilize the full power of Kubernetes Scheduler, including rebalancing, rescheduling, fault-tolerance, and more.
+- Utilize the full power of Kubernetes Scheduler, including rebalancing, rescheduling, fault-tolerance, and more.
 
-- Make Pulsar Functions and connectors a first-class citizen in the cloud environment, which leads to greater possibilities when more resources become available in the cloud.
+- Make Pulsar Functions and connectors run natively  in the cloud environment, which leads to greater possibilities when more resources become available in the cloud.
 
 - Enable Pulsar Functions to work with different messaging systems and to integrate with existing tools in the cloud environment.
 

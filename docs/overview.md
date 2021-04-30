@@ -28,7 +28,7 @@ However, both Pulsar Functions and Pulsar connectors have the following issues:
 
 - Pulsar Functions and Pulsar connectors do not fully utilize all the tools provided by the Kubernetes ecosystem.
 
-- Functions and connectors are tied to a specific Pulsar cluster and it is hard to use functions connectors across multiple Pulsar clusters.
+- Functions and connectors are tied to a specific Pulsar cluster and it is hard to use functions and connectors across multiple Pulsar clusters.
 
 - Currently, it is hard to manage a bundle of functions or connectors. Users have to launch and track them manually one by one.
 

@@ -36,7 +36,7 @@ To solve these issues, we developed Function Mesh to run Pulsar Functions in the
 
 ## Function Mesh
 
-Function Mesh is a Kubernetes operator that enables users to run [Pulsar Functions](/functions/function-overview.md) and [Pulsar connectors](/connectors/pulsar-io-overview.md) natively on Kubernetes. Function Mesh leverages the powerful scheduling functionality provided by Kubernetes to ensure that functions are resilient to failures, can be scheduled properly at any time, as well as utilize many available Kubernetes tools.
+Function Mesh is a Kubernetes operator that enables users to run Pulsar Functions and Pulsar connectors natively on Kubernetes. Function Mesh leverages the powerful scheduling functionality provided by Kubernetes to ensure that functions are resilient to failures, can be scheduled properly at any time, as well as utilize many available Kubernetes tools.
 
 Function Mesh is a serverless framework to orchestrate multiple Pulsar Functions and I/O connectors for complex streaming jobs. Function Mesh help users organize a collection of Pulsar Functions and connectors and it simplifies the process of creating complex streaming jobs.
 

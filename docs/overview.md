@@ -45,7 +45,7 @@ Function Mesh has the following components:
 - Functions CRD: it is used to define Pulsar Functions, source, sink, and Function Mesh.
 - Functions controller: it is used to watch the CRDs and reconcile Pulsar Functions, Source, Sink, and Function Mesh in Kubernetes.
 
-## Features
+### Features
 
 - Be easily deployed directly on Kubernetes clusters, including [Minikube](https://github.com/kubernetes/minikube) and [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/), without special dependencies.
 - Use [CustomResourceDefinitions (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) to define Functions, source, sink, and Mesh. Using CRD makes Function Mesh naturally integrate with the Kubernetes ecosystem.
@@ -55,7 +55,7 @@ Function Mesh has the following components:
 - Allow one function to talk to multiple different Pulsar clusters, which are defined as config maps.
 - Support function registry for function package management. We are going to introduce the Pulsar registry in Pulsar 2.8.0 for function package management. Then, the function package can be reused by different functions.
 
-## Architecture
+### Architecture
 
 Function Mesh works in the following way.
 
@@ -71,7 +71,7 @@ The following diagram illustrates the architecture for Function Mesh.
 
 ![Function Mech Architecture](./assets/function-mesh-architecture.png)
 
-## How to run Function Mesh
+### How to run Function Mesh
 
 Function Mesh organizes functions, sources and sinks together and manages them as a whole. The FunctionMesh CRD has a list of fields for functions, sources and sinks and you can connect them together through the `topics` field. Once the YAML file is submitted, the FunctionMesh controller will reconcile it into multiple function/source/sink resources and delegate each of them to corresponding controllers. The function/source/sink controllers reconcile each task and launch corresponding sub-components. The FunctionMesh controller collects the status of each component from the system and aggregates them in its own status field.
 

@@ -72,7 +72,7 @@ This document describes how to build the tool from the source code and how to us
           namespace: default
         spec:
           autoAck: true
-          className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+          className: exclamation_function.ExclamationFunction
           cleanupSubscription: true
           clusterName: standalone
           funcConfig:

@@ -2,6 +2,7 @@
 title: Overview
 category: overview
 id: overview
+slug: /
 ---
 
 This document gives a general description about Pulsar Functions, Pulsar connectors, and Function Mesh, as well as how to run Function Mesh.

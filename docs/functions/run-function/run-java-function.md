@@ -89,7 +89,7 @@ To package a Functions in Java, follow these steps.
     </project>
     ```
 
-2. Write a Java Functions .
+2. Write a Java Functions.
 
     ```java
     package org.example.test;
@@ -104,7 +104,7 @@ To package a Functions in Java, follow these steps.
     }
     ```
 
-3. Package the Java Functions .
+3. Package the Java Functions.
 
     ```bash
     mvn package

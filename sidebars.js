@@ -1,6 +1,7 @@
 module.exports = {
   docs: [
     'overview',
+    'why-function-mesh',
     'install-function-mesh',
     {
       type: 'category',
@@ -41,7 +42,7 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Function Mesh',
+      label: 'Meshes',
       items: ['function-mesh/function-mesh-overview', 'function-mesh/function-mesh-crd', 'function-mesh/run-function-mesh'],
     },
     'scaling',

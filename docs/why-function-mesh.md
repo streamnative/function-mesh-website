@@ -4,23 +4,32 @@ category: why
 id: why-function-mesh
 ---
 
-## Pulsar Functions
+## Background
 
-Pulsar Functions is a computing infrastructure native to Pulsar. It enables the creation of complex processing logic on a per message basis and brings simplicity and serverless concepts to event streaming, thereby eliminating the need to deploy a separate system.
+Pulsar introduces [Pulsar Functions](http://pulsar.apache.org/docs/en/next/functions-overview/) and [Pulsar I/O](http://pulsar.apache.org/docs/en/next/io-overview/) since 2.0 release.
 
-## Pulsar connectors
+Pulsar Functions is a turnkey serverless event streaming framework built natively for Apache Pulsar. Pulsar Functions enable users to create event processing logic on a per message basis and bring simplicity and serverless concepts to event streaming, thus eliminating the need to deploy a separate stream processing system. Popular concepts of Pulsar Functions include ETL jobs, real-time aggregation, microserices, reactive services, event routing, and more.
 
-Pulsar IO, a framework that allows you to ingress or egress data from and to Pulsar using the existing Pulsar Functions framework. Pulsar IO connectors consists **source** and **sink**. A source is an application that ingests data from an external system into Pulsar, while a sink is an application that egresses data from Pulsar to an external system.
+Pulsar I/O is a framework that allows you to ingress or egress events from and to Pulsar using the existing Pulsar Functions framework. Pulsar IO consists **source** and **sink** connectors. A source is an event processor that ingests data from an external system into Pulsar, while a sink is an event processor that egresses data from Pulsar to an external system.
 
-The Pulsar IO framework runs on top of the existing Pulsar functions framework. Individual sources and sinks can run like any function alongside Pulsar brokers.
+Both Pulsar Functions and Pulsar I/O provide serverless frameworks that make building event streaming application become simpler.
 
+Pulsar Functions supports writing streaming functions using popular languages including Java, Python and Go. It also support different deployment options, from co-running functions/connectors with brokers, running them in a dedicated function worker cluster, to scheduling them on Kubernetes.
 
-However, both Pulsar Functions and Pulsar connectors have the following issues:
+## Problems
 
-- Pulsar Functions and Pulsar connectors do not fully utilize all the tools provided by the Kubernetes ecosystem.
+Pulsar supports running functions and connectors on Kubernetes. The existing Kubernetes scheduler implementation stores the functions and connectors metadata within a Pulsar cluster using Pulsar topics and schedules the functions and connectors to run on Kubernetes.
 
-- Functions and connectors are tied to a specific Pulsar cluster and it is hard to use functions and connectors across multiple Pulsar clusters.
+There are a few drawbacks of this implementation:
 
-- Currently, it is hard to manage a bundle of functions or connectors. Users have to launch and track them manually one by one.
+1. The function metadata is stored in Pulsar and the function running state is managed by Kubernetes. It results in inconsistency between metadata and state, which makes management become complicated and problematic. For example, the StatefulSet running Pulsar Functions can be deleted from Kubernetes, which is beyond the control of Pulsar scheduler.
 
-To solve these issues, we developed Function Mesh to run Pulsar Functions in the Kubernetes environment in a native and integral way.
+2. The existing implementation uses Pulsar topics for storing function metadata. It can cause brokers in a crash loop if the function metadata topics are temperaily not available.
+
+3. The existing implementation is tied to one Pulsar cluster. It makes functions interacting with multiple Pulsar clusters become complicated.
+
+4. This existing implementation makes it hard for users deploying Pulsar Functions in Kubernetes to implement certain features, such as auto-scaling.
+
+Additionally, with the increased adoption of Pulsar Functions and Pulsar I/O connectors for building serverless event streaming applications, people are looking for orchestrating multiple functions into a single streaming job to archive complex event streaming capabilities. Without Function Mesh, there is a lot of manual work to organize and manage multiple functions to process events. 
+
+To solve the pain points and make Pulsar Functions Kubernetes-native, we developed Function Mesh -- a serverless framework purpose-built for running Pulsar Functions and connectors natively on Kubernetes and for simplifying building complext event streaming applications.

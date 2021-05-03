@@ -21,8 +21,9 @@ Topics in a messaging system are usually used for presenting the streams. The st
 
 Figure 1 illustrates a **stream**.
 
-[Add a diagram]
-Figure 1. A stream that connects a **function** and a **connector**.
+![Stream](./assets/stream.png)
+
+Figure 1. A stream that connects a **function** and a **connector**
 
 ### Function
 
@@ -32,7 +33,8 @@ The **functions** in Function Mesh are implemented based on Pulsar Functions.
 
 Figure 2 illustrates a **function**.
 
-[Add a diagram]
+![Function](./assets/function.png)
+
 Figure 2. A function that consumes messages from one or more input streams and produces the results to another output stream
 
 ### Connector
@@ -44,21 +46,29 @@ A **connector** is a processor that ingresses or egresses events from and to **s
 
 The **connectors** in Function Mesh are implemented based on Pulsar IO connectors. The available Pulsar I/O connectors can be found at [StreamNative Hub](https://hub.streamnative.io/).
 
-Figure 3 illustrates a **connector**.
+Figure 3 illustrates a source **connector**.
 
-[Add a diagram]
-Figure 3. A connector that ingresses or egresses events from and to **streams**.
+![Source](./assets/source.png)
+
+Figure 3. A source connector that consumes change events from MySQL and ingests them to an output **streams**
+
+Figure 4 illustartes a sink **connector**.
+
+![Sink](./assets/sink.png)
+
+Figure 4. A sink connector that egresses events from **streams** to ElasticSearch
 
 ### FunctionMesh
 
 A **FunctionMesh** (aka Mesh) is a collection of **functions** and **connectors** connected by **streams** that are orchestrated together for achieving powerful stream processing logics.
 
-All the event processors (**functions** and **connectors**) in a **FunctionMesh** share the same lifecycle. They are started when a **FunctionMesh** is created and terminated when the mesh is destroyed. All the event processors are long running processes. They are auto-scaled based on the workload by the Function Mesh controller.
+All the **functions** and **connectors** in a **FunctionMesh** share the same lifecycle. They are started when a **FunctionMesh** is created and terminated when the mesh is destroyed. All the event processors are long running processes. They are auto-scaled based on the workload by the Function Mesh controller.
 
-A **FunctionMesh** can be either a directed acyclic graph (DAG) or a cyclic graph of functions and/or connectors connected with streams. Figure 4 illustrates a **FunctionMesh** of a Debezium source connector, an enrichement function, and an Elastic sink connector.
+A **FunctionMesh** can be either a directed acyclic graph (DAG) or a cyclic graph of functions and/or connectors connected with streams. Figure 5 illustrates a **FunctionMesh** of a Debezium source connector, an enrichement function, and an Elastic sink connector.
 
-[Add a diagram]
-Figure 4. A FunctionMesh is a collection of functions and/or connectors connected with streams.
+![Function Mesh](./assets/function-mesh.png)
+
+Figure 5. A FunctionMesh is a collection of functions and/or connectors connected with streams
 
 ## API
 
@@ -75,30 +85,32 @@ The available Function Mesh CRDs are:
 - [**Sink**](/connectors/io-crd-config/sink-crd-config.md): The `Sink` resource automatically manages the whole lifecycle of a Pulsar Sink connector.
 - [**FunctionMesh**](/function-mesh/function-mesh-crd.md): The `FunctionMesh` resource automatically manages the whole lifecycle of your event streaming application. It controls the creation of other objects to ensure that the **functions** and **connectors** defined in your mesh are running and they are connected via the defined **streams**. 
 
-A typical user workflow is described as below and illustrated in Figure 
+A typical user workflow is illustrated in Figure 6.
 
 1. A user creates a CRD yaml to define the **function**, **connector**, or **mesh** to run.
 2. The user submits the CRD using the Kubernetes tooling.
 3. The Function Mesh controller watches the CRD and creates Kubernetes resources to run the defined **function**, **connector**, or **mesh**.
 
-The benefit of this approach is both the function metadata and function running state are directly stored and managed by Kubernetes to avoid the inconsistency problem that was seen using Pulsar's existing Kubernetes scheduler. See [Why Function Mesh](/why-function-mesh.md)
+The benefit of this approach is both the function metadata and function running state are directly stored and managed by Kubernetes to avoid the inconsistency problem that was seen using Pulsar's existing Kubernetes scheduler. See [Why Function Mesh](/why-function-mesh.md) for more details.
 
-[Add a diagram]
-Figure 5. The Function Mesh user workflow
+![Function Mesh Workflow](./assets/function-mesh-workflow.png)
+
+Figure 6. The Function Mesh user workflow
 
 ## Architecture
 
-Function Mesh consists of two components.
+Figure 7 illustrates the overall architecture of Function Mesh.  Function Mesh consists of two components.
 
 - **Controller**: A Kubernetes operator that watches Function Mesh CRDs and creates Kubernetes resources (i.e. StatefulSet) to run **functions**, **connectors**, and **meshes** on Kubernetes.
 - **Runner**: A Function Runner that invokes **functions** and **connectors** logic when receiving events from input streams and produces the results to output streams. It is currently implemented using **Pulsar Functions** runner.
 
-Figure 6 illustrates the overall architecture of Function Mesh.
+When a user creates a Function Mesh CRD, the controller receives the submitted CRD from Kubernetes API server. The controller processes the CRD and generates the corresponding Kubernetes resources. For example, when the controller processes the **Function** CRD, it creates a StatefulSet to run the function. Each pod of this function StatefulSet will launch a *Runner* to invoke the function logic.
 
-![Function Mech Architecture](./assets/function-mesh-architecture.png)
-Figure 6. The Function Mesh architecture
+![Function Mech Architecture](./assets/function-mesh-internals.png)
 
-### Features
+Figure 7. The Function Mesh architecture
+
+## Features
 
 - Be easily deployed directly on Kubernetes clusters, including [Minikube](https://github.com/kubernetes/minikube) and [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/), without special dependencies.
 - Use [CustomResourceDefinitions (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) to define Functions, source, sink, and Mesh. Using CRD makes Function Mesh naturally integrate with the Kubernetes ecosystem.
@@ -111,6 +123,7 @@ Figure 6. The Function Mesh architecture
 ## Documentation
 
 - [Overview](/overview.md)
+- [Why Function Mesh?](/why-function-mesh.md)
 - [Installation](/install-function-mesh.md)
 - Functions
   - [Pulsar Functions overview](/functions/function-overview.md)
@@ -129,7 +142,7 @@ Figure 6. The Function Mesh architecture
   - [Run Pulsar connectors](/connectors/run-connector.md)
   - [Monitor Pulsar connectors](/connectors/pulsar-io-monitoring.md)
   - [Debug Pulsar connectors](/connectors/pulsar-io-debug.md)
-- Function Mesh
+- Meshes
   - [Function Mesh overview](/function-mesh/function-mesh-overview.md)
   - [Function Mesh CRD configurations](/function-mesh/function-mesh-crd.md)
   - [Run Function Mesh](/function-mesh/run-function-mesh.md)

@@ -8,41 +8,27 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: 'Easy to Use',
-    imageUrl: 'img/undraw_docusaurus_mountain.png',
+    title: 'Real-time',
     description: (
       <>
-        <ul>
-          <li>Easy deployment to Kubernetes clusters, including{' '} <a href="https://github.com/kubernetes/minikube">Minikube</a> and{' '} <a href="https://kind.sigs.k8s.io/docs/user/quick-start/">Kind</a>.</li>
-          <li>Directly talking to multiple Pulsar clusters, with config maps defined.</li>
-          <li>Future Supporting function registry for function package management.</li>
-        </ul>
+        Build serverless event streaming applications that respond immediately to events. Craft materialized views using stateful functions or sink connectors.
       </>
     ),
   },
   {
-    title: 'Integrated with Kubernetes',
-    imageUrl: 'img/undraw_docusaurus_react.png',
+    title: 'Kubernetes-native',
     description: (
       <>
-        <ul>
-          <li>Leverage the Kubernetes's auto-scaler to auto-scale instances for functions based on the CPU usage and more.</li>
-          <li>Utilize the full scheduling capability provided by Kubernetes to be high available.</li>
-          <li>Integrate with Kubernetes secrets seamlessly to read secrets directly.</li>
-        </ul>
+        Seamlessly leverage your existing Kubernetes infrastructure to deploy <a href="http://pulsar.apache.org/docs/en/next/functions-overview/">Pulsar Functions</a>, <a href="http://pulsar.apache.org/docs/en/next/io-overview/">Pulsar IO connectors</a>,
+        and event streaming workloads, and bring powerful new cloud-native capabilities to your applications.
       </>
     ),
   },
   {
-    title: 'Great Tools at hand',
-    imageUrl: 'img/undraw_docusaurus_tree.png',
+    title: 'Your favorite language',
     description: (
       <>
-        <ul>
-          <li>Manage multiple functions in one place with the FunctionMesh{' '}<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">CustomResourceDefinitions</a>{' '}(CRD). </li>
-          <li>Support multiple language runtime, including Java, Python, Golang and more.</li>
-          <li>Provide rich connectors talking to various data systems.</li>
-        </ul>
+        Build event streaming applications using your favorite languages, such as Java, Python, and Go.
       </>
     ),
   },
@@ -69,7 +55,7 @@ function Home() {
   const bannerBackground = 'image/background_line.png'
   return (
     <Layout
-      title={`A collection of functions collaborated to process data on Kubernetes`}
+      title={`Orchestrating Pulsar Functions for Serverless Event Streaming`}
       description="Description will go into a meta tag in <head />">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <img src={bannerBackground} />

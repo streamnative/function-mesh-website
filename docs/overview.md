@@ -5,48 +5,112 @@ id: overview
 slug: /
 ---
 
-This document gives a general description about Pulsar Functions, Pulsar connectors, and Function Mesh, as well as how to run Function Mesh.
+Function Mesh is a serverless framework purpose-built for stream processing applications. It brings powerful event-streaming capabilities to your applications by orchestrating multiple [Pulsar Functions](http://pulsar.apache.org/docs/en/next/functions-overview/) and [Pulsar IO connectors](http://pulsar.apache.org/docs/en/next/io-overview/) for complex stream processing jobs.
 
-## Pulsar Functions
+## Concepts
 
-Pulsar Functions is a computing infrastructure native to Pulsar. It enables the creation of complex processing logic on a per message basis and brings simplicity and serverless concepts to event streaming, thereby eliminating the need to deploy a separate system.
+Function Mesh enables you to build event streaming applications leveraging your familiarity with [Apache Pulsar](https://pulsar.apache.org/) and mordern stream processing technologies. Three concepts are foundational to build an application: _streams_, _functions_, and _connectors_.
 
-Pulsar Functions are lightweight compute processes that can perform the following operations:
+### Stream
 
-- Consume messages from one or more Pulsar topics.
+A stream is a partitioned, immutable, append-only sequence for events that represents a series of historical facts. For example, the events of a stream could model a sequence of financial transactions, like "Jack sent $100 to Alice", followed by "Alice sent $50 to Bob". 
 
-- Apply a user-supplied processing logic to each message.
+A stream is used for connecting **functions** and **connectors**. 
 
-- Publish the results of the computation to another topic.
+Topics in a messaging system are usually used for presenting the streams. The streams in Function Mesh are implemented by using topics in Apache Pulsar.
 
-## Pulsar connectors
+Figure 1 illustrates a **stream**.
 
-Pulsar IO, a framework that allows you to ingress or egress data from and to Pulsar using the existing Pulsar Functions framework. Pulsar IO connectors consists **source** and **sink**. A source is an application that ingests data from an external system into Pulsar, while a sink is an application that egresses data from Pulsar to an external system.
+![Stream](./assets/stream.png)
 
-The Pulsar IO framework runs on top of the existing Pulsar functions framework. Individual sources and sinks can run like any function alongside Pulsar brokers.
+Figure 1. A stream that connects a **function** and a **connector**
 
-However, both Pulsar Functions and Pulsar connectors have the following issues:
+### Function
 
-- Pulsar Functions and Pulsar connectors do not fully utilize all the tools provided by the Kubernetes ecosystem.
+A **function** is a lightweight event processor that consumes messages from one or more input streams, applies a user-supplied processing logic to one or multiple messages, and produces the results of the processing logic to another stream.
 
-- Functions and connectors are tied to a specific Pulsar cluster and it is hard to use functions and connectors across multiple Pulsar clusters.
+The **functions** in Function Mesh are implemented based on Pulsar Functions.
 
-- Currently, it is hard to manage a bundle of functions or connectors. Users have to launch and track them manually one by one.
+Figure 2 illustrates a **function**.
 
-To solve these issues, we developed Function Mesh to run Pulsar Functions in the Kubernetes environment in a native and integral way.
+![Function](./assets/function.png)
 
-## Function Mesh
+Figure 2. A function that consumes messages from one or more input streams and produces the results to another output stream
 
-Function Mesh is a Kubernetes operator that enables users to run Pulsar Functions and Pulsar connectors natively on Kubernetes. Function Mesh leverages the powerful scheduling functionality provided by Kubernetes to ensure that functions are resilient to failures, can be scheduled properly at any time, as well as utilize many available Kubernetes tools.
+### Connector
 
-Function Mesh is a serverless framework to orchestrate multiple Pulsar Functions and I/O connectors for complex streaming jobs. Function Mesh help users organize a collection of Pulsar Functions and connectors and it simplifies the process of creating complex streaming jobs.
+A **connector** is a processor that ingresses or egresses events from and to **streams**. There are two types of connectors in Function Mesh:
 
-Function Mesh has the following components:
+- *Source Connector (aka Source)*: a processor that ingests events from an external data system into a **stream**.
+- *Sink Connector (aka Sink)*: a processor that egresses events from **streams** to an external data system.
 
-- Functions CRD: it is used to define Pulsar Functions, source, sink, and Function Mesh.
-- Functions controller: it is used to watch the CRDs and reconcile Pulsar Functions, Source, Sink, and Function Mesh in Kubernetes.
+The **connectors** in Function Mesh are implemented based on Pulsar IO connectors. The available Pulsar I/O connectors can be found at [StreamNative Hub](https://hub.streamnative.io/).
 
-### Features
+Figure 3 illustrates a source **connector**.
+
+![Source](./assets/source.png)
+
+Figure 3. A source connector that consumes change events from MySQL and ingests them to an output **streams**
+
+Figure 4 illustartes a sink **connector**.
+
+![Sink](./assets/sink.png)
+
+Figure 4. A sink connector that egresses events from **streams** to ElasticSearch
+
+### FunctionMesh
+
+A **FunctionMesh** (aka Mesh) is a collection of **functions** and **connectors** connected by **streams** that are orchestrated together for achieving powerful stream processing logics.
+
+All the **functions** and **connectors** in a **FunctionMesh** share the same lifecycle. They are started when a **FunctionMesh** is created and terminated when the mesh is destroyed. All the event processors are long running processes. They are auto-scaled based on the workload by the Function Mesh controller.
+
+A **FunctionMesh** can be either a Directed Acyclic Graph (DAG) or a cyclic graph of functions and/or connectors connected with streams. Figure 5 illustrates a **FunctionMesh** of a Debezium source connector, an enrichement function, and an Elastic sink connector.
+
+![Function Mesh](./assets/function-mesh.png)
+
+Figure 5. A FunctionMesh is a collection of functions and/or connectors connected with streams
+
+## API
+
+Function Mesh APIs build on existing Kubernetes APIs, so that Function Mesh resources are compatible with other Kubernetes-native resources, and can be managed by cluster administrators using existing Kubernetes tools.
+
+Common languages and frameworks that include Kubernetes-friendly tooling work smoothly with Function Mesh to reduce the time spent solving common deployment issues.
+
+The foundational concepts described above are delivered as Kubernetes Custom Resource Definitions (CRDs), which can be configured by a cluster administrator for developing event streaming applications.
+
+The available Function Mesh CRDs are:
+
+- [**Function**](/functions/function-crd.md): The `Function` resource automatically manages the whole lifecycle of a Pulsar Function.
+- [**Source**](/connectors/io-crd-config/source-crd-config.md): The `Source` resource automatically manages the whole lifecyle of a Pulsar Source connector.
+- [**Sink**](/connectors/io-crd-config/sink-crd-config.md): The `Sink` resource automatically manages the whole lifecycle of a Pulsar Sink connector.
+- [**FunctionMesh**](/function-mesh/function-mesh-crd.md): The `FunctionMesh` resource automatically manages the whole lifecycle of your event streaming application. It controls the creation of other objects to ensure that the **functions** and **connectors** defined in your mesh are running and they are connected via the defined **streams**. 
+
+A typical user workflow is illustrated in Figure 6.
+
+1. A user creates a CRD yaml to define the **function**, **connector**, or **mesh** to run.
+2. The user submits the CRD using the Kubernetes tooling.
+3. The Function Mesh controller watches the CRD and creates Kubernetes resources to run the defined **function**, **connector**, or **mesh**.
+
+The benefit of this approach is both the function metadata and function running state are directly stored and managed by Kubernetes to avoid the inconsistency problem that was seen using Pulsar's existing Kubernetes scheduler. See [Why Function Mesh](/why-function-mesh.md) for more details.
+
+![Function Mesh Workflow](./assets/function-mesh-workflow.png)
+
+Figure 6. The Function Mesh user workflow
+
+## Architecture
+
+Figure 7 illustrates the overall architecture of Function Mesh.  Function Mesh consists of two components.
+
+- **Controller**: A Kubernetes operator that watches Function Mesh CRDs and creates Kubernetes resources (i.e. StatefulSet) to run **functions**, **connectors**, and **meshes** on Kubernetes.
+- **Runner**: A Function Runner that invokes **functions** and **connectors** logic when receiving events from input streams and produces the results to output streams. It is currently implemented using **Pulsar Functions** runner.
+
+When a user creates a Function Mesh CRD, the controller receives the submitted CRD from Kubernetes API server. The controller processes the CRD and generates the corresponding Kubernetes resources. For example, when the controller processes the **Function** CRD, it creates a StatefulSet to run the function. Each pod of this function StatefulSet will launch a *Runner* to invoke the function logic.
+
+![Function Mech Architecture](./assets/function-mesh-internals.png)
+
+Figure 7. The Function Mesh architecture
+
+## Features
 
 - Be easily deployed directly on Kubernetes clusters, including [Minikube](https://github.com/kubernetes/minikube) and [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/), without special dependencies.
 - Use [CustomResourceDefinitions (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) to define Functions, source, sink, and Mesh. Using CRD makes Function Mesh naturally integrate with the Kubernetes ecosystem.
@@ -56,106 +120,10 @@ Function Mesh has the following components:
 - Allow one function to talk to multiple different Pulsar clusters, which are defined as config maps.
 - Support function registry for function package management. We are going to introduce the Pulsar registry in Pulsar 2.8.0 for function package management. Then, the function package can be reused by different functions.
 
-### Architecture
-
-Function Mesh works in the following way.
-
-1. Create Pulsar Functions, Source, Sink, and Function Mesh `.yaml` files as CRDs.
-
-2. The Functions controller receives CRDs from Kubernetes service and then it schedules the individual Pod.
-
-3. The Pod talks to Pulsar.
-
-The benefit of this approach is that both the metadata and running state are actually stored directly on the Kubernetes API server.
-
-The following diagram illustrates the architecture for Function Mesh.
-
-![Function Mech Architecture](./assets/function-mesh-architecture.png)
-
-### How to run Function Mesh
-
-Function Mesh organizes functions, sources and sinks together and manages them as a whole. The FunctionMesh CRD has a list of fields for functions, sources and sinks and you can connect them together through the `topics` field. Once the YAML file is submitted, the FunctionMesh controller will reconcile it into multiple function/source/sink resources and delegate each of them to corresponding controllers. The function/source/sink controllers reconcile each task and launch corresponding sub-components. The FunctionMesh controller collects the status of each component from the system and aggregates them in its own status field.
-
-This is a Function Mesh CRD example, which is used to submit the ElasticSearch sink connector and a Pulsar Functions to a Pulsar cluster.
-
-```yaml
-    apiVersion: compute.functionmesh.io/v1alpha1
-    kind: FunctionMesh
-    metadata:
-      name: functionmesh-sample
-    spec:
-      sinks:
-        name: sink-sample
-        image: streamnative/pulsar-io-elastic-search:2.7.1 # using connector image here
-        className: org.apache.pulsar.io.elasticsearch.ElasticSearchSink
-        replicas: 1
-        maxReplicas: 1
-        input:
-          topics:
-          - persistent://public/default/input
-          typeClassName: "[B"
-        sinkConfig:
-          elasticSearchUrl: "http://quickstart-es-http.default.svc.cluster.local:9200"
-          indexName: "my_index"
-          typeName: "doc"
-          username: "elastic"
-          password: "wJ757TmoXEd941kXm07Z2GW3"
-        pulsar:
-          pulsarConfig: "test-sink"
-        resources:
-          limits:
-            cpu: "0.2"
-            memory: 1.1G
-          requests:
-            cpu: "0.1"
-            memory: 1G
-        java:
-          jar: connectors/pulsar-io-elastic-search-2.7.1.nar # the NAR location in image
-          jarLocation: "" # leave empty since we will not download package from Pulsar Packages
-        clusterName: test-pulsar
-        autoAck: true
-      functions:
-        name: ex1
-        className: org.apache.pulsar.functions.api.examples.ExclamationFunction
-        replicas: 1
-        maxReplicas: 1
-        logTopic: persistent://public/default/logging-function-log
-        input:
-          topics:
-            - persistent://public/default/functionmesh-input-topic
-          typeClassName: java.lang.String
-        output:
-          topic: persistent://public/default/mid-topic
-          typeClassName: java.lang.String
-        pulsar:
-          pulsarConfig: "mesh-test-pulsar"
-        java:
-          jar: pulsar-functions-api-examples.jar
-          jarLocation: public/default/nlu-test-functionmesh-ex1
-        # following value must be provided if no auto-filling is enabled
-        forwardSourceMessageProperty: true
-        autoAck: true
-        resources:
-          requests:
-            cpu: "0.1"
-            memory: 1G
-          limits:
-            cpu: "0.2"
-            memory: 1.1G
-        clusterName: test-pulsar
-    ---
-    apiVersion: v1
-    kind: ConfigMap
-    metadata:
-      name: mesh-test-pulsar
-    data:
-      webServiceURL: http://test-pulsar-broker.default.svc.cluster.local:8080
-      brokerServiceURL: pulsar://test-pulsar-broker.default.svc.cluster.local:6650
-```
-
 ## Documentation
 
 - [Overview](/overview.md)
+- [Why Function Mesh?](/why-function-mesh.md)
 - [Installation](/install-function-mesh.md)
 - Functions
   - [Pulsar Functions overview](/functions/function-overview.md)
@@ -174,7 +142,7 @@ This is a Function Mesh CRD example, which is used to submit the ElasticSearch s
   - [Run Pulsar connectors](/connectors/run-connector.md)
   - [Monitor Pulsar connectors](/connectors/pulsar-io-monitoring.md)
   - [Debug Pulsar connectors](/connectors/pulsar-io-debug.md)
-- Function Mesh
+- Meshes
   - [Function Mesh overview](/function-mesh/function-mesh-overview.md)
   - [Function Mesh CRD configurations](/function-mesh/function-mesh-crd.md)
   - [Run Function Mesh](/function-mesh/run-function-mesh.md)

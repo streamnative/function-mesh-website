@@ -64,7 +64,7 @@ A **FunctionMesh** (aka Mesh) is a collection of **functions** and **connectors*
 
 All the **functions** and **connectors** in a **FunctionMesh** share the same lifecycle. They are started when a **FunctionMesh** is created and terminated when the mesh is destroyed. All the event processors are long running processes. They are auto-scaled based on the workload by the Function Mesh controller.
 
-A **FunctionMesh** can be either a directed acyclic graph (DAG) or a cyclic graph of functions and/or connectors connected with streams. Figure 5 illustrates a **FunctionMesh** of a Debezium source connector, an enrichement function, and an Elastic sink connector.
+A **FunctionMesh** can be either a Directed Acyclic Graph (DAG) or a cyclic graph of functions and/or connectors connected with streams. Figure 5 illustrates a **FunctionMesh** of a Debezium source connector, an enrichement function, and an Elastic sink connector.
 
 ![Function Mesh](./assets/function-mesh.png)
 
@@ -76,7 +76,7 @@ Function Mesh APIs build on existing Kubernetes APIs, so that Function Mesh reso
 
 Common languages and frameworks that include Kubernetes-friendly tooling work smoothly with Function Mesh to reduce the time spent solving common deployment issues.
 
-The foundational concepts described above are delivered as Kubernetes custom resource definitions (CRDs), which can be configured by a cluster administrator for developing event streaming applications.
+The foundational concepts described above are delivered as Kubernetes Custom Resource Definitions (CRDs), which can be configured by a cluster administrator for developing event streaming applications.
 
 The available Function Mesh CRDs are:
 

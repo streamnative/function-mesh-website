@@ -1,11 +1,11 @@
 ---
-title: Overview
+title: "What is Function Mesh?"
 category: overview
 id: overview
 slug: /
 ---
 
-Function Mesh is a serverless framework purpose-built for stream processing applications. It brings powerful event-streaming capabilities to your applications by orchestrating multiple [Pulsar Functions](http://pulsar.apache.org/docs/en/next/functions-overview/) and [Pulsar IO connectors](http://pulsar.apache.org/docs/en/next/io-overview/) for complex stream processing jobs.
+Function Mesh is a serverless framework purpose-built for stream processing applications. It brings powerful event-streaming capabilities to your applications by orchestrating multiple [Pulsar Functions](/functions/function-overview.md) and [Pulsar IO connectors](/connectors/pulsar-io-overview.md) for complex stream processing jobs.
 
 ## Concepts
 
@@ -21,7 +21,7 @@ Topics in a messaging system are usually used for presenting the streams. The st
 
 Figure 1 illustrates a **stream**.
 
-![Stream](./assets/stream.png)
+![Stream](./../assets/stream.png)
 
 Figure 1. A stream that connects a **function** and a **connector**
 
@@ -33,7 +33,7 @@ The **functions** in Function Mesh are implemented based on Pulsar Functions.
 
 Figure 2 illustrates a **function**.
 
-![Function](./assets/function.png)
+![Function](./../assets/function.png)
 
 Figure 2. A function that consumes messages from one or more input streams and produces the results to another output stream
 
@@ -48,13 +48,13 @@ The **connectors** in Function Mesh are implemented based on Pulsar IO connector
 
 Figure 3 illustrates a source **connector**.
 
-![Source](./assets/source.png)
+![Source](./../assets/source.png)
 
 Figure 3. A source connector that consumes change events from MySQL and ingests them to an output **streams**
 
 Figure 4 illustartes a sink **connector**.
 
-![Sink](./assets/sink.png)
+![Sink](./../assets/sink.png)
 
 Figure 4. A sink connector that egresses events from **streams** to ElasticSearch
 
@@ -66,7 +66,7 @@ All the **functions** and **connectors** in a **FunctionMesh** share the same li
 
 A **FunctionMesh** can be either a Directed Acyclic Graph (DAG) or a cyclic graph of functions and/or connectors connected with streams. Figure 5 illustrates a **FunctionMesh** of a Debezium source connector, an enrichement function, and an Elastic sink connector.
 
-![Function Mesh](./assets/function-mesh.png)
+![Function Mesh](./../assets/function-mesh.png)
 
 Figure 5. A FunctionMesh is a collection of functions and/or connectors connected with streams
 
@@ -91,9 +91,9 @@ A typical user workflow is illustrated in Figure 6.
 2. The user submits the CRD using the Kubernetes tooling.
 3. The Function Mesh controller watches the CRD and creates Kubernetes resources to run the defined **function**, **connector**, or **mesh**.
 
-The benefit of this approach is both the function metadata and function running state are directly stored and managed by Kubernetes to avoid the inconsistency problem that was seen using Pulsar's existing Kubernetes scheduler. See [Why Function Mesh](/why-function-mesh.md) for more details.
+The benefit of this approach is both the function metadata and function running state are directly stored and managed by Kubernetes to avoid the inconsistency problem that was seen using Pulsar's existing Kubernetes scheduler. See [Why Function Mesh](/overview/why-function-mesh.md) for more details.
 
-![Function Mesh Workflow](./assets/function-mesh-workflow.png)
+![Function Mesh Workflow](./../assets/function-mesh-workflow.png)
 
 Figure 6. The Function Mesh user workflow
 
@@ -106,7 +106,7 @@ Figure 7 illustrates the overall architecture of Function Mesh.  Function Mesh c
 
 When a user creates a Function Mesh CRD, the controller receives the submitted CRD from Kubernetes API server. The controller processes the CRD and generates the corresponding Kubernetes resources. For example, when the controller processes the **Function** CRD, it creates a StatefulSet to run the function. Each pod of this function StatefulSet will launch a *Runner* to invoke the function logic.
 
-![Function Mech Architecture](./assets/function-mesh-internals.png)
+![Function Mech Architecture](./../assets/function-mesh-internals.png)
 
 Figure 7. The Function Mesh architecture
 
@@ -122,8 +122,9 @@ Figure 7. The Function Mesh architecture
 
 ## Documentation
 
-- [Overview](/overview.md)
-- [Why Function Mesh?](/why-function-mesh.md)
+- Overview
+  - [What is Function Mesh](/overview/overview.md)
+  - [Why Function Mesh](/overview/why-function-mesh.md)
 - [Installation](/install-function-mesh.md)
 - Functions
   - [Pulsar Functions overview](/functions/function-overview.md)

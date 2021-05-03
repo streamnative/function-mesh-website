@@ -1,7 +1,10 @@
 module.exports = {
   docs: [
-    'overview',
-    'why-function-mesh',
+    {
+      type: 'category',
+      label: 'Overview',
+      items: ['overview/overview', 'overview/why-function-mesh'],
+    },
     'install-function-mesh',
     {
       type: 'category',

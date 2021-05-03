@@ -53,7 +53,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 2. Create the custom resource type.
 
     ```shell
-    curl -sSL https://github.com/streamnative/function-mesh/releases/download/v0.1.4/crd.yaml | kubectl apply -f -
+    curl -sSL https://github.com/streamnative/function-mesh/releases/download/v0.1.4/crd.yaml | kubectl create -f -
     ```
 
 3. Install the Function Mesh Operator.

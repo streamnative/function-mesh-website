@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Function Mesh',
-  tagline: 'Collaborating Pulsar Functions in Cloud-Native way',
+  tagline: 'The serverless framework purpose-built for event streaming applications',
   url: 'https://functionmesh.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -55,8 +55,8 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'Google Group',
-              href: 'https://groups.google.com/a/streamnative.io/g/function-mesh',
+              label: 'Email',
+              href: 'mailto:function-mesh@streamnative.io',
             }
           ],
         },

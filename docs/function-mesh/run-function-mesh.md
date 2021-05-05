@@ -13,7 +13,7 @@ This document describes how to run Function Mesh through a `.yaml` file and subm
 - Create and connect to a [Kubernetes cluster](https://kubernetes.io/).
 - Create a [Pulsar cluster](https://pulsar.apache.org/docs/en/kubernetes-helm/) in the Kubernetes cluster.
 - Install the Function Mesh Operator and CRD into Kubernetes cluster.
-- package Pulsar Functions, see [package Pulsar Functions](/functions/run-function.md#package-pulsar-functions).
+- package Pulsar Functions, see [package Pulsar Functions](/functions/run-function/run-java-function.md#package-java-functions).
 - Package Pulsar connectors. For details, see [package Pulsar connectors](/connectors/run-connector.md#package-pulsar-connectors).
 
 ## Steps
@@ -60,7 +60,7 @@ To create a Function Mesh, follow these steps.
         autoAck: true
       functions:
         name: ex1
-        className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+        className: exclamation_function.ExclamationFunction
         replicas: 1
         maxReplicas: 1
         logTopic: persistent://public/default/logging-function-log

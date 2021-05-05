@@ -128,9 +128,13 @@ helm delete function-mesh
 
 Function Mesh supports Function Mesh Worker service, which can forward requests to the Kubernetes cluster. After Function Mesh Worker service is started, users can use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
 
-> **Note**
+> **Limitations**
 >
-> Function Mesh Worker service is only available for Pulsar 2.8.0 or higher.
+> - Function Mesh Worker service is only available for Pulsar 2.8.0 or higher.
+> - The Function Mesh Worker service cannot manage the FunctionMesh CRD.
+> - You need to configure the `clusterName`, `inputTypeClassName`, `outputTypeClassName` parameters through the `custom-runtime-options` option when creating or updating Pulsar Functions or connectors.
+> - You need to manually manage the [`ConfigMap`](/functions/function-crd.md#cluster-location), such as the Pulsar service URL.
+> - The Function Mesh Worker service does not support configuring authentication parameters.
 
 To start Function Mesh Worker service, follow these steps.
 

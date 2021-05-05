@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
+    "start": "docusaurus start && node replace.js",
+    "build": "docusaurus build && node replace.js",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve"
@@ -15,8 +15,10 @@
     "@docusaurus/preset-classic": "2.0.0-alpha.66",
     "@mdx-js/react": "^1.5.8",
     "clsx": "^1.1.1",
+    "fs": "^0.0.1-security",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "replace-in-file": "^6.2.0"
   },
   "browserslist": {
     "production": [

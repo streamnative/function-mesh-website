@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Functionmesh.io',
+  title: 'Function Mesh',
   tagline: 'Collaborating Pulsar Functions in Cloud-Native way',
   url: 'https://functionmesh.io/',
   baseUrl: '/',

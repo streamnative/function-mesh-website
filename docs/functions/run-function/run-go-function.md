@@ -197,7 +197,7 @@ After packaging your Pulsar Go Functions, you can submit your Go Functions to a 
 2. Apply the YAML file to create the Go Functions.
 
     ```bash
-    kubectl apply -f /path/to/YAML/file
+    kubectl create -f /path/to/YAML/file
     ```
 
 3. Check whether the Go Functions is created successfully.

@@ -26,7 +26,7 @@ In CRDs, the `replicas` parameter is used to specify the number of Pods (Pulsar 
     kubectl scale --replicas="" pod/POD_NAME
     ```
 
-- Update the value of the `replicas` parameter in the CRD and re-submit the CRD with the `kubectl apply -f` command.
+- Update the value of the `replicas` parameter in the CRD and re-submit the CRD with the `kubectl create -f` command.
 
 ## Autoscaling
 
@@ -64,7 +64,7 @@ This example shows how to auto-scale the number of Pods running Pulsar Functions
 2. Apply the configurations.
 
     ```bash
-    kubectl apply -f path/to/source-sample.yaml
+    kubectl create -f path/to/source-sample.yaml
     ```
 
 ### Auto-scale Pulsar connectors
@@ -106,5 +106,5 @@ This example shows how to auto-scale the number of Pods for running a Pulsar sou
 2. Apply the configurations.
 
     ```bash
-    kubectl apply -f path/to/source-sample.yaml
+    kubectl create -f path/to/source-sample.yaml
     ```

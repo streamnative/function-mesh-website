@@ -57,7 +57,7 @@ For Pulsar built-in connectors and StreamNative-managed connectors, you can crea
 2. Apply the YAML file to create the sink.
 
     ```bash
-    kubectl apply -f /path/to/sink-sample.yaml
+    kubectl create -f /path/to/sink-sample.yaml
     ```
 
 3. Check whether the sink is created successfully.
@@ -260,7 +260,7 @@ For self-built connectors, you can create them based on how you package them.
 2. Apply the YAML file to create the sink connector.
 
     ```bash
-    kubectl apply -f /path/to/sink-sample.yaml
+    kubectl create -f /path/to/sink-sample.yaml
     ```
 
 3. Check whether the sink connector is created successfully.

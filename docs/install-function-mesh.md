@@ -105,7 +105,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
     1. Submit a sample CRD to the Pulsar cluster.
 
         ```bash
-        kubectl apply -f config/samples/compute_v1alpha1_function.yaml
+        kubectl create -f config/samples/compute_v1alpha1_function.yaml
         ```
 
     2. Verify your submission with the `kubectl` command, and you can see that the Function pod is running.

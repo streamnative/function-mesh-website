@@ -190,7 +190,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
 2. Apply the YAML file to create the Python Functions.
 
     ```bash
-    kubectl apply -f /path/to/YAML/file
+    kubectl create -f /path/to/YAML/file
     ```
 
 3. Check whether the Python Functions is created successfully.

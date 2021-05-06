@@ -100,7 +100,7 @@ To create a Function Mesh, follow these steps.
 2. Apply the YAML file to create the Function Mesh.
 
     ```shell
-    kubectl apply -f /path/to/functionmesh-sample.yaml
+    kubectl create -f /path/to/functionmesh-sample.yaml
     ```
 
 3. Check whether the Function Mesh is created successfully.

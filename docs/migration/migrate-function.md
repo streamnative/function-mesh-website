@@ -89,8 +89,8 @@ This document describes how to build the tool from the source code and how to us
           # other function config
         ```
 
-After the YAML file is generated, you can use the `kubectl apply -f` command to create the function.
+After the YAML file is generated, you can use the `kubectl create -f` command to create the function.
 
 ```shell
-kubectl apply -f /path/to/function-sample.yaml
+kubectl create -f /path/to/function-sample.yaml
 ```

@@ -1,7 +1,6 @@
 const replace = require('replace-in-file');
 const fs = require('fs')
 const CWD = process.cwd()
-const nextDocsDir = `${CWD}/docs`
 const docsDir = `${CWD}/versioned_docs`
 
 function getVersions() {
@@ -17,6 +16,7 @@ function getVersions() {
 function doReplace(options) {
   replace(options)
     .then(changes => {
+      console.log(changes)
       if (options.dry) {
         console.log('Modified files:');
         console.log(changes.join('\n'))
@@ -31,11 +31,7 @@ const versions = getVersions();
 const latestVersion = versions[0];
 
 for (v of versions) {
-  let file = ''
-  file = `${docsDir}/version-${v}`
-  if (v == latestVersion) {
-    file = nextDocsDir
-  }
+  const file = `${docsDir}/version-${v}`
   const options = {
     files: [
       `${file}/*.md`,

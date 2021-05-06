@@ -3,7 +3,7 @@ module.exports = {
   tagline: 'The serverless framework purpose-built for event streaming applications',
   url: 'https://functionmesh.io/',
   baseUrl: '/',
-  onBrokenLinks: 'ignore',
+  onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'function-mesh', // Usually your GitHub org/user name.
   projectName: 'functionmesh.io/', // Usually your repo name.

@@ -50,7 +50,7 @@ The following diagram illustrates the architecture for Function Mesh.
 - Functions
   - [Pulsar Functions overview](/functions/function-overview.md)
   - [Pulsar Functions CRD configurations](/functions/function-crd.md)
-  - [Run Pulsar Functions](/functions/run-function.md)
+  - [Run Pulsar Functions](/functions/run-function/run-java-function.md)
   - [Monitor Pulsar Functions](/functions/function-monitor.md)
   - [Debug Pulsar Functions](/functions/function-debug.md)
 - Connectors

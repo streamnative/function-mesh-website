@@ -10,7 +10,6 @@ function getVersions() {
 function doReplace(options) {
   replace(options)
     .then(changes => {
-      console.log(changes)
       if (options.dry) {
         console.log('Modified files:');
         console.log(changes.join('\n'))
@@ -22,7 +21,7 @@ function doReplace(options) {
 }
 
 const versions = getVersions();
-const latestVersion = versions[0];
+// const latestVersion = versions[0];
 
 for (v of versions) {
   const file = `${docsDir}/version-${v}`

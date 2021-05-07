@@ -4,13 +4,7 @@ const CWD = process.cwd()
 const docsDir = `${CWD}/versioned_docs`
 
 function getVersions() {
-  try {
-    return JSON.parse(require('fs').readFileSync(`${CWD}/versions.json`, 'utf8'));
-  } catch (error) {
-    //console.error(error)
-    console.error('no versions found defaulting to 2.1.0')
-  }
-  return ['1.1.0']
+  return JSON.parse(require('fs').readFileSync(`${CWD}/versions.json`, 'utf8'));
 }
 
 function doReplace(options) {

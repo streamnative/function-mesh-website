@@ -1,11 +1,11 @@
 {
   "name": "function-mesh-website",
-  "version": "0.0.0",
+  "version": "0.1.4",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start && node replace.js",
-    "build": "docusaurus build && node replace.js",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve"

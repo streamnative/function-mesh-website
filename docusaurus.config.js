@@ -19,10 +19,6 @@ module.exports = {
       },
       items: [
         {
-          type: 'docsVersionDropdown',
-          position: 'left',
-        },
-        {
           to: 'docs/',
           activeBasePath: 'docs',
           label: 'Documentation',

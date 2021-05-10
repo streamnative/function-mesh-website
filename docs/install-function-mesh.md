@@ -25,7 +25,7 @@ Before installing Function Mesh, ensure to perform the following operations.
 This example shows how to use the `install.sh` command to install Function Mesh on your laptop (Linux or Mac OS), including a local [kind](https://kind.sigs.k8s.io/) cluster, all the Custom Resource Definitions (CRDs), required service account configuration, and Function Mesh components.
 
 ```shell
-curl -sSL https://github.com/streamnative/function-mesh/releases/download/v0.1.2/install.sh | bash
+curl -sSL https://github.com/streamnative/function-mesh/releases/download/v0.1.4/install.sh | bash
 ```
 
 After executing the above command, you should be able to see the output indicating that the Function Mesh pod is up and running. For details, see [verify installation](#verify-installation).
@@ -53,7 +53,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 2. Create the custom resource type.
 
     ```shell
-    curl -sSL https://github.com/streamnative/function-mesh/releases/download/v0.1.2/crd.yaml | kubectl apply -f -
+    curl -sSL https://github.com/streamnative/function-mesh/releases/download/v0.1.4/crd.yaml | kubectl create -f -
     ```
 
 3. Install the Function Mesh Operator.
@@ -128,9 +128,13 @@ helm delete function-mesh
 
 Function Mesh supports Function Mesh Worker service, which can forward requests to the Kubernetes cluster. After Function Mesh Worker service is started, users can use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
 
-> **Note**
+> **Limitations**
 >
-> Function Mesh Worker service is only available for Pulsar 2.8.0 or higher.
+> - Function Mesh Worker service is only available for Pulsar 2.8.0 or higher.
+> - The Function Mesh Worker service cannot manage the FunctionMesh CRD.
+> - You need to configure the `clusterName`, `inputTypeClassName`, `outputTypeClassName` parameters through the `custom-runtime-options` option when creating or updating Pulsar Functions or connectors.
+> - You need to manually manage the [`ConfigMap`](/functions/function-crd.md#cluster-location), such as the Pulsar service URL.
+> - The Function Mesh Worker service does not support configuring authentication parameters.
 
 To start Function Mesh Worker service, follow these steps.
 

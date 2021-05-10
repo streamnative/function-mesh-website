@@ -1,6 +1,6 @@
 {
   "name": "function-mesh-website",
-  "version": "0.1.4",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -15,10 +15,8 @@
     "@docusaurus/preset-classic": "2.0.0-alpha.66",
     "@mdx-js/react": "^1.5.8",
     "clsx": "^1.1.1",
-    "fs": "^0.0.1-security",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "replace-in-file": "^6.2.0"
+    "react-dom": "^16.8.4"
   },
   "browserslist": {
     "production": [

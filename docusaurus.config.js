@@ -19,6 +19,10 @@ module.exports = {
       },
       items: [
         {
+          type: 'docsVersionDropdown',
+          position: 'left',
+        },
+        {
           to: 'docs/',
           activeBasePath: 'docs',
           label: 'Documentation',
@@ -74,12 +78,10 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          id: 'product',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
             'https://github.com/streamnative/function-mesh-website/tree/main',
-            
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

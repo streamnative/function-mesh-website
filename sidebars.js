@@ -54,5 +54,10 @@ module.exports = {
       label: 'Migration',
       items: ['migration/migrate-function'],
     },
+    {
+      type: 'category',
+      label: 'Releases',
+      items: ['releases/release-note-0-1-4'],
+    },
   ],
 }

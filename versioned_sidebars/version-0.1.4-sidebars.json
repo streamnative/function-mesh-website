@@ -132,6 +132,17 @@
           "id": "version-0.1.4/migration/migrate-function"
         }
       ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Releases",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.1.4/releases/release-note-0-1-4"
+        }
+      ]
     }
   ]
 }

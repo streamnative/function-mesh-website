@@ -150,3 +150,5 @@ Figure 7. The Function Mesh architecture
 - [Scaling](/scaling.md)
 - Migration
   - [Migrate Pulsar Functions](/migration/migrate-function.md)
+- Releases
+  - [Release notes v0.1.4](/releases/release-note-0-1-4.md)

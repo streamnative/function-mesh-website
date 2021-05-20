@@ -42,7 +42,7 @@
   font-weight: 500;
 }
 
-.features {
+.oneSections {
   display: flex;
   align-items: center;
   padding: 2rem 0;
@@ -51,4 +51,39 @@
 
 .featureImage {
   height: 200px;
+}
+
+
+.sectionTwo {
+  margin-bottom: 4.5rem;
+}
+
+.sectionTwo:last-child {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .sectionTwo {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.sectionTwoReverse {
+  flex-direction: row-reverse;
+}
+
+.sectionTwoImage {
+  height: 150px;
+}
+
+@media screen and (max-width: 768px) {
+  .sectionTwoImage {
+    height: 150px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.sectionTwoDesc {
+  display: flex !important;
+  align-items: center;
 }

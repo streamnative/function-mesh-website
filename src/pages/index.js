@@ -48,7 +48,7 @@ const oneSections = [
 const twoSections = [
   {
     title: <>About Apache Pulsar</>,
-    imgUrl: "img/about_pulsar.png",
+    imgUrl: "img/about_pulsar.svg",
     description: (
       <>
         <p>
@@ -81,7 +81,7 @@ const twoSections = [
   },
   {
     title: <>About Pulsar Functions</>,
-    imgUrl: "img/pulsar_functions.png",
+    imgUrl: "img/pulsar_functions.svg",
     description: (
       <>
         <p>
@@ -115,7 +115,7 @@ const twoSections = [
   },
   {
     title: <>What is Function Mesh?</>,
-    imgUrl: "img/functions_mesh.png",
+    imgUrl: "img/functions_mesh.svg",
     description: (
       <>
         <ul>
@@ -129,14 +129,7 @@ const twoSections = [
             I/O connectors for complex streaming jobs in a simple way.
           </li>
         </ul>
-      </>
-    ),
-  },
-  {
-    title: <>Why use Function Mesh?</>,
-    imgUrl: "img/functions_mesh.png",
-    description: (
-      <>
+        <h3>Why use Function Mesh?</h3>
         <ul>
           <li>
             Streamline the management of Pulsar Functions and connectors,
@@ -162,7 +155,6 @@ const twoSections = [
         </ul>
       </>
     ),
-    reverse: true,
   },
 ];
 
@@ -172,7 +164,7 @@ function SectionOne({ imageUrl, title, description }) {
     <div className={clsx("col col--4", styles.feature)}>
       {imgUrl && (
         <div className="text--center">
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
+          <img className={styles.sectionOneImage} src={imgUrl} alt={title} />
         </div>
       )}
       <h3>{title}</h3>

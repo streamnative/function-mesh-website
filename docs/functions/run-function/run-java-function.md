@@ -184,6 +184,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
           pulsar:
             pulsarConfig: "test-pulsar"
           java:
+            extraDependenciesDir: random-dir/
             jar: my-function.jar # the package will download as this filename.
             jarLocation: function://my-tenant/my-ns/my-function@0.1 # function package URL
         ```
@@ -214,6 +215,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
         pulsar:
           pulsarConfig: "test-pulsar"
         java:
+          extraDependenciesDir: random-dir/
           jar: /pulsar/example-function.jar # the package location in image
           jarLocation: "" # leave empty since we will not download package from Pulsar Packages
       ```

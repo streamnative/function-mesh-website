@@ -54,6 +54,7 @@ To create a Function Mesh, follow these steps.
             cpu: "0.1"
             memory: 1G
         java:
+          extraDependenciesDir: random-dir/
           jar: connectors/pulsar-io-elastic-search-2.7.1.nar # the NAR location in image
           jarLocation: "" # leave empty since we will not download package from Pulsar Packages
         clusterName: test-pulsar
@@ -74,6 +75,7 @@ To create a Function Mesh, follow these steps.
         pulsar:
           pulsarConfig: "mesh-test-pulsar"
         java:
+          extraDependenciesDir: random-dir/
           jar: pulsar-functions-api-examples.jar
           jarLocation: public/default/nlu-test-functionmesh-ex1
         # following value must be provided if no auto-filling is enabled

@@ -62,6 +62,12 @@ To use a secret in an environment variable in a Pod, follow these steps.
 2. Modify your Pod definition in each container, which you want to consume the value of a secret key, to add an environment variable for each secret key that you want to consume.
 3. Modify your image and/or command line so that the program looks for values in the specified environment variables.
 
+Pulsar clusters supports using TLS or other authentication plugin for authentication.
+
+| Field | Description |
+| --- | --- |The authentication secret contains the `clientAuthenticationPlugin` and `clientAuthenticationParametersPath` fields.|
+| `tlsSecret` | The TLS secret contains the `use_tls`, `tls_allow_insecure`, `hostname_verification_enabled`, `tls_trust_cert_path` fields.|
+
 ## Packages
 
 Function Mesh supports running Pulsar connectors in Java.
@@ -69,6 +75,7 @@ Function Mesh supports running Pulsar connectors in Java.
 | Field | Description |
 | --- | --- |
 | `jarLocation` | Path to the JAR file for the connector. |
+| `extraDependenciesDir` | It specifies one or more dependent directories for the JAR package. |
 
 ## Cluster location
 

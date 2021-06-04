@@ -107,7 +107,7 @@ Function Mesh supports running Pulsar Functions in Java, Python and Go. This tab
 | `jarLocation` | Path to the JAR file for the function. It is only available for Pulsar functions written in Java. |
 | `goLocation` | Path to the JAR file for the function. It is only available for Pulsar functions written in Go.|
 | `pyLocation` | Path to the JAR file for the function. It is only available for Pulsar functions written in Python.|
-| `extraDependenciesDir` | It specifies one or more dependent directories for the JAR package. |
+| `extraDependenciesDir` | It specifies the dependent directory for the JAR package. |
 
 ## Cluster location
 

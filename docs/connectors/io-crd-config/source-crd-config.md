@@ -75,7 +75,7 @@ Function Mesh supports running Pulsar connectors in Java.
 | Field | Description |
 | --- | --- |
 | `jarLocation` | Path to the JAR file for the connector. |
-| `extraDependenciesDir` | It specifies one or more dependent directories for the JAR package. |
+| `extraDependenciesDir` | It specifies the dependent directory for the JAR package. |
 
 ## Cluster location
 

@@ -64,9 +64,20 @@ To use a secret in an environment variable in a Pod, follow these steps.
 
 Pulsar clusters supports using TLS or other authentication plugin for authentication.
 
-| Field | Description |
-| --- | --- |The authentication secret contains the `clientAuthenticationPlugin` and `clientAuthenticationParametersPath` fields.|
-| `tlsSecret` | The TLS secret contains the `use_tls`, `tls_allow_insecure`, `hostname_verification_enabled`, `tls_trust_cert_path` fields.|
+- TLS Secret
+
+    | Field | Description |
+    | --- | --- |
+    | tlsAllowInsecureConnection | Allow insecure TLS connection. |
+    | tlsHostnameVerificationEnable | Enable hostname verification. |
+    | tlsTrustCertsFilePath | The path of the TLS trust certificate file. |
+
+- Auth Secret
+
+    | Field | Description |
+    | --- | --- |
+    | clientAuthenticationPlugin | Client authentication plugin. |
+    | clientAuthenticationParameters | Client authentication parameters. |
 
 ## Packages
 

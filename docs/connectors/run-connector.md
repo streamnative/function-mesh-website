@@ -48,6 +48,7 @@ For Pulsar built-in connectors and StreamNative-managed connectors, you can crea
         cpu: "0.1"
         memory: 1G
       java:
+        extraDependenciesDir: random-dir/
         jar: connectors/pulsar-io-elastic-search-2.7.1.nar # the NAR location in image
         jarLocation: "" # leave empty since we will not download package from Pulsar Packages
       clusterName: test-pulsar
@@ -225,6 +226,7 @@ For self-built connectors, you can create them based on how you package them.
         pulsar:
           pulsarConfig: "test-pulsar"
         java:
+          extraDependenciesDir: random-dir/
           jar: /pulsar/connectors/pulsar-io-my-sink.nar # the package will download as this filename.
           jarLocation: sink://public/default/my-sink@1.0 # connector package URL
        ```
@@ -253,6 +255,7 @@ For self-built connectors, you can create them based on how you package them.
         pulsar:
           pulsarConfig: "test-pulsar"
         java:
+          extraDependenciesDir: random-dir/
           jar: /pulsar/connectors/pulsar-io-my-sink.nar # the NAR location in image.
           jarLocation: "" # leave empty since we will not download package from Pulsar Packages
      ```

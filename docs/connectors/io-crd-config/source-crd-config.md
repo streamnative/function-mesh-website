@@ -32,7 +32,7 @@ The base runner is an image base for other runners. The base runner is located a
 
 Function Mesh uses runner images as images of Pulsar connectors. Each runner image only contains necessary tool-chains and libraries for specified runtime.
 
-Pulsar connectors supports using the Java runner images as their images. The Java runner is based on the base runner and contains the Java function instance to run Java functions or connectors. The `streamnative/pulsar-functions-java-runner` Java runner is stored at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-java-runner) and is automatically updated to align with Apache Pulsar release.
+Pulsar connectors support using the Java runner images as their images. The Java runner is based on the base runner and contains the Java function instance to run Java functions or connectors. The `streamnative/pulsar-functions-java-runner` Java runner is stored at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-java-runner) and is automatically updated to align with Apache Pulsar release.
 
 ## Output
 
@@ -62,6 +62,23 @@ To use a secret in an environment variable in a Pod, follow these steps.
 2. Modify your Pod definition in each container, which you want to consume the value of a secret key, to add an environment variable for each secret key that you want to consume.
 3. Modify your image and/or command line so that the program looks for values in the specified environment variables.
 
+Pulsar clusters support using TLS or other authentication plugin for authentication.
+
+- TLS Secret
+
+    | Field | Description |
+    | --- | --- |
+    | tlsAllowInsecureConnection | Allow insecure TLS connection. |
+    | tlsHostnameVerificationEnable | Enable hostname verification. |
+    | tlsTrustCertsFilePath | The path of the TLS trust certificate file. |
+
+- Auth Secret
+
+    | Field | Description |
+    | --- | --- |
+    | clientAuthenticationPlugin | Client authentication plugin. |
+    | clientAuthenticationParameters | Client authentication parameters. |
+
 ## Packages
 
 Function Mesh supports running Pulsar connectors in Java.
@@ -69,6 +86,7 @@ Function Mesh supports running Pulsar connectors in Java.
 | Field | Description |
 | --- | --- |
 | `jarLocation` | Path to the JAR file for the connector. |
+| `extraDependenciesDir` | It specifies the dependent directory for the JAR package. |
 
 ## Cluster location
 

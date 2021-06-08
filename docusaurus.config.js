@@ -12,7 +12,6 @@ module.exports = {
       disableSwitch: true,
     },
     navbar: {
-      title: 'Function Mesh',
       logo: {
         alt: 'FUnction Mesh Logo',
         src: 'img/logo.svg',

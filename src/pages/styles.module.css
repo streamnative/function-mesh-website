@@ -42,13 +42,49 @@
   font-weight: 500;
 }
 
-.features {
+.oneSections {
   display: flex;
   align-items: center;
   padding: 2rem 0;
   width: 100%;
 }
 
-.featureImage {
+.sectionOneImage {
   height: 200px;
+}
+
+
+.sectionTwo {
+  margin-bottom: 4.5rem;
+  align-items: center;
+}
+
+.sectionTwo:last-child {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .sectionTwo {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.sectionTwoReverse {
+  flex-direction: row-reverse;
+}
+
+.sectionTwoImage {
+  height: 256px;
+}
+
+@media screen and (max-width: 768px) {
+  .sectionTwoImage {
+    height: 192px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.sectionTwoDesc {
+  display: flex !important;
+  align-items: center;
 }

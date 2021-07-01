@@ -72,7 +72,7 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} StreamNative, Inc.`,
     },
     algolia: {
-      apiKey: 'ca1e9f711be3a2049d1a24bdc0ca4d68',
+      apiKey: '06b1278e604c2d3e61ac0410591143ed',
       indexName: 'functionmesh',
       contextualSearch: true
     }

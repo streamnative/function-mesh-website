@@ -47,7 +47,7 @@ module.exports = {
             {
               label: 'Configuration Guide',
               to: 'https://functionmesh.io/docs/function-mesh/run-function-mesh',
-            },            
+            },
           ],
         },
         {
@@ -71,6 +71,11 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} StreamNative, Inc.`,
     },
+    algolia: {
+      apiKey: '06b1278e604c2d3e61ac0410591143ed',
+      indexName: 'functionmesh',
+      contextualSearch: false
+    }
   },
   presets: [
     [

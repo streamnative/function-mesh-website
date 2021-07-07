@@ -74,7 +74,7 @@ module.exports = {
     algolia: {
       apiKey: '06b1278e604c2d3e61ac0410591143ed',
       indexName: 'functionmesh',
-      contextualSearch: true
+      contextualSearch: false
     }
   },
   presets: [

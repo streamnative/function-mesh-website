@@ -58,7 +58,6 @@ This is a Function Mesh CRD example, which is used to submit the ElasticSearch s
         className: org.apache.pulsar.functions.api.examples.ExclamationFunction
         replicas: 1
         maxReplicas: 1
-        logTopic: persistent://public/default/logging-function-log
         input:
           topics:
             - persistent://public/default/functionmesh-input-topic

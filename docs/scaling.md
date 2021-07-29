@@ -50,7 +50,6 @@ This example shows how to auto-scale the number of Pods running Pulsar Functions
       MaxPendingAsyncRequests: 1000
       replicas: 1
       maxReplicas: 8
-      logTopic: persistent://public/default/logging-function-logs
       input:
         topics:
         - persistent://public/default/java-function-input-topic

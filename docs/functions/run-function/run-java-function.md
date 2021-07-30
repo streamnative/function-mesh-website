@@ -173,7 +173,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
           MaxPendingAsyncRequests: 1000
           replicas: 1
           maxReplicas: 5
-          logTopic: persistent://public/default/logging-function-log
+          logTopic: persistent://public/default/logging-function-logs
           input:
             topics:
             - persistent://public/default/java-function-input-topic
@@ -204,7 +204,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
         MaxPendingAsyncRequests: 1000
         replicas: 1
         maxReplicas: 5
-        logTopic: persistent://public/default/logging-function-log
+        logTopic: persistent://public/default/logging-function-logs
         input:
           topics:
           - persistent://public/default/java-function-input-topic

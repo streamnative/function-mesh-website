@@ -21,6 +21,7 @@ This table lists Pulsar Function configurations.
 | `Timeout` | The message timeout in milliseconds. |
 | `DeadLetterTopic` | The topic where all messages that were not processed successfully are sent. This parameter is not supported in Python Functions. |
 | `FuncConfig` | The map to a ConfigMap specifying the configuration of a Pulsar function. |
+| `LogTopic` | The topic to which the logs of a Pulsar Function are produced. |
 | `AutoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
 | `MaxMessageRetry` | How many times to process a message before giving up. |
 | `ProcessingGuarantee` | The processing guarantees (delivery semantics) applied to the function. Available values: `ATLEAST_ONCE`, `ATMOST_ONCE`, `EFFECTIVELY_ONCE`.|

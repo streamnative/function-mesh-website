@@ -1,0 +1,148 @@
+{
+  "version-0.1.6/docs": [
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Overview",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.1.6/overview/overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.1.6/overview/why-function-mesh"
+        }
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "version-0.1.6/install-function-mesh"
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Functions",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.1.6/functions/function-overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.1.6/functions/function-crd"
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Run Pulsar Functions",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-0.1.6/functions/run-function/run-java-function"
+            },
+            {
+              "type": "doc",
+              "id": "version-0.1.6/functions/run-function/run-python-function"
+            },
+            {
+              "type": "doc",
+              "id": "version-0.1.6/functions/run-function/run-go-function"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "version-0.1.6/functions/function-monitor"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.1.6/functions/function-debug"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Connectors",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.1.6/connectors/pulsar-io-overview"
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Pulsar connector CRD configurations",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-0.1.6/connectors/io-crd-config/source-crd-config"
+            },
+            {
+              "type": "doc",
+              "id": "version-0.1.6/connectors/io-crd-config/sink-crd-config"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "version-0.1.6/connectors/run-connector"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.1.6/connectors/pulsar-io-monitoring"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.1.6/connectors/pulsar-io-debug"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Meshes",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.1.6/function-mesh/function-mesh-overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.1.6/function-mesh/function-mesh-crd"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.1.6/function-mesh/run-function-mesh"
+        }
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "version-0.1.6/scaling"
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Migration",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.1.6/migration/migrate-function"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Releases",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.1.6/releases/release-note-0-1-4"
+        }
+      ]
+    }
+  ]
+}

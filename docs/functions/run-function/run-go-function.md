@@ -143,6 +143,7 @@ After packaging your Pulsar Go Functions, you can submit your Go Functions to a 
           MaxPendingAsyncRequests: 1000
           replicas: 1
           maxReplicas: 5
+          logTopic: persistent://public/default/logging-function-log
           input:
             topics:
             - persistent://public/default/go-function-input-topic
@@ -175,6 +176,7 @@ After packaging your Pulsar Go Functions, you can submit your Go Functions to a 
         MaxPendingAsyncRequests: 1000
         replicas: 1
         maxReplicas: 5
+        logTopic: persistent://public/default/logging-function-log
         input:
           topics:
           - persistent://public/default/go-function-input-topic

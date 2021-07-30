@@ -66,6 +66,7 @@ As shown in the example above, you can get the logger via `context.getLogger()` 
       MaxPendingAsyncRequests: 1000
       replicas: 1
       maxReplicas: 5
+      logTopic: persistent://public/default/logging-function-log
       input:
         topics:
         - persistent://public/default/java-function-input-topic

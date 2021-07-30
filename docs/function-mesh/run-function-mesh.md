@@ -64,6 +64,7 @@ To create a Function Mesh, follow these steps.
         className: exclamation_function.ExclamationFunction
         replicas: 1
         maxReplicas: 1
+        logTopic: persistent://public/default/logging-function-log
         input:
           topics:
             - persistent://public/default/functionmesh-input-topic

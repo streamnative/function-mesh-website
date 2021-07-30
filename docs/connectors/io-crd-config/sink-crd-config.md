@@ -14,13 +14,12 @@ This table lists sink configurations.
 | `name` | The name of a sink connector. |
 | `classname` | The class name of a sink connector. |
 | `tenant` | The tenant of a sink connector. |
-| `Replicas`| The number of Pulsar instances that you want to run this sink connector. |
+| `Replicas`| The number of instances that you want to run this sink connector. By default, the `Replicas` is set to `1`. |
 | `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this sink connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the sink controller automatically scales the sink connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
-| `LogTopic` | The topic to which the logs of a sink connector are produced. |
 | `SinkConfig` | The map to a ConfigMap specifying the configuration of a sink connector. |
 | `Timeout` | The message timeout in milliseconds. |
 | `NegativeAckRedeliveryDelayMs`| The number of redelivered messages due to negative acknowledgement. |
-| `AutoAck` | Whether or not the framework acknowledges messages automatically. |
+| `AutoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
 | `MaxMessageRetry` | How many times to process a message before giving up. |
 | `ProcessingGuarantee` | The processing guarantees (delivery semantics) applied to the sink connector. Available values: `ATLEAST_ONCE`, `ATMOST_ONCE`, `EFFECTIVELY_ONCE`.|
 | `RetainOrdering` | The sink connector consumes and processes messages in order. |
@@ -120,5 +119,6 @@ Function Mesh supports customizing the Pod running Pulsar connectors. This table
 | `TerminationGracePeriodSeconds` | It is the amount of time that Kubernetes gives for a Pod before terminating it. |
 | `Volumes` | It is a list of volumes that can be mounted by containers belonging to a Pod. |
 | `ImagePullSecrets` | It is an optional list of references to secrets in the same namespace for pulling any of the images used by a Pod. |
+| `ServiceAccountName` | Specify the name of the service account which is used to run Pulsar Functions or connectors in the Function Mesh Worker service.|
 | `InitContainers` | The initialization containers belonging to a Pod. A typical use case could be using an initialization container to download a remote JAR to a local path. |
 | `Sidecars` | Sidecar containers run together with the main function container in a Pod. |

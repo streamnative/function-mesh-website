@@ -14,9 +14,8 @@ This table lists source configurations.
 | `name` | The name of a source connector. |
 | `classname` | The class name of a source connector. |
 | `tenant` | The tenant of a source connector. |
-| `Replicas`| The number of Pulsar instances that you want to run this source connector. |
+| `Replicas`| The number of instances that you want to run this source connector. |
 | `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this source connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the source controller automatically scales the source connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
-| `LogTopic` | The topic to which the logs of a source connector are produced. |
 | `SourceConfig` | The map to a ConfigMap specifying the configuration of a source connector. |
 | `ProcessingGuarantee` | The processing guarantees (delivery semantics) applied to the source connector. Available values: `ATLEAST_ONCE`, `ATMOST_ONCE`, `EFFECTIVELY_ONCE`.|
 
@@ -112,5 +111,6 @@ Function Mesh supports customizing the Pod running connectors. This table lists 
 | `TerminationGracePeriodSeconds` | It is the amount of time that Kubernetes gives for a Pod before terminating it. |
 | `Volumes` | It is a list of volumes that can be mounted by containers belonging to a Pod. |
 | `ImagePullSecrets` | It is an optional list of references to secrets in the same namespace for pulling any of the images used by a Pod. |
+| `ServiceAccountName` | Specify the name of the service account which is used to run Pulsar Functions or connectors in the Function Mesh Worker service.|
 | `InitContainers` | Initialization containers belonging to a Pod. A typical use case could be using an Initialization container to download a remote JAR to a local path. |
 | `Sidecars` | Sidecar containers run together with the main function container in a Pod. |

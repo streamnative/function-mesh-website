@@ -14,13 +14,12 @@ This table lists sink configurations.
 | `name` | The name of a sink connector. |
 | `classname` | The class name of a sink connector. |
 | `tenant` | The tenant of a sink connector. |
-| `Replicas`| The number of Pulsar instances that you want to run this sink connector. |
+| `Replicas`| The number of instances that you want to run this sink connector. By default, the `Replicas` is set to `1`. |
 | `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this sink connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the sink controller automatically scales the sink connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
-| `LogTopic` | The topic to which the logs of a sink connector are produced. |
 | `SinkConfig` | The map to a ConfigMap specifying the configuration of a sink connector. |
 | `Timeout` | The message timeout in milliseconds. |
 | `NegativeAckRedeliveryDelayMs`| The number of redelivered messages due to negative acknowledgement. |
-| `AutoAck` | Whether or not the framework acknowledges messages automatically. |
+| `AutoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`. |
 | `MaxMessageRetry` | How many times to process a message before giving up. |
 | `ProcessingGuarantee` | The processing guarantees (delivery semantics) applied to the sink connector. Available values: `ATLEAST_ONCE`, `ATMOST_ONCE`, `EFFECTIVELY_ONCE`.|
 | `RetainOrdering` | The sink connector consumes and processes messages in order. |

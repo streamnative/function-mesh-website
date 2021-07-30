@@ -16,13 +16,13 @@ This table lists Pulsar Function configurations.
 | `classname` | The class name of a Pulsar Function. |
 | `tenant` | The tenant of a Pulsar Function. |
 | `namespace` | The namespace of a Pulsar Function. |
-| `Replicas`| The number of Pulsar instances that you want to run this Pulsar Function. |
+| `Replicas`| The number of instances that you want to run this Pulsar Function. By default, the `Replicas` is set to `1`. |
 | `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this Pulsar Function. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller automatically scales the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
 | `Timeout` | The message timeout in milliseconds. |
 | `DeadLetterTopic` | The topic where all messages that were not processed successfully are sent. This parameter is not supported in Python Functions. |
 | `FuncConfig` | The map to a ConfigMap specifying the configuration of a Pulsar function. |
 | `LogTopic` | The topic to which the logs of a Pulsar Function are produced. |
-| `AutoAck` | Whether or not the framework acknowledges messages automatically. |
+| `AutoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`. |
 | `MaxMessageRetry` | How many times to process a message before giving up. |
 | `ProcessingGuarantee` | The processing guarantees (delivery semantics) applied to the function. Available values: `ATLEAST_ONCE`, `ATMOST_ONCE`, `EFFECTIVELY_ONCE`.|
 | `RetainOrdering` | Function consumes and processes messages in order. |

@@ -215,7 +215,6 @@ For self-built connectors, you can create them based on how you package them.
         MaxPendingAsyncRequests: 1000
         replicas: 1
         maxReplicas: 1
-        logTopic: persistent://public/default/logging-connector-logs
         input:
           topics:
           - persistent://public/default/input
@@ -243,7 +242,6 @@ For self-built connectors, you can create them based on how you package them.
         MaxPendingAsyncRequests: 1000
         replicas: 1
         maxReplicas: 1
-        logTopic: persistent://public/default/logging-connector-logs
         input:
           topics:
           - persistent://public/default/input

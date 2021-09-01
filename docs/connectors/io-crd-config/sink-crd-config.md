@@ -14,9 +14,10 @@ This table lists sink configurations.
 | `name` | The name of a sink connector. |
 | `classname` | The class name of a sink connector. |
 | `tenant` | The tenant of a sink connector. |
+| `namespace` | The Pulsar namespace of a sink connector. |
 | `Replicas`| The number of instances that you want to run this sink connector. By default, the `Replicas` is set to `1`. |
 | `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this sink connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the sink controller automatically scales the sink connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
-| `SinkConfig` | The map to a ConfigMap specifying the configuration of a sink connector. |
+| `SinkConfig` | The sink connector configurations in YAML format.|
 | `Timeout` | The message timeout in milliseconds. |
 | `NegativeAckRedeliveryDelayMs`| The number of redelivered messages due to negative acknowledgement. |
 | `AutoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
@@ -122,3 +123,6 @@ Function Mesh supports customizing the Pod running Pulsar connectors. This table
 | `ServiceAccountName` | Specify the name of the service account which is used to run Pulsar Functions or connectors in the Function Mesh Worker service.|
 | `InitContainers` | The initialization containers belonging to a Pod. A typical use case could be using an initialization container to download a remote JAR to a local path. |
 | `Sidecars` | Sidecar containers run together with the main function container in a Pod. |
+| `BuiltinAutoscaler` | Specify the built-in autoscaling rules. <br> - CPU-based autoscaling: auto-scale the number of Pods based on the CPU usage (80%, 50%, or 20%). <br>- Memory-based autoscaling: auto-scale the number of Pods based on the memory usage (80%, 50%, or 20%). <br> If you configure the `BuiltinAutoscaler` field, you do not need to configure the `AutoScalingMetrics` and `AutoScalingBehavior` options and vice versa.|
+| `AutoScalingMetrics` | Specify how to scale based on a single metric. For details, see [here](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling). |
+| `AutoScalingBehavior` | Configure the scaling behavior of the target in both up and down directions (`scaleUp` and `scaleDown` fields respectively). If not specified, the default Kubernetes scaling behaviors are adopted. For details, see [here](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#horizontalpodautoscalerbehavior-v2beta2-autoscaling). |

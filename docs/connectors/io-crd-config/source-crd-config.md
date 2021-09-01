@@ -14,10 +14,12 @@ This table lists source configurations.
 | `name` | The name of a source connector. |
 | `classname` | The class name of a source connector. |
 | `tenant` | The tenant of a source connector. |
+| `namespace` | The Pulsar namespace of a source connector. |
 | `Replicas`| The number of instances that you want to run this source connector. |
 | `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this source connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the source controller automatically scales the source connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
-| `SourceConfig` | The map to a ConfigMap specifying the configuration of a source connector. |
+| `SourceConfig` | The source connector configurations in YAML format. |
 | `ProcessingGuarantee` | The processing guarantees (delivery semantics) applied to the source connector. Available values: `ATLEAST_ONCE`, `ATMOST_ONCE`, `EFFECTIVELY_ONCE`.|
+| ForwardSourceMessageProperty | Configure whether to pass message properties to a target topic. |
 
 ## Images
 
@@ -114,3 +116,6 @@ Function Mesh supports customizing the Pod running connectors. This table lists 
 | `ServiceAccountName` | Specify the name of the service account which is used to run Pulsar Functions or connectors in the Function Mesh Worker service.|
 | `InitContainers` | Initialization containers belonging to a Pod. A typical use case could be using an Initialization container to download a remote JAR to a local path. |
 | `Sidecars` | Sidecar containers run together with the main function container in a Pod. |
+| `BuiltinAutoscaler` | Specify the built-in autoscaling rules. <br> - CPU-based autoscaling: auto-scale the number of Pods based on the CPU usage (80%, 50%, or 20%). <br>- Memory-based autoscaling: auto-scale the number of Pods based on the memory usage (80%, 50%, or 20%). <br> If you configure the `BuiltinAutoscaler` field, you do not need to configure the `AutoScalingMetrics` and `AutoScalingBehavior` options and vice versa.|
+| `AutoScalingMetrics` | Specify how to scale based on a single metric. For details, see [here](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling). |
+| `AutoScalingBehavior` | Configure the scaling behavior of the target in both up and down directions (`scaleUp` and `scaleDown` fields respectively). If not specified, the default Kubernetes scaling behaviors are adopted. For details, see [here](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#horizontalpodautoscalerbehavior-v2beta2-autoscaling). |

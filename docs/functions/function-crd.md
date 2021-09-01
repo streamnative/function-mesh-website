@@ -15,16 +15,17 @@ This table lists Pulsar Function configurations.
 | `name` | The name of a Pulsar Function. |
 | `classname` | The class name of a Pulsar Function. |
 | `tenant` | The tenant of a Pulsar Function. |
-| `namespace` | The namespace of a Pulsar Function. |
+| `namespace` | The Pulsar namespace of a Pulsar Function. |
 | `Replicas`| The number of instances that you want to run this Pulsar Function. By default, the `Replicas` is set to `1`. |
 | `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this Pulsar Function. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller automatically scales the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
 | `Timeout` | The message timeout in milliseconds. |
 | `DeadLetterTopic` | The topic where all messages that were not processed successfully are sent. This parameter is not supported in Python Functions. |
-| `FuncConfig` | The map to a ConfigMap specifying the configuration of a Pulsar function. |
+| `FuncConfig` | Pulsar Functions configurations in YAML format. |
 | `LogTopic` | The topic to which the logs of a Pulsar Function are produced. |
 | `AutoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
 | `MaxMessageRetry` | How many times to process a message before giving up. |
 | `ProcessingGuarantee` | The processing guarantees (delivery semantics) applied to the function. Available values: `ATLEAST_ONCE`, `ATMOST_ONCE`, `EFFECTIVELY_ONCE`.|
+| ForwardSourceMessageProperty | Configure whether to pass message properties to a target topic. |
 | `RetainOrdering` | Function consumes and processes messages in order. |
 | `RetainKeyOrdering`| Configure whether to retain the key order of messages. |
 | `SubscriptionName` | Pulsar Functions’ subscription name if you want a specific subscription-name for the input-topic consumer. |
@@ -147,3 +148,6 @@ Function Mesh supports customizing the Pod running function instance. This table
 | `ServiceAccountName` | Specify the name of the service account which is used to run Pulsar Functions or connectors in the Function Mesh Worker service.|
 | `InitContainers` | Initialization containers belonging to a Pod. A typical use case could be using an Initialization container to download a remote JAR to a local path. |
 | `Sidecars` | Sidecar containers run together with the main function container in a Pod. |
+| `BuiltinAutoscaler` | Specify the built-in autoscaling rules. <br> - CPU-based autoscaling: auto-scale the number of Pods based on the CPU usage (80%, 50%, or 20%). <br>- Memory-based autoscaling: auto-scale the number of Pods based on the memory usage (80%, 50%, or 20%). <br> If you configure the `BuiltinAutoscaler` field, you do not need to configure the `AutoScalingMetrics` and `AutoScalingBehavior` options and vice versa.|
+| `AutoScalingMetrics` | Specify how to scale based on a single metric. For details, see [here](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling). |
+| `AutoScalingBehavior` | Configure the scaling behavior of the target in both up and down directions (`scaleUp` and `scaleDown` fields respectively). If not specified, the default Kubernetes scaling behaviors are adopted. For details, see [here](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#horizontalpodautoscalerbehavior-v2beta2-autoscaling). |

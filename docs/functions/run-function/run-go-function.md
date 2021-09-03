@@ -88,7 +88,7 @@ Use the `pulsar-admin` CLI tool to upload the package to the [Pulsar package man
 
 > **Note**
 > 
-> To upload the package to the Pulsar package management service, you need to enable package management service in the `broker.config` file in advance.
+> Before uploading the package to Pulsar package management service, you need to enable the package management service in the `broker.config` file.
 
 This example shows how to upload the package of the `my-function@0.1` Functions to the [Pulsar package management service](http://pulsar.apache.org/docs/en/next/admin-api-packages/).
 

@@ -30,17 +30,17 @@ In CRDs, the `replicas` parameter is used to specify the number of Pods (Pulsar 
 
 ## Autoscaling
 
-Function Mesh supports scaling Pods (Pulsar instances) based on the CPU utilization automatically. Function Mesh auto-scales the number of Pods based on the CPU usage, memory usage, a single metrics.
+Function Mesh auto-scales the number of Pods based on the CPU usage, memory usage, a single metric.
 
-- CPU usage: auto-scale the number of Pods based on 80%, 50% or 20% CPU utilization. 
+- CPU usage: auto-scale the number of Pods based on 80%, 50% or 20% CPU utilization.
 - Memory usage: auto-scale the number of Pods based on 80%, 50% or 20% memory utilization.
-- metrics: auto-scale the number of Pods based on a single metrics. For details, see [here](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling).
+- metrics: auto-scale the number of Pods based on a single metric. For details, see [MetricSpec v2beta2 autoscaling](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling).
 
 > **Note**
 >
 > If you have configured autoscaling based on CPU usages, memory usage, or both of them, you do not need to configure autoscaling based on a specific memory and vice versa.
 
-By default, autoscaling is disabled (The value of the `maxReplicas` parameter is set to `0`). To enable autoscaling, you can specify the `maxReplicas` parameter and set a value for it in the CRD. This value should be greater than the value of the `replicas` parameter. Then, the number of Pods is automatically scaled when 80% CPU is utilized.
+By default, autoscaling is disabled (the value of the `maxReplicas` parameter is set to `0`). To enable autoscaling, you can specify the `maxReplicas` parameter and set a value for it in the CRD. This value should be greater than the value of the `replicas` parameter. Then, the number of Pods is automatically scaled when 80% CPU is utilized.
 
 ### Prerequisites
 

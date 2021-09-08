@@ -20,7 +20,44 @@ sinkConfig:
         y: foo
 ```
 
-In this release, multiple values for related parameters are supported. You can now define untyped Pulsar Function or connector configurations in the YAML format.
+In this release, multiple values for related parameters are supported. You can now define untyped Pulsar Function or connector configurations in the YAML format, as shown below.
+
+```
+sinkConfig:
+  topics:
+    players:
+      operation:
+        type: write
+        total-timeout: 0
+      mapping:
+        bins:
+          type: multi-bins
+          map:
+            name:
+              source: value-field
+              field-name: name
+        key-field:
+          source: key
+        namespace:
+          mode: dynamic
+          source: value-field
+          field-name: namespace
+        ttl:
+          mode: dynamic
+          source: value-field
+          field-name: ttl
+    retired-players:
+      operation:
+        type: delete
+      mapping:
+        key-field:
+          source: key
+        namespace:
+          mode: static
+          value: test
+    services:
+      use-services-alternate: true
+```
 
 # Pulsar source connectors can pass message properties to a target topic
 

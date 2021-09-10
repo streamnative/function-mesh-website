@@ -30,11 +30,25 @@ In CRDs, the `replicas` parameter is used to specify the number of Pods (Pulsar 
 
 ## Autoscaling
 
-Function Mesh auto-scales the number of Pods based on the CPU usage, memory usage, a single metric.
+Function Mesh auto-scales the number of Pods based on the CPU usage, memory usage, customized metrics.
 
-- CPU usage: auto-scale the number of Pods based on 80%, 50% or 20% CPU utilization.
-- Memory usage: auto-scale the number of Pods based on 80%, 50% or 20% memory utilization.
-- metrics: auto-scale the number of Pods based on a single metric. For details, see [MetricSpec v2beta2 autoscaling](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling).
+- CPU usage: auto-scale the number of Pods based on CPU utilization, as listed in the following table.
+  
+  | Option | Description |
+  | --- | --- |
+  | AverageUtilizationCPUPercent80 | Auto-scale the number of Pods if 80% CPU is utilized.|
+  | AverageUtilizationCPUPercent50 | Auto-scale the number of Pods if 50% CPU is utilized.|
+  | AverageUtilizationCPUPercent20 | Auto-scale the number of Pods if 20% CPU is utilized. |
+
+- Memory usage: auto-scale the number of Pods based on memory utilization, as listed in the following table.
+  
+  | Option | Description |
+  | --- | --- |
+  | AverageUtilizationMemoryPercent80 | Auto-scale the number of Pods if 80% memory is utilized. |
+  | AverageUtilizationMemoryPercent50 | Auto-scale the number of Pods if 50% memory is utilized. |
+  | AverageUtilizationMemoryPercent20 | Auto-scale the number of Pods if 20% memory is utilized. |
+
+- metrics: auto-scale the number of Pods based on customized metrics defined in Pulsar Functions or connectors. For details, see [MetricSpec v2beta2 autoscaling](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling).
 
 > **Note**
 >

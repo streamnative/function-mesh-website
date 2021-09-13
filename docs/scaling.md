@@ -72,7 +72,13 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-  <TabItem value="replica" label="Maximum Number of Replicas" default>
+  defaultValue="replica"
+  values={[
+    {label: 'Maximum Number of Replicas', value: 'replica'},
+    {label: 'Built-in Metrics', value: 'builtin'},
+    {label: 'Customized Metrics', value: 'customize'},
+  ]}>
+  <TabItem value="replica" label="Maximum Number of Replicas">
     
     Function Mesh supports automatically scaling up the number of Pods by updating the `maxReplica` parameter. This example auto-scales the number of Pods to `8`.
 
@@ -146,7 +152,7 @@ import TabItem from '@theme/TabItem';
   </TabItem>
   <TabItem value="customize" label="Customized Metrics">
     
-    Function Mesh supports automatically scaling up the number of Pods based on a customized autoscaling metric. This example auto-scales the number of Pods if 45% CPU is utilized 
+    Function Mesh supports automatically scaling up the number of Pods based on a customized autoscaling metric. This example auto-scales the number of Pods if 45% CPU is utilized.
 
     1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
 

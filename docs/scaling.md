@@ -30,9 +30,11 @@ In CRDs, the `replicas` parameter is used to specify the number of Pods (Pulsar 
 
 ## Autoscaling
 
-Function Mesh auto-scales the number of Pods based on the CPU usage, memory usage, customized metrics.
+Function Mesh auto-scales the number of Pods based on the CPU usage, memory usage, customized metrics. 
 
-- CPU usage: auto-scale the number of Pods based on CPU utilization, as listed in the following table.
+- CPU usage: auto-scale the number of Pods based on CPU utilization.
+  
+  This table lists built-in CPU-based autoscaling metrics. If these metrics cannot meet your requirements, you can auto-scale the number of Pods based on customized metrics defined in Pulsar Functions or connectors. For details, see [MetricSpec v2beta2 autoscaling](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling).
   
   | Option | Description |
   | --- | --- |
@@ -40,7 +42,9 @@ Function Mesh auto-scales the number of Pods based on the CPU usage, memory usag
   | AverageUtilizationCPUPercent50 | Auto-scale the number of Pods if 50% CPU is utilized.|
   | AverageUtilizationCPUPercent20 | Auto-scale the number of Pods if 20% CPU is utilized. |
 
-- Memory usage: auto-scale the number of Pods based on memory utilization, as listed in the following table.
+- Memory usage: auto-scale the number of Pods based on memory utilization.
+  
+  This table lists built-in CPU-based autoscaling metrics. If these metrics cannot meet your requirements, you can auto-scale the number of Pods based on customized metrics defined in Pulsar Functions or connectors. For details, see [MetricSpec v2beta2 autoscaling](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling).
   
   | Option | Description |
   | --- | --- |
@@ -52,7 +56,7 @@ Function Mesh auto-scales the number of Pods based on the CPU usage, memory usag
 
 > **Note**
 >
-> If you have configured autoscaling based on CPU usages, memory usage, or both of them, you do not need to configure autoscaling based on a specific memory and vice versa.
+> If you have configured autoscaling based on the CPU usage, memory usage, or both of them, you do not need to configure autoscaling based on customized metrics defined in Pulsar Functions or connectors and vice versa.
 
 By default, autoscaling is disabled (the value of the `maxReplicas` parameter is set to `0`). To enable autoscaling, you can specify the `maxReplicas` parameter and set a value for it in the CRD. This value should be greater than the value of the `replicas` parameter. Then, the number of Pods is automatically scaled when 80% CPU is utilized.
 
@@ -62,44 +66,126 @@ Deploy the metrics server in the cluster. The Metrics server provides metrics th
 
 ### Auto-scale Pulsar Functions
 
-This example shows how to auto-scale the number of Pods running Pulsar Functions to `8`.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
+<Tabs>
+  <TabItem value="replica" label="Maximum Number of Replicas" default>
+    
+    This example shows how to auto-scale the number of Pods running Pulsar Functions to `8`.
 
-    ```yaml
-    apiVersion: cloud.streamnative.io/v1alpha1
-    kind: Function
-    metadata:
-      name: java-function-sample
-      namespace: default
-    spec:
-      className: org.apache.pulsar.functions.api.examples.ExclamationFunction
-      forwardSourceMessageProperty: true
-      MaxPendingAsyncRequests: 1000
-      replicas: 1
-      maxReplicas: 8
-      logTopic: persistent://public/default/logging-function-logs
-      input:
-        topics:
-        - persistent://public/default/java-function-input-topic
-        typeClassName: java.lang.String
-      output:
-        topic: persistent://public/default/java-function-output-topic
-        typeClassName: java.lang.String
-      # Other function configs
-    ```
+    1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
 
-2. Apply the configurations.
+        ```yaml
+        apiVersion: cloud.streamnative.io/v1alpha1
+        kind: Function
+        metadata:
+          name: java-function-sample
+          namespace: default
+        spec:
+          className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+          forwardSourceMessageProperty: true
+          MaxPendingAsyncRequests: 1000
+          replicas: 1
+          maxReplicas: 8
+          logTopic: persistent://public/default/logging-function-logs
+          input:
+            topics:
+            - persistent://public/default/java-function-input-topic
+            typeClassName: java.lang.String
+          output:
+            topic: persistent://public/default/java-function-output-topic
+            typeClassName: java.lang.String
+          # Other function configs
+        ```
 
-    ```bash
-    kubectl apply -f path/to/source-sample.yaml
-    ```
+    2. Apply the configurations.
+
+        ```bash
+        kubectl apply -f path/to/source-sample.yaml
+        ```
+  </TabItem>
+  <TabItem value="builtin" label="Built-in Metrics">
+
+    This example shows how to auto-scale the number of Pods if 20% CPU is utilized.
+
+    1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. 
+
+        ```yaml
+        apiVersion: cloud.streamnative.io/v1alpha1
+        kind: Function
+        metadata:
+          name: java-function-sample
+          namespace: default
+        spec:
+          className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+          forwardSourceMessageProperty: true
+          MaxPendingAsyncRequests: 1000
+          replicas: 1
+          maxReplicas: 4
+          logTopic: persistent://public/default/logging-function-logs
+          input:
+            topics:
+            - persistent://public/default/java-function-input-topic
+            typeClassName: java.lang.String
+          pod:
+            builtinAutoscaler:
+              - AverageUtilizationCPUPercent20
+              - AverageUtilizationMemoryPercent20
+          # Other function configs
+        ```
+
+    2. Apply the configurations.
+
+        ```bash
+        kubectl apply -f path/to/source-sample.yaml
+        ```
+
+  </TabItem>
+  <TabItem value="customize" label="Customized Metrics">
+    
+    This example shows how to auto-scale the number of Pods based on a customized metrics.
+
+    1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
+
+        ```yaml
+        apiVersion: cloud.streamnative.io/v1alpha1
+        kind: Function
+        metadata:
+          name: java-function-sample
+          namespace: default
+        spec:
+          className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+          forwardSourceMessageProperty: true
+          MaxPendingAsyncRequests: 1000
+          replicas: 1
+          maxReplicas: 4
+          logTopic: persistent://public/default/logging-function-logs
+          pod:
+            autoScalingMetrics:
+            - type: Resource
+              resource:
+                name: cpu
+                target:
+                  type: Utilization
+                  averageUtilization: 45
+          # Other function configs
+        ```
+
+    2. Apply the configurations.
+
+        ```bash
+        kubectl apply -f path/to/source-sample.yaml
+        ```
+
+  </TabItem>
+</Tabs>;
 
 ### Auto-scale Pulsar connectors
 
 This example shows how to auto-scale the number of Pods for running a Pulsar source connector to `5`.
 
-1. Specify the the `maxReplicas` to `5` in the Pulsar source CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar source connector.
+1. Specify the `maxReplicas` to `5` in the Pulsar source CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar source connector.
 
     **Example**
 

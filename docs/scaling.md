@@ -66,13 +66,15 @@ Deploy the metrics server in the cluster. The Metrics server provides metrics th
 
 ### Auto-scale Pulsar Functions
 
+This example shows how to auto-scale the number of Pods running Pulsar Functions.
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="replica" label="Maximum Number of Replicas" default>
     
-    This example shows how to auto-scale the number of Pods running Pulsar Functions to `8`.
+    Function Mesh supports automatically scaling up the number of Pods by updating the `maxReplica` parameter. This example auto-scales the number of Pods to `8`.
 
     1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
 
@@ -107,7 +109,7 @@ import TabItem from '@theme/TabItem';
   </TabItem>
   <TabItem value="builtin" label="Built-in Metrics">
 
-    This example shows how to auto-scale the number of Pods if 20% CPU is utilized.
+    Function Mesh supports automatically scaling up the number of Pods based on the built-in autoscaling metric. This example auto-scales the number of Pods if 20% CPU is utilized.
 
     1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. 
 
@@ -144,7 +146,7 @@ import TabItem from '@theme/TabItem';
   </TabItem>
   <TabItem value="customize" label="Customized Metrics">
     
-    This example shows how to auto-scale the number of Pods based on a customized metrics.
+    Function Mesh supports automatically scaling up the number of Pods based on a customized autoscaling metric. This example auto-scales the number of Pods if 45% CPU is utilized 
 
     1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
 
@@ -177,7 +179,6 @@ import TabItem from '@theme/TabItem';
         ```bash
         kubectl apply -f path/to/source-sample.yaml
         ```
-
   </TabItem>
 </Tabs>;
 

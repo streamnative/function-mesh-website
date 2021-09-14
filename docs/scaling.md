@@ -66,127 +66,105 @@ Deploy the metrics server in the cluster. The Metrics server provides metrics th
 
 ### Auto-scale Pulsar Functions
 
-This example shows how to auto-scale the number of Pods running Pulsar Functions.
+- Function Mesh supports automatically scaling up the number of Pods by updating the `maxReplica` parameter. In this case, the number of Pods is updated when 80% CPU is utilized.
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+  1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
 
-<Tabs>
-  defaultValue="replica"
-  values={[
-    {label: 'Maximum Number of Replicas', value: 'replica'},
-    {label: 'Built-in Metrics', value: 'builtin'},
-    {label: 'Customized Metrics', value: 'customize'},
-  ]}>
-  <TabItem value="replica" label="Maximum Number of Replicas">
+      ```yaml
+      apiVersion: cloud.streamnative.io/v1alpha1
+      kind: Function
+      metadata:
+        name: java-function-sample
+        namespace: default
+      spec:
+        className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+        forwardSourceMessageProperty: true
+        MaxPendingAsyncRequests: 1000
+        replicas: 1
+        maxReplicas: 8
+        logTopic: persistent://public/default/logging-function-logs
+        input:
+          topics:
+          - persistent://public/default/java-function-input-topic
+          typeClassName: java.lang.String
+        output:
+          topic: persistent://public/default/java-function-output-topic
+          typeClassName: java.lang.String
+        # Other function configs
+      ```
+
+  2. Apply the configurations.
+
+      ```bash
+      kubectl apply -f path/to/source-sample.yaml
+      ```
+
+- Function Mesh supports automatically scaling up the number of Pods based on a built-in autoscaling metric. This example auto-scales the number of Pods if 20% CPU is utilized.
+
+  1. Specify the CPU-based autoscaling metric in the Pulsar Functions CRD.
+
+      ```yaml
+      apiVersion: cloud.streamnative.io/v1alpha1
+      kind: Function
+      metadata:
+        name: java-function-sample
+        namespace: default
+      spec:
+        className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+        forwardSourceMessageProperty: true
+        MaxPendingAsyncRequests: 1000
+        replicas: 1
+        maxReplicas: 4
+        logTopic: persistent://public/default/logging-function-logs
+        input:
+          topics:
+          - persistent://public/default/java-function-input-topic
+          typeClassName: java.lang.String
+        pod:
+          builtinAutoscaler:
+            - AverageUtilizationCPUPercent20
+        # Other function configs
+      ```
+
+  2. Apply the configurations.
+
+      ```bash
+      kubectl apply -f path/to/source-sample.yaml
+      ```
     
-    Function Mesh supports automatically scaling up the number of Pods by updating the `maxReplica` parameter. This example auto-scales the number of Pods to `8`.
+- Function Mesh supports automatically scaling up the number of Pods based on a customized autoscaling metric. This example auto-scales the number of Pods if 45% CPU is utilized.
 
-    1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
+  1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
 
-        ```yaml
-        apiVersion: cloud.streamnative.io/v1alpha1
-        kind: Function
-        metadata:
-          name: java-function-sample
-          namespace: default
-        spec:
-          className: org.apache.pulsar.functions.api.examples.ExclamationFunction
-          forwardSourceMessageProperty: true
-          MaxPendingAsyncRequests: 1000
-          replicas: 1
-          maxReplicas: 8
-          logTopic: persistent://public/default/logging-function-logs
-          input:
-            topics:
-            - persistent://public/default/java-function-input-topic
-            typeClassName: java.lang.String
-          output:
-            topic: persistent://public/default/java-function-output-topic
-            typeClassName: java.lang.String
-          # Other function configs
-        ```
+      ```yaml
+      apiVersion: cloud.streamnative.io/v1alpha1
+      kind: Function
+      metadata:
+        name: java-function-sample
+        namespace: default
+      spec:
+        className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+        forwardSourceMessageProperty: true
+        MaxPendingAsyncRequests: 1000
+        replicas: 1
+        maxReplicas: 4
+        logTopic: persistent://public/default/logging-function-logs
+        pod:
+          autoScalingMetrics:
+          - type: Resource
+            resource:
+              name: cpu
+              target:
+                type: Utilization
+                averageUtilization: 45
+        # Other function configs
+      ```
 
-    2. Apply the configurations.
+  2. Apply the configurations.
 
-        ```bash
-        kubectl apply -f path/to/source-sample.yaml
-        ```
-  </TabItem>
-  <TabItem value="builtin" label="Built-in Metrics">
-
-    Function Mesh supports automatically scaling up the number of Pods based on the built-in autoscaling metric. This example auto-scales the number of Pods if 20% CPU is utilized.
-
-    1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. 
-
-        ```yaml
-        apiVersion: cloud.streamnative.io/v1alpha1
-        kind: Function
-        metadata:
-          name: java-function-sample
-          namespace: default
-        spec:
-          className: org.apache.pulsar.functions.api.examples.ExclamationFunction
-          forwardSourceMessageProperty: true
-          MaxPendingAsyncRequests: 1000
-          replicas: 1
-          maxReplicas: 4
-          logTopic: persistent://public/default/logging-function-logs
-          input:
-            topics:
-            - persistent://public/default/java-function-input-topic
-            typeClassName: java.lang.String
-          pod:
-            builtinAutoscaler:
-              - AverageUtilizationCPUPercent20
-              - AverageUtilizationMemoryPercent20
-          # Other function configs
-        ```
-
-    2. Apply the configurations.
-
-        ```bash
-        kubectl apply -f path/to/source-sample.yaml
-        ```
-
-  </TabItem>
-  <TabItem value="customize" label="Customized Metrics">
-    
-    Function Mesh supports automatically scaling up the number of Pods based on a customized autoscaling metric. This example auto-scales the number of Pods if 45% CPU is utilized.
-
-    1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
-
-        ```yaml
-        apiVersion: cloud.streamnative.io/v1alpha1
-        kind: Function
-        metadata:
-          name: java-function-sample
-          namespace: default
-        spec:
-          className: org.apache.pulsar.functions.api.examples.ExclamationFunction
-          forwardSourceMessageProperty: true
-          MaxPendingAsyncRequests: 1000
-          replicas: 1
-          maxReplicas: 4
-          logTopic: persistent://public/default/logging-function-logs
-          pod:
-            autoScalingMetrics:
-            - type: Resource
-              resource:
-                name: cpu
-                target:
-                  type: Utilization
-                  averageUtilization: 45
-          # Other function configs
-        ```
-
-    2. Apply the configurations.
-
-        ```bash
-        kubectl apply -f path/to/source-sample.yaml
-        ```
-  </TabItem>
-</Tabs>;
+      ```bash
+      kubectl apply -f path/to/source-sample.yaml
+      ```
 
 ### Auto-scale Pulsar connectors
 

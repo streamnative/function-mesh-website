@@ -66,7 +66,7 @@ Deploy the metrics server in the cluster. The Metrics server provides metrics th
 
 ### Examples
 
-These examples describe how to autoscaling the number of Pods running Pulsar Functions.
+These examples describe how to auto-scale the number of Pods running Pulsar Functions.
 
 - Function Mesh supports automatically scaling up the number of Pods by updating the `maxReplica` parameter. In this case, the number of Pods is updated to `8` when 80% CPU is utilized.
 

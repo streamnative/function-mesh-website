@@ -25,7 +25,7 @@ Before installing Function Mesh, ensure to perform the following operations.
 This example shows how to use the `install.sh` command to install Function Mesh on your laptop (Linux or Mac OS), including a local [kind](https://kind.sigs.k8s.io/) cluster, all the Custom Resource Definitions (CRDs), required service account configuration, and Function Mesh components.
 
 ```shell
-curl -sSL https://github.com/streamnative/function-mesh/releases/download/{{functionmesh_version}}/install.sh | bash
+curl -sSL https://github.com/streamnative/function-mesh/releases/download/v0.1.7/install.sh | bash
 ```
 
 After executing the above command, you should be able to see the output indicating that the Function Mesh pod is up and running. For details, see [verify installation](#verify-installation).

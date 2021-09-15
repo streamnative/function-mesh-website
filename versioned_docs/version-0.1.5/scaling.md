@@ -71,7 +71,7 @@ This example shows how to auto-scale the number of Pods running Pulsar Functions
 
 This example shows how to auto-scale the number of Pods for running a Pulsar source connector to `5`.
 
-1. Specify the the `maxReplicas` to `5` in the Pulsar source CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar source connector.
+1. Specify the `maxReplicas` to `5` in the Pulsar source CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar source connector.
 
     **Example**
 

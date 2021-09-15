@@ -148,6 +148,10 @@ This section describes how to package a Pulsar connector to a NAR or JAR package
 
 Use the `pulsar-admin` CLI tool to upload the NAR or uber JAR package to the [Pulsar package management service](http://pulsar.apache.org/docs/en/next/admin-api-packages/).
 
+> **Note**
+> 
+> Before uploading the package to Pulsar package management service, you need to enable the package management service in the `broker.config` file.
+
 This example shows how to upload the NAR package of the `my-sink` connector to the [Pulsar package management service](http://pulsar.apache.org/docs/en/next/admin-api-packages/).
 
 ```bash

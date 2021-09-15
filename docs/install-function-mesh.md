@@ -41,7 +41,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 > **Note**
 >
 > - Before installation, ensure that Helm v3 is installed properly.
-> - For the use of `kubectl` commands, see [here](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands).
+> - For the use of `kubectl` commands, see [kubectl command reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands).
 
 1. Clone the StreamNative Function Mesh repository.
 

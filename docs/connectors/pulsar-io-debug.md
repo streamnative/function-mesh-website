@@ -18,7 +18,7 @@ In addition, you can use the following command to check the specific Pod.
 
 - `kubectl describe pod POD_NAME -n NAMESPACE_NAME`: check the current state of the Pod and recent events.
 
-For the use of `kubectl` commands, see [here](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands).
+For the use of `kubectl` commands, see [kubectl command reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands).
 
 ## Use log topics
 

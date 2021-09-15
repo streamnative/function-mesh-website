@@ -149,6 +149,10 @@
         {
           "type": "doc",
           "id": "version-0.1.7/releases/release-note-0-1-6"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.1.7/releases/release-note-0-1-7"
         }
       ]
     }

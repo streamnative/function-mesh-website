@@ -170,7 +170,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
           image: streamnative/pulsar-functions-java-runner:2.7.1 # using java function runner
           className: exclamation_function.ExclamationFunction
           forwardSourceMessageProperty: true
-          MaxPendingAsyncRequests: 1000
+          maxPendingAsyncRequests: 1000
           replicas: 1
           maxReplicas: 5
           logTopic: persistent://public/default/logging-function-logs
@@ -200,7 +200,7 @@ After packaging your Pulsar Functions, you can submit your Pulsar Functions to a
         image: streamnative/example-function-image:latest # using function image here
         className: exclamation_function.ExclamationFunction
         forwardSourceMessageProperty: true
-        MaxPendingAsyncRequests: 1000
+        maxPendingAsyncRequests: 1000
         replicas: 1
         maxReplicas: 5
         logTopic: persistent://public/default/logging-function-logs

@@ -81,7 +81,7 @@ These examples describe how to auto-scale the number of Pods running Pulsar Func
       spec:
         className: org.apache.pulsar.functions.api.examples.ExclamationFunction
         forwardSourceMessageProperty: true
-        MaxPendingAsyncRequests: 1000
+        maxPendingAsyncRequests: 1000
         replicas: 1
         maxReplicas: 8
         logTopic: persistent://public/default/logging-function-logs
@@ -114,7 +114,7 @@ These examples describe how to auto-scale the number of Pods running Pulsar Func
       spec:
         className: org.apache.pulsar.functions.api.examples.ExclamationFunction
         forwardSourceMessageProperty: true
-        MaxPendingAsyncRequests: 1000
+        maxPendingAsyncRequests: 1000
         replicas: 1
         maxReplicas: 4
         logTopic: persistent://public/default/logging-function-logs
@@ -151,7 +151,7 @@ These examples describe how to auto-scale the number of Pods running Pulsar Func
       spec:
         className: org.apache.pulsar.functions.api.examples.ExclamationFunction
         forwardSourceMessageProperty: true
-        MaxPendingAsyncRequests: 1000
+        maxPendingAsyncRequests: 1000
         replicas: 1
         maxReplicas: 4
         logTopic: persistent://public/default/logging-function-logs

@@ -47,7 +47,7 @@ This example shows how to auto-scale the number of Pods running Pulsar Functions
     spec:
       className: org.apache.pulsar.functions.api.examples.ExclamationFunction
       forwardSourceMessageProperty: true
-      MaxPendingAsyncRequests: 1000
+      maxPendingAsyncRequests: 1000
       replicas: 1
       maxReplicas: 8
       logTopic: persistent://public/default/logging-function-logs
@@ -84,8 +84,6 @@ This example shows how to auto-scale the number of Pods for running a Pulsar sou
       className: org.apache.pulsar.io.debezium.mongodb.DebeziumMongoDbSource
       replicas: 1
       maxReplicas: 5
-      replicas: 1
-      maxReplicas: 1
       output:
         producerConf:
           maxPendingMessages: 1000

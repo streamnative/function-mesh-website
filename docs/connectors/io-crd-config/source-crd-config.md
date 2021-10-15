@@ -15,6 +15,7 @@ This table lists source configurations.
 | `classname` | The class name of a source connector. |
 | `tenant` | The tenant of a source connector. |
 | `namespace` | The Pulsar namespace of a source connector. |
+| `ClusterName` | The Pulsar cluster of a source connector. |
 | `Replicas`| The number of instances that you want to run this source connector. |
 | `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this source connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the source controller automatically scales the source connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
 | `SourceConfig` | The source connector configurations in YAML format. |

@@ -15,6 +15,7 @@ This table lists sink configurations.
 | `classname` | The class name of a sink connector. |
 | `tenant` | The tenant of a sink connector. |
 | `namespace` | The Pulsar namespace of a sink connector. |
+| `ClusterName` | The Pulsar cluster of a sink connector. |
 | `Replicas`| The number of instances that you want to run this sink connector. By default, the `Replicas` is set to `1`. |
 | `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this sink connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the sink controller automatically scales the sink connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
 | `SinkConfig` | The sink connector configurations in YAML format.|

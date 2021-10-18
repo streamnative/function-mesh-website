@@ -63,7 +63,7 @@ As shown in the example above, you can get the logger via `context.getLogger()` 
     spec:
       className: exclamation_function.ExclamationFunction
       forwardSourceMessageProperty: true
-      MaxPendingAsyncRequests: 1000
+      maxPendingAsyncRequests: 1000
       replicas: 1
       maxReplicas: 5
       logTopic: persistent://public/default/logging-function-logs

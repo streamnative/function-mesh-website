@@ -42,11 +42,11 @@ For Pulsar built-in connectors and StreamNative-managed connectors, you can crea
         pulsarConfig: "test-sink"
       resources:
         limits:
-        cpu: "0.2"
-        memory: 1.1G
+          cpu: "0.2"
+          memory: 1.1G
         requests:
-        cpu: "0.1"
-        memory: 1G
+          cpu: "0.1"
+          memory: 1G
       java:
         jar: connectors/pulsar-io-elastic-search-2.7.1.nar # the NAR location in image
         jarLocation: "" # leave empty since we will not download package from Pulsar Packages
@@ -212,7 +212,7 @@ For self-built connectors, you can create them based on how you package them.
         image: streamnative/pulsar-functions-java-runner:2.7.1 # using java function runner
         className: org.example.MySink
         forwardSourceMessageProperty: true
-        MaxPendingAsyncRequests: 1000
+        maxPendingAsyncRequests: 1000
         replicas: 1
         maxReplicas: 1
         input:
@@ -239,7 +239,7 @@ For self-built connectors, you can create them based on how you package them.
       spec:
         image: myorg/pulsar-io-my-sink:2.7.1 # using self built image
         forwardSourceMessageProperty: true
-        MaxPendingAsyncRequests: 1000
+        maxPendingAsyncRequests: 1000
         replicas: 1
         maxReplicas: 1
         input:

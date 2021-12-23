@@ -48,6 +48,11 @@ module.exports = {
       label: 'Meshes',
       items: ['function-mesh/function-mesh-overview', 'function-mesh/function-mesh-crd', 'function-mesh/run-function-mesh'],
     },
+    {
+      type: 'category',
+      label: 'Function Mesh Worker',
+      items: ['function-mesh-worker/function-mesh-worker overview'],
+    },
     'scaling',
     {
       type: 'category',

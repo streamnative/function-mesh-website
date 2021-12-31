@@ -51,7 +51,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Function Mesh Worker',
-      items: ['function-mesh-worker/function-mesh-worker overview'],
+      items: ['function-mesh-worker/function-mesh-worker-overview'],
     },
     'scaling',
     {

@@ -4,6 +4,8 @@ category: function-mesh-worker
 id: function-mesh-worker-overview
 ---
 
+This document gives a brief introduction into Function Mesh Worker service.
+
 # What is Function Mesh Worker service
 
 Function Mesh Worker service is a plug-in for Pulsar. It is similar to Pulsar Function Worker service but uses Function Mesh operators to schedule and run functions. Function Mesh Worker service enables you to use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) or [`pulsarctl`](https://docs.streamnative.io/pulsarctl/v2.7.0.7/) CLI tools to manage Pulsar functions and connectors in Function Mesh.

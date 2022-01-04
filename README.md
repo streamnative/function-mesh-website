@@ -43,13 +43,13 @@ This section describes how to publish Function Mesh docs for a specific release 
 ### Steps
 
 1. Create a branch based on the `main` branch.
-2. Run the `node replace.js` command to update the release version in the installation guide.
-3. Run the `yarn run docusaurus docs:version <release version>` command to release docs for the target release. This command is used for automatically updating or creating all docs required for the target releases, including the `sidebar.js`, the versioned-docs, and the `versions.json` file.
+2. Run the `yarn run docusaurus docs:version <release version>` command to release docs for the target release. This command is used for automatically updating or creating all docs required for the target releases, including the `sidebar.js`, the versioned-docs, and the `versions.json` file.
     This example releases docs for Function Mesh v0.1.6.
 
     ```bash
     yarn run docusaurus docs:version 0.1.6
     ```
+3. Run the `node replace.js` command to update the release version in the installation guide.
 4. Save the updates and summit the PR.
     1. `git add -A`: save doc updates.
     2. `git commit -m ""`: confirm your updates.

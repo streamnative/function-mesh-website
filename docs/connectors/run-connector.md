@@ -16,7 +16,7 @@ For Pulsar built-in connectors and StreamNative-managed connectors, you can crea
 
 1. Define a sink connector named `sink-sample` by using a YAML file and save the YAML file `sink-sample.yaml`.
 
-    This example shows how to publish a `elastic-search` sink to Function Mesh by using a docker image.
+    This example shows how to publish an `elastic-search` sink to Function Mesh by using a docker image.
 
     ```yaml
     apiVersion: compute.functionmesh.io/v1alpha1

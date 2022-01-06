@@ -10,7 +10,7 @@ Here are some highlights of this release. For a full list of updates available f
 
 In this release, we moved the Function Mesh Worker service into a separate repository `streamnative/function-mesh-worker-service`. Therefore, the `function-mesh` repository does not include releases of the Function Mesh Worker service.
 
-For a detailed version matrix between Function Mesh and Function Mesh worker service, see [version matrix](TBD).
+For a detailed version matrix between Function Mesh and Function Mesh worker service, see [version matrix](/function-mesh-worker/function-mesh-worker-overview.md#version-matrix).
 
 # Support validating CRDs with WebHook
 

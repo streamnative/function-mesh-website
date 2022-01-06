@@ -40,14 +40,14 @@ You can customize the Function Mesh Worker service using `functionsWorkerService
 | `sinkEnabled` | boolean | No | true | Enable the sink API endpoint. |
 | `sourceEnabled` | boolean | No | true | Enable the source API endpoint. |
 | `extraDependenciesDir` | string | No | /pulsar/lib/ | The directory for dropping extra function dependencies. |
-| `volumeMounts` | List<V1VolumeMount> | No | [] (empty string)| [V1VolumeMount](https://github.com/kubernetes-client/java/blob/master/kubernetes/docs/V1VolumeMount.md) describes a mounting of a Volume within a container. |
-| `volumes` | List<V1Volume> | No | [] (empty string) | The list of [V1Volume](https://github.com/kubernetes-client/java/blob/master/kubernetes/docs/V1Volume.md) that can be mounted by containers belonging to the Pulsar Function or connector Pod. |
+| `volumeMounts` | List < V1VolumeMount > | No | [] (empty string)| [V1VolumeMount](https://github.com/kubernetes-client/java/blob/master/kubernetes/docs/V1VolumeMount.md) describes a mounting of a Volume within a container. |
+| `volumes` | List < V1Volume > | No | [] (empty string) | The list of [V1Volume](https://github.com/kubernetes-client/java/blob/master/kubernetes/docs/V1Volume.md) that can be mounted by containers belonging to the Pulsar Function or connector Pod. |
 | `ownerReference` | V1OwnerReference | No | null | Default configurations of the [`ownerReference`](https://github.com/kubernetes-client/java/blob/master/kubernetes/docs/V1OwnerReference.md). |
 | `allowUserDefinedServiceAccountName` | boolean | No | false | Enable users to change the service account name with `custom-runtime-options`. |
 | `defaultServiceAccountName` | string | No | "" (empty string) | The name of the service account to run the Pulsar Function or connector Pod. |
 | `imagePullPolicy` | string | No | "IfNotPresent" | The image pull policy for images to run Pulsar Function instances. By default, it is set to `IfNotPresent`. |
-| `functionRunnerImages` | Map<String, String> | No | {} (empty string)| The runner image to run the Pulsar Function instances. |
-| `imagePullSecrets` | List<V1LocalObjectReference> | No | [] (empty string) | An optional list of references to secrets in the same namespace to pull images used by `PodSpec`. |
+| `functionRunnerImages` | Map < String, String > | No | {} (empty string)| The runner image to run the Pulsar Function instances. |
+| `imagePullSecrets` | List< V1LocalObjectReference > | No | [] (empty string) | An optional list of references to secrets in the same namespace to pull images used by `PodSpec`. |
 
 ## Start the Function Mesh Worker service
 

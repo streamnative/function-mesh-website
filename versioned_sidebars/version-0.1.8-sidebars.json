@@ -126,6 +126,10 @@
         {
           "type": "doc",
           "id": "version-0.1.8/function-mesh-worker/function-mesh-worker-overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.1.8/function-mesh-worker/deploy-mesh-worker"
         }
       ]
     },

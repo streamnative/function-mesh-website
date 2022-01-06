@@ -25,6 +25,8 @@ To deploy the Function Mesh Worker service, ensure that these services are alrea
 
 The following diagram illustrates how to deploy the Function Mesh Worker service along with Pulsar brokers.
 
+![Function Mesh Workflow](./../assets/mesh-with-broker.png)
+
 Function Mesh Worker service can forward requests to the Kubernetes cluster. After you start the Function Mesh Worker service, you can use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar functions and connectors.
 
 ## Configure the Function Mesh Worker service

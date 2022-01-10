@@ -134,7 +134,6 @@ Function Mesh supports Function Mesh Worker service, which can forward requests 
 > - The Function Mesh Worker service cannot manage the FunctionMesh CRD.
 > - You need to configure the `clusterName`, `inputTypeClassName`, `outputTypeClassName` parameters through the `custom-runtime-options` option when creating or updating Pulsar Functions or connectors.
 > - You need to manually manage the [`ConfigMap`](/functions/function-crd.md#cluster-location), such as the Pulsar service URL.
-> - The Function Mesh Worker service does not support configuring authentication parameters.
 
 To start Function Mesh Worker service, follow these steps.
 

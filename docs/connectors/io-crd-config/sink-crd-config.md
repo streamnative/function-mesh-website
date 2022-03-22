@@ -63,30 +63,44 @@ If the node where a Pod is running has enough of a resource available, it is pos
 
 ## Secrets
 
-In Function Mesh, the secret is defined through a secretsMap. To use a secret, a Pod needs to reference the secret. Pods can consume secretsMaps as environment variables in a volume. You can specify the `data` field when creating a configuration file for a secret.
+Function Mesh provides the `SecretsMap` field for Function, Source and Sink in the CRD definition. You can refer to the created secret under the same namespace and the controller can include those referred secrets as environment variables. You can specify the `data.username` and `data.password` fields when creating a secret, as shown below.
 
-To use a secret in an environment variable in a Pod, follow these steps.
+```yaml
+apiVersion: v1
+data:
+  username: <secret_key>
+  password: <secret_password>
+kind: Secret
+metadata:
+  name: <secret_name>
+type: Opaque
+```
 
-1. Create a secret or use an existing one. Multiple Pods can reference the same secret.
-2. Modify your Pod definition in each container, which you want to consume the value of a secret key, to add an environment variable for each secret key that you want to consume.
-3. Modify your image and or command line so that the program looks for values in the specified environment variables.
+This table lists configurations about the `SecretsMap` field.
 
-Pulsar clusters support using TLS or other authentication plugin for authentication.
+| Field | Description |
+| --- | --- |
+| `name` | The name of the environment variable. <br />- `path`: the secret name. <br>- `key`: the key in the secret, which is defined using the `data.username` field. |
+| `pwd` | The password infomation of the secret. <br />- `path`: the secret name. <br>- `password`: the password in the secret, which is defined using the `data.password` field.|
+
+## Authentication
+
+Function Mesh provides the `TLSSecret` and `AuthSecret` fields for Function, Source and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
 
 - TLS Secret
 
     | Field | Description |
     | --- | --- |
-    | tlsAllowInsecureConnection | Allow insecure TLS connection. |
-    | tlsHostnameVerificationEnable | Enable hostname verification. |
-    | tlsTrustCertsFilePath | The path of the TLS trust certificate file. |
+    | `tlsAllowInsecureConnection` | Allow insecure TLS connection. |
+    | `tlsHostnameVerificationEnable` | Enable hostname verification. |
+    | `tlsTrustCertsFilePath` | The path of the TLS trust certificate file. |
 
-- Auth Secret
+- Authentication Secret
 
     | Field | Description |
     | --- | --- |
-    | clientAuthenticationPlugin | Client authentication plugin. |
-    | clientAuthenticationParameters | Client authentication parameters. |
+    | `clientAuthenticationPlugin` | The client authentication plugin. |
+    | `clientAuthenticationParameters` | The client authentication parameters. |
 
 ## Packages
 

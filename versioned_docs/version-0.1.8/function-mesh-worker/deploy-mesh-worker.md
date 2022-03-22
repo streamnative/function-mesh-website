@@ -14,14 +14,14 @@ This document describes how to deploy the Function Mesh Worker service.
 > - You need to manually manage the [`ConfigMap`](/functions/function-crd.md#cluster-location), such as the Pulsar service URL.
 > - A Pulsar cluster with the Function Mesh Worker service should be the same Kubernetes cluster where the Function Mesh Operator is deployed.
 
-# Prerequisite
+## Prerequisite
 
 To deploy the Function Mesh Worker service, ensure that these services are already running in your environment.
 
 - Apache Pulsar cluster (v2.8.0 or higher version)
 - Function Mesh operator
 
-# Deploy Function Mesh Worker service with Pulsar brokers
+## Deploy Function Mesh Worker service with Pulsar brokers
 
 The following diagram illustrates how to deploy the Function Mesh Worker service along with Pulsar brokers.
 
@@ -29,7 +29,7 @@ The following diagram illustrates how to deploy the Function Mesh Worker service
 
 Function Mesh Worker service can forward requests to the Kubernetes cluster. After you start the Function Mesh Worker service, you can use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar functions and connectors.
 
-## Configure the Function Mesh Worker service
+### Configure Function Mesh Worker service
 
 You can customize the Function Mesh Worker service using `functionsWorkerServiceCustomConfigs` in the `functions_worker.yml` manifest. This table lists available configurations.
 
@@ -49,7 +49,7 @@ You can customize the Function Mesh Worker service using `functionsWorkerService
 | `functionRunnerImages` | Map < String, String > | No | {} (empty string)| The runner image to run the Pulsar Function instances. |
 | `imagePullSecrets` | List < V1LocalObjectReference > | No | [] (empty string) | An optional list of references to secrets in the same namespace to pull images used by `PodSpec`. |
 
-## Start the Function Mesh Worker service
+### Start Function Mesh Worker service
 
 This section describes how to start the Function Mesh Worker service after you configure it.
 

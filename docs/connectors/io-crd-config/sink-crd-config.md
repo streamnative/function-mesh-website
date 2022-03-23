@@ -80,8 +80,8 @@ This table lists configurations about the `SecretsMap` field.
 
 | Field | Description |
 | --- | --- |
-| `name` | The name of the environment variable. <br />- `path`: the secret name. <br>- `key`: the key in the secret, which is defined using the `data.username` field. |
-| `pwd` | The password infomation of the secret. <br />- `path`: the secret name. <br>- `password`: the password in the secret, which is defined using the `data.password` field.|
+| `name` | The name of the environment variable. <br />- `path`: the secret name. <br />- `key`: the key in the secret, which is defined using the `data.username` field. |
+| `pwd` | The password infomation of the secret. <br />- `path`: the secret name. <br />- `password`: the password in the secret, which is defined using the `data.password` field.|
 
 ## Authentication
 

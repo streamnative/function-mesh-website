@@ -63,25 +63,41 @@ If the node where a Pod is running has enough of a resource available, it is pos
 
 ## Secrets
 
-Function Mesh provides the `SecretsMap` field for Function, Source and Sink in the CRD definition. You can refer to the created secret under the same namespace and the controller can include those referred secrets as environment variables. You can specify the `data.username` and `data.password` fields when creating a secret, as shown below.
+Function Mesh provides the `SecretsMap` field for Function, Source and Sink in the CRD definition. You can refer to the created secrets under the same namespace and the controller can include those referred secrets. The secrets are provide by `EnvironmentBasedSecretsProvider` which can be used by `context.getSecret()` in Pulsar functions and connectors.
+
+The `SecretsMap` field is defined as a `Map` struct with `String` keys and `SecretReference` values. The key indicates the environment value in the container, and the `SecretReference` is defined as below.
+
+| Field | Description |
+| --- | --- |
+| `path` | The name of the secret in the Pod's namespace to select from. |
+| `key` | The key of the secret to select from. It must be a valid secret key.|
+
+Suppose that there is a Kubernetes Secret named `credential-secret` defined as below:
 
 ```yaml
 apiVersion: v1
 data:
-  username: <secret_key>
-  password: <secret_password>
+  username: foo
+  password: bar
 kind: Secret
 metadata:
-  name: <secret_name>
+  name: credential-secret
 type: Opaque
 ```
 
-This table lists configurations about the `SecretsMap` field.
+To use it in Pulsar Functions in a security way, you can define the `SecretsMap` in the Custom Resource:
 
-| Field | Description |
-| --- | --- |
-| `name` | The name of the environment variable. <br />- `path`: the secret name. <br />- `key`: the key in the secret, which is defined using the `data.username` field. |
-| `pwd` | The password infomation of the secret. <br />- `path`: the secret name. <br />- `password`: the password in the secret, which is defined using the `data.password` field.|
+```yaml
+secretsMap:
+  username:
+    path: credential-secret
+    key: foo
+  password:
+    path: credential-secret
+    key: bar
+```
+
+Then, in the Pulsar Functions and Connectors, you can call `context.getSecret("username")` to get the secret value.
 
 ## Authentication
 

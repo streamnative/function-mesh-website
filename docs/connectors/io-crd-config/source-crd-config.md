@@ -84,13 +84,13 @@ To use it in Pulsar Functions in a security way, you can define the `SecretsMap`
 secretsMap:
   username:
     path: credential-secret
-    key: foo
+    key: username
   password:
     path: credential-secret
-    key: bar
+    key: password
 ```
 
-Then, in the Pulsar Functions and Connectors, you can call `context.getSecret("username")` to get the secret value.
+Then, in the Pulsar Functions and Connectors, you can call `context.getSecret("username")` to get the secret value (`foo`).
 
 ## Authentication
 

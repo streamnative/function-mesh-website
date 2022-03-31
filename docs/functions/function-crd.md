@@ -84,7 +84,7 @@ If the node where a Pod is running has enough of a resource available, it's poss
 
 ## Secrets
 
-Function Mesh provides the `SecretsMap` field for Function, Source and Sink in the CRD definition. You can refer to the created secrets under the same namespace and the controller can include those referred secrets. The secrets are provide by `EnvironmentBasedSecretsProvider` which can be used by `context.getSecret()` in Pulsar functions and connectors.
+Function Mesh provides the `SecretsMap` field for Function, Source, and Sink in the CRD definition. You can refer to the created secrets under the same namespace and the controller can include those referred secrets. The secrets are provide by `EnvironmentBasedSecretsProvider`, which can be used by `context.getSecret()` in Pulsar functions and connectors.
 
 The `SecretsMap` field is defined as a `Map` struct with `String` keys and `SecretReference` values. The key indicates the environment value in the container, and the `SecretReference` is defined as below.
 
@@ -106,7 +106,7 @@ metadata:
 type: Opaque
 ```
 
-To use it in Pulsar Functions in a security way, you can define the `SecretsMap` in the Custom Resource:
+To use it in Pulsar Functions in a secure way, you can define the `SecretsMap` in the Custom Resource:
 
 ```yaml
 secretsMap:

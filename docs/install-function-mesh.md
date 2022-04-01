@@ -66,7 +66,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 
    2. Install Function Mesh Operator.
 
-        There are some params for the Function Mesh Operator, and user can customize them for particular purpose.For example, if user want to enable `pprof` for the operator, modify the `pprof.enable` to `true` in values.yaml.
+        There are some parameters for the Function Mesh Operator, and you can customize them for a particular purpose. For example, if you want to enable `pprof` for the operator, set the `pprof.enable` to `true` in the `values.yaml` file.
 
         ```shell
         helm install function-mesh --values charts/function-mesh-operator/values.yaml charts/function-mesh-operator --namespace=function-mesh

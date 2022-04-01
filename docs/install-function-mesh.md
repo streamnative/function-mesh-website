@@ -66,7 +66,19 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 
    2. Install Function Mesh Operator.
 
-        There are some parameters for the Function Mesh Operator, and you can customize them for a particular purpose. For example, if you want to enable `pprof` for the operator, set the `pprof.enable` to `true` in the `values.yaml` file.
+        There are some parameters for the Function Mesh Operator, and you can customize them for a particular purpose. 
+        The following table lists the configurable parameters of the operator and their default values.
+        | Parameters | Description | Default|
+        |--         |--           |--       |
+        |enable-leader-election| Whether contorller-manager should enable leader-election| true|
+        | enable-pprof |Whether controller-manager should enable pprof| false|
+        |pprof-addr|The addr of pprof|:8090|
+        |metrics-addr| The addr of metrics|:8080|
+        | health-probe-addr|The addr of health probe|:8000|
+        |config-file| The config file of controller-manager|/etc/config/config.yaml|
+        
+
+        For example, if you want to enable `pprof` for the operator, set the `pprof.enable` to `true` in the `values.yaml` file.
 
         ```shell
         helm install function-mesh --values charts/function-mesh-operator/values.yaml charts/function-mesh-operator --namespace=function-mesh

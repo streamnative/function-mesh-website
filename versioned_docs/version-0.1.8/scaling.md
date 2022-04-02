@@ -34,7 +34,7 @@ Function Mesh auto-scales the number of Pods based on the CPU usage, memory usag
 
 - CPU usage: auto-scale the number of Pods based on CPU utilization.
   
-  This table lists built-in CPU-based autoscaling metrics. If these metrics cannot meet your requirements, you can auto-scale the number of Pods based on customized metrics defined in Pulsar Functions or connectors. For details, see [MetricSpec v2beta2 autoscaling](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling).
+  This table lists built-in CPU-based autoscaling metrics. If these metrics do not meet your requirements, you can auto-scale the number of Pods based on customized metrics defined in Pulsar Functions or connectors. For details, see [MetricSpec v2beta2 autoscaling](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling).
   
   | Option | Description |
   | --- | --- |
@@ -44,7 +44,7 @@ Function Mesh auto-scales the number of Pods based on the CPU usage, memory usag
 
 - Memory usage: auto-scale the number of Pods based on memory utilization.
   
-  This table lists built-in CPU-based autoscaling metrics. If these metrics cannot meet your requirements, you can auto-scale the number of Pods based on customized metrics defined in Pulsar Functions or connectors. For details, see [MetricSpec v2beta2 autoscaling](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling).
+  This table lists built-in memory-based autoscaling metrics. If these metrics do not meet your requirements, you can auto-scale the number of Pods based on customized metrics defined in Pulsar Functions or connectors. For details, see [MetricSpec v2beta2 autoscaling](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling).
   
   | Option | Description |
   | --- | --- |

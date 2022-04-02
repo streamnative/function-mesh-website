@@ -32,8 +32,6 @@ This table lists Pulsar Function configurations.
 | `CleanupSubscription` | Configure whether to clean up subscriptions. |
 | `SubscriptionPosition` | The subscription position. |
 
-This section lists CRD configurations that are common for Pulsar functions, sources, sinks, and Function Mesh.
-
 ## Images
 
 This section describes image options available for Pulsar Function, source, sink and Function Mesh CRDs.
@@ -83,32 +81,24 @@ When you specify a function or connector, you can optionally specify how much of
 
 If the node where a Pod is running has enough of a resource available, it's possible (and allowed) for a pod to use more resources than its `request` for that resource specifies. However, a pod is not allowed to use more than its resource `limit`.
 
-## Secrets
+## Authentication
 
-In Function Mesh, the secret is defined through a secretsMap. To use a secret, a Pod needs to reference the secret. Pods can consume secretsMaps as environment variables in a volume. You can specify the `data` field when creating a configuration file for a secret. 
-
-To use a secret in an environment variable in a Pod, follow these steps.
-
-1. Create a secret or use an existing one. Multiple Pods can reference the same secret.
-2. Modify your Pod definition in each container, which you want to consume the value of a secret key, to add an environment variable for each secret key that you want to consume.
-3. Modify your image and/or command line so that the program looks for values in the specified environment variables.
-
-Pulsar clusters supports using TLS or other authentication plugin for authentication.
+Function Mesh provides the `TLSSecret` and `AuthSecret` fields for Function, Source and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
 
 - TLS Secret
 
     | Field | Description |
     | --- | --- |
-    | tlsAllowInsecureConnection | Allow insecure TLS connection. |
-    | tlsHostnameVerificationEnable | Enable hostname verification. |
-    | tlsTrustCertsFilePath | The path of the TLS trust certificate file. |
+    | `tlsAllowInsecureConnection` | Allow insecure TLS connection. |
+    | `tlsHostnameVerificationEnable` | Enable hostname verification. |
+    | `tlsTrustCertsFilePath` | The path of the TLS trust certificate file. |
 
-- Auth Secret
+- Authentication Secret
 
     | Field | Description |
     | --- | --- |
-    | clientAuthenticationPlugin | Client authentication plugin. |
-    | clientAuthenticationParameters | Client authentication parameters. |
+    | `clientAuthenticationPlugin` | The client authentication plugin. |
+    | `clientAuthenticationParameters` | The client authentication parameters. |
 
 ## Packages
 

@@ -32,8 +32,6 @@ This table lists Pulsar Function configurations.
 | `CleanupSubscription` | Configure whether to clean up subscriptions. |
 | `SubscriptionPosition` | The subscription position. |
 
-This section lists CRD configurations that are common for Pulsar functions, sources, sinks, and Function Mesh.
-
 ## Images
 
 This section describes image options available for Pulsar Function, source, sink and Function Mesh CRDs.
@@ -85,9 +83,9 @@ If the node where a Pod is running has enough of a resource available, it's poss
 
 ## Secrets
 
-In Function Mesh, the secret is defined through a secretsMap. To use a secret, a Pod needs to reference the secret. Pods can consume secretsMaps as environment variables in a volume. You can specify the `data` field when creating a configuration file for a secret. 
+In Function Mesh, the secret is defined through a `secretsMap`. To use a secret, a Pod needs to reference the secret. Pods can consume secretsMaps as environment variables in a volume. 
 
-To use a secret in an environment variable in a Pod, follow these steps.
+To use a secret as an environment variable in a Pod, follow these steps.
 
 1. Create a secret or use an existing one. Multiple Pods can reference the same secret.
 2. Modify your Pod definition in each container, which you want to consume the value of a secret key, to add an environment variable for each secret key that you want to consume.

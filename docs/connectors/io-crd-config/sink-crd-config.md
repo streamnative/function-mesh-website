@@ -63,30 +63,60 @@ If the node where a Pod is running has enough of a resource available, it is pos
 
 ## Secrets
 
-In Function Mesh, the secret is defined through a secretsMap. To use a secret, a Pod needs to reference the secret. Pods can consume secretsMaps as environment variables in a volume. You can specify the `data` field when creating a configuration file for a secret.
+Function Mesh provides the `SecretsMap` field for Function, Source, and Sink in the CRD definition. You can refer to the created secrets under the same namespace and the controller can include those referred secrets. The secrets are provide by `EnvironmentBasedSecretsProvider`, which can be used by `context.getSecret()` in Pulsar functions and connectors.
 
-To use a secret in an environment variable in a Pod, follow these steps.
+The `SecretsMap` field is defined as a `Map` struct with `String` keys and `SecretReference` values. The key indicates the environment value in the container, and the `SecretReference` is defined as below.
 
-1. Create a secret or use an existing one. Multiple Pods can reference the same secret.
-2. Modify your Pod definition in each container, which you want to consume the value of a secret key, to add an environment variable for each secret key that you want to consume.
-3. Modify your image and or command line so that the program looks for values in the specified environment variables.
+| Field | Description |
+| --- | --- |
+| `path` | The name of the secret in the Pod's namespace to select from. |
+| `key` | The key of the secret to select from. It must be a valid secret key.|
 
-Pulsar clusters support using TLS or other authentication plugin for authentication.
+Suppose that there is a Kubernetes Secret named `credential-secret` defined as below:
+
+```yaml
+apiVersion: v1
+data:
+  username: foo
+  password: bar
+kind: Secret
+metadata:
+  name: credential-secret
+type: Opaque
+```
+
+To use it in Pulsar Functions in a secure way, you can define the `SecretsMap` in the Custom Resource:
+
+```yaml
+secretsMap:
+  username:
+    path: credential-secret
+    key: username
+  password:
+    path: credential-secret
+    key: password
+```
+
+Then, in the Pulsar Functions and Connectors, you can call `context.getSecret("username")` to get the secret value (`foo`).
+
+## Authentication
+
+Function Mesh provides the `TLSSecret` and `AuthSecret` fields for Function, Source and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
 
 - TLS Secret
 
     | Field | Description |
     | --- | --- |
-    | tlsAllowInsecureConnection | Allow insecure TLS connection. |
-    | tlsHostnameVerificationEnable | Enable hostname verification. |
-    | tlsTrustCertsFilePath | The path of the TLS trust certificate file. |
+    | `tlsAllowInsecureConnection` | Allow insecure TLS connection. |
+    | `tlsHostnameVerificationEnable` | Enable hostname verification. |
+    | `tlsTrustCertsFilePath` | The path of the TLS trust certificate file. |
 
-- Auth Secret
+- Authentication Secret
 
     | Field | Description |
     | --- | --- |
-    | clientAuthenticationPlugin | Client authentication plugin. |
-    | clientAuthenticationParameters | Client authentication parameters. |
+    | `clientAuthenticationPlugin` | The client authentication plugin. |
+    | `clientAuthenticationParameters` | The client authentication parameters. |
 
 ## Packages
 

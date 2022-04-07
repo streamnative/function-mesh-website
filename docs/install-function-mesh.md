@@ -73,7 +73,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
         |`enable-leader-election`| Whether the Function Mesh Controller Manager should enable leader election. | true|
         | `enable-pprof` |Whether the Function Mesh Controller Manager controller-manager should enable [pprof](https://github.com/google/pprof). | false|
         |`pprof-addr`|The address of the pprof. |:8090|
-        |metrics-addr| The addr of metrics|:8080|
+        | `metrics-addr`| The address of the metrics. |:8080|
         | health-probe-addr|The addr of health probe|:8000|
         |config-file| The config file of controller-manager|/etc/config/config.yaml|
         

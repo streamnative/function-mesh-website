@@ -70,7 +70,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
         This table outlines the configurable parameters of the Function Mesh Operator and their default values.
         | Parameters | Description | Default|
         |--         |--           |--       |
-        |enable-leader-election| Whether contorller-manager should enable leader-election| true|
+        |`enable-leader-election`| Whether the Function Mesh Controller Manager should enable leader election. | true|
         | `enable-pprof` |Whether the Function Mesh Controller Manager controller-manager should enable [pprof](https://github.com/google/pprof). | false|
         |pprof-addr|The addr of pprof|:8090|
         |metrics-addr| The addr of metrics|:8080|

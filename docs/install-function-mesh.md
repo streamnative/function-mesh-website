@@ -78,7 +78,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
         |`config-file`| The config file of the Function Mesh Controller Manager. |/etc/config/config.yaml|
         
 
-        For example, if you want to enable `pprof` for the operator, set the `pprof.enable` to `true` in the `values.yaml` file.
+        For example, if you want to enable `pprof` for the Function Mesh Operator, set the `pprof.enable` to `true` in the `values.yaml` file.
 
         ```shell
         helm install function-mesh --values charts/function-mesh-operator/values.yaml charts/function-mesh-operator --namespace=function-mesh

@@ -67,7 +67,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
    2. Install Function Mesh Operator.
 
         There are some parameters for the Function Mesh Operator, and you can customize them for a particular purpose. 
-        The following table lists the configurable parameters of the operator and their default values.
+        This table outlines the configurable parameters of the Function Mesh Operator and their default values.
         | Parameters | Description | Default|
         |--         |--           |--       |
         |enable-leader-election| Whether contorller-manager should enable leader-election| true|

@@ -75,7 +75,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
         |`pprof-addr`|The address of the pprof. |:8090|
         | `metrics-addr`| The address of the metrics. |:8080|
         | `health-probe-addr`|The address of the health probe. |:8000|
-        |config-file| The config file of controller-manager|/etc/config/config.yaml|
+        |`config-file`| The config file of the Function Mesh Controller Manager. |/etc/config/config.yaml|
         
 
         For example, if you want to enable `pprof` for the operator, set the `pprof.enable` to `true` in the `values.yaml` file.

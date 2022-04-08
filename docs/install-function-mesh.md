@@ -14,7 +14,7 @@ This section describes how to install Function Mesh through the `install.sh` scr
 
 Before installing Function Mesh, ensure to perform the following operations.
 
-- Kubernetes server 1.12 or higher.
+- Kubernetes server v1.17 or higher.
 - Create and connect to a [Kubernetes cluster](https://kubernetes.io/).
 - Create a [Pulsar cluster](https://pulsar.apache.org/docs/en/kubernetes-helm/) in the Kubernetes cluster.
 - Deploy [Pulsar Functions](https://pulsar.apache.org/docs/en/functions-overview/).
@@ -66,8 +66,8 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 
    2. Install Function Mesh Operator.
 
-        There are some parameters for the Function Mesh Operator, and you can customize them for a particular purpose. 
         This table outlines the configurable parameters of the Function Mesh Operator and their default values.
+
         | Parameters | Description | Default|
         |--         |--           |--       |
         |`enable-leader-election`| Whether the Function Mesh Controller Manager should enable leader election. | true|
@@ -75,7 +75,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
         |`pprof-addr`|The address of the pprof. |:8090|
         | `metrics-addr`| The address of the metrics. |:8080|
         | `health-probe-addr`|The address of the health probe. |:8000|
-        |`config-file`| The config file of the Function Mesh Controller Manager. |/etc/config/config.yaml|
+        |`config-file`| The configuration file of the Function Mesh Controller Manager, which includes `runnerImages`, `resourceLabels`, and `resourceAnnotations` configurations. <br />- `runnerImage`: the runner image to run the Pulsar Function instances. Currently, it supports Java, Python, and Go runner images. <br />- `resourceLabels`: set labels for Pulsar Functions, Sources, or Sinks. <br />- `resourceAnnotations`: set annotations for Pulsar Functions, Sources, or Sinks.  |/etc/config/config.yaml|
         
 
         For example, if you want to enable `pprof` for the Function Mesh Operator, set the `pprof.enable` to `true` in the `values.yaml` file.

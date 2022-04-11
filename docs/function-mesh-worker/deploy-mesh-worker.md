@@ -53,7 +53,7 @@ You can customize the Function Mesh Worker service using `functionsWorkerService
 | `sinkLabels` | Map < String, String > | No | {} (empty string) | Specify the labels being attached to a Sink's Pod. When both `sinkLabels` and `labels` are specified, `sinkLabels` overrides `labels`. |
 | `sourceLabels` | Map < String, String > | No | {} (empty string) | Specify the labels being attached to a Source's Pod. When both `sourceLabels` and `labels` are specified, `sourceLabels` overrides `labels`. |
 | `annotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attached to a Pod that is created by the Function Mesh Operator for the cluster. |
-| `functionAnnotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attach to a Function's Pod. When both `functionAnnotations` and `annotations` are specified, `functionAnnotations` overrides `annotations`. |
+| `functionAnnotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attached to a Function's Pod. When both `functionAnnotations` and `annotations` are specified, `functionAnnotations` overrides `annotations`. |
 | `sinkAnnotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attach to a Sink's Pod. When both `sinkAnnotations` and `annotations` are specified, `sinkAnnotations` overrides `annotations`. |
 | `sourceAnnotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attach to a Source's Pod. When both `sourceAnnotations` and `annotations` are specified, `sourceAnnotations` overrides `annotations`. |
 

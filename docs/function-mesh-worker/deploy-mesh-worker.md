@@ -55,7 +55,7 @@ You can customize the Function Mesh Worker service using `functionsWorkerService
 | `annotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attached to a Pod that is created by the Function Mesh Operator for the cluster. |
 | `functionAnnotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attached to a Function's Pod. When both `functionAnnotations` and `annotations` are specified, `functionAnnotations` overrides `annotations`. |
 | `sinkAnnotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attached to a Sink's Pod. When both `sinkAnnotations` and `annotations` are specified, `sinkAnnotations` overrides `annotations`. |
-| `sourceAnnotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attach to a Source's Pod. When both `sourceAnnotations` and `annotations` are specified, `sourceAnnotations` overrides `annotations`. |
+| `sourceAnnotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attached to a Source's Pod. When both `sourceAnnotations` and `annotations` are specified, `sourceAnnotations` overrides `annotations`. |
 
 ### Start Function Mesh Worker service
 

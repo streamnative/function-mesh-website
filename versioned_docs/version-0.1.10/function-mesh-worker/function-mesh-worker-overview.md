@@ -22,4 +22,5 @@ This table lists the version mapping relationships between Function Mesh and Fun
 
 | Function Mesh | Function Mesh Worker service |
 | --- | --- |
-| v0.1.9 | <br />- v2.9.1 .x (v2.9.1.1-v2.9.1.2) <br />- v2.8.2.x (v2.8.2.0- v2.8.2.1 v2.8.2.2) <br />- v2.8.1 x (2.8.1.25-v2.8.1.26, v.2.8.1.28-v2.8.1.30)|
+| v0.1.9 | <br />- v2.9.1.x (v2.9.1.1-v2.9.1.2) <br />- v2.8.2.x (v2.8.2.0-v2.8.2.2) <br />- v2.8.1 x (2.8.1.25-v2.8.1.26, v.2.8.1.28-v2.8.1.30)|
+| v0.1.10| <br />- v2.9.2.0+ <br />- v2.8.2.3+ |

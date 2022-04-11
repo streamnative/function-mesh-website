@@ -69,14 +69,13 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
         This table outlines the configurable parameters of the Function Mesh Operator and their default values.
 
         | Parameters | Description | Default|
-        |--         |--           |--       |
+        | --- | --- | --- |
         |`enable-leader-election`| Whether the Function Mesh Controller Manager should enable leader election. | true|
-        | `enable-pprof` |Whether the Function Mesh Controller Manager should enable [pprof](https://github.com/google/pprof). | false|
-        |`pprof-addr`|The address of the pprof. |:8090|
-        | `metrics-addr`| The address of the metrics. |:8080|
-        | `health-probe-addr`|The address of the health probe. |:8000|
-        |`config-file`| The configuration file of the Function Mesh Controller Manager, which includes `runnerImages`, `resourceLabels`, and `resourceAnnotations` configurations. <br />- `runnerImage`: the runner image to run the Pulsar Function instances. Currently, it supports Java, Python, and Go runner images. <br />- `resourceLabels`: set labels for Pulsar Functions, Sources, or Sinks. <br />- `resourceAnnotations`: set annotations for Pulsar Functions, Sources, or Sinks.  |/etc/config/config.yaml|
-        
+        | `enable-pprof` |Whether the Function Mesh Controller Manager should enable [pprof](https://github.com/google/pprof). | `false`|
+        |`pprof-addr`|The address of the pprof. |`:8090`|
+        | `metrics-addr`| The address of the metrics. |`:8080`|
+        | `health-probe-addr`|The address of the health probe. |`:8000`|
+        |`config-file`| The configuration file of the Function Mesh Controller Manager, which includes `runnerImages`, `resourceLabels`, and `resourceAnnotations` configurations. <br />- `runnerImage`: the runner image to run the Pulsar Function instances. Currently, it supports Java, Python, and Go runner images. <br />- `resourceLabels`: set labels for Pulsar Functions, Sources, or Sinks. <br />- `resourceAnnotations`: set annotations for Pulsar Functions, Sources, or Sinks.  |`/etc/config/configs.yaml`|
 
         For example, if you want to enable `pprof` for the Function Mesh Operator, set the `pprof.enable` to `true` in the `values.yaml` file.
 

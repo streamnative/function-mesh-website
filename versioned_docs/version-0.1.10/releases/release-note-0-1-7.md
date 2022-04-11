@@ -6,7 +6,7 @@ id: release-note-0-1-7
 
 Here are some highlights of this release. For a full list of updates available for Release v0.1.7, check out [here](https://github.com/streamnative/function-mesh/releases/tag/v0.1.7).
 
-# YAML configuration supports multiple values
+## YAML configuration supports multiple values
 
 In previous releases, the Pulsar Function or connector configurations were declared as `map[string]string`, and nested or complex configurations shown below were not supported.
 
@@ -59,13 +59,13 @@ sinkConfig:
       use-services-alternate: true
 ```
 
-# Pulsar source connectors can pass message properties to a target topic
+## Pulsar source connectors can pass message properties to a target topic
 
 In previous releases, Pulsar source connectors could not pass message properties to a target topic because the `forwardSourceMessageProperty` was not applied to the source connector.
 
 In this release, the `forwardSourceMessageProperty` parameter is added to the source connectors. You can use Function Mesh or the pulsar-admin CLI tool to pass message properties to the target topic.
 
-# Function Mesh provides multiple options for auto-scaling the number of Pods
+## Function Mesh provides multiple options for auto-scaling the number of Pods
 
 In previous releases, Function Mesh supported scaling Pods (Function instances or Connector instances) based on the CPU utilization automatically.
 
@@ -77,7 +77,7 @@ In this release, Function Mesh auto-scales the number of Pods based on the CPU u
 
 For details, see [scaling](/scaling.md).
 
-# Function Mesh supports creating Pulsar Functions by package URLs
+## Function Mesh supports creating Pulsar Functions by package URLs
 
 Pulsar 2.8 introduced the package management service, which enables you to manage your Pulsar Function and connector packages.
 

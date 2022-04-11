@@ -49,7 +49,7 @@ You can customize the Function Mesh Worker service using `functionsWorkerService
 | `functionRunnerImages` | Map < String, String > | No | {} (empty string)| The runner image to run the Pulsar Function instances. |
 | `imagePullSecrets` | List< V1LocalObjectReference > | No | [] (empty string) | An optional list of references to secrets in the same namespace to pull images used by `PodSpec`. |
 | `labels` | Map < String, String > | No | {} (empty string) | Specify the labels being attached to a Pod that is created by the Function Mesh Operator for the cluster. |
-| `functionLabels` | Map < String, String > | No | {} (empty string) | Specify the labels being attach to a Function's Pod. When both `functionLabels` and `labels` are specified, `functionLabels` overrides `labels`. |
+| `functionLabels` | Map < String, String > | No | {} (empty string) | Specify the labels being attached to a Function's Pod. When both `functionLabels` and `labels` are specified, `functionLabels` overrides `labels`. |
 | `sinkLabels` | Map < String, String > | No | {} (empty string) | Specify the labels being attach to a Sink's Pod. When both `sinkLabels` and `labels` are specified, `sinkLabels` overrides `labels`. |
 | `sourceLabels` | Map < String, String > | No | {} (empty string) | Specify the labels being attach to a Source's Pod. When both `sourceLabels` and `labels` are specified, `sourceLabels` overrides `labels`. |
 | `annotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attached to a Pod that is created by the Function Mesh Operator for the cluster. |

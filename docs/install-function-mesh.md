@@ -86,14 +86,14 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 4. Check whether Function Mesh is installed successfully.
 
     ```shell
-    kubectl get pods -l app.kubernetes.io/component=controller-manager
+    kubectl get pods -l app.kubernetes.io/component=controller-manager -n function-mesh
     ```
 
     **Output**
 
     ```
-    NAME                                READY   STATUS      RESTARTS   AGE
-    function-mesh-controller-manager-696f6467c9-mbstr               1/1     Running     0          77s
+    NAME                                                READY   STATUS    RESTARTS   AGE
+    function-mesh-controller-manager-696f6467c9-mbstr   1/1     Running   0          77s
     ```
 
 ## Verify installation
@@ -101,14 +101,14 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 - This example shows how to verify whether Function Mesh is installed successfully.
 
     ```shell
-    kubectl get pods -l app.kubernetes.io/component=controller-manager
+    kubectl get pods -l app.kubernetes.io/component=controller-manager -n function-mesh
     ```
 
     **Output**
 
     ```
-    NAME                                READY   STATUS      RESTARTS   AGE
-    function-mesh-controller-manager-696f6467c9-mbstr               1/1     Running     0          77s
+    NAME                                                READY   STATUS    RESTARTS   AGE
+    function-mesh-controller-manager-696f6467c9-mbstr   1/1     Running   0          77s
     ```
 
 - This example shows how to verify whether Function Mesh can run properly.

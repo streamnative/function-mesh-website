@@ -16,5 +16,5 @@ In this release, we set up a dedicated Helm charts repository for the Function M
 
 ## Support Golang 1.18
 
-In this release, we have added support for Golang 1.18.
+In this release, Function Mesh supported Golang 1.18.
 

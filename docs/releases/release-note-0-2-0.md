@@ -12,7 +12,7 @@ In this release, we have added `Stateful`, `PulsarStateStore` resources, and `--
 
 ## Independent the helm chart of Function Mesh Operator
 
-In this release, we have set up the dedicated helm charts repository for the Function Mesh Operator. It is now maintained through the domain https://charts.functionmesh.io. You can find information about the repository [here](https://artifacthub.io/packages/helm/function-mesh/function-mesh-operator).
+In this release, we set up a dedicated Helm charts repository for the Function Mesh Operator. It is now maintained through this [domain](https://charts.functionmesh.io). For details, see [Function Mesh Operator repository](https://artifacthub.io/packages/helm/function-mesh/function-mesh-operator).
 
 ## Support Golang 1.18
 

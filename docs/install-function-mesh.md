@@ -61,7 +61,9 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 
     Install the Function Mesh Operator via following command.
 
-    > If no Kubernetes namespace is specified, the `default` namespace is used.
+    > **Note**
+    >
+    > - If no Kubernetes namespace is specified, the `default` namespace is used.
     >
     > If the namespace ${FUNCTION_MESH_RELEASE_NAMESPACE} doesn't exist yet, you can add the parameter `--create-namespace ` to create it automatically.
 

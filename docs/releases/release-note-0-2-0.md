@@ -8,7 +8,9 @@ Here are some highlights of this release. For a full list of updates available f
 
 ## Support Pulsar stateful functions
 
-In this release, we have added `Stateful`, `PulsarStateStore` resources, and `--state_storage_serviceurl`, `-state_storage_impl_class` parameters to support running Pulsar's stateful functions.
+In this release, we added the following resources and parameters to run Pulsar stateful functions.
+- Resources: `Stateful` and `PulsarStateStore`
+- Parameters: `--state_storage_serviceurl` and `-state_storage_impl_class`.
 
 ## Independent the helm chart of Function Mesh Operator
 

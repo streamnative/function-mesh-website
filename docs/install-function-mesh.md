@@ -43,72 +43,80 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 > - Before installation, ensure that Helm v3 is installed properly.
 > - For the use of `kubectl` commands, see [kubectl command reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands).
 
-1. Clone the StreamNative Function Mesh repository.
+1. Add the StreamNative Function Mesh repository.
 
     ```shell
-    git clone https://github.com/streamnative/function-mesh.git
-    cd function-mesh
+    helm repo add function-mesh http://charts.functionmesh.io/
+    helm repo update
     ```
 
-2. Create the custom resource type.
+2. Install the Function Mesh Operator.
+
+    Let's set some variables for convenient use later.
 
     ```shell
-    curl -sSL https://github.com/streamnative/function-mesh/releases/download/{{functionmesh_version}}/crd.yaml | kubectl create -f -
+    export FUNCTION_MESH_RELEASE_NAME=function-mesh  # change the release name according to your scenario
+    export FUNCTION_MESH_RELEASE_NAMESPACE=function-mesh  # change the namespace to where you want to install Function Mesh
     ```
 
-3. Install the Function Mesh Operator.
+    Install the Function Mesh Operator via following command.
 
-   1. Create a Kubernetes namespace `function-mesh`. If no Kubernetes namespace is specified, the `default` namespace is used.
-
-        ```shell
-        kubectl create ns function-mesh
-        ```
-
-   2. Install Function Mesh Operator.
-
-        This table outlines the configurable parameters of the Function Mesh Operator and their default values.
-
-        | Parameters | Description | Default|
-        | --- | --- | --- |
-        |`enable-leader-election`| Whether the Function Mesh Controller Manager should enable leader election. | true|
-        | `enable-pprof` |Whether the Function Mesh Controller Manager should enable [pprof](https://github.com/google/pprof). | `false`|
-        |`pprof-addr`|The address of the pprof. |`:8090`|
-        | `metrics-addr`| The address of the metrics. |`:8080`|
-        | `health-probe-addr`|The address of the health probe. |`:8000`|
-        |`config-file`| The configuration file of the Function Mesh Controller Manager, which includes `runnerImages`, `resourceLabels`, and `resourceAnnotations` configurations. <br />- `runnerImage`: the runner image to run the Pulsar Function instances. Currently, it supports Java, Python, and Go runner images. <br />- `resourceLabels`: set labels for Pulsar Functions, Sources, or Sinks. <br />- `resourceAnnotations`: set annotations for Pulsar Functions, Sources, or Sinks.  |`/etc/config/configs.yaml`|
-
-        For example, if you want to enable `pprof` for the Function Mesh Operator, set the `pprof.enable` to `true` in the `values.yaml` file.
-
-        ```shell
-        helm install function-mesh --values charts/function-mesh-operator/values.yaml charts/function-mesh-operator --namespace=function-mesh
-        ```
-
-4. Check whether Function Mesh is installed successfully.
+    > **Note**
+    >
+    > - If no Kubernetes namespace is specified, the `default` namespace is used.
+    >
+    > - If the namespace ${FUNCTION_MESH_RELEASE_NAMESPACE} doesn't exist yet, you can add the parameter `--create-namespace ` to create it automatically.
 
     ```shell
-    kubectl get pods -l app.kubernetes.io/component=controller-manager
+    helm install ${FUNCTION_MESH_RELEASE_NAME} function-mesh/function-mesh-operator -n ${FUNCTION_MESH_RELEASE_NAMESPACE}
+    ```
+
+    This table outlines the configurable parameters of the Function Mesh Operator and their default values.
+
+    | Parameters | Description | Default|
+    | --- | --- | --- |
+    |`enable-leader-election`| Whether the Function Mesh Controller Manager should enable leader election. | `true` |
+    | `enable-pprof` |Whether the Function Mesh Controller Manager should enable [pprof](https://github.com/google/pprof). | `false`|
+    |`pprof-addr`|The address of the pprof. |`:8090`|
+    | `metrics-addr`| The address of the metrics. |`:8080`|
+    | `health-probe-addr`|The address of the health probe. |`:8000`|
+    |`config-file`| The configuration file of the Function Mesh Controller Manager, which includes `runnerImages`, `resourceLabels`, and `resourceAnnotations` configurations. <br />- `runnerImage`: the runner image to run the Pulsar Function instances. Currently, it supports Java, Python, and Go runner images. <br />- `resourceLabels`: set labels for Pulsar Functions, Sources, or Sinks. <br />- `resourceAnnotations`: set annotations for Pulsar Functions, Sources, or Sinks.  |`/etc/config/configs.yaml`|
+
+    For example, if you want to enable `pprof` for the Function Mesh Operator, set the `controllerManager.pprof.enable` to `true`.
+
+    ```shell
+    helm install ${FUNCTION_MESH_RELEASE_NAME} function-mesh/function-mesh-operator -n ${FUNCTION_MESH_RELEASE_NAMESPACE} \
+      --set controllerManager.pprof.enable=true
+    ```
+
+3. Check whether Function Mesh is installed successfully.
+
+    ```shell
+    kubectl get pods --namespace ${FUNCTION_MESH_RELEASE_NAMESPACE} -l app.kubernetes.io/instance=function-mesh
     ```
 
     **Output**
 
     ```
-    NAME                                READY   STATUS      RESTARTS   AGE
-    function-mesh-controller-manager-696f6467c9-mbstr               1/1     Running     0          77s
+    NAME                                               READY   STATUS    RESTARTS   AGE
+    function-mesh-controller-manager-5f867557c-d6vf4   1/1     Running   0          8s
     ```
 
 ## Verify installation
 
 - This example shows how to verify whether Function Mesh is installed successfully.
 
+    > `${NAMESPACE}` indicates the namespace where Function Mesh Operator is installed.
+
     ```shell
-    kubectl get pods -l app.kubernetes.io/component=controller-manager
+    kubectl get pods --namespace ${NAMEPSACE} -l app.kubernetes.io/instance=function-mesh
     ```
 
     **Output**
 
     ```
-    NAME                                READY   STATUS      RESTARTS   AGE
-    function-mesh-controller-manager-696f6467c9-mbstr               1/1     Running     0          77s
+    NAME                                               READY   STATUS    RESTARTS   AGE
+    function-mesh-controller-manager-5f867557c-d6vf4   1/1     Running   0          8s
     ```
 
 - This example shows how to verify whether Function Mesh can run properly.
@@ -133,8 +141,10 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 
 Use the following command to uninstall Function Mesh through Helm.
 
+> `${NAMESPACE}` indicates the namespace where the Function Mesh Operator is installed.
+
 ```bash
-helm delete function-mesh
+helm delete function-mesh -n ${NAMESPACE}
 ```
 
 ## Work with `pulsar-admin` CLI tool
@@ -172,8 +182,10 @@ To start Function Mesh Worker service, follow these steps.
 
 3. Start Function Mesh Operator.
 
+    > If the namespace `function-mesh` doesn't exist yet, you can add the parameter `--create-namespace ` to create it automatically.
+
     ```shell
-    helm install function-mesh --values charts/function-mesh-operator/values.yaml charts/function-mesh-operator --namespace=function-mesh
+    helm install function-mesh function-mesh/function-mesh-operator -n function-mesh
     ```
 
 4. Verify whether the Function Mesh Worker service is started successfully.

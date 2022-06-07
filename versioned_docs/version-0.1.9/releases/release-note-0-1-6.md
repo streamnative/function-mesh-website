@@ -24,6 +24,6 @@ In release v0.1.4, we introduced the Function Mesh Worker service, which ensures
 
 In this release, we expose the `serviceAccountName` option in the CRDs of Pulsar Functions and connectors. Therefore, users can run Pulsar Functions and connectors using the Function Mesh Worker service.
 
-## Fix the NPE that is generated when the `AutoAck` option is not set
+## Fix the NPE that is generated when the `autoAck` option is not set
 
-If the `AutoAck` option is not set in the CRDs of Pulsar Functions and connectors, a Null Pointer Exception (NPE) is generated when creating a function, connector (sink or source) using the pulsar-admin CLI tool. To fix this bug, we set the `AutoAck` option to `true` by default. Therefore, users can successfully create Pulsar Functions and connectors.
+If the `autoAck` option is not set in the CRDs of Pulsar Functions and connectors, a Null Pointer Exception (NPE) is generated when creating a function, connector (sink or source) using the pulsar-admin CLI tool. To fix this bug, we set the `autoAck` option to `true` by default. Therefore, users can successfully create Pulsar Functions and connectors.

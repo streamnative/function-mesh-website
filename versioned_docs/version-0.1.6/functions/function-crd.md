@@ -16,21 +16,21 @@ This table lists Pulsar Function configurations.
 | `classname` | The class name of a Pulsar Function. |
 | `tenant` | The tenant of a Pulsar Function. |
 | `namespace` | The namespace of a Pulsar Function. |
-| `ClusterName` | The Pulsar cluster of a Pulsar Function. |
-| `Replicas`| The number of instances that you want to run this Pulsar Function. By default, the `Replicas` is set to `1`. |
-| `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this Pulsar Function. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller automatically scales the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
-| `Timeout` | The message timeout in milliseconds. |
-| `DeadLetterTopic` | The topic where all messages that were not processed successfully are sent. This parameter is not supported in Python Functions. |
-| `FuncConfig` | The map to a ConfigMap specifying the configuration of a Pulsar function. |
-| `LogTopic` | The topic to which the logs of a Pulsar Function are produced. |
-| `AutoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
-| `MaxMessageRetry` | How many times to process a message before giving up. |
-| `ProcessingGuarantee` | The processing guarantees (delivery semantics) applied to the function. Available values: `ATLEAST_ONCE`, `ATMOST_ONCE`, `EFFECTIVELY_ONCE`.|
-| `RetainOrdering` | Function consumes and processes messages in order. |
-| `RetainKeyOrdering`| Configure whether to retain the key order of messages. |
-| `SubscriptionName` | Pulsar Functions’ subscription name if you want a specific subscription-name for the input-topic consumer. |
-| `CleanupSubscription` | Configure whether to clean up subscriptions. |
-| `SubscriptionPosition` | The subscription position. |
+| `clusterName` | The Pulsar cluster of a Pulsar Function. |
+| `replicas`| The number of instances that you want to run this Pulsar Function. By default, the `replicas` is set to `1`. |
+| `maxReplicas`| The maximum number of Pulsar instances that you want to run for this Pulsar Function. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller automatically scales the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
+| `timeout` | The message timeout in milliseconds. |
+| `deadLetterTopic` | The topic where all messages that were not processed successfully are sent. This parameter is not supported in Python Functions. |
+| `funcConfig` | The map to a ConfigMap specifying the configuration of a Pulsar function. |
+| `logTopic` | The topic to which the logs of a Pulsar Function are produced. |
+| `autoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
+| `maxMessageRetry` | How many times to process a message before giving up. |
+| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the function. Available values: `atleast_once`, `atmost_once`, `effectively_once`.|
+| `retainOrdering` | Function consumes and processes messages in order. |
+| `retainKeyOrdering`| Configure whether to retain the key order of messages. |
+| `subscriptionName` | Pulsar Functions’ subscription name if you want a specific subscription-name for the input-topic consumer. |
+| `cleanupSubscription` | Configure whether to clean up subscriptions. |
+| `subscriptionPosition` | The subscription position. |
 
 ## Images
 
@@ -58,10 +58,10 @@ The input topics of a Pulsar Function. The following table lists options availab
 
 | Field | Description |
 | --- | --- |
-| `Topics` | The configuration of the topic from which messages are fetched. |
-| `CustomSerdeSources` | The map of input topics to SerDe class names (as a JSON string). |
-| `CustomSchemaSources` | The map of input topics to Schema class names (as a JSON string). |
-| `SourceSpecs` | The map of source specifications to consumer specifications. Consumer specifications include these options: <br />- `SchemaType`: the built-in schema type or custom schema class name to be used for messages fetched by the function. <br />- `SerdeClassName`: the SerDe class to be used for messages fetched by the function. <br />- `IsRegexPattern`: configure whether the input topic adopts a Regex pattern. <br />- `SchemaProperties`: the schema properties for messages fetched by the function. <br />- `ConsumerProperties`: the consumer properties for messages fetched by the function. <br />- `ReceiverQueueSize`: the size of the consumer receive queue. br /> - `CryptoConfig`: cryptography configurations of the consumer. |
+| `topics` | The configuration of the topic from which messages are fetched. |
+| `customSerdeSources` | The map of input topics to SerDe class names (as a JSON string). |
+| `customSchemaSources` | The map of input topics to Schema class names (as a JSON string). |
+| `sourceSpecs` | The map of source specifications to consumer specifications. Consumer specifications include these options: <br />- `SchemaType`: the built-in schema type or custom schema class name to be used for messages fetched by the function. <br />- `SerdeClassName`: the SerDe class to be used for messages fetched by the function. <br />- `IsRegexPattern`: configure whether the input topic adopts a Regex pattern. <br />- `SchemaProperties`: the schema properties for messages fetched by the function. <br />- `ConsumerProperties`: the consumer properties for messages fetched by the function. <br />- `ReceiverQueueSize`: the size of the consumer receive queue. br /> - `cryptoConfig`: cryptography configurations of the consumer. |
 
 ## Output
 
@@ -69,11 +69,11 @@ The output topics of a Pulsar Function. This table lists options available for t
 
 |Name | Description |
 | --- | --- |
-| `Topics` | The output topic of a Pulsar Function (If none is specified, no output is written). | 
-| `SinkSerdeClassName` | The map of output topics to SerDe class names (as a JSON string). |
-| `SinkSchemaType` | The built-in schema type or custom schema class name to be used for messages sent by the function.|
-| `ProducerConf` | The producer specifications. Available options: < br />- `MaxPendingMessages`: the maximum number of pending messages. <br />- `MaxPendingMessagesAcrossPartitions`: the maximum number of pending messages across partitions. <br />- `UseThreadLocalProducers`: configure whether the producer uses a thread. <br />- `CryptoConfig`: cryptography configurations of the producer. <br />- `BatchBuilder`: support key-based batcher.
-| `CustomSchemaSinks` | The map of output topics to Schema class names (as a JSON string). |
+| `topics` | The output topic of a Pulsar Function (If none is specified, no output is written). | 
+| `sinkSerdeClassName` | The map of output topics to SerDe class names (as a JSON string). |
+| `sinkSchemaType` | The built-in schema type or custom schema class name to be used for messages sent by the function.|
+| `producerConf` | The producer specifications. Available options: < br />- `maxPendingMessages`: the maximum number of pending messages. <br />- `maxPendingMessagesAcrossPartitions`: the maximum number of pending messages across partitions. <br />- `useThreadLocalProducers`: configure whether the producer uses a thread. <br />- `cryptoConfig`: cryptography configurations of the producer. <br />- `batchBuilder`: support key-based batcher.
+| `customSchemaSinks` | The map of output topics to Schema class names (as a JSON string). |
 
 ## Resources
 
@@ -83,7 +83,7 @@ If the node where a Pod is running has enough of a resource available, it's poss
 
 ## Authentication
 
-Function Mesh provides the `TLSSecret` and `AuthSecret` fields for Function, Source and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
+Function Mesh provides the `tlsSecret` and `authSecret` fields for Function, Source and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
 
 - TLS Secret
 
@@ -126,15 +126,15 @@ Function Mesh supports customizing the Pod running function instance. This table
 
 | Field | Description |
 | --- | --- |
-| `Labels` | Specify labels attached to a Pod. |
-| `NodeSelector` | Specify a map of key-value pairs. For a Pod running on a node, the node must have each of the indicated key-value pairs as labels. |
-| `Affinity` | Specify the scheduling constraints of a Pod. |
-| `Tolerations` | Specify the tolerations of a Pod. |
-| `Annotations`| Specify the annotations attached to a Pod. |
-| `SecurityContext` | Specify the security context for a Pod. |
-| `TerminationGracePeriodSeconds` | It is the amount of time that Kubernetes gives for a Pod before terminating it. |
-| `Volumes` | It is a list of volumes that can be mounted by containers belonging to a Pod. |
-| `ImagePullSecrets` | It is an optional list of references to secrets in the same namespace for pulling any of the images used by a Pod. |
-| `ServiceAccountName` | Specify the name of the service account which is used to run Pulsar Functions or connectors in the Function Mesh Worker service.|
-| `InitContainers` | Initialization containers belonging to a Pod. A typical use case could be using an Initialization container to download a remote JAR to a local path. |
-| `Sidecars` | Sidecar containers run together with the main function container in a Pod. |
+| `labels` | Specify labels attached to a Pod. |
+| `nodeSelector` | Specify a map of key-value pairs. For a Pod running on a node, the node must have each of the indicated key-value pairs as labels. |
+| `affinity` | Specify the scheduling constraints of a Pod. |
+| `tolerations` | Specify the tolerations of a Pod. |
+| `annotations`| Specify the annotations attached to a Pod. |
+| `securityContext` | Specify the security context for a Pod. |
+| `terminationGracePeriodSeconds` | It is the amount of time that Kubernetes gives for a Pod before terminating it. |
+| `volumes` | It is a list of volumes that can be mounted by containers belonging to a Pod. |
+| `imagePullSecrets` | It is an optional list of references to secrets in the same namespace for pulling any of the images used by a Pod. |
+| `serviceAccountName` | Specify the name of the service account which is used to run Pulsar Functions or connectors in the Function Mesh Worker service.|
+| `initContainers` | Initialization containers belonging to a Pod. A typical use case could be using an Initialization container to download a remote JAR to a local path. |
+| `sidecars` | Sidecar containers run together with the main function container in a Pod. |

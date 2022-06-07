@@ -14,20 +14,20 @@ This table lists sink configurations.
 | `name` | The name of a sink connector. |
 | `classname` | The class name of a sink connector. |
 | `tenant` | The tenant of a sink connector. |
-| `ClusterName` | The Pulsar cluster of a sink connector. |
-| `Replicas`| The number of instances that you want to run this sink connector. By default, the `Replicas` is set to `1`. |
-| `MaxReplicas`| The maximum number of Pulsar instances that you want to run for this sink connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the sink controller automatically scales the sink connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
-| `SinkConfig` | The map to a ConfigMap specifying the configuration of a sink connector. |
-| `Timeout` | The message timeout in milliseconds. |
-| `NegativeAckRedeliveryDelayMs`| The number of redelivered messages due to negative acknowledgement. |
-| `AutoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
-| `MaxMessageRetry` | How many times to process a message before giving up. |
-| `ProcessingGuarantee` | The processing guarantees (delivery semantics) applied to the sink connector. Available values: `ATLEAST_ONCE`, `ATMOST_ONCE`, `EFFECTIVELY_ONCE`.|
-| `RetainOrdering` | The sink connector consumes and processes messages in order. |
-| `DeadLetterTopic` | The topic where all messages that were not processed successfully are sent. |
-| `SubscriptionName` | The subscription name of the sink connector if you want a specific subscription-name for the input-topic consumer. |
-| `CleanupSubscription` | Configure whether to clean up subscriptions. |
-| `SubscriptionPosition` | The subscription position. |
+| `clusterName` | The Pulsar cluster of a sink connector. |
+| `replicas`| The number of instances that you want to run this sink connector. By default, the `replicas` is set to `1`. |
+| `maxReplicas`| The maximum number of Pulsar instances that you want to run for this sink connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the sink controller automatically scales the sink connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
+| `sinkConfig` | The map to a ConfigMap specifying the configuration of a sink connector. |
+| `timeout` | The message timeout in milliseconds. |
+| `negativeAckRedeliveryDelayMs`| The number of redelivered messages due to negative acknowledgement. |
+| `autoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
+| `maxMessageRetry` | How many times to process a message before giving up. |
+| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the sink connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`.|
+| `retainOrdering` | The sink connector consumes and processes messages in order. |
+| `deadLetterTopic` | The topic where all messages that were not processed successfully are sent. |
+| `subscriptionName` | The subscription name of the sink connector if you want a specific subscription-name for the input-topic consumer. |
+| `cleanupSubscription` | Configure whether to clean up subscriptions. |
+| `subscriptionPosition` | The subscription position. |
 
 ## Images
 
@@ -49,10 +49,10 @@ The input topics of a Pulsar Function. The following table lists options availab
 
 | Field | Description |
 | --- | --- |
-| `Topics` | The configuration of the topic from which messages are fetched. |
-| `CustomSerdeSources` | The map of input topics to SerDe class names (as a JSON string). |
-| `CustomSchemaSources` | The map of input topics to Schema class names (as a JSON string). |
-| `SourceSpecs` | The map of source specifications to consumer specifications. Consumer specifications include these options: <br />- `SchemaType`: the built-in schema type or custom schema class name to be used for messages fetched by the connector. <br />- `SerdeClassName`: the SerDe class to be used for messages fetched by the connector. <br />- `IsRegexPattern`: configure whether the input topic adopts a Regex pattern. <br />- `SchemaProperties`: the schema properties for messages fetched by the connector. <br />- `ConsumerProperties`: the consumer properties for messages fetched by the connector. <br />- `ReceiverQueueSize`: the size of the consumer receive queue. <br /> - `CryptoConfig`: cryptography configurations of the consumer. |
+| `topics` | The configuration of the topic from which messages are fetched. |
+| `customSerdeSources` | The map of input topics to SerDe class names (as a JSON string). |
+| `customSchemaSources` | The map of input topics to Schema class names (as a JSON string). |
+| `sourceSpecs` | The map of source specifications to consumer specifications. Consumer specifications include these options: <br />- `SchemaType`: the built-in schema type or custom schema class name to be used for messages fetched by the connector. <br />- `SerdeClassName`: the SerDe class to be used for messages fetched by the connector. <br />- `IsRegexPattern`: configure whether the input topic adopts a Regex pattern. <br />- `SchemaProperties`: the schema properties for messages fetched by the connector. <br />- `ConsumerProperties`: the consumer properties for messages fetched by the connector. <br />- `ReceiverQueueSize`: the size of the consumer receive queue. <br /> - `cryptoConfig`: cryptography configurations of the consumer. |
 
 ## Resources
 
@@ -62,7 +62,7 @@ If the node where a Pod is running has enough of a resource available, it is pos
 
 ## Authentication
 
-Function Mesh provides the `TLSSecret` and `AuthSecret` fields for Function, Source and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
+Function Mesh provides the `tlsSecret` and `authSecret` fields for Function, Source and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
 
 - TLS Secret
 
@@ -103,15 +103,15 @@ Function Mesh supports customizing the Pod running Pulsar connectors. This table
 
 | Field | Description |
 | --- | --- |
-| `Labels` | Specify labels attached to a Pod. |
-| `NodeSelector` | Specify a map of key-value pairs. For a Pod running on a node, the node must have each of the indicated key-value pairs as labels. |
-| `Affinity` | Specify the scheduling constraints of a Pod. |
-| `Tolerations` | Specify the tolerations of a Pod. |
-| `Annotations`| Specify the annotations attached to a Pod. |
-| `SecurityContext` | Specify the security context for a Pod. |
-| `TerminationGracePeriodSeconds` | It is the amount of time that Kubernetes gives for a Pod before terminating it. |
-| `Volumes` | It is a list of volumes that can be mounted by containers belonging to a Pod. |
-| `ImagePullSecrets` | It is an optional list of references to secrets in the same namespace for pulling any of the images used by a Pod. |
-| `ServiceAccountName` | Specify the name of the service account which is used to run Pulsar Functions or connectors in the Function Mesh Worker service.|
-| `InitContainers` | The initialization containers belonging to a Pod. A typical use case could be using an initialization container to download a remote JAR to a local path. |
-| `Sidecars` | Sidecar containers run together with the main function container in a Pod. |
+| `labels` | Specify labels attached to a Pod. |
+| `nodeSelector` | Specify a map of key-value pairs. For a Pod running on a node, the node must have each of the indicated key-value pairs as labels. |
+| `affinity` | Specify the scheduling constraints of a Pod. |
+| `tolerations` | Specify the tolerations of a Pod. |
+| `annotations`| Specify the annotations attached to a Pod. |
+| `securityContext` | Specify the security context for a Pod. |
+| `terminationGracePeriodSeconds` | It is the amount of time that Kubernetes gives for a Pod before terminating it. |
+| `volumes` | It is a list of volumes that can be mounted by containers belonging to a Pod. |
+| `imagePullSecrets` | It is an optional list of references to secrets in the same namespace for pulling any of the images used by a Pod. |
+| `serviceAccountName` | Specify the name of the service account which is used to run Pulsar Functions or connectors in the Function Mesh Worker service.|
+| `initContainers` | The initialization containers belonging to a Pod. A typical use case could be using an initialization container to download a remote JAR to a local path. |
+| `sidecars` | Sidecar containers run together with the main function container in a Pod. |

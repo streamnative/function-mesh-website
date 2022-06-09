@@ -62,7 +62,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Releases',
-      items: ['releases/release-note-0-1-4', 'releases/release-note-0-1-5', 'releases/release-note-0-1-6', 'releases/release-note-0-1-7', 'releases/release-note-0-1-8', 'releases/release-note-0-1-9', , 'releases/release-note-0-2-0'],
+      items: ['releases/release-note-0-1-4', 'releases/release-note-0-1-5', 'releases/release-note-0-1-6', 'releases/release-note-0-1-7', 'releases/release-note-0-1-8', 'releases/release-note-0-1-9', 'releases/release-note-0-2-0'],
     },
   ],
 }

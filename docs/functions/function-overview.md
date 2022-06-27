@@ -43,3 +43,33 @@ Currently, you can write Pulsar Functions in Java, Python, and Go. For details, 
 ## Pulsar Functions APIs
 
 Pulsar Functions APIs are used to manage Pulsar Functions. For details, see [Functions APIs](https://pulsar.apache.org/functions-rest-api/).
+
+## Stateful Functions
+
+A stateful function is a type of Pulsar function that uses the [Apache BookKeeper](https://bookkeeper.apache.org/) [table service](https://docs.google.com/document/d/155xAwWv5IdOitHh1NVMEwCMGgB28M3FyMiQSxEpjE-Y/edit#heading=h.56rbh52koe3f) to store the **state** for functions. States are key-value pairs, where the key is a string and the value is arbitrary binary data. Keys are mapped to an individual Pulsar function and shared between instances of that function.
+
+Stateful functions expose the APIs that simplify the building of distributed stateful stream processing applications. They bring together the benefits of Pulsar functions - the lightweight compute processing engine, and a distributed and managed state store, to support concurrency, scaling, and resiliency.
+
+You can access states within Pulsar Java functions using the following calls on the context object:
+
+- `putState`
+- `putStateAsync`
+- `getState`
+- `getStateAsync`
+- `incrCounter`
+- `incrCounterAsync`
+- `getCounter`
+- `getCounterAsync`
+- `deleteState`
+
+You can access states within Pulsar Python functions using the following calls on the context object:
+
+- `putState`
+- `getState`
+- `incrCounter`
+- `getCounter`
+- `deleteState` 
+
+> **Note**
+>
+> Stateful functions are not available in the Go programming language.

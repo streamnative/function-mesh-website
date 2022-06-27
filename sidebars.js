@@ -19,6 +19,7 @@ module.exports = {
             'functions/run-function/run-java-function',
             'functions/run-function/run-python-function',
             'functions/run-function/run-go-function',
+            'functions/run-function/run-stateful-function'
           ],
         },
         'functions/function-monitor', 

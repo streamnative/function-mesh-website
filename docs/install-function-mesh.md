@@ -106,6 +106,8 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 
 - This example shows how to verify whether Function Mesh is installed successfully.
 
+    > **Note**
+    >
     > `${NAMESPACE}` indicates the namespace where Function Mesh Operator is installed.
 
     ```shell
@@ -141,7 +143,9 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 
 Use the following command to uninstall Function Mesh through Helm.
 
-> `${NAMESPACE}` indicates the namespace where the Function Mesh Operator is installed.
+> **Note**
+>
+> `${NAMESPACE}` indicates the namespace where Function Mesh Operator is installed.
 
 ```bash
 helm delete function-mesh -n ${NAMESPACE}

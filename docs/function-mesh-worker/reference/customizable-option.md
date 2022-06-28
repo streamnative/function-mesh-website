@@ -4,7 +4,7 @@ category: function-mesh-worker
 id: customizable-option
 ---
 
-To facilitate submitting Pulsar functions based on users' requirements, Function Mesh Worker service provides some customizable options.
+To facilitate submitting Pulsar functions based on your requirements, Function Mesh Worker service provides some customizable options.
 
 | Name                  | Type    | Default | TrustedOnly | Description                                                                                                                                                                                                                                                                                                                                                                     |
 |-----------------------|---------|---------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

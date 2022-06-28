@@ -101,7 +101,7 @@ Then, in the Pulsar Functions and Connectors, you can call `context.getSecret("u
 
 ## Authentication
 
-Function Mesh provides the `tlsSecret` and `authSecret` fields for Function, Source and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
+Function Mesh provides the `tlsSecret` and `authSecret` fields for Function, Source, and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
 
 - TLS Secret
 

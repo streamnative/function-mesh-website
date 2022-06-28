@@ -29,34 +29,6 @@ The following diagram illustrates how to deploy the Function Mesh Worker service
 
 Function Mesh Worker service can forward requests to the Kubernetes cluster. After you start the Function Mesh Worker service, you can use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar functions and connectors.
 
-### Configure Function Mesh Worker service
-
-You can customize the Function Mesh Worker service using `functionsWorkerServiceCustomConfigs` in the `functions_worker.yml` manifest. This table lists available configurations.
-
-| Name | Type | Required | Default | Description |
-|----|----|---|---|---|
-| `uploadEnabled` | boolean | No | false | Enable users to upload custom JAR or NAR packages of Pulsar functions, source, or sink connectors. |
-| `functionEnabled` | boolean | No | true | Enable the Pulsar Function API endpoint. |
-| `sinkEnabled` | boolean | No | true | Enable the sink API endpoint. |
-| `sourceEnabled` | boolean | No | true | Enable the source API endpoint. |
-| `extraDependenciesDir` | string | No | /pulsar/lib/ | The directory for dropping extra function dependencies. |
-| `volumeMounts` | List < V1VolumeMount > | No | [] (empty string)| [V1VolumeMount](https://github.com/kubernetes-client/java/blob/master/kubernetes/docs/V1VolumeMount.md) describes a mounting of a Volume within a container. |
-| `volumes` | List < V1Volume > | No | [] (empty string) | The list of [V1Volume](https://github.com/kubernetes-client/java/blob/master/kubernetes/docs/V1Volume.md) that can be mounted by containers belonging to the Pulsar Function or connector Pod. |
-| `ownerReference` | V1OwnerReference | No | null | Default configurations of the [`ownerReference`](https://github.com/kubernetes-client/java/blob/master/kubernetes/docs/V1OwnerReference.md). |
-| `allowUserDefinedServiceAccountName` | boolean | No | false | Enable users to change the service account name with `custom-runtime-options`. |
-| `defaultServiceAccountName` | string | No | "" (empty string) | The name of the service account to run the Pulsar Function or connector Pod. |
-| `imagePullPolicy` | string | No | "IfNotPresent" | The image pull policy for images to run Pulsar Function instances. By default, it is set to `IfNotPresent`. |
-| `functionRunnerImages` | Map < String, String > | No | {} (empty string)| The runner image to run the Pulsar Function instances. |
-| `imagePullSecrets` | List< V1LocalObjectReference > | No | [] (empty string) | An optional list of references to secrets in the same namespace to pull images used by `PodSpec`. |
-| `labels` | Map < String, String > | No | {} (empty string) | Specify the labels being attached to a Pod that is created by the Function Mesh Operator for the cluster. |
-| `functionLabels` | Map < String, String > | No | {} (empty string) | Specify the labels being attached to a Function's Pod. When both `functionLabels` and `labels` are specified, `functionLabels` overrides `labels`. |
-| `sinkLabels` | Map < String, String > | No | {} (empty string) | Specify the labels being attached to a Sink's Pod. When both `sinkLabels` and `labels` are specified, `sinkLabels` overrides `labels`. |
-| `sourceLabels` | Map < String, String > | No | {} (empty string) | Specify the labels being attached to a Source's Pod. When both `sourceLabels` and `labels` are specified, `sourceLabels` overrides `labels`. |
-| `annotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attached to a Pod that is created by the Function Mesh Operator for the cluster. |
-| `functionAnnotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attached to a Function's Pod. When both `functionAnnotations` and `annotations` are specified, `functionAnnotations` overrides `annotations`. |
-| `sinkAnnotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attached to a Sink's Pod. When both `sinkAnnotations` and `annotations` are specified, `sinkAnnotations` overrides `annotations`. |
-| `sourceAnnotations` | Map < String, String > | No | {} (empty string) | Specify the annotations being attached to a Source's Pod. When both `sourceAnnotations` and `annotations` are specified, `sourceAnnotations` overrides `annotations`. |
-
 ### Start Function Mesh Worker service
 
 This section describes how to start the Function Mesh Worker service after you configure it.
@@ -77,7 +49,7 @@ To start the Function Mesh Worker service, follow these steps.
 
    - Add `functionsWorkerServiceCustomConfigs` to your `functions_worker.yml` configuration file.
 
-        This is a sample. For details about available configurations of Function Mesh Worker service, see [Configure Function Mesh Worker service](#configure-the-function-mesh-worker-service).
+        This is a sample. For details about available configurations of Function Mesh Worker service, see [general options](/function-mesh-worker/reference/general-option.md).
 
         ```yaml
         functionsWorkerServiceCustomConfigs:

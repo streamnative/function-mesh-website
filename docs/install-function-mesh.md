@@ -20,6 +20,23 @@ Before installing Function Mesh, ensure to perform the following operations.
 - Deploy [Pulsar Functions](https://pulsar.apache.org/docs/en/functions-overview/).
 - (Optional) enable [Role-based Access Control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
+### Install Cert Manager
+
+Function Mesh is enabled with the [admission control webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks) by default. Therefore, you need to prepare the relevant signed certificate. Secrets that contain signed certificates are named with the fixed name `function-mesh-admission-webhook-server-cert`, which is controlled by the [Certificate CRD](https://cert-manager.io/docs/concepts/certificate/).
+
+It is recommended to use [Cert Manager](https://cert-manager.io/) to manage these certificates and you can install the Cert Manager as follows.
+
+```shell
+helm repo add jetstack https://charts.jetstack.io
+helm repo update
+helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.8.0 \
+  --set installCRDs=true
+```
+
 ### Install Function Mesh through `install.sh` script
 
 This example shows how to use the `install.sh` command to install Function Mesh on your laptop (Linux or Mac OS), including a local [kind](https://kind.sigs.k8s.io/) cluster, all the Custom Resource Definitions (CRDs), required service account configuration, and Function Mesh components.
@@ -141,7 +158,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 
 ## Uninstall Function Mesh
 
-Use the following command to uninstall Function Mesh through Helm.
+1. Use the following command to uninstall Function Mesh through Helm.
 
 > **Note**
 >
@@ -149,6 +166,16 @@ Use the following command to uninstall Function Mesh through Helm.
 
 ```bash
 helm delete function-mesh -n ${NAMESPACE}
+```
+
+2. Remove the Secrets that contain the signed certificate.
+
+> **Note**
+>
+> If the Secrets are not cleaned up, future installations in this environment might behave abnormally. For details about how to automatically clean up the corresponding Secrets when you delete a Certificate, see [Cleaning up Secrets when Certificates are deleted](https://cert-manager.io/docs/usage/certificate/#cleaning-up-secrets-when-certificates-are-deleted).
+
+```shell
+kubectl delete secret function-mesh-admission-webhook-server-cert -n ${NAMESPACE}
 ```
 
 ## Work with `pulsar-admin` CLI tool

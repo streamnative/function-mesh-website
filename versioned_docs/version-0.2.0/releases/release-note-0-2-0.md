@@ -12,7 +12,7 @@ In this release, we added the following resources and parameters to run Pulsar s
 - Resources: `Stateful` and `PulsarStateStore`
 - Parameters: `--state_storage_serviceurl` and `-state_storage_impl_class`.
 
-## Independent the helm chart of Function Mesh Operator
+## Release the helm chart of Function Mesh Operator in an independent GitHub repository
 
 In this release, we set up a dedicated Helm charts repository for the Function Mesh Operator. It is now maintained through this [domain](https://charts.functionmesh.io). For details, see [Function Mesh Operator repository](https://artifacthub.io/packages/helm/function-mesh/function-mesh-operator).
 

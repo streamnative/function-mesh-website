@@ -52,7 +52,18 @@ module.exports = {
     {
       type: 'category',
       label: 'Function Mesh Worker',
-      items: ['function-mesh-worker/function-mesh-worker-overview', 'function-mesh-worker/deploy-mesh-worker'],
+      items: [
+        'function-mesh-worker/function-mesh-worker-overview',
+        'function-mesh-worker/deploy-mesh-worker',
+        {
+          type: 'category',
+          label: 'Reference',
+          items: [
+            'function-mesh-worker/reference/general-option',
+            'function-mesh-worker/reference/customizable-option'
+          ],
+        },
+      ],
     },
     'scaling',
     {

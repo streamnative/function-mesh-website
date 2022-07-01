@@ -4,12 +4,6 @@ category: releases
 id: release-note-0-3-0
 ---
 
----
-title: Release notes v0.3.0
-category: releases
-id: release-note-0-3-0
----
-
 Here are some highlights of this release. For a full list of updates available for Release v0.3.0, check out the [Function Mesh change log](https://github.com/streamnative/function-mesh/releases/tag/v0.3.0).
 
 ## Support deploying the webhook-enabled operator through Helm Charts

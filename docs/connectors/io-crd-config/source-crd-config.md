@@ -26,7 +26,7 @@ This table lists source configurations.
 
 In Kubernetes, an annotation defines an unstructured Key Value Map (KVM) that can be set by external tools to store and retrieve metadata. `annotations` must be a map of string keys and string values. Annotation values must pass Kubernetes annotations validation. For details, see [Kubernetes documentation on Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set).
 
-This example shows how to use an annotation to make an object unmanaged. Therefore, the Controller can skip unmanaged objects when checking for the annotation in the reconciliation loop.
+This example shows how to use an annotation to make an object unmanaged. Therefore, the Controller will skip reconciling unmanaged objects in reconciliation loop.
 
 ```yaml
 apiVersion: compute.functionmesh.io/v1alpha1

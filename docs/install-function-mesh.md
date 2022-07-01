@@ -20,11 +20,11 @@ Before installing Function Mesh, ensure to perform the following operations.
 - Deploy [Pulsar Functions](https://pulsar.apache.org/docs/en/functions-overview/).
 - (Optional) enable [Role-based Access Control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
-### Install Cert Manager
+### Install cert-manager
 
 Function Mesh is enabled with the [admission control webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks) by default. Therefore, you need to prepare the relevant signed certificate. Secrets that contain signed certificates are named with the fixed name `function-mesh-admission-webhook-server-cert`, which is controlled by the [Certificate CRD](https://cert-manager.io/docs/concepts/certificate/).
 
-It is recommended to use [Cert Manager](https://cert-manager.io/) to manage these certificates and you can install the Cert Manager as follows.
+It is recommended to use [cert-manager](https://cert-manager.io/) to manage these certificates and you can install the cert-manager as follows.
 
 ```shell
 helm repo add jetstack https://charts.jetstack.io

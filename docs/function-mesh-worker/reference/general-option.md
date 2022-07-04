@@ -4,8 +4,6 @@ category: function-mesh-worker
 id: general-option
 ---
 
-### Configure Function Mesh Worker service
-
 You can customize the Function Mesh Worker service using `functionsWorkerServiceCustomConfigs` in the `functions_worker.yml` manifest. This table outlines available configurations.
 
 | Name                                              | Type                                          | Required | Default                                                  | Description                                                                                                                                                                                                                                                                   |

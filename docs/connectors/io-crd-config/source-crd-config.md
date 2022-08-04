@@ -181,19 +181,19 @@ Function Mesh supports customizing the Pod running connectors. This table lists 
   </tr>
   <tr>
     <td><code>terminationGracePeriodSeconds</code></td>
-    <td>It is the amount of time that Kubernetes gives for a Pod before terminating it.</td>
+    <td>The amount of time that Kubernetes gives for a Pod before terminating it.</td>
   </tr>
   <tr>
     <td><code>volumes</code></td>
-    <td>It is a list of volumes that can be mounted by containers belonging to a Pod.</td>
+    <td>A list of volumes that can be mounted by containers belonging to a Pod.</td>
   </tr>
   <tr>
     <td><code>imagePullSecrets</code></td>
-    <td>It is an optional list of references to secrets in the same namespace for pulling any of the images used by a Pod.</td>
+    <td>An optional list of references to secrets in the same namespace for pulling any of the images used by a Pod.</td>
   </tr>
   <tr>
     <td><code>serviceAccountName</code></td>
-    <td>Specify the name of the service account which is used to run Pulsar Functions or connectors in the Function Mesh Worker service.</td>
+    <td>Specify the name of the service account that is used to run Pulsar Functions or connectors in the Function Mesh Worker service.</td>
   </tr>
   <tr>
     <td><code>initContainers</code></td>

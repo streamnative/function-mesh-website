@@ -12,7 +12,7 @@ This table lists Pulsar Function configurations.
 
 | Field | Description |
 | ---|---|
-| `name` | The name of a Pulsar Function. |
+| `name` | The function name is a string of up to `43` characters. |
 | `classname` | The class name of a Pulsar Function. |
 | `tenant` | The tenant of a Pulsar Function. |
 | `namespace` | The Pulsar namespace of a Pulsar Function. |
@@ -70,7 +70,7 @@ This table lists available Function runtime runner images.
 ## State storage
 
 Function Mesh provides the following fields for Stateful functions in the CRD definition.
-  
+
 | Field | Description |
 |  ---|  --- |
 | `statefulConfig` | The state storage configuration for the Stateful Functions. |

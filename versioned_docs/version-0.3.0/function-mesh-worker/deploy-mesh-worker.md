@@ -49,7 +49,7 @@ To start the Function Mesh Worker service, follow these steps.
 
    - Add `functionsWorkerServiceCustomConfigs` to your `functions_worker.yml` configuration file.
 
-        This is a sample. For details about available configurations of Function Mesh Worker service, see [general options](/function-mesh-worker/reference/general-option.md).
+        This is a sample. For details about available configurations of Function Mesh Worker service, see [customizable options](/function-mesh-worker/reference/customizable-option.md).
 
         ```yaml
         functionsWorkerServiceCustomConfigs:

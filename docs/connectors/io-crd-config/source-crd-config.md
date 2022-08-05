@@ -108,14 +108,28 @@ Then, in the Pulsar Functions and Connectors, you can call `context.getSecret("u
 
 ## Authentication
 
-Function Mesh provides the `tlsSecret` and `authSecret` fields for Function, Source and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
+Function Mesh provides the `tlsConfig`, `tlsSecret`, and `authSecret` fields for Function, Source, and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
+
+> **Note**
+> 
+> The TLS configurations and TLS Secret configurations are exclusive. If you configure TLS configurations, TLS Secret configurations will not take effect.
+
+- TLS configurations
+
+    | Field                  | Description                    |
+    |------------------------|--------------------------------|
+    | `allowInsecure`        | Allow insecure TLS connection. |
+    | `certSecretKey`        | The Secret key.                |
+    | `certSecretName`       | The Secret name.               |
+    | `enabled`              | Enable TLS configurations.     |
+    | `hostnameVerification` | Enable hostname verification.  |
 
 - TLS Secret
 
     | Field | Description |
     | --- | --- |
-    | `tlsAllowInsecureConnection` | Allow insecure TLS connection. |
-    | `tlsHostnameVerificationEnable` | Enable hostname verification. |
+    | `tlsAllowInsecureConnection` | Allow insecure TLS connection. By default, it is set to `false`.|
+    | `tlsHostnameVerificationEnable` | Enable hostname verification. By default, it is set to `true`. |
     | `tlsTrustCertsFilePath` | The path of the TLS trust certificate file. |
 
 - Authentication Secret

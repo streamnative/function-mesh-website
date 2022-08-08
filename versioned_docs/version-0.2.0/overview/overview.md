@@ -133,6 +133,7 @@ Figure 7. The Function Mesh architecture
     - [Run Java Functions](/functions/run-function/run-java-function.md)
     - [Run Python Functions](/functions/run-function/run-python-function.md)
     - [Run Go Functions](/functions/run-function/run-go-function.md)
+    - [Run Stateful Functions](/functions/run-function/run-stateful-function.md)
   - [Monitor Pulsar Functions](/functions/function-monitor.md)
   - [Debug Pulsar Functions](/functions/function-debug.md)
 - Connectors

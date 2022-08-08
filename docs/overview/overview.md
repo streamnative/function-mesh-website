@@ -133,6 +133,7 @@ Figure 7. The Function Mesh architecture
     - [Run Java Functions](/functions/run-function/run-java-function.md)
     - [Run Python Functions](/functions/run-function/run-python-function.md)
     - [Run Go Functions](/functions/run-function/run-go-function.md)
+    - [Run Stateful Functions](/functions/run-function/run-stateful-function.md)
   - [Monitor Pulsar Functions](/functions/function-monitor.md)
   - [Debug Pulsar Functions](/functions/function-debug.md)
 - Connectors
@@ -150,6 +151,9 @@ Figure 7. The Function Mesh architecture
 - Function Mesh Worker
   - [Function Mesh Worker service overview](/function-mesh-worker/function-mesh-worker-overview.md)
   - [Deploy Function Mesh Worker service](/function-mesh-worker/deploy-mesh-worker.md)
+  - Reference
+    - [General options](/function-mesh-worker/reference/general-option.md)
+    - [Customizable options](/function-mesh-worker/reference/customizable-option.md)
 - [Scaling](/scaling.md)
 - Migration
   - [Migrate Pulsar Functions](/migration/migrate-function.md)

@@ -169,102 +169,89 @@ In Function Mesh, the Pulsar cluster is defined through a ConfigMap. Pods can co
 Function Mesh supports customizing the Pod running Pulsar connectors. This table lists sub-fields available for the `pod` field.
 
 <table>
-  <thead>
-    <tr>
-      <th>Field</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>labels</code></td>
-      <td>Specify labels attached to a Pod.</td>
-    </tr>
-    <tr>
-      <td><code>nodeSelector</code></td>
-      <td>Specify a map of key-value pairs. For a Pod running on a node, the node must have each of the indicated key-value pairs as labels.</td>
-    </tr>
-    <tr>
-      <td><code>affinity</code></td>
-      <td>Specify the scheduling constraints of a Pod.</td>
-    </tr>
-    <tr>
-      <td><code>tolerations</code></td>
-      <td>Specify the tolerations of a Pod.</td>
-    </tr>
-    <tr>
-      <td><code>annotations</code></td>
-      <td>Specify the annotations attached to a Pod.</td>
-    </tr>
-    <tr>
-      <td><code>securityContext</code></td>
-      <td>Specify the security context for a Pod.</td>
-    </tr>
-    <tr>
-      <td><code>terminationGracePeriodSeconds</code></td>
-      <td>The amount of time that Kubernetes gives for a Pod before terminating it.</td>
-    </tr>
-    <tr>
-      <td><code>volumes</code></td>
-      <td>A list of volumes that can be mounted by containers belonging to a Pod.</td>
-    </tr>
-    <tr>
-      <td><code>imagePullSecrets</code></td>
-      <td>An optional list of references to secrets in the same namespace for pulling any of the images used by a Pod.</td>
-    </tr>
-    <tr>
-      <td><code>serviceAccountName</code></td>
-      <td>Specify the name of the service account that is used to run Pulsar Functions or connectors in the Function Mesh Worker service.</td>
-    </tr>
-    <tr>
-      <td><code>initContainers</code></td>
-      <td>The initialization containers belonging to a Pod. A typical use case could be using an initialization container to download a remote JAR to a local path.</td>
-    </tr>
-    <tr>
-      <td><code>sidecars</code></td>
-      <td>Sidecar containers run together with the main function container in a Pod.</td>
-    </tr>
-    <tr>
-      <td><code>builtinAutoscaler</code></td>
-      <td>
-        Specify the built-in autoscaling rules.
-        <ul>
-          <li>CPU-based autoscaling: auto-scale the number of Pods based on the CPU usage (80%, 50%, or 20%).</li>
-          <li>Memory-based autoscaling: auto-scale the number of Pods based on the memory usage (80%, 50%, or 20%).</li>
-        </ul>
-        <p>If you configure the <code>builtinAutoscaler</code> field, you do not need to configure the <code>autoScalingMetrics</code> and <code>autoScalingBehavior</code> options and vice versa.</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code>autoScalingMetrics</code></td>
-      <td>
-        Specify how to scale based on customized metrics defined in connectors. For details, see <a herf="“https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling”">MetricSpec v2beta2 autoscaling</a>.
-      </td>
-    </tr>
-    <tr>
-      <td><code>autoScalingBehavior</code></td>
-      <td>
-        Configure the scaling behavior of the target in both up and down directions (<code>scaleUp</code> and <code>scaleDown</code> fields respectively). If not specified, the default Kubernetes scaling behaviors are adopted. For details, see <a href="%E2%80%9Chttps://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#horizontalpodautoscalerbehavior-v2beta2-autoscaling%E2%80%9D">HorizontalPodAutoscalerBehavior v2beta2 autoscaling</a>.
-      </td>
-    </tr>
-    <tr>
-      <td><code>env</code></td>
-      <td>
-        Specify the environment variables to expose on the containers. It is a key or value map. You can either use the <code>value</code> option to specify a particular value for the environment variable or use the <code>valueFrom</code> option to specify the <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvarsource-v1-core/">source</a> for the environment variable’s value, as shown below.
+<thead>
+  <tr>
+    <th>Field</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><code>labels</code></td>
+    <td>Specify labels attached to a Pod.</td>
+  </tr>
+  <tr>
+    <td><code>nodeSelector</code></td>
+    <td>Specify a map of key-value pairs. For a Pod running on a node, the node must have each of the indicated key-value pairs as labels.</td>
+  </tr>
+  <tr>
+    <td><code>affinity</code></td>
+    <td>Specify the scheduling constraints of a Pod.</td>
+  </tr>
+  <tr>
+    <td><code>tolerations</code></td>
+    <td>Specify the tolerations of a Pod.</td>
+  </tr>
+  <tr>
+    <td><code>annotations</code></td>
+    <td>Specify the annotations attached to a Pod.</td>
+  </tr>
+  <tr>
+    <td><code>securityContext</code></td>
+    <td>Specify the security context for a Pod.</td>
+  </tr>
+  <tr>
+    <td><code>terminationGracePeriodSeconds</code></td>
+    <td>The amount of time that Kubernetes gives for a Pod before terminating it.</td>
+  </tr>
+  <tr>
+    <td><code>volumes</code></td>
+    <td>A list of volumes that can be mounted by containers belonging to a Pod.</td>
+  </tr>
+  <tr>
+    <td><code>imagePullSecrets</code></td>
+    <td>An optional list of references to secrets in the same namespace for pulling any of the images used by a Pod.</td>
+  </tr>
+  <tr>
+    <td><code>serviceAccountName</code></td>
+    <td>Specify the name of the service account that is used to run Pulsar Functions or connectors in the Function Mesh Worker service.</td>
+  </tr>
+  <tr>
+    <td><code>initContainers</code></td>
+    <td>The initialization containers belonging to a Pod. A typical use case could be using an initialization container to download a remote JAR to a local path.</td>
+  </tr>
+  <tr>
+    <td><code>sidecars</code></td>
+    <td>Sidecar containers run together with the main function container in a Pod.</td>
+  </tr>
+  <tr>
+    <td><code>builtinAutoscaler</code></td>
+    <td>Specify the built-in autoscaling rules. <ul> <li> CPU-based autoscaling: auto-scale the number of Pods based on the CPU usage (80%, 50%, or 20%). </li> <li> Memory-based autoscaling: auto-scale the number of Pods based on the memory usage (80%, 50%, or 20%). </li> </ul> <p>If you configure the <code>builtinAutoscaler</code> field, you do not need to configure the <code>autoScalingMetrics</code> and <code>autoScalingBehavior</code> options and vice versa.</p></td>
+  </tr>
+  <tr>
+    <td><code>autoScalingMetrics</code></td>
+    <td>Specify how to scale based on customized metrics defined in connectors. For details, see <a herf="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling">MetricSpec v2beta2 autoscaling</a>.</td>
+  </tr>
+  <tr>
+    <td><code>autoScalingBehavior</code></td>
+    <td>Configure the scaling behavior of the target in both up and down directions (<code>scaleUp</code> and <code>scaleDown</code> fields respectively). If not specified, the default Kubernetes scaling behaviors are adopted. For details, see <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#horizontalpodautoscalerbehavior-v2beta2-autoscaling">HorizontalPodAutoscalerBehavior v2beta2 autoscaling</a>. </td>
+  </tr>
+  <tr>
+    <td><code>env</code></td>
+    <td>Specify the environment variables to expose on the containers. It is a key/value map. You can either use the <code>value</code> option to specify a particular value for the environment variable or use the <code>valueFrom</code> option to specify the <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvarsource-v1-core/">source</a> for the environment variable's value, as shown below.
 
-      ```yaml  
-      env:
-      - name: example1
-        value: simpleValue
-      - name: example2
-        valueFrom:
-          secretKeyRef:
-            name: secret-name
-            key: akey
-       ```
-       
-      </td>
-    </tr>
-    `}</code></pre>
-  </tbody>
+    ```yaml
+    env:
+    - name: example1
+      value: simpleValue
+    - name: example2
+      valueFrom:
+        secretKeyRef:
+          name: secret-name
+          key: akey
+    ```
+
+  </td>
+  </tr>
+</tbody>
 </table>

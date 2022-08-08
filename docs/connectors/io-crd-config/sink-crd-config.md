@@ -265,5 +265,6 @@ Function Mesh supports customizing the Pod running Pulsar connectors. This table
        
       </td>
     </tr>
+    `}</code></pre>
   </tbody>
 </table>

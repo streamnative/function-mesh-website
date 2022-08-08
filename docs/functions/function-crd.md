@@ -274,7 +274,7 @@ Function Mesh supports customizing the Pod running function instance. This table
   <tr>
     <td><code>env</code></td>
     <td>Specify the environment variables to expose on the containers. It is a key/value map. You can either use the <code>value</code> option to specify a particular value for the environment variable or use the <code>valueFrom</code> option to specify the <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvarsource-v1-core/">source</a> for the environment variable's value, as shown below.
-    
+
     ```yaml
     env:
     - name: example1
@@ -285,7 +285,7 @@ Function Mesh supports customizing the Pod running function instance. This table
           name: secret-name
           key: akey
     ```
-    
+
   </td>
   </tr>
 </tbody>

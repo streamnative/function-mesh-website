@@ -226,21 +226,33 @@ Function Mesh supports customizing the Pod running Pulsar connectors. This table
     </tr>
     <tr>
       <td><code>builtinAutoscaler</code></td>
-      <td>Specify the built-in autoscaling rules. <ul> <li> CPU-based autoscaling: auto-scale the number of Pods based on the CPU usage (80%, 50%, or 20%). </li> <li> Memory-based autoscaling: auto-scale the number of Pods based on the memory usage (80%, 50%, or 20%). </li> </ul> <p>If you configure the <code>builtinAutoscaler</code> field, you do not need to configure the <code>autoScalingMetrics</code> and <code>autoScalingBehavior</code> options and vice versa.</p></td>
+      <td>
+        Specify the built-in autoscaling rules.
+        <ul>
+          <li>CPU-based autoscaling: auto-scale the number of Pods based on the CPU usage (80%, 50%, or 20%).</li>
+          <li>Memory-based autoscaling: auto-scale the number of Pods based on the memory usage (80%, 50%, or 20%).</li>
+        </ul>
+        <p>If you configure the <code>builtinAutoscaler</code> field, you do not need to configure the <code>autoScalingMetrics</code> and <code>autoScalingBehavior</code> options and vice versa.</p>
+      </td>
     </tr>
     <tr>
       <td><code>autoScalingMetrics</code></td>
-      <td>Specify how to scale based on customized metrics defined in connectors. For details, see <a herf="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling">MetricSpec v2beta2 autoscaling</a>.</td>
+      <td>
+        Specify how to scale based on customized metrics defined in connectors. For details, see <a herf="“https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling”">MetricSpec v2beta2 autoscaling</a>.
+      </td>
     </tr>
     <tr>
       <td><code>autoScalingBehavior</code></td>
-      <td>Configure the scaling behavior of the target in both up and down directions (<code>scaleUp</code> and <code>scaleDown</code> fields respectively). If not specified, the default Kubernetes scaling behaviors are adopted. For details, see <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#horizontalpodautoscalerbehavior-v2beta2-autoscaling">HorizontalPodAutoscalerBehavior v2beta2 autoscaling</a>. </td>
+      <td>
+        Configure the scaling behavior of the target in both up and down directions (<code>scaleUp</code> and <code>scaleDown</code> fields respectively). If not specified, the default Kubernetes scaling behaviors are adopted. For details, see <a href="%E2%80%9Chttps://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#horizontalpodautoscalerbehavior-v2beta2-autoscaling%E2%80%9D">HorizontalPodAutoscalerBehavior v2beta2 autoscaling</a>.
+      </td>
     </tr>
     <tr>
       <td><code>env</code></td>
-      <td>Specify the environment variables to expose on the containers. It is a key/value map. You can either use the <code>value</code> option to specify a particular value for the environment variable or use the <code>valueFrom</code> option to specify the <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvarsource-v1-core/">source</a> for the environment variable's value, as shown below.
-      
-      ```yaml
+      <td>
+        Specify the environment variables to expose on the containers. It is a key or value map. You can either use the <code>value</code> option to specify a particular value for the environment variable or use the <code>valueFrom</code> option to specify the <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvarsource-v1-core/">source</a> for the environment variable’s value, as shown below.
+
+      ```yaml  
       env:
       - name: example1
         value: simpleValue
@@ -249,8 +261,8 @@ Function Mesh supports customizing the Pod running Pulsar connectors. This table
           secretKeyRef:
             name: secret-name
             key: akey
-      ```
-      
+       ```
+       
       </td>
     </tr>
   </tbody>

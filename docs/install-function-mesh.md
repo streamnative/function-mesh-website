@@ -213,7 +213,7 @@ To start Function Mesh Worker service, follow these steps.
 
 3. Start Function Mesh Operator.
 
-    > If the namespace `function-mesh` doesn't exist yet, you can add the parameter `--create-namespace ` to create it automatically.
+    > If the namespace `function-mesh` doesn't exist yet, you can add the parameter `--create-namespace` to create it automatically.
 
     ```shell
     helm install function-mesh function-mesh/function-mesh-operator -n function-mesh

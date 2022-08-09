@@ -159,3 +159,11 @@ Figure 7. The Function Mesh architecture
   - [Migrate Pulsar Functions](/migration/migrate-function.md)
 - Releases
   - [Release notes v0.1.4](/releases/release-note-0-1-4.md)
+  - [Release notes v0.1.5](/releases/release-note-0-1-5.md)
+  - [Release notes v0.1.6](/releases/release-note-0-1-6.md)
+  - [Release notes v0.1.7](/releases/release-note-0-1-7.md)
+  - [Release notes v0.1.8](/releases/release-note-0-1-8.md)
+  - [Release notes v0.1.11](/releases/release-note-0-1-11.md)
+  - [Release notes v0.2.0](/releases/release-note-0-2-0.md)
+  - [Release notes v0.3.0](/releases/release-note-0-3-0.md)
+  - [Release notes v0.4.0](/releases/release-note-0-4-0.md)

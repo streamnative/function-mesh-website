@@ -148,14 +148,28 @@ Then, in the Pulsar Functions and Connectors, you can call `context.getSecret("u
 
 ## Authentication
 
-Function Mesh provides the `tlsSecret` and `authSecret` fields for Function, Source and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
+Function Mesh provides the `tlsConfig`, `tlsSecret`, and `authSecret` fields for Function, Source, and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
+
+> **Note**
+> 
+> The TLS configurations and TLS Secret configurations are exclusive. If you configure TLS configurations, TLS Secret configurations will not take effect.
+
+- TLS configurations
+
+    | Field                  | Description                    |
+    |------------------------|--------------------------------|
+    | `allowInsecure`        | Allow insecure TLS connection. |
+    | `certSecretKey`        | The Secret key.                |
+    | `certSecretName`       | The Secret name.               |
+    | `enabled`              | Enable TLS configurations.     |
+    | `hostnameVerification` | Enable hostname verification.  |
 
 - TLS Secret
 
     | Field | Description |
     | --- | --- |
-    | `tlsAllowInsecureConnection` | Allow insecure TLS connection. |
-    | `tlsHostnameVerificationEnable` | Enable hostname verification. |
+    | `tlsAllowInsecureConnection` | Allow insecure TLS connection. By default, it is set to `false`.|
+    | `tlsHostnameVerificationEnable` | Enable hostname verification. By default, it is set to `true`. |
     | `tlsTrustCertsFilePath` | The path of the TLS trust certificate file. |
 
 - Authentication Secret
@@ -260,7 +274,7 @@ Function Mesh supports customizing the Pod running function instance. This table
   <tr>
     <td><code>env</code></td>
     <td>Specify the environment variables to expose on the containers. It is a key/value map. You can either use the <code>value</code> option to specify a particular value for the environment variable or use the <code>valueFrom</code> option to specify the <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvarsource-v1-core/">source</a> for the environment variable's value, as shown below.
-    
+
     ```yaml
     env:
     - name: example1
@@ -271,7 +285,7 @@ Function Mesh supports customizing the Pod running function instance. This table
           name: secret-name
           key: akey
     ```
-    
+
   </td>
   </tr>
 </tbody>

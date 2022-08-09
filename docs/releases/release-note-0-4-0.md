@@ -18,16 +18,16 @@ In this release, Function Mesh Worker service supports specifying the Pulsar fun
 
 In previous releases, Function Mesh provided the `.spec.secretsMap` option to pass some configurations to the Pulsar functions, sources, and sinks. However, this option is complicated because it requires multiple Kubernetes resources. In this release, Function Mesh combines the `spec.env` option and the `.spec.secretsMap` option to form the environment variables for the Pulsar functions, sources, or sinks. You can specify the environment variables to expose on the containers. The `spec.env` option is a key/value map. You can either use the `value` option to specify a particular value for the environment variable or use the `valueFrom` option to specify the [source](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvarsource-v1-core/) for the environment variable's value, as shown below.
 
-    ```yaml
-    env:
-    - name: example1
-      value: simpleValue
-    - name: example2
-      valueFrom:
-        secretKeyRef:
-          name: secret-name
-          key: akey
-    ```
+```yaml
+env:
+- name: example1
+  value: simpleValue
+- name: example2
+  valueFrom:
+    secretKeyRef:
+      name: secret-name
+      key: akey
+```
 
 ## Provide the `tlsConfig` option to specify required TLS parameters
 

@@ -22,17 +22,17 @@ The following diagram illustrates how to deploy the Function Mesh Worker service
 
 ![Deploy Function Mesh Separately](./../assets/mesh-seperately.png)
 
-::: tabs
+### Run Function Mesh Worker service in Docker
 
-@@@ Docker
+This section describes how to run Function Mesh Worker service separately in Docker.
 
-### Prerequisites
+#### Prerequisites
 
 - Install Docker. Download the [Community edition](https://www.docker.com/community-edition) and follow the instructions for your OS.
 - [Deploy a Pulsar cluster](https://pulsar.apache.org/docs/next/getting-started-docker) (v2.8.0 or higher version).
 - [Install Function Mesh](/docs/install-function-mesh.md).
 
-### Steps
+#### Steps
 
 To start the Function Mesh Worker service in Docker, follow these steps.
 
@@ -40,22 +40,21 @@ To start the Function Mesh Worker service in Docker, follow these steps.
 
 2. Configure the Function Mesh Worker service.
 
-   - Add the following Function Mesh Worker service configuration to your `functions_worker.yml` configuration file.
+      - Add the following Function Mesh Worker service configuration to your `functions_worker.yml` configuration file.
 
+        ```yaml
+        functionsWorkerServiceNarPackage: /YOUR-NAR-PATH/function-mesh-worker-service-{version}.nar
+        ```
 
-       ```bash
-       functionsWorkerServiceNarPackage: /YOUR-NAR-PATH/function-mesh-worker-service-{version}.nar
-       ```
+        Replace the `YOUR-NAR-PATH` variable with your real local path.
 
-       Replace the `YOUR-NAR-PATH` variable with your real local path.
+     - Update the ZooKeeper and Broker URLs in your `functions_worker.yml` configuration file.
 
-   - Update the ZooKeeper and Broker URLs in your `functions_worker.yml` configuration file.
-
-      ```yaml
-      configurationStoreServers: localhost:2181
-      pulsarServiceUrl: pulsar://localhost:6650
-      pulsarWebServiceUrl: http://localhost:8080
-      ```
+        ```yaml
+        configurationStoreServers: localhost:2181
+        pulsarServiceUrl: pulsar://localhost:6650
+        pulsarWebServiceUrl: http://localhost:8080
+        ```
 
 3. Start the Function Mesh Worker service in Docker.
 
@@ -106,18 +105,18 @@ To start the Function Mesh Worker service in Docker, follow these steps.
     }
     ```
 
-@@@
+### Run Function Mesh Worker service in Kubernetes
 
-@@@ Kubernetes
+This section describes how to run Function Mesh Worker service separately in Kubernetes.
 
-### Prerequisites
+#### Prerequisites
 
 - Install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
 - [Prepare a running Kubernetes cluster](https://kubernetes.io/docs/setup/).
 - [Deploy a Pulsar cluster](https://pulsar.apache.org/docs/next/getting-started-helm) (v2.8.0 or higher version).
 - [Install Function Mesh](/docs/install-function-mesh.md).
 
-### Steps
+#### Steps
 
 To start the Function Mesh Worker service in Kubernetes, follow these steps.
 
@@ -148,13 +147,13 @@ To start the Function Mesh Worker service in Kubernetes, follow these steps.
     ...
     ```
 
-2. Apply the YAML file to start the Function Mesh Worker service.
+3. Apply the YAML file to start the Function Mesh Worker service.
 
     ```bash
     kubectl apply -f standalone.yaml 
     ```
 
-3. Verify that the Function Mesh Worker service is started successfully with the `pulsar-admin` CLI tool.
+4. Verify that the Function Mesh Worker service is started successfully with the `pulsar-admin` CLI tool.
 
     To ensure the Function Mesh worker service and the `pulsar-admin` CLI tool work together, you should start a Pulsar Proxy. For details, see [configure Pulsar Proxy](https://pulsar.apache.org/docs/next/functions-worker-run-separately#configure-proxies-for-standalone-function-workers).
 

@@ -169,7 +169,7 @@ ARG pulsar_gid=10001
 ARG stack_id="io.functionmesh.stack"
 
 RUN apt-get update && \
-  apt-get install -y xz-utils ca-certificates git wget jq && \
+  apt-get install -y xz-utils ca-certificates git wget jq gcc && \
   rm -rf /var/lib/apt/lists/* && \
   wget -O /usr/local/bin/yj https://github.com/bruceadams/yj/releases/download/v1.2.2/yj.linux.x86_64 && \
   chmod +x /usr/local/bin/yj
@@ -353,7 +353,7 @@ Now let's write a Java function file.
 
 ***exclamation_example.py***
 
-```java
+```python
 from pulsar import Function
 
 class ExclamationFunction(Function):

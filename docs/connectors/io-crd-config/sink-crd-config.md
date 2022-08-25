@@ -11,7 +11,7 @@ This table lists sink configurations.
 
 | Field | Description |
 | --- | --- |
-| `name` | The name of a sink connector. |
+| `name` | The connector name is a string of up to `43` characters. |
 | `classname` | The class name of a sink connector. |
 | `tenant` | The tenant of a sink connector. |
 | `namespace` | The Pulsar namespace of a sink connector. |

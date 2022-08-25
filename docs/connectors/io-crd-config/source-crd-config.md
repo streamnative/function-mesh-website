@@ -11,7 +11,7 @@ This table lists source configurations.
 
 | Field | Description |
 | --- | --- |
-| `name` | The name of a source connector. |
+| `name` | The connector name is a string of up to `43` characters. |
 | `classname` | The class name of a source connector. |
 | `tenant` | The tenant of a source connector. |
 | `namespace` | The Pulsar namespace of a source connector. |

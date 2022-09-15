@@ -52,7 +52,7 @@ kind: ConfigMap
 metadata:
   name: java-log-config-cm
 data:
-  java-config-xml: |
+  java-config-xml:
     <Configuration>
         <name>pulsar-functions-kubernetes-instance</name>
         <monitorInterval>30</monitorInterval>
@@ -101,17 +101,16 @@ data:
 - [4] `Property`: it is a name-value pair that represents the [log levels](/functions/function-crd.md#log-levels) available for a Pulsar function.
 - [5] `Appenders`: represents the destination that the logs are delivered to.
 - [6] `Loggers`: represents a class or module type that is used to perform logging.
-- [7] `additivity`:indicates whether log messages will be duplicated if multiple `<Logger>` entries overlap. If it is set to `false`, it means to prevent duplication of log messages when one or more `<Logger>` entries contain classes or modules that overlap.
-- [8] `AppenderRef`: allows you to output the log to a destination that is specified in the `Appender` section.
+- [7] `additivity`: indicates whether log messages will be duplicated if multiple `<Logger>` entries overlap. If it is set to `false`, it means to prevent duplication of log messages when one or more `<Logger>` entries contain classes or modules that overlap.
+- [8] `AppenderRef`: allows you to output the log to a destination that is specified in the `Appenders` section.
 
 ## Produce logs for Pulsar functions
 
-To produce logs for a Pulsar functions, follow these steps.
+This section describes how to produce logs for a Pulsar functions, follow these steps.
 
+### Produce logs for a Java function
 
-::: tabs
-
-@@@ Java
+To produce logs for a Java function, follow these steps.
 
 1. Specify a log topic when you run a Java function.
 
@@ -174,9 +173,9 @@ To produce logs for a Pulsar functions, follow these steps.
     2022-08-25T00:32:36,416+0000 [main] INFO  org.apache.pulsar.functions.runtime.JavaInstanceStarter - Starting runtimeSpawner
     ```
 
-@@@
+### Produce logs for a Python function
 
-@@@ Python
+To produce logs for a Python function, follow these steps.
 
 1. Specify a log topic when you run a Python function.
 
@@ -237,47 +236,6 @@ To produce logs for a Pulsar functions, follow these steps.
     [2022-08-25 00:35:18 +0000] [DEBUG] python_instance.py: Started Thread for executing the function
     [2022-08-25 00:35:18 +0000] [INFO] server.py: Serving InstanceCommunication on port 9093
     ```
-
-@@@
-
-@@@ Go
-
-1. Specify a log topic when you run a Go function.
-
-    This example specify the `persistent://public/default/logging-function-logs` as the log topic for the Go function.
-
-    ```yaml
-    apiVersion: compute.functionmesh.io/v1alpha1
-    kind: Function
-    metadata:
-      name: go-function-sample
-      namespace: default
-    spec:
-      image: streamnative/pulsar-functions-go-runner:2.7.1 # using go function runner
-      className: exclamation_function.ExclamationFunction
-      forwardSourceMessageProperty: true
-      maxPendingAsyncRequests: 1000
-      replicas: 1
-      maxReplicas: 5
-      logTopic: persistent://public/default/logging-function-logs
-    ...
-    ```
-
-2. Set a log level.
-
-    For details, see [set log levels](#set-log-levels).
-
-3. Apply the YAML file to run the Go function.
-
-    ```bash
-    kubectl apply -f /path/to/YAML/file
-    ```
-
-After the Go function runs successfully, you can check the log content, which is similar to: 
-
-@@@
-
-:::
 
 ## Next step
 

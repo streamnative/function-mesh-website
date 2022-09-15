@@ -190,6 +190,27 @@ Function Mesh supports running Pulsar Functions in Java, Python and Go. This tab
 | `pyLocation` | Path to the JAR file for the function. It is only available for Pulsar functions written in Python.|
 | `extraDependenciesDir` | It specifies the dependent directory for the JAR package. |
 
+## Log levels
+
+By default, the log level for Pulsar functions is `info`. Function Mesh supports setting multiple log levels for Pulsar functions.
+
+> **Notes**
+>
+> The log levels are only available for the Go runtime 2.11 or higher.
+
+| Critical | Description | Java runtime | Python runtime | Go runtime |
+|---|---|---|---|---|
+| `off` | Nothing will be logged. | ✔ | ✗ | ✗ |
+| `trace` | The logs that contain the most detailed messages.  | ✔ | ✔ |  ✔ |
+| `debug` | The logs that are used for interactive investigation during development. These logs primarily contain information useful for debugging and have no long-term value. | ✔ | ✔ |  ✔ |
+| `warn` | The logs that highlight an abnormal or unexpected event in the function, but do not cause the function to stop. | ✔ | ✔ |  ✔ |
+| `error` | The logs that highlight when the function is stopped due to a failure. These indicate a failure in the current activity, not an application-wide failure. | ✔ | ✔ |  ✔ |
+| `fatal` | The logs that contain fatal errors. It indicates that the function is unusable | ✔ | ✔ |  ✔ |
+| `all` | All events are logged. | ✔ | ✗ | ✗ |
+| `panic` | It indicates the function is in panic. | ✗ | ✗ | ✔ |
+
+For details about how to set log levels and produce logs for Pulsar functions, see [produce function logs](/functions/produce-function-log.md).
+
 ## Cluster location
 
 In Function Mesh, the Pulsar cluster is defined through a ConfigMap. Pods can consume ConfigMaps as environment variables in a volume. The Pulsar cluster ConfigMap defines the Pulsar cluster URLs.

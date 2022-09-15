@@ -41,6 +41,7 @@ module.exports = {
         },
         'connectors/run-connector',
         'connectors/pulsar-io-monitoring',
+        'connectors/produce-function-log',
         'connectors/pulsar-io-debug',
       ]
     },

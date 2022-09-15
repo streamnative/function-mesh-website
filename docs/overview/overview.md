@@ -135,6 +135,7 @@ Figure 7. The Function Mesh architecture
     - [Run Go Functions](/functions/run-function/run-go-function.md)
     - [Run Stateful Functions](/functions/run-function/run-stateful-function.md)
   - [Monitor Pulsar Functions](/functions/function-monitor.md)
+  - [Produce function logs](/functions/produce-function-log.md)
   - [Debug Pulsar Functions](/functions/function-debug.md)
 - Connectors
   - [Pulsar connectors overview](/connectors/pulsar-io-overview.md)

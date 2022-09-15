@@ -129,6 +129,11 @@ Figure 7. The Function Mesh architecture
 - Functions
   - [Pulsar Functions overview](/functions/function-overview.md)
   - [Pulsar Functions CRD configurations](/functions/function-crd.md)
+  - Package Pulsar Functions
+    - [Overview](/functions/package-function/package-function-overview.md)  
+    - [Package Java Functions](/functions/package-function/package-function-java.md)
+    - [Package Python Functions](/functions/package-function/package-function-python.md)
+    - [Package Go Functions](/functions/package-function/package-function-go.md)  
   - Run Pulsar Functions
     - [Run Java Functions](/functions/run-function/run-java-function.md)
     - [Run Python Functions](/functions/run-function/run-python-function.md)

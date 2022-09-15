@@ -14,6 +14,16 @@ module.exports = {
         'functions/function-crd',
         {
           type: 'category',
+          label: 'Package Pulsar Functions',
+          items: [
+            'functions/package-function/package-function-overview',
+            'functions/package-function/package-function-java',
+            'functions/package-function/package-function-python',
+            'functions/package-function/package-function-go'
+          ],
+        },
+        {
+          type: 'category',
           label: 'Run Pulsar Functions',
           items: [
             'functions/run-function/run-java-function',

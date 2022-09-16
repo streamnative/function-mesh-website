@@ -21,7 +21,7 @@ To package a function in Go, follow these steps.
 
 1. Write a Go function.
 
-    Currently, Go functions can be **only** implemented using SDK and the interface of the function is exposed in the form of SDK. Before using a Go function, you need to import `github.com/apache/pulsar/pulsar-function-go/pf`. 
+    Currently, Go functions can be implemented using SDK **only** and the interface of the function is exposed in the form of SDK. Before using a Go function, you need to import `github.com/apache/pulsar/pulsar-function-go/pf`. 
 
     ```go
     import (
@@ -43,7 +43,7 @@ To package a function in Go, follow these steps.
 
     When writing a Go function, remember that
     - In `main()`, you **only** need to register the function name to `Start()`. **Only** one function name is received in `Start()`. 
-    - The Go function use Go reflection, which is based on the received function name, to verify whether the parameter list and returned value list are correct. The parameter list and returned value list **must be** one of the following sample function:
+    - The Go function uses Go reflection, which is based on the received function name, to verify whether the parameter list and returned value list are correct. The parameter list and returned value list **must be** one of the following sample functions:
     
       ```go
        func ()
@@ -116,7 +116,7 @@ To build a Docker image, follow these steps.
     COPY example-function.jar /pulsar/
     ```
 
-Then, you can push the Docker image to an image registry (such as the [Docker Hub](https://hub.docker.com/), or any private registry) and use the Docker image to configure and submit the function to a Pulsar cluster.
+Then, you can push the Docker image to an image registry (such as [Docker Hub](https://hub.docker.com/), or any private registry) and use the Docker image to configure and submit the function to a Pulsar cluster.
 
 ## Self-built images
 
@@ -172,7 +172,7 @@ This example shows how to create a Build image.
     USER ${CNB_USER_ID}:${CNB_GROUP_ID}
     ```
 
-2. Apply the command to create the Build image.
+2. Run the following command to create the Build image.
 
     ```shell
     docker build -t fm-stack-build:v1 -f ./stack.build.Dockerfile .
@@ -199,7 +199,7 @@ This example shows how to create a Run image.
     ENV CNB_STACK_ID=${stack_id}
     ```
 
-2. Apply the command to create the Run image.
+2. Run the following command to create the Run image.
 
     ```shell
     docker build -t fm-stack-go-runner-run:v1 -f ./stack.go-runner.run.Dockerfile .
@@ -227,7 +227,7 @@ Then, a buildpack directory named `golang` is created.
   `-- buildpack.toml
 ```
 
-Update the content for the three files with the following content.
+Update the content of the three files with the following content.
 
 - **buildpack.toml**
 
@@ -344,7 +344,7 @@ This section describes how to create a Builder image.
     build-image = "fm-stack-build:v1"
     ```
 
-2. Apply the command to create the Builder image. 
+2. Run the following command to create the Builder image. 
 
     ```shell
     pack builder create fm-golang-builder:v1 \
@@ -384,7 +384,7 @@ The package directory structure is similar to:
     }
     ```
 
-2. Apply the command to build the Go function image in the current directory.
+2. Run the following command to build the Go function image in the current directory.
 
     ```shell
     pack build golang-exclamation-function:v1 \

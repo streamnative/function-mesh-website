@@ -148,7 +148,7 @@ To build a Docker image, follow these steps.
     COPY example-function.jar /pulsar/
     ```
 
-Then, you can push the Docker image to an image registry (such as the [Docker Hub](https://hub.docker.com/), or any private registry) and use the Docker image to configure and submit the function to a Pulsar cluster.
+Then, you can push the Docker image to an image registry (such as [Docker Hub](https://hub.docker.com/), or any private registry) and use the Docker image to configure and submit the function to a Pulsar cluster.
 
 ## Self-built images
 
@@ -204,7 +204,7 @@ This example shows how to create a Build image.
     USER ${CNB_USER_ID}:${CNB_GROUP_ID}
     ```
 
-2. Apply the command to create the Build image.
+2. Run the following command to create the Build image.
 
     ```shell
     docker build -t fm-stack-build:v1 -f ./stack.build.Dockerfile .
@@ -231,7 +231,7 @@ This example shows how to create a Run image.
     ENV CNB_STACK_ID=${stack_id}
     ```
 
-2. Apply the command to create the Run image.
+2. Run the following command to create the Run image.
 
     ```shell
     docker build -t fm-stack-java-runner-run:v1 -f ./stack.java-runner.run.Dockerfile .
@@ -259,7 +259,7 @@ Then, a buildpack directory named `java-maven` is created.
     `-- buildpack.toml
 ```
 
-Update the content for the three files with the following content. 
+Update the content of the three files with the following content. 
 
 - **buildpack.toml**
 
@@ -460,7 +460,7 @@ This section describes how to create a Builder image.
     build-image = "fm-stack-build:v1"
     ```
 
-2. Apply the command to create the Builder image. 
+2. Run the following command to create the Builder image. 
 
     ```shell
     pack builder create fm-java-maven-builder:v1 \
@@ -505,7 +505,7 @@ The package directory structure is similar to:
     }
     ```
 
-2. Apply the command to build the Java function image in the current directory.
+2. Run the following command to build the Java function image in the current directory.
 
     ```shell
     pack build java-exclamation-function:v1 \

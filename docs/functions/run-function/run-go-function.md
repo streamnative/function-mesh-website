@@ -4,7 +4,7 @@ category: functions
 id: run-go-function
 ---
 
-After packaging your Pulsar Go function, you can submit your Go function to a Pulsar cluster. This section describes how to submit a Go function through a function CRD. You can use the `image` field to specify the runner image use for creating the Go function. You can also specify the location where the package or the image is stored.
+After packaging your Pulsar Go function, you can submit your Go function to a Pulsar cluster. This section describes how to submit a Go function through a function CRD. You can use the `image` field to specify the runner image for creating the Go function. You can also specify the location where the package or the image is stored.
 
 1. Define a Go function by using a YAML file and save the YAML file.
 

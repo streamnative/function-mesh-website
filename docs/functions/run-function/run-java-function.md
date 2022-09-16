@@ -4,7 +4,7 @@ category: functions
 id: run-java-function
 ---
 
-After packaging your Pulsar function, you can submit your Pulsar function to a Pulsar cluster. This document describes how to submit a Java function through a function CRD. You can use the `image` field to specify the runner image use for creating the Java function. You can also specify the location where the package or the image is stored.
+After packaging your Pulsar function, you can submit your Pulsar function to a Pulsar cluster. This document describes how to submit a Java function through a function CRD. You can use the `image` field to specify the runner image for creating the Java function. You can also specify the location where the package or the image is stored.
 
 1. Define a Java function by using a YAML file and save the YAML file.
 

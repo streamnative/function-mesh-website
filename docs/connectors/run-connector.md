@@ -188,7 +188,7 @@ To build a Docker image, follow these steps.
 
 3. Build your connector Docker image packaged with your connector NAR or JAR package.
 
-Then, you can push the connector Docker image into an image registry (such as the [Docker Hub](https://hub.docker.com/), or any private registry) and use the connector Docker image to configure and submit the connector to Function Mesh.
+Then, you can push the connector Docker image into an image registry (such as [Docker Hub](https://hub.docker.com/), or any private registry) and use the connector Docker image to configure and submit the connector to Function Mesh.
 
 ### Submit self-built connectors
 

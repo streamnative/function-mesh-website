@@ -15,9 +15,9 @@ For details, see [set log levels](/functions/produce-function-log.md#set-log-lev
 
 To deploy a function to a Pulsar cluster, you need to package the function into an artifact or build the function into a Docker image.
 
-Starting from this release, you can use [Buildpacks](https://buildpacks.io/docs/concepts/components/buildpack/) to build a function image through multiple buildpacks. Buildpacks helps customize your codes as required, change the runner base (`pulsar-function-<runtime>-runner`) of a function image, and switch the runner image versions without building the function again.
+Starting from this release, you can use [Buildpacks](https://buildpacks.io/docs/concepts/components/buildpack/) to build a function image through multiple buildpacks. Buildpacks help customize your code as required, change the runner base (`pulsar-function-<runtime>-runner`) of a function image, and switch the runner image versions without building the function again.
 
-For details about how to build function images using Buildpacks, see Function Mesh documentation.
+For details about how to build function images using Buildpacks, see the Function Mesh documentation.
 
 - [Package Java Functions](/functions/package-function/package-function-java.md)
 - [Package Python Functions](/functions/package-function/package-function-python.md)

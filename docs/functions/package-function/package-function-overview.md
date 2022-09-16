@@ -10,11 +10,11 @@ After developing and testing your Pulsar function, you need to package it so tha
 
 Before deploying a Pulsar function, you need to generate a deployment artifact that contains the function code along with all its dependencies. The type of artifact varies depending on the programming language used to develop the function.
 
-For details about how to package a Java, Python, or Go function, see the Function Mesh documentation.
+For details about how to package a Java, Python, or Go function, see Function Mesh documentation.
 
-- [Package a Java Pulsar function](/docs/functions/package-function/package-function-java.md)
-- [Package a Python Pulsar function](/docs/functions/package-function/package-function-python.md)
-- [Package a Go Pulsar function](/docs/functions/package-function/package-function-go.md)
+- [Package a Java function](/functions/package-function/package-function-java.md)
+- [Package a Python function](/functions/package-function/package-function-python.md)
+- [Package a Go function](/functions/package-function/package-function-go.md)
 
 ## Images
 
@@ -22,7 +22,7 @@ After packaging a function, you can build the function to a Docker image using t
 
 ### Buildpacks
 
-[Buildpacks](https://buildpacks.io/docs/concepts/components/buildpack/) allows you to build a function image through multiple buildpacks. This helps customize your codes as required. 
+[Buildpacks](https://buildpacks.io/docs/concepts/components/buildpack/) allows you to build a function image through multiple buildpacks. This helps customize your code as required.
 
 With Buildpacks, you can quickly change the runner base (`pulsar-function-<runtime>-runner`) of a function image. And, you can use the `pack rebase <function-image> --run-image <new-runner-image>` command to switch the runner image versions without building the function again.
 

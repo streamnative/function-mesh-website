@@ -106,7 +106,7 @@ data:
 
 ## Produce logs for Pulsar functions
 
-This section describes how to produce logs for a Pulsar functions, follow these steps.
+This section describes how to produce logs for Pulsar functions.
 
 ### Produce logs for a Java function
 

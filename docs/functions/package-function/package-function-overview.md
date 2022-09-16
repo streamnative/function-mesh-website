@@ -10,7 +10,7 @@ After developing and testing your Pulsar function, you need to package it so tha
 
 Before deploying a Pulsar function, you need to generate a deployment artifact that contains the function code along with all its dependencies. The type of artifact varies depending on the programming language used to develop the function.
 
-For details about how to package a Java, Python, or Go function, see Function Mesh documentation.
+For details about how to package a Java, Python, or Go function, see the Function Mesh documentation.
 
 - [Package a Java function](/functions/package-function/package-function-java.md)
 - [Package a Python function](/functions/package-function/package-function-python.md)

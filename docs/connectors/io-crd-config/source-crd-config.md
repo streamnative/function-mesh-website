@@ -184,21 +184,6 @@ Function Mesh supports running Pulsar connectors in Java.
 | `jarLocation` | Path to the JAR file for the connector. |
 | `extraDependenciesDir` | It specifies the dependent directory for the JAR package. |
 
-## Log rotation policies
-
-With more and more logs being written to the log file, the log file grows in size. Therefore, Function Mesh supports log rotation to avoid large files that could create issues when opening them. You can set the log rotation policies based on the time or the log file size.
-
-| Field | Description |
-| --- | --- |
-| `TimedPolicyWithDaily` | Rotate the log file daily.   |
-| `TimedPolicyWithWeekly` | Rotate the log file weekly.   |
-| `TimedPolicyWithMonthly` | Rotate the log file monthly. |
-| `SizedPolicyWith10MB` | Rotate the log file at every 10 MB. |
-| `SizedPolicyWith50MB` | Rotate the log file at every 50 MB.  |
-| `SizedPolicyWith100MB` | Rotate the log file at every 100 MB.  |
-
-For details about how to set a log rotation policy, see [set log rotation policies](/functions/produce-function-log.md#set-log-rotation-policies).
-
 ## Cluster location
 
 In Function Mesh, the Pulsar cluster is defined through a ConfigMap. Pods can consume ConfigMaps as environment variables in a volume. The Pulsar cluster ConfigMap defines the Pulsar cluster URLs.

@@ -104,6 +104,30 @@ data:
 - [7] `additivity`: indicates whether log messages will be duplicated if multiple `<Logger>` entries overlap. If it is set to `false`, it means to prevent duplication of log messages when one or more `<Logger>` entries contain classes or modules that overlap.
 - [8] `AppenderRef`: allows you to output the log to a destination that is specified in the `Appenders` section.
 
+## Set log rotation policies
+
+With more and more logs being written to the log file, the log file grows in size. Therefore, Function Mesh supports log rotation to avoid large files that could create issues when opening them. After being rotated, the original logs are compressed into a ZIP file and new logs are continuously written to the log file. 
+
+You can still access the log data within these ZIP files, but you need to extract the file content to view it. Compressed files reduce their size and save disk space, and they take up less space when you archive or back up your logs to another location.
+
+This example shows how to set the log rotation policy to `TimedPolicyWithDaily` by using the `spec.log.rotatePolicy` option.
+
+```yaml
+apiVersion: compute.functionmesh.io/v1alpha1
+kind: Function
+metadata:
+  name: function-sample
+  namespace: default
+spec:
+  java:                                                 --- [1]
+    log:                                                --- [2]
+      rotatePolicy: "TimedPolicyWithDaily"              --- [3]        
+```
+
+- [1] `java`: represents the runtime with a specific programming language. Currently, available options include the Java runtime, the Python runtime, and the Go runtime.
+- [2] `log`: represents the log configurations for a Pulsar function.
+- [3] `rotatePolicy`: represents the [log rotation policies](/functions/function-crd.md#log-rotation-policies) available for a Pulsar function.
+
 ## Produce logs for Pulsar functions
 
 This section describes how to produce logs for Pulsar functions.

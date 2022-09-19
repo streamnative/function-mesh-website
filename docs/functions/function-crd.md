@@ -241,11 +241,26 @@ By default, the log level for Pulsar functions is `info`. Function Mesh supports
 | `debug` | The logs that are used for interactive investigation during development. These logs primarily contain information useful for debugging and have no long-term value. | ✔ | ✔ |  ✔ |
 | `warn` | The logs that highlight an abnormal or unexpected event in the function, but do not cause the function to stop. | ✔ | ✔ |  ✔ |
 | `error` | The logs that highlight when the function is stopped due to a failure. These indicate a failure in the current activity, not an application-wide failure. | ✔ | ✔ |  ✔ |
-| `fatal` | The logs that contain fatal errors. It indicates that the function is unusable | ✔ | ✔ |  ✔ |
+| `fatal` | The logs that contain fatal errors. It indicates that the function is unusable. | ✔ | ✔ |  ✔ |
 | `all` | All events are logged. | ✔ | ✗ | ✗ |
 | `panic` | It indicates the function is in panic. | ✗ | ✗ | ✔ |
 
 For details about how to set log levels and produce logs for Pulsar functions, see [produce function logs](/functions/produce-function-log.md).
+
+## Log rotation policies
+
+With more and more logs being written to the log file, the log file grows in size. Therefore, Function Mesh supports log rotation to avoid large files that could create issues when opening them. You can set the log rotation policies based on the time or the log file size.
+
+| Field | Description |
+| --- | --- |
+| `TimedPolicyWithDaily` | Rotate the log file daily.   |
+| `TimedPolicyWithWeekly` | Rotate the log file weekly.   |
+| `TimedPolicyWithMonthly` | Rotate the log file monthly. |
+| `SizedPolicyWith10MB` | Rotate the log file at every 10 MB. |
+| `SizedPolicyWith50MB` | Rotate the log file at every 50 MB.  |
+| `SizedPolicyWith100MB` | Rotate the log file at every 100 MB.  |
+
+For details about how to set a log rotation policy, see [set log rotation policies](/functions/produce-function-log.md#set-log-rotation-policies).
 
 ## Cluster location
 

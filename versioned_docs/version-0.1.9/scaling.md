@@ -20,7 +20,7 @@ For resources with HPA configured, the HPA controller monitors the resource's Po
 
 In CRDs, the `replicas` parameter is used to specify the number of Pods (Pulsar instances) that are required for running Pulsar functions, sources, or sinks. You can set the number of Pods based on the CPU threshold. When the target CPU threshold is reached, you can scale the Pods manually through either of the two ways:
 
-- Use the `kubectl scale --replicas` command. The CLI command does not change the `replicas` configuration in the CRD. If you use the `kunectl apply -f` command to re-submit the CRD file, the CLI configuration may be overwritten.
+- Use the `kubectl scale --replicas` command. The CLI command does not change the `replicas` configuration in the CRD. If you use the `kubectl apply -f` command to re-submit the CRD file, the CLI configuration may be overwritten.
 
     ```bash
     kubectl scale --replicas="" pod/POD_NAME
@@ -68,7 +68,7 @@ Deploy the metrics server in the cluster. The Metrics server provides metrics th
 
 These examples describe how to auto-scale the number of Pods running Pulsar Functions.
 
-- Function Mesh supports automatically scaling up the number of Pods by updating the `maxReplica` parameter. In this case, the number of Pods is updated to `8` when 80% CPU is utilized.
+- Function Mesh supports automatically scaling up the number of Pods by updating the `maxReplicas` parameter. In this case, the number of Pods is updated to `8` when 80% CPU is utilized.
 
   1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
 

@@ -159,7 +159,7 @@ Function Mesh provides the `tlsConfig`, `tlsSecret`, `authSecret`, `authConfig` 
       </tr>
       <tr>
         <td><code>issuerUrl</code></td>
-        <td>The URL of the authentication provider which allows a Pulsar client to obtain an access token.</td>
+        <td>The URL of the authentication provider that allows a Pulsar client to obtain an access token.</td>
       </tr>
       <tr>
         <td><code>scope</code></td>

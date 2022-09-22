@@ -4,7 +4,7 @@ category: scaling
 id: scaling
 ---
 
-This document describes how to manually and automatically scale Pods (Pulsar instances) which are used for running functions, sources, and sinks.
+This document describes how to manually and automatically scale Pods (Pulsar instances) that are used for running functions, sources, and sinks.
 
 ## Manual scaling
 
@@ -44,9 +44,9 @@ Function Mesh auto-scales the number of Pods based on the CPU usage, memory usag
   
   | Option | Description |
   | --- | --- |
-  | AverageUtilizationCPUPercent80 | Auto-scale the number of Pods if 80% CPU is utilized.|
-  | AverageUtilizationCPUPercent50 | Auto-scale the number of Pods if 50% CPU is utilized.|
-  | AverageUtilizationCPUPercent20 | Auto-scale the number of Pods if 20% CPU is utilized. |
+  | AverageUtilizationCPUPercent80 | Auto-scale the number of Pods if 80% CPU is used.|
+  | AverageUtilizationCPUPercent50 | Auto-scale the number of Pods if 50% CPU is used.|
+  | AverageUtilizationCPUPercent20 | Auto-scale the number of Pods if 20% CPU is used. |
 
 - Memory usage: auto-scale the number of Pods based on memory utilization.
   
@@ -54,9 +54,9 @@ Function Mesh auto-scales the number of Pods based on the CPU usage, memory usag
   
   | Option | Description |
   | --- | --- |
-  | AverageUtilizationMemoryPercent80 | Auto-scale the number of Pods if 80% memory is utilized. |
-  | AverageUtilizationMemoryPercent50 | Auto-scale the number of Pods if 50% memory is utilized. |
-  | AverageUtilizationMemoryPercent20 | Auto-scale the number of Pods if 20% memory is utilized. |
+  | AverageUtilizationMemoryPercent80 | Auto-scale the number of Pods if 80% memory is used. |
+  | AverageUtilizationMemoryPercent50 | Auto-scale the number of Pods if 50% memory is used. |
+  | AverageUtilizationMemoryPercent20 | Auto-scale the number of Pods if 20% memory is used. |
 
 - Custom metrics: auto-scale the number of Pods based on custom metrics defined in Pulsar Functions or connectors. For details, see [MetricSpec v2beta2 autoscaling](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling).
 
@@ -72,7 +72,7 @@ Deploy the metrics server in the cluster. The Metrics server provides metrics th
 
 By default, autoscaling is disabled (the value of the `maxReplicas` parameter is set to `0`). To enable autoscaling, you can specify the `maxReplicas` parameter and set a value for it in the CRD. This value should be greater than the value of the `replicas` parameter.
 
-By default, when autoscaling is enabled, the number of Pods is automatically scaled when 80% CPU is utilized.
+By default, when autoscaling is enabled, the number of Pods is automatically scaled when 80% CPU is used.
 
 This example shows how to enable autoscaling by setting the value of the `maxReplicas` to `8`.
 
@@ -99,7 +99,7 @@ Function Mesh supports auto-scales the number of Pods based on [supported built-
   >
   > If you specify multiple metrics for the HPA to scale up, the HPA controller evaluates each metric, and proposes a new scale based on that metric. The largest of the proposed scales will be used as the new scale.
 
-This example shows how to auto-scale the number of Pods to `8` when 20% CPU is utilized.
+This example shows how to auto-scale the number of Pods to `8` when 20% CPU is used.
 
 1. Specify the CPU-based autoscaling metric under `pod.builtinAutoscaler` in the Pulsar Functions CRD.
 
@@ -139,7 +139,7 @@ This example shows how to auto-scale the number of Pods to `8` when 20% CPU is u
 
 Function Mesh supports automatically scaling up the number of Pods based on a custom autoscaling metric. 
 
-- This example shows how to auto-scale the number of Pods if 45% CPU is utilized.
+- This example shows how to auto-scale the number of Pods if 45% CPU is used.
 
   1. Specify the custom autoscaling metric under `pod.autoScalingMetrics` in the Pulsar Functions CRD.
 
@@ -178,7 +178,7 @@ Function Mesh supports automatically scaling up the number of Pods based on a cu
       kubectl apply -f path/to/function-sample.yaml
       ```
 
-- If a large number of resources are utilized suddenly, you can use the `autoScalingBehavior.scaleUp.stabilizationWindowSeconds` option to adjust the value of the stabilization window to tune performance.
+- If a large number of resources are used suddenly, you can use the `autoScalingBehavior.scaleUp.stabilizationWindowSeconds` option to adjust the value of the stabilization window to tune performance.
 
   1. Specify the value of the stabilization window in the Pulsar Functions CRD.
 
@@ -212,11 +212,11 @@ Function Mesh supports automatically scaling up the number of Pods based on a cu
               selectPolicy: Max                    --- [7]
       ```
 
-     - [1] `scaleUp`: specifies the rules which are used to control scaling behavior while scaling up.
+     - [1] `scaleUp`: specifies the rules that are used to control scaling behavior while scaling up.
      - [2] `stabilizationWindowSeconds`: indicates the amount of time the HPA controller should consider previous recommendations to prevent flapping of the number of replicas.
-     - [3] `policies`: a list of policies which regulate the amount of scaling. Each item has the following fields:
+     - [3] `policies`: a list of policies that regulate the amount of scaling. Each item has the following fields:
        - [4] `type`: can be set to the value `Pods` or `Percent`, which indicates the allowed changes in terms of absolute number of pods or percentage of current replicas.
-       - [5] `periodSeconds`: represents the amount of time in seconds for which the rule should hold true.
+       - [5] `periodSeconds`: represents the amount of time in seconds that the rule should hold true for.
        - [6] `value`: represents the value for the policy.
      - [7] `selectPolicy`: can be `Min`, `Max` or `Disabled` and specifies which value from the policies should be selected. By default, it is set to `Max` value.
 

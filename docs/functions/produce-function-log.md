@@ -106,11 +106,11 @@ data:
 
 ## Set log rotation policies
 
-With more and more logs being written to the log file, the log file grows in size. Therefore, Function Mesh supports log rotation to avoid large files that could create issues when opening them. After being rotated, the original logs are compressed into a ZIP file and new logs are continuously written to the log file. 
+With more and more logs being written to the log file, the log file grows in size. Therefore, Function Mesh supports log rotation to avoid large files that could create issues when opening them. After being rotated, the original logs are compressed into a file and new logs are continuously written to the log file. 
 
-You can still access the log data within these ZIP files, but you need to extract the file content to view it. Compressed files reduce their size and save disk space, and they take up less space when you archive or back up your logs to another location.
+You can still access the log data within these compressed files, but you need to extract the file content to view it. Compressed files reduce their size and save disk space, and they take up less space when you archive or back up your logs to another location.
 
-This example shows how to set the log rotation policy to `TimedPolicyWithDaily` by using the `spec.log.rotatePolicy` option.
+This example shows how to set the log rotation policy to `TimedPolicyWithDaily` by using the `spec.<runtime>.log.rotatePolicy` option.
 
 ```yaml
 apiVersion: compute.functionmesh.io/v1alpha1

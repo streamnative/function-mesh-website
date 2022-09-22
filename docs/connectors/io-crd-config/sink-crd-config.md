@@ -115,7 +115,7 @@ Then, in the Pulsar Functions and Connectors, you can call `context.getSecret("u
 
 ## Authentication
 
-Function Mesh provides the `tlsConfig`, `tlsSecret`, and `authSecret` fields for Function, Source, and Sink in the CRD definition. You can configure TLS encryption and/or TLS authentication using the following configurations.
+Function Mesh provides the `tlsConfig`, `tlsSecret`, `authSecret`, `authConfig` fields for Function, Source, and Sink in the CRD definition. You can configure TLS encryption, TLS authentication, and OAuth2 authentication using the following configurations.
 
 > **Note**
 > 
@@ -145,6 +145,42 @@ Function Mesh provides the `tlsConfig`, `tlsSecret`, and `authSecret` fields for
     | --- | --- |
     | `clientAuthenticationPlugin` | The client authentication plugin. |
     | `clientAuthenticationParameters` | The client authentication parameters. |
+
+- Authentication configurations
+
+    > **Note**
+    >
+    > Currently, only [OAuth2 authentication](https://oauth.net/) configurations are supported. For other authentication methods, you can configure them using the Authentication Secret.
+
+    <table>
+      <tr>
+        <th>Field</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td colspan="2"><b>OAuth2 authentication</b></td>
+      </tr>
+      <tr>
+        <td><code>audience</code></td>
+        <td>The OAuth2 "resource server" identifier for the Pulsar cluster.</td>
+      </tr>
+      <tr>
+        <td><code>issuerUrl</code></td>
+        <td>The URL of the authentication provider that allows a Pulsar client to obtain an access token.</td>
+      </tr>
+      <tr>
+        <td><code>scope</code></td>
+        <td>The scope of an access request. For more information, see [access token scope](https://datatracker.ietf.org/doc/html/rfc6749#section-3.3).</td>
+      </tr>
+      <tr>
+        <td><code>keySecretName</code></td>
+        <td>The name of the Kubernetes secret.</td>
+      </tr>
+      <tr>
+        <td><code>keySecretKey</code></td>
+        <td>The key of the Kubernetes secret, which contains the content of the OAuth2 private key.</td>
+      </tr>
+    </table>
 
 ## Packages
 

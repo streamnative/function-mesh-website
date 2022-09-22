@@ -32,11 +32,11 @@ For resources with HPA configured, the HPA controller monitors the resource's Po
 
 ### Supported auto-scaling metrics
 
-Function Mesh auto-scales the number of Pods based on the CPU usage, memory usage, custom metrics.
+Function Mesh auto-scales the number of Pods based on the CPU usage, memory usage, and custom metrics.
 
 > **Note**
 >
-> If you have configured autoscaling based on the CPU usage, memory usage, or both of them, you do not need to configure autoscaling based on custom metrics defined in Pulsar Functions or connectors and vice versa.
+> If you have configured autoscaling based on the CPU usage and/or memory usage, you do not need to configure autoscaling based on custom metrics defined in Pulsar Functions or connectors and vice versa.
 
 - CPU usage: auto-scale the number of Pods based on CPU utilization.
   
@@ -93,7 +93,7 @@ spec:
 
 #### Configure autoscaling with built-in metrics
 
-Function Mesh supports auto-scales the number of Pods based on [supported built-in metrics](#supported-auto-scaling-metrics).
+Function Mesh supports autoscaling the number of Pods based on [supported built-in metrics](#supported-auto-scaling-metrics).
 
   >**Note**
   >

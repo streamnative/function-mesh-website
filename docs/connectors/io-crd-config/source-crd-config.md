@@ -16,8 +16,8 @@ This table lists source configurations.
 | `tenant` | The tenant of a source connector. |
 | `namespace` | The Pulsar namespace of a source connector. |
 | `clusterName` | The Pulsar cluster of a source connector. |
-| `replicas`| The number of instances that you want to run for this source connector. If no value is set, the system will set `1` to it. |
-| `minReplicas`| The minimum number of instances that you want to run for this source connector. If no value is set, the system will set `1` to it. When HPA auto-scaling is enabled, the HPA controller scales up / down the Pods based on the values of the `minReplicas` and `maxReplicas` options. The number of the Pods should be greater than the value of the `minReplicas` while be smaller than the value of the `maxReplicas`.  |
+| `replicas`| The number of instances that you want to run for this source connector. If no value is set, the system will set it to `1`. |
+| `minReplicas`| The minimum number of instances that you want to run for this source connector. If no value is set, the system will set it to `1`. When HPA auto-scaling is enabled, the HPA controller scales the Pods up / down based on the values of the `minReplicas` and `maxReplicas` options. The number of the Pods should be greater than the value of the `minReplicas` and be smaller than the value of the `maxReplicas`.  |
 | `maxReplicas`| The maximum number of instances that you want to run for this source connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the source controller automatically scales the source connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
 | `sourceConfig` | The source connector configurations in YAML format. |
 | `processingGuarantee` | The processing guarantees (delivery semantics) applied to the source connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`.|

@@ -17,8 +17,8 @@ This table lists Pulsar Function configurations.
 | `tenant` | The tenant of a Pulsar Function. |
 | `namespace` | The Pulsar namespace of a Pulsar Function. |
 | `clusterName` | The Pulsar cluster of a Pulsar Function. |
-| `replicas`| The number of instances that you want to run this Pulsar Function. If no value is set, the system will set `1` to it. |
-| `minReplicas`| The minimum number of instances that you want to run for this Pulsar function. If no value is set, the system will set `1` to it. When HPA auto-scaling is enabled, the HPA controller scales up / down the Pods based on the values of the `minReplicas` and `maxReplicas` options. The number of the Pods should be greater than the value of the `minReplicas` while be smaller than the value of the `maxReplicas`.  |
+| `replicas`| The number of instances that you want to run this Pulsar Function. If no value is set, the system will set it to `1`. |
+| `minReplicas`| The minimum number of instances that you want to run for this Pulsar function. If no value is set, the system will set it to `1`. When HPA auto-scaling is enabled, the HPA controller scales the Pods up / down based on the values of the `minReplicas` and `maxReplicas` options. The number of the Pods should be greater than the value of the `minReplicas` and be smaller than the value of the `maxReplicas`.  |
 | `maxReplicas`| The maximum number of instances that you want to run for this Pulsar function. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller automatically scales the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
 | `timeout` | The message timeout in milliseconds. |
 | `deadLetterTopic` | The topic where all messages that were not processed successfully are sent. This parameter is not supported in Python Functions. |

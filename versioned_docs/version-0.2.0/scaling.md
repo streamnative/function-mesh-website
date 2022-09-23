@@ -20,7 +20,7 @@ For resources with HPA configured, the HPA controller monitors the resource's Po
 
 In CRDs, the `replicas` parameter is used to specify the number of Pods (Pulsar instances) that are required for running Pulsar functions, sources, or sinks. You can set the number of Pods based on the CPU threshold. When the target CPU threshold is reached, you can scale the Pods manually through either of the two ways:
 
-- Use the `kubectl scale --replicas` command. The CLI command does not change the `replicas` configuration in the CRD. If you use the `kunectl apply -f` command to re-submit the CRD file, the CLI configuration may be overwritten.
+- Use the `kubectl scale --replicas` command. The CLI command does not change the `replicas` configuration in the CRD. If you use the `kubectl apply -f` command to re-submit the CRD file, the CLI configuration may be overwritten.
 
     ```bash
     kubectl scale --replicas="" pod/POD_NAME
@@ -38,9 +38,9 @@ Function Mesh auto-scales the number of Pods based on the CPU usage, memory usag
   
   | Option | Description |
   | --- | --- |
-  | AverageUtilizationCPUPercent80 | Auto-scale the number of Pods if 80% CPU is utilized.|
-  | AverageUtilizationCPUPercent50 | Auto-scale the number of Pods if 50% CPU is utilized.|
-  | AverageUtilizationCPUPercent20 | Auto-scale the number of Pods if 20% CPU is utilized. |
+  | AverageUtilizationCPUPercent80 | Auto-scale the number of Pods if 80% CPU is used.|
+  | AverageUtilizationCPUPercent50 | Auto-scale the number of Pods if 50% CPU is used.|
+  | AverageUtilizationCPUPercent20 | Auto-scale the number of Pods if 20% CPU is used. |
 
 - Memory usage: auto-scale the number of Pods based on memory utilization.
   
@@ -48,9 +48,9 @@ Function Mesh auto-scales the number of Pods based on the CPU usage, memory usag
   
   | Option | Description |
   | --- | --- |
-  | AverageUtilizationMemoryPercent80 | Auto-scale the number of Pods if 80% memory is utilized. |
-  | AverageUtilizationMemoryPercent50 | Auto-scale the number of Pods if 50% memory is utilized. |
-  | AverageUtilizationMemoryPercent20 | Auto-scale the number of Pods if 20% memory is utilized. |
+  | AverageUtilizationMemoryPercent80 | Auto-scale the number of Pods if 80% memory is used. |
+  | AverageUtilizationMemoryPercent50 | Auto-scale the number of Pods if 50% memory is used. |
+  | AverageUtilizationMemoryPercent20 | Auto-scale the number of Pods if 20% memory is used. |
 
 - metrics: auto-scale the number of Pods based on customized metrics defined in Pulsar Functions or connectors. For details, see [MetricSpec v2beta2 autoscaling](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling).
 
@@ -58,7 +58,7 @@ Function Mesh auto-scales the number of Pods based on the CPU usage, memory usag
 >
 > If you have configured autoscaling based on the CPU usage, memory usage, or both of them, you do not need to configure autoscaling based on customized metrics defined in Pulsar Functions or connectors and vice versa.
 
-By default, autoscaling is disabled (the value of the `maxReplicas` parameter is set to `0`). To enable autoscaling, you can specify the `maxReplicas` parameter and set a value for it in the CRD. This value should be greater than the value of the `replicas` parameter. Then, the number of Pods is automatically scaled when 80% CPU is utilized.
+By default, autoscaling is disabled (the value of the `maxReplicas` parameter is set to `0`). To enable autoscaling, you can specify the `maxReplicas` parameter and set a value for it in the CRD. This value should be greater than the value of the `replicas` parameter. Then, the number of Pods is automatically scaled when 80% CPU is used.
 
 ### Prerequisites
 
@@ -68,7 +68,7 @@ Deploy the metrics server in the cluster. The Metrics server provides metrics th
 
 These examples describe how to auto-scale the number of Pods running Pulsar Functions.
 
-- Function Mesh supports automatically scaling up the number of Pods by updating the `maxReplica` parameter. In this case, the number of Pods is updated to `8` when 80% CPU is utilized.
+- Function Mesh supports automatically scaling up the number of Pods by updating the `maxReplicas` parameter. In this case, the number of Pods is updated to `8` when 80% CPU is used.
 
   1. Specify the `maxReplicas` to `8` in the Pulsar Functions CRD. The `maxReplicas` refers to the maximum number of Pods that are required for running the Pulsar Functions.
 
@@ -101,7 +101,7 @@ These examples describe how to auto-scale the number of Pods running Pulsar Func
       kubectl apply -f path/to/source-sample.yaml
       ```
 
-- Function Mesh supports automatically scaling up the number of Pods based on a built-in autoscaling metric. This example auto-scales the number of Pods if 20% CPU is utilized.
+- Function Mesh supports automatically scaling up the number of Pods based on a built-in autoscaling metric. This example auto-scales the number of Pods if 20% CPU is used.
 
   1. Specify the CPU-based autoscaling metric under `pod.builtinAutoscaler` in the Pulsar Functions CRD.
 
@@ -138,7 +138,7 @@ These examples describe how to auto-scale the number of Pods running Pulsar Func
   >
   > If you specify multiple metrics for the HPA to scale on, the HPA controller evaluates each metric, and proposes a new scale based on that metric. The largest of the proposed scales will be used as the new scale.
 
-- Function Mesh supports automatically scaling up the number of Pods based on a customized autoscaling metric. This example auto-scales the number of Pods if 45% CPU is utilized.
+- Function Mesh supports automatically scaling up the number of Pods based on a customized autoscaling metric. This example auto-scales the number of Pods if 45% CPU is used.
 
   1. Specify the customized autoscaling metric under `pod.autoScalingMetrics` in the Pulsar Functions CRD.
 

@@ -163,7 +163,7 @@ Function Mesh provides the `tlsConfig`, `tlsSecret`, `authSecret`, `authConfig` 
       </tr>
       <tr>
         <td><code>scope</code></td>
-        <td>The scope of an access request. For more information, see [access token scope](https://datatracker.ietf.org/doc/html/rfc6749#section-3.3).</td>
+        <td>The scope of an access request. For more information, see <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-3.3">access token scope</a>.</td>
       </tr>
       <tr>
         <td><code>keySecretName</code></td>

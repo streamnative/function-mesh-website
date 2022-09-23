@@ -16,17 +16,19 @@ The following figure illustrates how Function Mesh Worker service works with Pul
 
 ![Function Mesh Workflow](./../assets/function-mesh-workflow.png)
 
-## Authentication Support
+## Authentication
 
-Before v0.6.0, the Function Mesh Worker Service uses a super admin Pulsar account reading from the config file for Function Mesh operators, which is not secure, so start from v0.6.0, there is a break change to use separate account for each user.
+In previous releases, Function Mesh Worker service used the super admin account to read the configuration file for Function Mesh operators, which is not secure. Therefore, starting from this release, Function Mesh Worker service supports setting a separate account for each user.
 
-**Currently it only support OAuth2 providers, other providers will be supported as soon as possible.**
+> **Note**
+>
+> Currently, only OAuth2 authentication is supported.
 
 > NOTE: if you are using Pulsar cluster with other authentication providers, the Function Mesh Worker Service will not work
 
-### OAuth2
+### OAuth2 authentication
 
-For each client of OAuth2, there should be a Kubernetes Secret created in advance in the same cluster of Function Mesh operators, its format is like below:
+For clients that use OAuth2 authentication, you need to create a Kubernetes Secret in advance in the same cluster where Function Mesh operators work. The Kubernetes Secret is something like the below:
 
 ```yaml
 apiVersion: v1

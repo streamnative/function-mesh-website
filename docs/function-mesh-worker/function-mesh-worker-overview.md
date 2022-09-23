@@ -24,8 +24,6 @@ In previous releases, Function Mesh Worker service used the super admin account 
 >
 > Currently, only OAuth2 authentication is supported.
 
-> NOTE: if you are using Pulsar cluster with other authentication providers, the Function Mesh Worker Service will not work
-
 ### OAuth2 authentication
 
 For clients that use OAuth2 authentication, you need to create a Kubernetes Secret in advance in the same cluster where Function Mesh operators work. The Kubernetes Secret is something like the below:
@@ -58,4 +56,4 @@ This table lists the version mapping relationships between Function Mesh and Fun
 | v0.2.0| <br />- v2.10.0.5-v2.10.0.6 <br />- v2.9.2.18-v2.9.2.22 <br />- v2.8.3.4 |
 | v0.3.0| <br />- v2.10.0.7 <br />- v2.9.2.23+ <br />- v2.8.3.5+ |
 | v0.4.0| <br />- v2.10.1.4+ <br />- v2.9.3.3+ <br />- v2.8.3.6+ |
-| v0.5.0| <br />- v2.10.1.7+ <br />- v2.9.3.5+ <br />- v2.8.4.1+ |
+| v0.5.0| <br />- v2.10.1.7 ~ v2.10.1.8 <br />- v2.9.3.6 ~ v2.9.3.8  <br />- v2.8.4.1 |

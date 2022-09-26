@@ -16,6 +16,34 @@ The following figure illustrates how Function Mesh Worker service works with Pul
 
 ![Function Mesh Workflow](./../assets/function-mesh-workflow.png)
 
+## Authentication
+
+In previous releases, Function Mesh Worker service used the super admin account to read the configuration file for Function Mesh operators, which is not secure. Therefore, starting from this release, Function Mesh Worker service supports setting a separate account for each user.
+
+> **Note**
+>
+> Currently, only OAuth2 authentication is supported.
+
+### OAuth2 authentication
+
+For clients that use OAuth2 authentication, you need to create a Kubernetes Secret in advance in the same cluster where Function Mesh operators work. The Kubernetes Secret is something like the below:
+
+```yaml
+apiVersion: v1
+data:
+  auth.json: |
+    {
+      "client_id": "xxxx",
+      "client_secret": "xxxx",
+      "issuer_url": "xxx"
+    }
+  clientAuthenticationParameters: {"privateKey":"file:///${SOME-PATH-OF-FILE}","issuerUrl":"${OAUTH-ISSUER-URL}","audience":"${OAUTH-AUDIENCE}","scope":"${OAUTH-SCOPE}"}
+kind: Secret
+metadata:
+  name: ${OAUTH-CLIENT-NAME}
+type: Opaque
+```
+
 ## Version matrix
 
 This table lists the version mapping relationships between Function Mesh and Function Mesh Worker service.
@@ -28,4 +56,4 @@ This table lists the version mapping relationships between Function Mesh and Fun
 | v0.2.0| <br />- v2.10.0.5-v2.10.0.6 <br />- v2.9.2.18-v2.9.2.22 <br />- v2.8.3.4 |
 | v0.3.0| <br />- v2.10.0.7 <br />- v2.9.2.23+ <br />- v2.8.3.5+ |
 | v0.4.0| <br />- v2.10.1.4+ <br />- v2.9.3.3+ <br />- v2.8.3.6+ |
-| v0.5.0| <br />- v2.10.1.7+ <br />- v2.9.3.5+ <br />- v2.8.4.1+ |
+| v0.5.0| <br />- v2.10.1.7 ~ v2.10.1.8 <br />- v2.9.3.6 ~ v2.9.3.8  <br />- v2.8.4.1 |

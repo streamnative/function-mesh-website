@@ -50,6 +50,16 @@ Function Mesh uses runner images as images of Pulsar connectors. Each runner ima
 
 Pulsar connectors support using the Java runner images as their images. The Java runner is based on the base runner and contains the Java function instance to run Java functions or connectors. The `streamnative/pulsar-functions-java-runner` Java runner is stored at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-java-runner) and is automatically updated to align with Apache Pulsar release.
 
+## Image pull policies
+
+When the Function Mesh Operator creates a container, it uses the `imagePullPolicy` option to determine whether the image should be pulled prior to starting the container. There are three possible values for the `imagePullPolicy` option:
+
+| Field          | Description                                                      |
+|----------------|------------------------------------------------------------------|
+| `Always`       | Always pull the image.                                           |
+| `Never`        | Never pull the image.                                            |
+| `IfNotPresent` | Only pull the image if the image does not already exist locally. |
+
 ## Output
 
 The output topics of a Pulsar Function. This table lists options available for the `Output`.

@@ -53,6 +53,16 @@ This table lists available Function runtime runner images.
 | Python runner | The Python runner is based on the base runner and contains the Python function instance to run Python functions. You can build your own Python runner to customize Python dependencies. The `streamnative/pulsar-functions-python-runner` Python runner is located at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-java-runner) and is automatically updated to align with Apache Pulsar release.
 | Golang runner | The Golang runner provides all the tool-chains and dependencies required to run Golang functions. The `streamnative/pulsar-functions-go-runner` Golang runner is located at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-java-runner) and is automatically updated to align with Apache Pulsar release.
 
+## Image pull policies
+
+When the Function Mesh Operator creates a container, it uses the `imagePullPolicy` option to determine whether the image should be pulled prior to starting the container. There are three possible values for the `imagePullPolicy` option:
+
+| Field          | Description                                                      |
+|----------------|------------------------------------------------------------------|
+| `Always`       | Always pull the image.                                           |
+| `Never`        | Never pull the image.                                            |
+| `IfNotPresent` | Only pull the image if the image does not already exist locally. |
+
 ## State storage
 
 Function Mesh provides the following fields for Stateful functions in the CRD definition.

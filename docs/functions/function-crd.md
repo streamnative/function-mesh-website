@@ -90,6 +90,22 @@ Function Mesh provides the following fields for Stateful functions in the CRD de
 | `statefulConfig.pulsar.javaProvider.className` | The Java class name of the state storage provider implementation. The class must implement the `org.apache.pulsar.functions.instance.state.StateStoreProvider` interface. If not, `org.apache.pulsar.functions.instance.state.BKStateStoreProviderImpl` will be used. |
 | `statefulConfig.pulsar.javaProvider.config` | The configurations that are passed to the state storage provider. |
 
+## Window function configurations
+
+Function Mesh provides the following fields for window functions in the CRD definition.
+
+| Field                           | Description                                                                                                                                                                 |
+|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `actualWindowFunctionClassName` | Required. The runner class name of the implemented window function.                                                                                                         |
+| `lateDataTopic`                 | Optional. The late data topic for the late tuple messages. The late data topic must be defined when specifying a timestamp extractor class (`timestampExtractorClassName`). |
+| `maxLagMs`                      | Optional. The maximum lag duration (in milliseconds) of the window function. By default, it is set to 0.                                                                    |
+| `slidingIntervalCount`          | Optional. The number of messages which the window slides after.                                                                                                             |
+| `slidingIntervalDurationMs`     | Optional. The time duration (in milliseconds) after which the window slides.                                                                                                |
+| `timestampExtractorClassName`   | Optional. The timestamp extractor class name.  It should be set to `org.apache.pulsar.functions.windowing.TimestampExtractor`.                                              |
+| `watermarkEmitIntervalMs`       | Optional. The watermark interval (in milliseconds) of the window function.  By default, it is set to 1000 ms.                                                               |
+| `windowLengthCount`             | Optional. The number of messages per window.                                                                                                                                |
+| `windowLengthDurationMs`        | Optional. The time duration (in milliseconds) of the window.                                                                                                                |
+
 ## Input
 
 The input topics of a Pulsar Function. The following table lists options available for the `Input`.

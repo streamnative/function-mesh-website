@@ -73,3 +73,24 @@ You can access states within Pulsar Python functions using the following calls o
 > **Note**
 >
 > Stateful functions are not available in the Go programming language.
+
+## Window functions
+
+> **Note**
+>
+> Currently, window functions are only available in Java and do not support `MANUAL` and `Effectively-once` delivery semantics.
+
+A window function is a function that performs computation across a window, which is a finite subset of the event stream, as illustrated below.
+
+![Pulsar window functions](../assets/window-function.svg)
+
+There are two common attributes used to define windows:
+
+- Eviction policy: controls the amount of data collected in a window. It is used to confirm if data should be evicted from the window.
+- Trigger policy: controls when a function is triggered and executed to process all of the data collected in a window based on eviction policy. It is used by the Apache Pulsar Function framework to confirm the time to process all the data collected in a window.
+
+Both of these policies are driven by either time or the quantity of data in a window. Although there are a variety of windowing techniques, the most prominent ones used in practice are [tumbling windows](https://pulsar.apache.org/docs/next/functions-concepts#tumbling-window) and [sliding windows](https://pulsar.apache.org/docs/next/functions-concepts#sliding-window). For details, see [Types of window](https://pulsar.apache.org/docs/next/functions-concepts#types-of-window).
+
+### Window function context
+
+The Java SDK provides access to a window context object that can be used by a window function. This context object provides a wide variety of information and functionality for a Pulsar window function. For details, see [Pulsar documentation](https://pulsar.apache.org/docs/next/window-functions-context).

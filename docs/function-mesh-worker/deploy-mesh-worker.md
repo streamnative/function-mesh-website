@@ -29,7 +29,7 @@ This section describes how to run Function Mesh Worker service separately in Doc
 
 - Install Docker. Download the [Community edition](https://www.docker.com/community-edition) and follow the instructions for your OS.
 - [Deploy a Pulsar cluster](https://pulsar.apache.org/docs/next/getting-started-docker) (v2.8.0 or higher version).
-- [Install Function Mesh](/docs/install-function-mesh.md).
+- [Install Function Mesh](/install-function-mesh.md).
 
 #### Steps
 
@@ -113,7 +113,7 @@ This section describes how to run Function Mesh Worker service separately in Kub
 - Install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
 - [Prepare a running Kubernetes cluster](https://kubernetes.io/docs/setup/).
 - [Deploy a Pulsar cluster](https://pulsar.apache.org/docs/next/getting-started-helm) (v2.8.0 or higher version).
-- [Install Function Mesh](/docs/install-function-mesh.md).
+- [Install Function Mesh](/install-function-mesh.md).
 
 #### Steps
 
@@ -201,7 +201,7 @@ Function Mesh Worker service can forward requests to the Kubernetes cluster. Aft
 To deploy the Function Mesh Worker service, ensure that these services are already running in your environment.
 
 - [Deploy a Pulsar cluster](https://pulsar.apache.org/docs/next/getting-started-helm) (v2.8.0 or higher version).
-- [Install Function Mesh](/docs/install-function-mesh.md).
+- [Install Function Mesh](/install-function-mesh.md).
 
 ### Start Function Mesh Worker service
 

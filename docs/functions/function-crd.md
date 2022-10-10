@@ -96,7 +96,7 @@ Function Mesh provides the following fields for window functions in the CRD defi
 
 | Field                           | Description                                                                                                                                                                 |
 |---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `actualWindowFunctionClassName` | Required. The runner class name of the implemented window function.                                                                                                         |
+| `actualWindowFunctionClassName` | Optional. The runner class name of the implemented window function. By default, the value is the same as the `spec.className`.                                              |
 | `lateDataTopic`                 | Optional. The late data topic for the late tuple messages. The late data topic must be defined when specifying a timestamp extractor class (`timestampExtractorClassName`). |
 | `maxLagMs`                      | Optional. The maximum lag duration (in milliseconds) of the window function. By default, it is set to 0.                                                                    |
 | `slidingIntervalCount`          | Optional. The number of messages which the window slides after.                                                                                                             |

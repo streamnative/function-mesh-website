@@ -10,7 +10,7 @@ Here are some highlights of this release. For a full list of updates available f
 
 A window function is a function that performs computation across a window. Java SDK provides access to a window context object that can be used by a window function. This context object provides a wide variety of information and functionality for a Pulsar window function.
 
-For details, see [window functions](functions/function-overview.md#window-functions).
+Function Mesh supports the `WindowConfig` option that allows users to pass Pulsar window function configurations and run a window function with Function Mesh. For details, see [window functions](functions/function-overview.md#window-functions).
 
 ## Support OAuth2 configurations
 

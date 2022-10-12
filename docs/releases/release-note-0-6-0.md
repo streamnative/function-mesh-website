@@ -14,7 +14,7 @@ Function Mesh supports the `WindowConfig` option that allows you to pass Pulsar 
 
 ## Support OAuth2 configurations
 
-Function Mesh supports the OAuth2 authentication options. If a Pulsar cluster uses OAuth2 authentication, users can directly configure the OAuth2 authentication using the `authConfig` fields in the Function, Source, and Sink CRDs. For details about OAuth2 authentication, see [authentication](/functions/function-crd.md#authentication).
+Function Mesh supports the OAuth2 authentication options. If a Pulsar cluster uses OAuth2 authentication, you can directly configure the OAuth2 authentication using the `authConfig` fields in the Function, Source, and Sink CRDs. For details about OAuth2 authentication, see [authentication](/functions/function-crd.md#authentication).
 
 ## Enhance HPA autoscaling
 

@@ -139,6 +139,7 @@ Figure 7. The Function Mesh architecture
     - [Run Python Functions](/functions/run-function/run-python-function.md)
     - [Run Go Functions](/functions/run-function/run-go-function.md)
     - [Run Stateful Functions](/functions/run-function/run-stateful-function.md)
+    - [Run Window Functions](/functions/run-function/run-window-function.md)
   - [Monitor Pulsar Functions](/functions/function-monitor.md)
   - [Produce function logs](/functions/produce-function-log.md)
   - [Debug Pulsar Functions](/functions/function-debug.md)

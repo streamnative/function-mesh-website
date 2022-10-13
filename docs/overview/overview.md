@@ -175,3 +175,4 @@ Figure 7. The Function Mesh architecture
   - [Release notes v0.3.0](/releases/release-note-0-3-0.md)
   - [Release notes v0.4.0](/releases/release-note-0-4-0.md)
   - [Release notes v0.5.0](/releases/release-note-0-5-0.md)
+  - [Release notes v0.6.0](/releases/release-note-0-6-0.md)

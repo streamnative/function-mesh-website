@@ -242,6 +242,10 @@
         {
           "type": "doc",
           "id": "version-0.6.0/releases/release-note-0-5-0"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.6.0/releases/release-note-0-6-0"
         }
       ]
     }

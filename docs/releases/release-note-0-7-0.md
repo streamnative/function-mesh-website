@@ -18,4 +18,4 @@ Here are some highlights of this release. For a full list of updates available f
 
 ## Download packages/functions using init container
 
-  In this release, a `downloaderImage` option is introduced which specifies the image that is used to install the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/). The init container is responsible for downloading packages or functions from Pulsar if the [download path](/functions/function-crd.md#packages) is specified.
+  In this release, a `downloaderImage` option is introduced that specifies the image that is used to install the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/). The init container is responsible for downloading packages or functions from Pulsar if the [download path](/functions/function-crd.md#packages) is specified.

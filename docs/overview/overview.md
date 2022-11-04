@@ -178,4 +178,4 @@ Figure 7. The Function Mesh architecture
   - [Release notes v0.6.0](/releases/release-note-0-6-0.md)
   - [Release notes v0.7.0](/releases/release-note-0-7-0.md)
 
-This is for a [demo test](/function-mesh-worker/deploy-mesh-worker).
+This is for a [demo test](/function-mesh-worker/deploy-mesh-worker.md).

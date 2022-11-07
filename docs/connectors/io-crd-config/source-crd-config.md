@@ -22,7 +22,8 @@ This table lists source configurations.
 | `maxReplicas`| The maximum number of instances that you want to run for this source connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the source controller automatically scales the source connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
 | `sourceConfig` | The source connector configurations in YAML format. |
 | `processingGuarantee` | The processing guarantees (delivery semantics) applied to the source connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`.|
-| `forwardSourceMessageProperty` | Configure whether to pass message properties to a target topic. |
+| `forwardSourceMessageProperty` | Configure whether to pass message properties to a target topic.  |
+| `batchSourceConfig` | The batch source configurations in key/value pairs. You can configure the following properties using JSON strings. <br/> - `discoveryTriggererClassName`: the class that is used for triggering the discovery process. <br/> - `discoveryTriggererConfig`: The configurations that are required for the discovery Triggerer initiation. |
 
 ## Annotations
 

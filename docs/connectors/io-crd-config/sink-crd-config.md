@@ -70,6 +70,18 @@ When the Function Mesh Operator creates a container, it uses the `imagePullPolic
 | `Never`        | Never pull the image.                                            |
 | `IfNotPresent` | Only pull the image if the image does not already exist locally. |
 
+## State storage
+
+Function Mesh provides the following fields for stateful configurations in the CRD definition.
+
+| Field | Description |
+|  ---|  --- |
+| `statefulConfig` | The state storage configuration for the sink connector. |
+| `statefulConfig.pulsar.serviceUrl` | The service URL that points to the state storage service. By default, the state storage service is the BookKeeper table service. |
+| `statefulConfig.pulsar.javaProvider` | (Optional) If you want to overwrite the default configuration, you can use the state storage configuration for the Java runtime. For example, you can change it to other backend services other than the BookKeeper table service. |
+| `statefulConfig.pulsar.javaProvider.className` | The Java class name of the state storage provider implementation. The class must implement the `org.apache.pulsar.functions.instance.state.StateStoreProvider` interface. If not, `org.apache.pulsar.functions.instance.state.BKStateStoreProviderImpl` will be used. |
+| `statefulConfig.pulsar.javaProvider.config` | The configurations that are passed to the state storage provider. |
+
 ## Input
 
 The input topics of a Pulsar Function. The following table lists options available for the `Input`.

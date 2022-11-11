@@ -114,11 +114,11 @@ Figure 7. The Function Mesh architecture
 
 - Be easily deployed directly on Kubernetes clusters, including [Minikube](https://github.com/kubernetes/minikube) and [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/), without special dependencies.
 - Use [CustomResourceDefinitions (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) to define Functions, source, sink, and Mesh. Using CRD makes Function Mesh naturally integrate with the Kubernetes ecosystem.
-- Integrate with Kubernetes secrets seamlessly to read secrets directly. This would help improve the overall security for the Pulsar Functions.
-- Leverage the Kubernetes’s auto-scaler to auto-scale instances for functions based on the CPU usage. In future, Function Mesh will support auto-scaling based on the backlog.
-- Utilize the full power scheduling capability provided by Kubernetes. Therefore, users do not need to write any customized codes to communicate with the Kubernetes API server.
+- Integrate with Kubernetes secrets seamlessly to read secrets directly. This helps improve the overall security for the Pulsar Functions.
+- Leverage the Kubernetes’s auto-scaler to auto-scale instances for functions based on the CPU and memory usage.
+- Utilize the full power scheduling capability provided by Kubernetes. Therefore, you do not need to write any customized codes to communicate with the Kubernetes API server.
 - Allow one function to talk to multiple different Pulsar clusters, which are defined as config maps.
-- Support function registry for function package management. We are going to introduce the Pulsar registry in Pulsar 2.8.0 for function package management. Then, the function package can be reused by different functions.
+- Support the function registry for function package management. The function package can be reused by different functions.
 
 ## Documentation
 

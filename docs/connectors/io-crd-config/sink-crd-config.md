@@ -212,7 +212,8 @@ Function Mesh supports running Pulsar connectors in Java.
 
 | Field | Description |
 | --- | --- |
-| `jarLocation` | Path to the JAR file for the connector.|
+| `jarLocation` | The path to the JAR file for the connector.|
+| `javaOpts` | It specifies JVM options to better configure JVM behaviors, including `exitOnOOMError`, Garbage Collection logs, Garbage Collection tuning, and so on. |
 | `extraDependenciesDir` | It specifies the dependent directory for the JAR package. |
 
 ## Cluster location

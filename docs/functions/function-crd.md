@@ -249,9 +249,10 @@ Function Mesh supports running Pulsar Functions in Java, Python and Go. This tab
 
 | Field | Description |
 | --- | --- |
-| `jarLocation` | Path to the JAR file for the function. It is only available for Pulsar functions written in Java. |
-| `goLocation` | Path to the JAR file for the function. It is only available for Pulsar functions written in Go.|
-| `pyLocation` | Path to the JAR file for the function. It is only available for Pulsar functions written in Python.|
+| `jarLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Java. |
+| `javaOpts` | It specifies JVM options to better configure JVM behaviors, including `exitOnOOMError`, Garbage Collection logs, Garbage Collection tuning, and so on. |
+| `goLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Go.|
+| `pyLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Python.|
 | `extraDependenciesDir` | It specifies the dependent directory for the JAR package. |
 
 ## Log levels

@@ -240,6 +240,8 @@ Vertical scaling increases loads by assigning more resources (memory or CPU) to 
 
 With Kubernetes [Vertical Pod Autoscaler (VPA)](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler), Function Mesh supports automatically updating the resource requests and limits (memory or CPU) of Pods (Pulsar instances) that are required to run Pulsar functions, sources, and sinks based on analysis of historical resource utilization, amount of resources available in the cluster, and real-time events, such as OOMs.
 
+A VPA deployment has three main components: VPA Recommender, VPA Updater, and VPA Admission Controller.
+
 - The VPA Recommender consumes utilization signals and OOM events for all Pods in the cluster from the Metrics server by 
 
   1. watching all Pods, calculating fresh recommended resources for them, and storing the recommendations in the VPA objects.

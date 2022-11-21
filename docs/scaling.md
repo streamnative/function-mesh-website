@@ -22,11 +22,11 @@ In CRDs, the `replicas` parameter is used to specify the number of Pods (Pulsar 
 
 Autoscaling monitors your Pods and automatically adjusts capacity to maintain steady, predictable performance at the lowest possible cost. With autoscaling, it is easy to set up Pods scaling for resources in minutes. The service provides a simple, powerful user interface that lets you build scaling plans for resources.
 
-### HPA(horizontal-Pod-autoscaling)
+### Horizontal Pod Autoscaling (HPA)
 
-In Kubernetes, a HorizontalPodAutoscaler automatically updates a workload resource (such as a Deployment or StatefulSet), with the aim of automatically scaling the workload to match demand.
+Kubernetes provides the [Horizontal Pod Autoscaler (HPA)](https://kubernetes.io/docs/tasks/run-application/horizontal-Pod-autoscale/) to automatically scale a workload resource (such as a Deployment or StatefulSet) as required.
 
-Horizontal scaling means that the response to increased load is to deploy more Pods.
+Horizontal scaling increases loads by deploying more Pods.
 
 #### How it works
 
@@ -232,23 +232,23 @@ Function Mesh supports automatically scaling up the number of Pods based on a cu
       kubectl apply -f path/to/function-sample.yaml
       ```
 
-### VPA(Vertical-pod-autoscaling)
+### Vertical Pod Autoscaling (VPA)
 
-Vertical scaling means assigning more resources (for example: memory or CPU) to the Pods that are already running for the workload.
+Vertical scaling increases loads by assigning more resources (memory or CPU) to the Pods that are already running for the workload.
 
 #### How it works
 
-With Kubernetes [Vertical Pod Autoscaler (VPA)](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler), Function Mesh supports automatically update the requested resources(memory and cpu) of Pods (Pulsar instances) that are required to run Pulsar functions, sources, and sinks based on analysis of historical resource utilization, amount of resources available in the cluster and real-time events, such as OOMs.
+With Kubernetes [Vertical Pod Autoscaler (VPA)](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler), Function Mesh supports automatically updating the resource requests and limits (memory or CPU) of Pods (Pulsar instances) that are required to run Pulsar functions, sources, and sinks based on analysis of historical resource utilization, amount of resources available in the cluster, and real-time events, such as OOMs.
 
-- the Recommender is a new component which consumes utilization signals and OOM events for all Pods in the cluster from the Metrics Server, it:
+- The VPA Recommender consumes utilization signals and OOM events for all Pods in the cluster from the Metrics server by 
 
-  1. watches all Pods, keeps calculating fresh recommended resources for them and stores the recommendations in the VPA objects.
+  1. watching all Pods, calculating fresh recommended resources for them, and storing the recommendations in the VPA objects.
 
   2. exposes a synchronous API that takes a Pod description and returns recommended resources.
 
-- the VPA Admission Controller controls all pod creation requests, If the Pod is matched by any VerticalPodAutoscaler object, the admission controller overrides resources of containers in the Pod with the recommendation provided by the VPA Recommender. If the Recommender is not available, it falls back to the recommendation cached in the VPA object.
+- The VPA Admission Controller controls all Pod creation requests. If a Pod is matched by any VPA object, the VPA Admission Controller overrides the resources of containers in the Pod with the recommendation provided by the VPA Recommender. If the VPA Recommender is not available, the VPA Admission Controller falls back to the recommendation cached in the VPA object.
 
-- the VPA Updater is a component responsible for real-time updates of Pods. If a Pod uses VPA in "Auto" mode, the Updater can decide to update it with recommender resources.
+- The VPA Updater is responsible for updating Pods in real-time. If a Pod uses VPA in **Auto** mode, the VPA Updater updates the Pod with the recommended resources.
 
 
 ![Architecture](./assets/vpa-architecture.png)
@@ -256,11 +256,11 @@ With Kubernetes [Vertical Pod Autoscaler (VPA)](https://github.com/kubernetes/au
 
 > **Note**
 >
-> If you have configured HPA, do not enable VPA, there exists some conflicts. 
+> VPA won't work with HPA. Therefore, do not enable both of them at the same time.  
 
 #### Limitations
 
-There are some limitations on VPA, see: [known-limitations](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler#known-limitations) for details.
+There are some limitations to VPA. For details, see [known limitations](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler#known-limitations).
 
 
 #### Examples
@@ -269,15 +269,19 @@ This section provides some examples about VPA.
 
 ##### Prerequisites
 
-1. Deploy the metrics server in the cluster. The Metrics server provides metrics through the Metrics API. The Vertical Pod Autoscaler (VPA) uses this API to collect metrics. To learn how to deploy the metrics-server, see the [metrics-server documentation](https://github.com/kubernetes-sigs/metrics-server#deployment).
+- Deploy the Metrics server in the cluster. The Metrics server provides metrics through the Metrics API that is used by VPA to collect metrics. For details about how to deploy the Metrics server, see the [Metrics server documentation](https://github.com/kubernetes-sigs/metrics-server#deployment).
 
-2. Enable the VPA feature in k8s, currently VPA hasn't integrated into k8s now, so we need to enable it manually, for different k8s vendors, there are different ways to enable: [GKE](https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler), [Openshift](https://docs.openshift.com/container-platform/4.11/nodes/pods/nodes-pods-vertical-autoscaler.html#nodes-pods-vertical-autoscaler-install_nodes-pods-vertical-autoscaler
-), [AWS](https://docs.aws.amazon.com/eks/latest/userguide/vertical-pod-autoscaler.html), [Azure](https://learn.microsoft.com/en-us/azure/aks/vertical-pod-autoscaler#deploy-upgrade-or-disable-vpa-on-a-cluster), or for [self hosted](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler#installation)
+- Enable VPA in the Kubernetes cluster. Currently, VPA has not been integrated into Kubernetes. For details about how to enable VPA in the Kubernetes cluster, see related documentation.
+    - [Google GKE](https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler)
+    - [Red Hat Openshift](https://docs.openshift.com/container-platform/4.11/nodes/pods/nodes-pods-vertical-autoscaler.html#nodes-pods-vertical-autoscaler-install_nodes-pods-vertical-autoscaler)
+    - [AWS EKS](https://docs.aws.amazon.com/eks/latest/userguide/vertical-pod-autoscaler.html)
+    - [Azure AKS](https://learn.microsoft.com/en-us/azure/aks/vertical-pod-autoscaler#deploy-upgrade-or-disable-vpa-on-a-cluster) 
+    [Self-hosted](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler#installation)
 
 
-##### Enable VPA with resources limits:
+##### Enable VPA based on resource limits
 
-Below is an example to update pod resources with a upper and lower bound automatically.
+This example shows how to update Pod resources with the maximum and minimum bound automatically.
 
 ```yaml
 apiVersion: compute.functionmesh.io/v1alpha1
@@ -308,15 +312,18 @@ spec:
   # Other function configs
 ```
 
-- [1] `replicas`: it should be >= a minimal value(default 2) to make VPA can update the pod and ensure that at least (minimalValue - 1) pod is alive during resource updating, you can change the minimal value in `pod.vpa.updatePolicy.minReplicas`.
-- [2] `updateMode`: the update mode defines the behaviour of the VPA Updater, for `Auto` and `Recreate` it will recreate pod when resource recommendation is changed, for `Initial` it will only assigns resources on pod creation, for `Off`, it will do nothing to pod but just save the recommendation resources in VPA object
-- [3] user can specify different resource policy for different containers, `*` means for all containers,
-- [4] the min recommended resources
-- [5] the max recommended resources
+- [1] `replicas`: it should be equal to or greater than the value of the `minReplicas`. By default, it is set to 2. Therefore, VPA can update resources for the Pods and ensure that at least there are live Pods during the update process. You can modify the minimal value by setting the `pod.vpa.updatePolicy.minReplicas` option.
+- [2] `updateMode`: define the behavior of the VPA Updater.
+    - `Auto` or `Recreate`: the VPA Updater recreates Pods when the resource recommendation is changed. 
+    - `Initial`, the VPA Updater only assigns resources on Pod creation. 
+    - `Off`: the VPA Updater does nothing to Pods but just saves the recommended resources in the VPA object.
+- [3] `containerName`: specify different resource policies for different containers. The asterisk symbol (`*`) means that you can specify resource policies for all containers.
+- [4] `minAllowed`: the minimum value of recommended resources.
+- [5] `minAllowed`: the maximum value of recommended resources
 
-##### Enable VPA on requests resources only
+##### Enable VPA based on resource requests
 
-Below is an example to update pod request resources.
+Requests define the minimum amount of resources that containers need. This example shows how to update Pods based on resource requests.
 
 ```yaml
 apiVersion: compute.functionmesh.io/v1alpha1
@@ -342,12 +349,12 @@ spec:
   # Other function configs
 ```
 
-- [1] the Recommender will only control the **requests** resources, not including **limits** resources, you can change it to `RequestsAndLimits` to control them both
+- [1] `controlledValues`: the VPA Recommender controls the resource **requests**. To control both the requests and limits,  you can set it to `RequestsAndLimits` 
 
 
-##### Enable VPA on cpu resources only
+##### Enable VPA based on CPU resources
 
-Below is an example to update pod request resources.
+This example shows how to update Pods based on CPU resource requests.
 
 ```yaml
 apiVersion: compute.functionmesh.io/v1alpha1
@@ -373,4 +380,4 @@ spec:
   # Other function configs
 ```
 
-- [1] the Recommender will only control the **CPU** resources, you can add **memory** to the array to control it too
+- [1] `controlledResources`: the VPA Recommender controls the **CPU** resources. To control memories, you can add **memory** to the array.

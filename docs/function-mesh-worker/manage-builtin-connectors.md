@@ -40,6 +40,8 @@ With Function Mesh Worker service, it requires a customized YAML file placed int
 
 ## Sample YAML file
 
+This sample YAML file lists configurations of all Apache Pulsar distributed built-in connectors.
+
 ```yaml
 - id: pulsar-io-aerospike
   name: aerospike

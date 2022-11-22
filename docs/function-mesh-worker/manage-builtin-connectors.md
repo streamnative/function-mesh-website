@@ -29,7 +29,7 @@ With Function Mesh Worker service, it requires a customized YAML file placed int
 | `sinkConfigClass` | The class name for the sink config implementation. If not defined, the framework will not be able to do any submission time checks. |
 | `version` | The version of the connector. |
 | `imageRegistry` | The imageRegistry where host the connector image. By default the imageRegistry is empty, which refer to Docker Hub `docker.io/`. |
-| `imageRepository` | The imageRepository to the connector. Usually it in format of NAMESPACE/REPOSITORY. |
+| `imageRepository` | The image repository to the connector. Usually, it is in a format of NAMESPACE/REPOSITORY. |
 | `imageTag` | The tag to the connector image. By default, it aligns with Pulsar's version. |
 | `typeClassName` | The type class name of the connector or function. By default, it is set to `'[B'`.|
 | `sourceTypeClassName` | Type class name of the source connector. If not set, will inherit the value from typeClassName. |

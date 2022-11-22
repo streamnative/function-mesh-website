@@ -4,7 +4,7 @@ category: function-mesh-worker
 id: manage-builtin-connectors
 ---
 
-This document describes how to manage the built-in Connectors with Function Mesh Worker service. 
+This document describes how to manage built-in Connectors with Function Mesh Worker service. 
 
 ## Built-in Connector feature in Apache Pulsar
 

@@ -14,7 +14,7 @@ Using any of these connectors is as easy as writing a simple connector and runni
 
 Pulsar Functions Worker provides `sinks` and `sources` APIs to let you manage Pulsar IO connectors. It provides a feature about Pulsar built-in connectors, which allows you to use a connector type directly without providing the connectors' NAR package file. Pulsar Functions Worker loads the packages from `connectorsDirectory` ( by default, it is set to `./connectors`) and uses the connectors as a built-in connector list.
 
-## Customize the built-in connectors in Function Mesh Worker Service
+## Customize built-in connectors in Function Mesh Worker Service
 
 With Function Mesh Worker service, it requires a customized YAML file placed into `conf/connectors.yaml` with content of the metadata of each built-in connector. Below are the configureable fields of built-in connector:
 

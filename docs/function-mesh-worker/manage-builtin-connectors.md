@@ -40,7 +40,7 @@ With Function Mesh Worker service, it requires a customized YAML file placed int
 
 ## Sample YAML file
 
-```
+```yaml
 - id: pulsar-io-aerospike
   name: aerospike
   description: Aerospike database sink

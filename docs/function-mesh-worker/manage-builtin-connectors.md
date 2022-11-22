@@ -1,5 +1,5 @@
 ---
-title: Manage the built-in connectors
+title: Manage built-in connectors
 category: function-mesh-worker
 id: manage-builtin-connectors
 ---

@@ -12,7 +12,7 @@ Pulsar distribution includes a set of common connectors that have been packaged 
 
 Using any of these connectors is as easy as writing a simple connector and running the connector locally or submitting the connector to a Pulsar Functions cluster.
 
-Pulsar Functions Worker provides `sinks` and `sources` APIs to let the user manage Pulsar IO Connectors, it also provides a built-in connectors feature, with this feature, user do not need to provide the connectors' NAR package file and uses the connector type directly. From the Pulsar Functions Worker side, it will load the packages from `connectorsDirectory` (defaults to `./connectors`) and uses the connectors as built-in connectors list.
+Pulsar Functions Worker provides `sinks` and `sources` APIs to let you manage Pulsar IO connectors. It provides a feature about Pulsar built-in connectors, which allows you to use a connector type directly without providing the connectors' NAR package file. Pulsar Functions Worker loads the packages from `connectorsDirectory` ( by default, it is set to `./connectors`) and uses the connectors as a built-in connector list.
 
 ## Customize the built-in connectors in Function Mesh Worker Service
 

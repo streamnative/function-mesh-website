@@ -61,10 +61,10 @@ The following diagram illustrates the architecture for Function Mesh.
   - [Run Pulsar connectors](/connectors/run-connector.md)
   - [Monitor Pulsar connectors](/connectors/pulsar-io-monitoring.md)
   - [Debug Pulsar connectors](/connectors/pulsar-io-debug.md)
+  - [Manage built-in connectors](/function-mesh-worker/manage-builtin-connectors.md)
 - Function Mesh
   - [Function Mesh CRD configurations](/function-mesh/function-mesh-crd.md)
   - [Run Function Mesh](/function-mesh/run-function-mesh.md)
-  - [Manage built-in connectors](/function-mesh/manage-builtin-connectors.md)
   - Reference
     - [General options](/function-mesh-worker/reference/general-option.md)
     - [Customizable options](/function-mesh-worker/reference/customizable-option.md)

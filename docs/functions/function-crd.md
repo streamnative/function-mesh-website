@@ -373,7 +373,7 @@ Function Mesh supports customizing the Pod running function instance. This table
   </tr>
   <tr>
     <td><code>vpa</code></td>
-    <td>Configure the behavior of the Vertical Pod Autoscaling (VPA). It contains two fields: <ul> <li><a href="https://github.com/kubernetes/autoscaler/blob/vertical-pod-autoscaler-0.12.0/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/types.go#L109-L120">updatePolicy</a>: define the policy of updating pod</li> <li><a href="https://github.com/kubernetes/autoscaler/blob/vertical-pod-autoscaler-0.12.0/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/types.go#L149-L155">resourcePolicy</a>: define the resource policy for each containers</li> </ul></td>
+    <td>Configure the behavior of the Vertical Pod Autoscaling (VPA). It contains two fields: <ul> <li><a href="https://github.com/kubernetes/autoscaler/blob/vertical-pod-autoscaler-0.12.0/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/types.go#L109-L120">updatePolicy</a>: define the policy for updating Pods.</li> <li><a href="https://github.com/kubernetes/autoscaler/blob/vertical-pod-autoscaler-0.12.0/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/types.go#L149-L155">resourcePolicy</a>: define the resource policy for each container. </li> </ul></td>
   </tr>
   <tr>
     <td><code>env</code></td>

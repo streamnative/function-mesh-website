@@ -244,9 +244,9 @@ A VPA deployment has three main components: VPA Recommender, VPA Updater, and VP
 
 - The VPA Recommender consumes utilization signals and OOM events for all Pods in the cluster from the Metrics server by 
 
-  1. watching all Pods, calculating fresh recommended resources for them, and storing the recommendations in the VPA objects.
+  - watching all Pods, calculating fresh recommended resources for them, and storing the recommendations in the VPA objects.
 
-  2. exposes a synchronous API that takes a Pod description and returns recommended resources.
+  - exposes a synchronous API that takes a Pod description and returns recommended resources.
 
 - The VPA Admission Controller controls all Pod creation requests. If a Pod is matched by any VPA object, the VPA Admission Controller overrides the resources of containers in the Pod with the recommendation provided by the VPA Recommender. If the VPA Recommender is not available, the VPA Admission Controller falls back to the recommendation cached in the VPA object.
 
@@ -278,7 +278,7 @@ This section provides some examples about VPA.
     - [Red Hat Openshift](https://docs.openshift.com/container-platform/4.11/nodes/pods/nodes-pods-vertical-autoscaler.html#nodes-pods-vertical-autoscaler-install_nodes-pods-vertical-autoscaler)
     - [AWS EKS](https://docs.aws.amazon.com/eks/latest/userguide/vertical-pod-autoscaler.html)
     - [Azure AKS](https://learn.microsoft.com/en-us/azure/aks/vertical-pod-autoscaler#deploy-upgrade-or-disable-vpa-on-a-cluster) 
-    [Self-hosted](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler#installation)
+    - [Self-hosted](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler#installation)
 
 
 ##### Enable VPA based on resource limits
@@ -317,11 +317,11 @@ spec:
 - [1] `replicas`: it should be equal to or greater than the value of the `minReplicas`. By default, it is set to 2. Therefore, VPA can update resources for the Pods and ensure that at least there are live Pods during the update process. You can modify the minimal value by setting the `pod.vpa.updatePolicy.minReplicas` option.
 - [2] `updateMode`: define the behavior of the VPA Updater.
     - `Auto` or `Recreate`: the VPA Updater recreates Pods when the resource recommendation is changed. 
-    - `Initial`, the VPA Updater only assigns resources on Pod creation. 
+    - `Initial`: the VPA Updater only assigns resources on Pod creation. 
     - `Off`: the VPA Updater does nothing to Pods but just saves the recommended resources in the VPA object.
 - [3] `containerName`: specify different resource policies for different containers. The asterisk symbol (`*`) means that you can specify resource policies for all containers.
 - [4] `minAllowed`: the minimum value of recommended resources.
-- [5] `minAllowed`: the maximum value of recommended resources
+- [5] `maxAllowed `: the maximum value of recommended resources.
 
 ##### Enable VPA based on resource requests
 

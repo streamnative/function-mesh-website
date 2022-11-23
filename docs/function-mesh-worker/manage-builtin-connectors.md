@@ -6,7 +6,7 @@ id: manage-builtin-connectors
 
 This document describes how to manage built-in Connectors with Function Mesh Worker service. 
 
-## Built-in Connector feature in Apache Pulsar
+## Built-in connectors in Apache Pulsar
 
 Pulsar distribution includes a set of common connectors that have been packaged and tested with the rest of Apache Pulsar. These connectors import/export data into/from some of the most commonly used data systems.
 

@@ -45,26 +45,13 @@ The following diagram illustrates the architecture for Function Mesh.
 
 ## Documentation
 
-- Overview
-  - [What is Function Mesh](/overview/overview.md)
-  - [Why Function Mesh](/overview/why-function-mesh.md)
+- [Overview](/overview.md)
 - [Installation](/install-function-mesh.md)
 - Functions
   - [Pulsar Functions overview](/functions/function-overview.md)
   - [Pulsar Functions CRD configurations](/functions/function-crd.md)
-  - Package Pulsar Functions
-    - [Overview](/functions/package-function/package-function-overview.md)  
-    - [Package Java Functions](/functions/package-function/package-function-java.md)
-    - [Package Python Functions](/functions/package-function/package-function-python.md)
-    - [Package Go Functions](/functions/package-function/package-function-go.md)  
-  - Run Pulsar Functions
-    - [Run Java Functions](/functions/run-function/run-java-function.md)
-    - [Run Python Functions](/functions/run-function/run-python-function.md)
-    - [Run Go Functions](/functions/run-function/run-go-function.md)
-    - [Run Stateful Functions](/functions/run-function/run-stateful-function.md)
-    - [Run Window Functions](/functions/run-function/run-window-function.md)
+  - [Run Pulsar Functions](/functions/run-function/run-java-function.md)
   - [Monitor Pulsar Functions](/functions/function-monitor.md)
-  - [Produce function logs](/functions/produce-function-log.md)
   - [Debug Pulsar Functions](/functions/function-debug.md)
 - Connectors
   - [Pulsar connectors overview](/connectors/pulsar-io-overview.md)
@@ -74,30 +61,12 @@ The following diagram illustrates the architecture for Function Mesh.
   - [Run Pulsar connectors](/connectors/run-connector.md)
   - [Monitor Pulsar connectors](/connectors/pulsar-io-monitoring.md)
   - [Debug Pulsar connectors](/connectors/pulsar-io-debug.md)
-- Meshes
-  - [Function Mesh overview](/function-mesh/function-mesh-overview.md)
+- Function Mesh
   - [Function Mesh CRD configurations](/function-mesh/function-mesh-crd.md)
   - [Run Function Mesh](/function-mesh/run-function-mesh.md)
-- Function Mesh Worker
-  - [Function Mesh Worker service overview](/function-mesh-worker/function-mesh-worker-overview.md)
-  - [Deploy Function Mesh Worker service](/function-mesh-worker/deploy-mesh-worker.md)
-  - [Manage built-in connectors](/function-mesh-worker/manage-builtin-connectors.md)
   - Reference
     - [General options](/function-mesh-worker/reference/general-option.md)
     - [Customizable options](/function-mesh-worker/reference/customizable-option.md)
 - [Scaling](/scaling.md)
 - Migration
   - [Migrate Pulsar Functions](/migration/migrate-function.md)
-- Releases
-  - [Release notes v0.1.4](/releases/release-note-0-1-4.md)
-  - [Release notes v0.1.5](/releases/release-note-0-1-5.md)
-  - [Release notes v0.1.6](/releases/release-note-0-1-6.md)
-  - [Release notes v0.1.7](/releases/release-note-0-1-7.md)
-  - [Release notes v0.1.8](/releases/release-note-0-1-8.md)
-  - [Release notes v0.1.11](/releases/release-note-0-1-11.md)
-  - [Release notes v0.2.0](/releases/release-note-0-2-0.md)
-  - [Release notes v0.3.0](/releases/release-note-0-3-0.md)
-  - [Release notes v0.4.0](/releases/release-note-0-4-0.md)
-  - [Release notes v0.5.0](/releases/release-note-0-5-0.md)
-  - [Release notes v0.6.0](/releases/release-note-0-6-0.md)
-  - [Release notes v0.7.0](/releases/release-note-0-7-0.md)

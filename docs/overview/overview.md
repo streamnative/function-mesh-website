@@ -158,6 +158,7 @@ Figure 7. The Function Mesh architecture
 - Function Mesh Worker
   - [Function Mesh Worker service overview](/function-mesh-worker/function-mesh-worker-overview.md)
   - [Deploy Function Mesh Worker service](/function-mesh-worker/deploy-mesh-worker.md)
+  - [Manage built-in connectors](/function-mesh-worker/manage-builtin-connectors.md)
   - Reference
     - [General options](/function-mesh-worker/reference/general-option.md)
     - [Customizable options](/function-mesh-worker/reference/customizable-option.md)

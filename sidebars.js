@@ -67,6 +67,7 @@ module.exports = {
       items: [
         'function-mesh-worker/function-mesh-worker-overview',
         'function-mesh-worker/deploy-mesh-worker',
+        'function-mesh-worker/manage-builtin-connectors',
         {
           type: 'category',
           label: 'Reference',

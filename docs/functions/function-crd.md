@@ -373,6 +373,10 @@ Function Mesh supports customizing the Pod running function instance. This table
     <td>Configure the scaling behavior of the target in both up and down directions (<code>scaleUp</code> and <code>scaleDown</code> fields respectively). If not specified, the default Kubernetes scaling behaviors are adopted. For details, see <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#horizontalpodautoscalerbehavior-v2beta2-autoscaling">HorizontalPodAutoscalerBehavior v2beta2 autoscaling</a>. </td>
   </tr>
   <tr>
+    <td><code>vpa</code></td>
+    <td>Configure the behavior of the Vertical Pod Autoscaling (VPA). It contains two fields: <ul> <li><a href="https://github.com/kubernetes/autoscaler/blob/vertical-pod-autoscaler-0.12.0/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/types.go#L109-L120">updatePolicy</a>: define the policy for updating Pods.</li> <li><a href="https://github.com/kubernetes/autoscaler/blob/vertical-pod-autoscaler-0.12.0/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/types.go#L149-L155">resourcePolicy</a>: define the resource policy for each container. </li> </ul></td>
+  </tr>
+  <tr>
     <td><code>env</code></td>
     <td>Specify the environment variables to expose on the containers. It is a key/value map. You can either use the <code>value</code> option to specify a particular value for the environment variable or use the <code>valueFrom</code> option to specify the <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#envvarsource-v1-core/">source</a> for the environment variable's value, as shown below.
 

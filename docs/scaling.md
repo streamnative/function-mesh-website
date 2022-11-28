@@ -22,7 +22,7 @@ In CRDs, the `replicas` parameter is used to specify the number of Pods (Pulsar 
 
 Autoscaling monitors your Pods and automatically adjusts capacity to maintain steady, predictable performance at the lowest possible cost. With autoscaling, it is easy to set up Pods scaling for resources in minutes. The service provides a simple, powerful user interface that lets you build scaling plans for resources.
 
-### Horizontal Pod Autoscaling (HPA)
+### HPA
 
 Kubernetes provides the [Horizontal Pod Autoscaler (HPA)](https://kubernetes.io/docs/tasks/run-application/horizontal-Pod-autoscale/) to automatically scale a workload resource (such as a Deployment or StatefulSet) as required.
 
@@ -30,7 +30,7 @@ Horizontal scaling increases loads by deploying more Pods.
 
 #### How it works
 
-With Kubernetes [Horizontal Pod Autoscaler (HPA)](https://kubernetes.io/docs/tasks/run-application/horizontal-Pod-autoscale/), Function Mesh supports automatically scaling the number of Pods (Pulsar instances) that are required to run Pulsar functions, sources, and sinks.
+With Kubernetes [HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-Pod-autoscale/), Function Mesh supports automatically scaling the number of Pods (Pulsar instances) that are required to run Pulsar functions, sources, and sinks.
 
 For resources with HPA configured, the HPA controller monitors the resource's Pods to determine if it needs to change the number of Pod replicas. In most cases, where the controller takes the mean of a per-pod metric value, it calculates whether adding or removing replicas would move the current value closer to the target value.
 
@@ -72,7 +72,7 @@ This section provides some examples about HPA.
 
 ##### Prerequisites
 
-Deploy the metrics server in the cluster. The Metrics server provides metrics through the Metrics API. The Horizontal Pod Autoscaler (HPA) uses this API to collect metrics. To learn how to deploy the metrics-server, see the [metrics-server documentation](https://github.com/kubernetes-sigs/metrics-server#deployment).
+Deploy the Metrics server in the cluster. The Metrics server provides metrics through the Metrics API. The Horizontal Pod Autoscaler (HPA) uses this API to collect metrics. To learn how to deploy the metrics-server, see the [Metrics server documentation](https://github.com/kubernetes-sigs/metrics-server#deployment).
 
 ##### Enable HPA
 
@@ -232,7 +232,7 @@ Function Mesh supports automatically scaling up the number of Pods based on a cu
       kubectl apply -f path/to/function-sample.yaml
       ```
 
-### Vertical Pod Autoscaling (VPA)
+### VPA
 
 Vertical scaling increases loads by assigning more resources (memory or CPU) to the Pods that are already running for the workload.
 

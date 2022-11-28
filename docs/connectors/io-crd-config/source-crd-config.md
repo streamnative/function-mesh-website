@@ -23,7 +23,7 @@ This table lists source configurations.
 | `sourceConfig` | The source connector configurations in YAML format. |
 | `processingGuarantee` | The processing guarantees (delivery semantics) applied to the source connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`.|
 | `forwardSourceMessageProperty` | Configure whether to pass message properties to a target topic.  |
-| `batchSourceConfig` | The batch source configurations in YAML format. You can configure the following properties. <br/> - `discoveryTriggererClassName`: the class that is used for triggering the discovery process. <br/> - `discoveryTriggererConfig`: the configurations that are required for the discovery Triggerer initiation. |
+| `batchSourceConfig` | The batch source configurations in YAML format. You can configure the following properties. <br/> - `discoveryTriggererClassName`: the class that is used for triggering the discovery process. <br/> - `discoveryTriggererConfig`: the configurations that are required for initiating the discovery Triggerer. |
 
 ## Annotations
 

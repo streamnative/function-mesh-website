@@ -162,6 +162,7 @@ Figure 7. The Function Mesh architecture
   - Reference
     - [General options](/function-mesh-worker/reference/general-option.md)
     - [Customizable options](/function-mesh-worker/reference/customizable-option.md)
+    - [REST APIs](/function-mesh-worker/reference/rest-api.md)
 - [Scaling](/scaling.md)
 - Migration
   - [Migrate Pulsar Functions](/migration/migrate-function.md)

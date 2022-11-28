@@ -73,7 +73,8 @@ module.exports = {
           label: 'Reference',
           items: [
             'function-mesh-worker/reference/general-option',
-            'function-mesh-worker/reference/customizable-option'
+            'function-mesh-worker/reference/customizable-option',
+            'function-mesh-worker/reference/rest-api'
           ],
         },
       ],

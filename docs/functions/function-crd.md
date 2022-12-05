@@ -116,7 +116,12 @@ Function Mesh provides Pulsar cluster configurations in the Function, Source, an
   </tr>
   <tr>
     <td><code>pulsarConfig</code></td>
-    <td>The name of the <a herf="https://kubernetes.io/docs/concepts/configuration/configmap/">ConfigMap</a> that stores Pulsar cluster configurations, including the broker service URL and the web service URL.</td>
+    <td>The name of the <a herf="https://kubernetes.io/docs/concepts/configuration/configmap/">ConfigMap</a> that stores Pulsar cluster configurations.
+      <ul>
+        <li><code>webServiceURL</code>: specify the web service URL for managing the Pulsar cluster. This URL should be a standard DNS name.  </li>
+        <li><code>brokerServiceURL</code>: specify the Pulsar protocol URL for interaction with the brokers in the Pulsar cluster. This URL should not use the same DNS name as the web service URL but should use the <code>pulsar</code> scheme. </li>
+      </ul>
+    </td>
   </tr>
   <tr>
     <td><code>tlsConfig</code></td>

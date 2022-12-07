@@ -143,7 +143,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 
     After installing the Function Mesh Operator and deploying a Pulsar cluster, you can submit a sample CRD to create Pulsar Functions, source, sink, or Function Mesh. In this example, a CRD is submitted to the Pulsar cluster for creating a Pulsar Function. You can also submit other CRDs under the `./config/samples` directory.
     
-    1. Change the CRD definition to point to your Pulsar cluster.
+    1. Update your Pulsar cluster configurations in the CRD.
       
        ```yaml
        # in config/samples/compute_v1alpha1_function.yaml

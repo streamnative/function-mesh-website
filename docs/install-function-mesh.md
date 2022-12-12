@@ -18,11 +18,12 @@ Before installing Function Mesh, ensure to perform the following operations.
 - Create and connect to a [Kubernetes cluster](https://kubernetes.io/).
 - Create a [Pulsar cluster](https://pulsar.apache.org/docs/en/kubernetes-helm/) in the Kubernetes cluster.
 - Deploy [Pulsar Functions](https://pulsar.apache.org/docs/en/functions-overview/).
+- Install [Helm v3](https://helm.sh/docs/intro/install/).
 - (Optional) enable [Role-based Access Control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 ### Install cert-manager
 
-Function Mesh is enabled with the [admission control webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks) by default. Therefore, you need to prepare the relevant signed certificate. Secrets that contain signed certificates are named with the fixed name `function-mesh-admission-webhook-server-cert`, which is controlled by the [Certificate CRD](https://cert-manager.io/docs/concepts/certificate/).
+By default, Function Mesh is enabled with the [admission control webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks). Therefore, you need to prepare the relevant signed certificates. Secrets that contain signed certificates are named with the fixed name `function-mesh-admission-webhook-server-cert`, which is controlled by the [Certificate CRD](https://cert-manager.io/docs/concepts/certificate/).
 
 It is recommended to use [cert-manager](https://cert-manager.io/) to manage these certificates and you can install the cert-manager as follows.
 
@@ -39,6 +40,10 @@ helm install \
 
 ### Install Function Mesh through `install.sh` script
 
+> **Note**
+>
+> The `install.sh` command is suitable for trying Function Mesh out. If you want to deploy Function Mesh in production or other mission-critical scenarios, it is recommended to install Function Mesh through Helm.
+
 This example shows how to use the `install.sh` command to install Function Mesh on your laptop (Linux or Mac OS), including a local [kind](https://kind.sigs.k8s.io/) cluster, all the Custom Resource Definitions (CRDs), required service account configuration, and Function Mesh components.
 
 ```shell
@@ -47,18 +52,13 @@ curl -sSL https://github.com/streamnative/function-mesh/releases/download/{{func
 
 After executing the above command, you should be able to see the output indicating that the Function Mesh pod is up and running. For details, see [verify installation](#verify-installation).
 
-> **Note**
->
-> The `install.sh` command is suitable for trying Function Mesh out. If you want to deploy Function Mesh in production or other mission-critical scenarios, it is recommended to install Function Mesh through Helm.
-
 ### Install Function Mesh through Helm
 
 This example shows how to install Function Mesh through [Helm](https://helm.sh/).
 
 > **Note**
 >
-> - Before installation, ensure that Helm v3 is installed properly.
-> - For the use of `kubectl` commands, see [kubectl command reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands).
+> For the use of `kubectl` commands, see [kubectl command reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands).
 
 1. Add the StreamNative Function Mesh repository.
 
@@ -69,43 +69,25 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 
 2. Install the Function Mesh Operator.
 
-    Let's set some variables for convenient use later.
+    1. Set some variables for convenient use later.
 
-    ```shell
-    export FUNCTION_MESH_RELEASE_NAME=function-mesh  # change the release name according to your scenario
-    export FUNCTION_MESH_RELEASE_NAMESPACE=function-mesh  # change the namespace to where you want to install Function Mesh
-    ```
+        ```shell
+        export FUNCTION_MESH_RELEASE_NAME=function-mesh  # change the release name according to your scenario
+        export FUNCTION_MESH_RELEASE_NAMESPACE=function-mesh  # change the namespace to where you want to install Function Mesh
+        ```
 
-    Install the Function Mesh Operator via following command.
+    2. Install the Function Mesh Operator.
 
-    > **Note**
-    >
-    > - If no Kubernetes namespace is specified, the `default` namespace is used.
-    >
-    > - If the namespace ${FUNCTION_MESH_RELEASE_NAMESPACE} doesn't exist yet, you can add the parameter `--create-namespace ` to create it automatically.
+        > **Note**
+        >
+        > - If no Kubernetes namespace is specified, the `default` namespace is used.
+        > - If the `${FUNCTION_MESH_RELEASE_NAMESPACE}` namespace does not exist, you can create the Kubernetes cluster using the `--create-namespace` parameter.
 
-    ```shell
-    helm install ${FUNCTION_MESH_RELEASE_NAME} function-mesh/function-mesh-operator -n ${FUNCTION_MESH_RELEASE_NAMESPACE}
-    ```
+        ```shell
+        helm install ${FUNCTION_MESH_RELEASE_NAME} function-mesh/function-mesh-operator -n ${FUNCTION_MESH_RELEASE_NAMESPACE}
+        ```
 
-    This table outlines the configurable parameters of the Function Mesh Operator and their default values.
-
-    | Parameters | Description | Default|
-    | --- | --- | --- |
-    |`enable-leader-election`| Whether the Function Mesh Controller Manager should enable leader election. | `true` |
-    | `enable-pprof` |Whether the Function Mesh Controller Manager should enable [pprof](https://github.com/google/pprof). | `false`|
-    | `enable-init-containers` | Whether the Function Mesh Controller Manager should enable the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/). | `false` |
-    |`pprof-addr`|The address of the pprof. |`:8090`|
-    | `metrics-addr`| The address of the metrics. |`:8080`|
-    | `health-probe-addr`|The address of the health probe. |`:8000`|
-    |`config-file`| The configuration file of the Function Mesh Controller Manager, which includes `runnerImages`, `resourceLabels`, and `resourceAnnotations` configurations. <br />- `runnerImage`: the runner image to run the Pulsar Function instances. Currently, it supports Java, Python, and Go runner images. <br />- `resourceLabels`: set labels for Pulsar Functions, Sources, or Sinks. <br />- `resourceAnnotations`: set annotations for Pulsar Functions, Sources, or Sinks.  |`/etc/config/configs.yaml`|
-
-    For example, if you want to enable `pprof` for the Function Mesh Operator, set the `controllerManager.pprof.enable` to `true`.
-
-    ```shell
-    helm install ${FUNCTION_MESH_RELEASE_NAME} function-mesh/function-mesh-operator -n ${FUNCTION_MESH_RELEASE_NAMESPACE} \
-      --set controllerManager.pprof.enable=true
-    ```
+    There are some configurable parameters of the Function Mesh Operator. For details, see [Function Mesh Operator configurations](/reference/function-mesh-config.md).
 
 3. Check whether Function Mesh is installed successfully.
 
@@ -124,12 +106,8 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 
 - This example shows how to verify whether Function Mesh is installed successfully.
 
-    > **Note**
-    >
-    > `${NAMESPACE}` indicates the namespace where Function Mesh Operator is installed.
-
     ```shell
-    kubectl get pods --namespace ${NAMEPSACE} -l app.kubernetes.io/instance=function-mesh
+    kubectl get pods --namespace ${FUNCTION_MESH_RELEASE_NAME} -l app.kubernetes.io/instance=function-mesh
     ```
 
     **Output**
@@ -161,7 +139,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
     2. Submit a sample CRD to the Pulsar cluster.
 
         ```bash
-        kubectl apply -n ${NAMEPSACE} -f config/samples/compute_v1alpha1_function.yaml
+        kubectl apply -n ${FUNCTION_MESH_RELEASE_NAME} -f config/samples/compute_v1alpha1_function.yaml
         ```
 
     3. Verify your submission with the `kubectl` command, and you can see that the Function pod is running.
@@ -176,27 +154,23 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 
 1. Use the following command to uninstall Function Mesh through Helm.
 
-> **Note**
->
-> `${NAMESPACE}` indicates the namespace where Function Mesh Operator is installed.
+    ```bash
+    helm delete function-mesh -n ${FUNCTION_MESH_RELEASE_NAME}
+    ```
 
-```bash
-helm delete function-mesh -n ${NAMESPACE}
-```
+2. Remove the Secrets that contain the signed certificates.
 
-2. Remove the Secrets that contain the signed certificate.
+    > **Note**
+    >
+    > If you do not clean up the Secrets, you might fail to install the Function Mesh Operator in this environment. For details about how to automatically clean up the corresponding Secrets when you delete a Certificate, see [Cleaning up Secrets when Certificates are deleted](https://cert-manager.io/docs/usage/certificate/#cleaning-up-secrets-when-certificates-are-deleted).
 
-> **Note**
->
-> If the Secrets are not cleaned up, future installations in this environment might behave abnormally. For details about how to automatically clean up the corresponding Secrets when you delete a Certificate, see [Cleaning up Secrets when Certificates are deleted](https://cert-manager.io/docs/usage/certificate/#cleaning-up-secrets-when-certificates-are-deleted).
-
-```shell
-kubectl delete secret function-mesh-admission-webhook-server-cert -n ${NAMESPACE}
-```
+    ```shell
+    kubectl delete secret function-mesh-admission-webhook-server-cert -n ${NAMESPACE}
+    ```
 
 ## Work with `pulsar-admin` CLI tool
 
-Function Mesh supports Function Mesh Worker service, which can forward requests to the Kubernetes cluster. After Function Mesh Worker service is started, users can use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
+Function Mesh supports Function Mesh Worker service, which can forward requests to the Kubernetes cluster. After Function Mesh Worker service is started, you can use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
 
 > **Limitations**
 >
@@ -221,21 +195,21 @@ To start Function Mesh Worker service, follow these steps.
 
     ```bash
     helm install \
-        --values examples/values-minikube.yaml \
-        --set initialize=true \
-        --namespace pulsar \
-        pulsar-mini apache/pulsar
+      --values examples/values-minikube.yaml \
+      --set initialize=true \
+      --namespace pulsar \
+      pulsar-mini apache/pulsar
     ```
 
-3. Start Function Mesh Operator.
+3. Install the Function Mesh Operator.
 
-    > If the namespace `function-mesh` doesn't exist yet, you can add the parameter `--create-namespace` to create it automatically.
+    This example installs the Function Mesh Operator in the `function-mesh` namespace. If the `function-mesh` namespace does not exist, you can add create the Kubernetes namespace using the `--create-namespace` parameter.
 
     ```shell
     helm install function-mesh function-mesh/function-mesh-operator -n function-mesh
     ```
 
-4. Verify whether the Function Mesh Worker service is started successfully.
+1. Verify whether the Function Mesh Worker service is started successfully.
 
     ```bash
     ./bin/pulsar-admin --admin-url  WEB_SERVICE_URL functions status --tenant TENANT_NAME --namespace NAMESPACE_NAME --name FUNCTION_NAME

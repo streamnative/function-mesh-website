@@ -92,7 +92,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 3. Check whether Function Mesh is installed successfully.
 
     ```shell
-    kubectl get pods --namespace ${FUNCTION_MESH_RELEASE_NAMESPACE} -l app.kubernetes.io/instance=function-mesh
+    kubectl get pods -n ${FUNCTION_MESH_RELEASE_NAMESPACE} -l app.kubernetes.io/instance=function-mesh
     ```
 
     **Output**
@@ -107,7 +107,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 - This example shows how to verify whether Function Mesh is installed successfully.
 
     ```shell
-    kubectl get pods --namespace ${FUNCTION_MESH_RELEASE_NAME} -l app.kubernetes.io/instance=function-mesh
+    kubectl get pods -n ${FUNCTION_MESH_RELEASE_NAMESPACE} -l app.kubernetes.io/instance=function-mesh
     ```
 
     **Output**
@@ -139,7 +139,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
     2. Submit a sample CRD to the Pulsar cluster.
 
         ```bash
-        kubectl apply -n ${FUNCTION_MESH_RELEASE_NAME} -f config/samples/compute_v1alpha1_function.yaml
+        kubectl apply -n ${FUNCTION_MESH_RELEASE_NAMESPACE} -f config/samples/compute_v1alpha1_function.yaml
         ```
 
     3. Verify your submission with the `kubectl` command, and you can see that the Function pod is running.
@@ -155,7 +155,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
 1. Use the following command to uninstall Function Mesh through Helm.
 
     ```bash
-    helm delete function-mesh -n ${FUNCTION_MESH_RELEASE_NAME}
+    helm delete function-mesh -n ${FUNCTION_MESH_RELEASE_NAMESPACE}
     ```
 
 2. Remove the Secrets that contain the signed certificates.
@@ -165,7 +165,7 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
     > If you do not clean up the Secrets, you might fail to install the Function Mesh Operator in this environment. For details about how to automatically clean up the corresponding Secrets when you delete a Certificate, see [Cleaning up Secrets when Certificates are deleted](https://cert-manager.io/docs/usage/certificate/#cleaning-up-secrets-when-certificates-are-deleted).
 
     ```shell
-    kubectl delete secret function-mesh-admission-webhook-server-cert -n ${NAMESPACE}
+    kubectl delete secret function-mesh-admission-webhook-server-cert -n ${FUNCTION_MESH_RELEASE_NAMESPACE}
     ```
 
 ## Work with `pulsar-admin` CLI tool
@@ -209,7 +209,7 @@ To start Function Mesh Worker service, follow these steps.
     helm install function-mesh function-mesh/function-mesh-operator -n function-mesh
     ```
 
-1. Verify whether the Function Mesh Worker service is started successfully.
+4. Verify whether the Function Mesh Worker service is started successfully.
 
     ```bash
     ./bin/pulsar-admin --admin-url  WEB_SERVICE_URL functions status --tenant TENANT_NAME --namespace NAMESPACE_NAME --name FUNCTION_NAME

@@ -24,6 +24,7 @@ This table lists source configurations.
 | `processingGuarantee` | The processing guarantees (delivery semantics) applied to the source connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`.|
 | `forwardSourceMessageProperty` | Configure whether to pass message properties to a target topic.  |
 | `batchSourceConfig` | The batch source configurations in YAML format. You can configure the following properties. <br/> - `discoveryTriggererClassName`: the class that is used for triggering the discovery process. <br/> - `discoveryTriggererConfig`: the configurations that are required for initiating the discovery Triggerer. |
+| `pulsar` | The configurations about the Pulsar cluster. For details, see [messaging](#messaging). |
 
 ## Annotations
 
@@ -62,6 +63,73 @@ When the Function Mesh Operator creates a container, it uses the `imagePullPolic
 | `Always`       | Always pull the image.                                           |
 | `Never`        | Never pull the image.                                            |
 | `IfNotPresent` | Only pull the image if the image does not already exist locally. |
+
+## Messaging
+
+Function Mesh provides Pulsar cluster configurations in the Function, Source, and Sink CRDs. You can configure TLS encryption, TLS authentication, and OAuth2 authentication using the following configurations.
+
+> **Note**
+> 
+> The `tlsConfig` and `tlsSecret` are exclusive. If you configure TLS configurations, the TLS Secret will not take effect.
+
+<table>
+  <tr>
+    <th>Field</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>authConfig</code></td>
+    <td>The authentication configurations of the Pulsar cluster. Currently, you can only configure <a href="https://oauth.net/">OAuth2 authentication</a> through this field. For other authentication methods, you can configure them using the <code>authSecret</code> field. 
+      <ul>
+        <li><code>audience</code>: specify the OAuth2 resource server identifier for the Pulsar cluster.</li>
+        <li><code>issuerUrl</code>: specify the URL of the OAuth2 identity provider that allows a Pulsar client to obtain an access token.</li>
+        <li><code>scope</code>: specify the scope of an access request. For more information, see <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-3.3">access token scope</a>.</li>
+        <li><code>keySecretName</code>: specify the name of the Kubernetes Secret.</li>
+        <li><code>keySecretKey</code>: specify the key of the Kubernetes Secret that contains the content of the OAuth2 private key.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>authSecret</code></td>
+    <td>The name of the authentication <a herf="https://kubernetes.io/docs/concepts/configuration/configmap/">ConfigMap</a> that stores authentication configurations of the Pulsar cluster.
+      <ul>
+        <li><code>clientAuthenticationPlugin</code>: specify the client authentication plugin.</li>
+        <li><code>clientAuthenticationParameters</code>: specify the client authentication parameters.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>pulsarConfig</code></td>
+    <td>The name of the <a herf="https://kubernetes.io/docs/concepts/configuration/configmap/">ConfigMap</a> that stores Pulsar cluster configurations.
+      <ul>
+        <li><code>webServiceURL</code>: specify the web service URL for managing the Pulsar cluster. This URL should be a standard DNS name.  </li>
+        <li><code>brokerServiceURL</code>: specify the Pulsar protocol URL for interaction with the brokers in the Pulsar cluster. This URL should not use the same DNS name as the web service URL but should use the <code>pulsar</code> scheme. </li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>tlsConfig</code></td>
+    <td>The TLS configurations of the Pulsar cluster.
+      <ul>
+        <li><code>allowInsecure</code>: allow insecure TLS connection. </li>
+        <li><code>certSecretKey</code>: specify the TLS Secret key. </li>
+        <li><code>certSecretName</code>: specify the TLS Secret name. </li>
+        <li><code>enabled</code>: enable TLS configurations. </li>
+        <li><code>hostnameVerification</code>: enable hostname verification.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>tlsSecret</code></td>
+    <td>The name of the TLS <a herf="https://kubernetes.io/docs/concepts/configuration/configmap/">ConfigMap</a> that stores TLS configurations of the Pulsar cluster.
+      <ul>
+        <li><code>tlsAllowInsecureConnection</code>: allow insecure TLS connection. By default, it is set to <code>false</code>.</li>
+        <li><code>tlsHostnameVerificationEnable</code>: enable hostname verification. By default, it is set to <code>true</code>.</li>
+        <li><code>tlsTrustCertsFilePath</code>: specify the path of the TLS trust certificate file. </li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 ## State storage
 
@@ -130,75 +198,6 @@ secretsMap:
 ```
 
 Then, in the Pulsar Functions and Connectors, you can call `context.getSecret("username")` to get the secret value (`foo`).
-
-## Authentication
-
-Function Mesh provides the `tlsConfig`, `tlsSecret`, `authSecret`, `authConfig` fields for Function, Source, and Sink in the CRD definition. You can configure TLS encryption, TLS authentication, and OAuth2 authentication using the following configurations.
-
-> **Note**
-> 
-> The TLS configurations and TLS Secret configurations are exclusive. If you configure TLS configurations, TLS Secret configurations will not take effect.
-
-- TLS configurations
-
-    | Field                  | Description                    |
-    |------------------------|--------------------------------|
-    | `allowInsecure`        | Allow insecure TLS connection. |
-    | `certSecretKey`        | The Secret key.                |
-    | `certSecretName`       | The Secret name.               |
-    | `enabled`              | Enable TLS configurations.     |
-    | `hostnameVerification` | Enable hostname verification.  |
-
-- TLS Secret
-
-    | Field | Description |
-    | --- | --- |
-    | `tlsAllowInsecureConnection` | Allow insecure TLS connection. By default, it is set to `false`.|
-    | `tlsHostnameVerificationEnable` | Enable hostname verification. By default, it is set to `true`. |
-    | `tlsTrustCertsFilePath` | The path of the TLS trust certificate file. |
-
-- Authentication Secret
-
-    | Field | Description |
-    | --- | --- |
-    | `clientAuthenticationPlugin` | The client authentication plugin. |
-    | `clientAuthenticationParameters` | The client authentication parameters. |
-
-- Authentication configurations
-
-    > **Note**
-    >
-    > Currently, only [OAuth2 authentication](https://oauth.net/) configurations are supported. For other authentication methods, you can configure them using the Authentication Secret.
-
-    <table>
-      <tr>
-        <th>Field</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td colspan="2"><b>OAuth2 authentication</b></td>
-      </tr>
-      <tr>
-        <td><code>audience</code></td>
-        <td>The OAuth2 "resource server" identifier for the Pulsar cluster.</td>
-      </tr>
-      <tr>
-        <td><code>issuerUrl</code></td>
-        <td>The URL of the authentication provider that allows a Pulsar client to obtain an access token.</td>
-      </tr>
-      <tr>
-        <td><code>scope</code></td>
-        <td>The scope of an access request. For more information, see <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-3.3">access token scope</a>.</td>
-      </tr>
-      <tr>
-        <td><code>keySecretName</code></td>
-        <td>The name of the Kubernetes secret.</td>
-      </tr>
-      <tr>
-        <td><code>keySecretKey</code></td>
-        <td>The key of the Kubernetes secret, which contains the content of the OAuth2 private key.</td>
-      </tr>
-    </table>
 
 ## Packages
 

@@ -45,7 +45,7 @@ To create a Function Mesh, follow these steps.
             username: "elastic"
             password: "wJ757TmoXEd941kXm07Z2GW3"
           pulsar:
-            pulsarConfig: "test-sink"
+            pulsarConfig: "mesh-test-pulsar"
           resources:
             limits:
               cpu: "0.2"

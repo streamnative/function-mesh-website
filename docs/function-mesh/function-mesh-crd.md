@@ -23,66 +23,66 @@ metadata:
   name: functionmesh-sample
 spec:
   sinks:
-    name: sink-sample
-    image: streamnative/pulsar-io-elastic-search:2.7.1 # using connector image here
-    className: org.apache.pulsar.io.elasticsearch.ElasticSearchSink
-    replicas: 1
-    maxReplicas: 1
-    input:
-      topics:
-      - persistent://public/default/input
-      typeClassName: "[B"
-    sinkConfig:
-      elasticSearchUrl: "http://quickstart-es-http.default.svc.cluster.local:9200"
-      indexName: "my_index"
-      typeName: "doc"
-      username: "elastic"
-      password: "wJ757TmoXEd941kXm07Z2GW3"
-    pulsar:
-      pulsarConfig: "test-sink"
-    resources:
-      limits:
-        cpu: "0.2"
-        memory: 1.1G
-      requests:
-        cpu: "0.1"
-        memory: 1G
-    java:
-      extraDependenciesDir: random-dir/
-      jar: connectors/pulsar-io-elastic-search-2.7.1.nar # the NAR location in image
-      jarLocation: "" # leave empty since we will not download package from Pulsar Packages
-    clusterName: test-pulsar
-    autoAck: true
+    - name: sink-sample
+      image: streamnative/pulsar-io-elastic-search:2.7.1 # using connector image here
+      className: org.apache.pulsar.io.elasticsearch.ElasticSearchSink
+      replicas: 1
+      maxReplicas: 1
+      input:
+        topics:
+        - persistent://public/default/input
+        typeClassName: "[B"
+      sinkConfig:
+        elasticSearchUrl: "http://quickstart-es-http.default.svc.cluster.local:9200"
+        indexName: "my_index"
+        typeName: "doc"
+        username: "elastic"
+        password: "wJ757TmoXEd941kXm07Z2GW3"
+      pulsar:
+        pulsarConfig: "mesh-test-pulsar"
+      resources:
+        limits:
+          cpu: "0.2"
+          memory: 1.1G
+        requests:
+          cpu: "0.1"
+          memory: 1G
+      java:
+        extraDependenciesDir: random-dir/
+        jar: connectors/pulsar-io-elastic-search-2.7.1.nar # the NAR location in image
+        jarLocation: "" # leave empty since we will not download package from Pulsar Packages
+      clusterName: test-pulsar
+      autoAck: true
   functions:
-    name: ex1
-    className: org.apache.pulsar.functions.api.examples.ExclamationFunction
-    replicas: 1
-    maxReplicas: 1
-    logTopic: persistent://public/default/logging-function-log
-    input:
-      topics:
-        - persistent://public/default/functionmesh-input-topic
-      typeClassName: java.lang.String
-    output:
-      topic: persistent://public/default/mid-topic
-      typeClassName: java.lang.String
-    pulsar:
-      pulsarConfig: "mesh-test-pulsar"
-    java:
-      extraDependenciesDir: random-dir/
-      jar: pulsar-functions-api-examples.jar
-      jarLocation: public/default/nlu-test-functionmesh-ex1
-    # following value must be provided if no auto-filling is enabled
-    forwardSourceMessageProperty: true
-    autoAck: true
-    resources:
-      requests:
-        cpu: "0.1"
-        memory: 1G
-      limits:
-        cpu: "0.2"
-        memory: 1.1G
-    clusterName: test-pulsar
+    - name: ex1
+      className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+      replicas: 1
+      maxReplicas: 1
+      logTopic: persistent://public/default/logging-function-log
+      input:
+        topics:
+          - persistent://public/default/functionmesh-input-topic
+        typeClassName: java.lang.String
+      output:
+        topic: persistent://public/default/mid-topic
+        typeClassName: java.lang.String
+      pulsar:
+        pulsarConfig: "mesh-test-pulsar"
+      java:
+        extraDependenciesDir: random-dir/
+        jar: pulsar-functions-api-examples.jar
+        jarLocation: public/default/nlu-test-functionmesh-ex1
+      # following value must be provided if no auto-filling is enabled
+      forwardSourceMessageProperty: true
+      autoAck: true
+      resources:
+        requests:
+          cpu: "0.1"
+          memory: 1G
+        limits:
+          cpu: "0.2"
+          memory: 1.1G
+      clusterName: test-pulsar
 ---
 apiVersion: v1
 kind: ConfigMap

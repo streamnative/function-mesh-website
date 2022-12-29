@@ -218,6 +218,40 @@ In Function Mesh, the Pulsar cluster is defined through a ConfigMap. Pods can co
 | `webServiceURL` | The Web service URL of the Pulsar cluster. |
 | `brokerServiceURL` | The broker service URL of the Pulsar cluster. |
 
+## Health checks
+
+> **Note**
+>
+> To enable health checks, you need to create a [PVC](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim) and a [PV](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume), and bind the PVC to the PV. Then, you can use the `--set controllerManager.grpcurlPersistentVolumeClaim=<your_pvc_name>` option to specify the PVC when installing the Function Mesh Operator.
+
+With the Kubernetes [liveness probe](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#types-of-probe), Function Mesh supports monitoring and acting on the state of Pods (Containers) to ensure that only healthy Pods serve traffic. Implementing health checks using probes provides Function Mesh a solid foundation, better reliability, and higher uptime.
+
+```yaml
+apiVersion: compute.functionmesh.io/v1alpha1
+kind: Function
+metadata:
+  name: health-check-sample
+  namespace: default
+spec:
+  image: streamnative/pulsar-functions-java-sample:2.9.2.23
+  className: org.apache.pulsar.functions.api.examples.ExclamationFunction
+  forwardSourceMessageProperty: true
+  maxPendingAsyncRequests: 1000
+  replicas: 1
+  maxReplicas: 5
+  liveness:
+    initialDelaySeconds: 10        --- [1]
+    periodSeconds: 10              --- [2]
+  logTopic: persistent://public/default/logging-function-logs
+... 
+# Other configs
+```
+
+- `initialDelaySeconds`: specify the time that should wait before performing the first liveness probe.
+- `periodSeconds`: specify the frequency to perform a liveness probe.
+
+For more information about probe types, probe check mechanisms, and probe parameters, see Kubernetes documentation on [Pod lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle) and [configure probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes).
+
 ## Pod specifications
 
 Function Mesh supports customizing the Pod running connectors. This table lists sub-fields available for the `pod` field.
@@ -233,6 +267,10 @@ Function Mesh supports customizing the Pod running connectors. This table lists 
   <tr>
     <td><code>labels</code></td>
     <td>Specify labels attached to a Pod.</td>
+  </tr>
+    <tr>
+    <td><code>liveness</code></td>
+    <td>Specify the liveness probe properties for a Pod. <ul> <li> <code>initialDelaySecond</code>: specify the time that should wait before performing the first liveness probe. </li> <li> <code>periodSeconds</code>: specify the frequency to perform a liveness probe.</li> </ul> <p> For details, see <a href="#health-checks">health checks.</p></td>
   </tr>
   <tr>
     <td><code>nodeSelector</code></td>

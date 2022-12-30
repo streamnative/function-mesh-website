@@ -15,6 +15,7 @@ This table outlines the configurable parameters of the Function Mesh Operator an
 | `metrics-addr`| The address of the metrics. |`:8080`|
 | `health-probe-addr`|The address of the health probe. |`:8000`|
 |`config-file`| The configuration file of the Function Mesh Controller Manager, which includes `runnerImages`, `resourceLabels`, and `resourceAnnotations` configurations. <br />- `runnerImage`: the runner image to run the Pulsar Function instances. Currently, it supports Java, Python, and Go runner images. <br />- `resourceLabels`: set labels for Pulsar Functions, Sources, or Sinks. <br />- `resourceAnnotations`: set annotations for Pulsar Functions, Sources, or Sinks.  |`/etc/config/configs.yaml`|
+| `grpcurlPersistentVolumeClaim` | The [PersistentVolumeClaim (PVC)](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) for the [`grpcurl`](https://github.com/fullstorydev/grpcurl) CLI tool. | N/A |
 
 For example, if you want to enable `pprof` for the Function Mesh Operator, set the `controllerManager.pprof.enable` to `true`.
 

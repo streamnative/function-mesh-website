@@ -1,0 +1,284 @@
+{
+  "version-0.9.0/docs": [
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Overview",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.9.0/overview/overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/overview/why-function-mesh"
+        }
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "version-0.9.0/install-function-mesh"
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Functions",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.9.0/functions/function-overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/functions/function-crd"
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Package Pulsar Functions",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-0.9.0/functions/package-function/package-function-overview"
+            },
+            {
+              "type": "doc",
+              "id": "version-0.9.0/functions/package-function/package-function-java"
+            },
+            {
+              "type": "doc",
+              "id": "version-0.9.0/functions/package-function/package-function-python"
+            },
+            {
+              "type": "doc",
+              "id": "version-0.9.0/functions/package-function/package-function-go"
+            }
+          ]
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Run Pulsar Functions",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-0.9.0/functions/run-function/run-java-function"
+            },
+            {
+              "type": "doc",
+              "id": "version-0.9.0/functions/run-function/run-python-function"
+            },
+            {
+              "type": "doc",
+              "id": "version-0.9.0/functions/run-function/run-go-function"
+            },
+            {
+              "type": "doc",
+              "id": "version-0.9.0/functions/run-function/run-stateful-function"
+            },
+            {
+              "type": "doc",
+              "id": "version-0.9.0/functions/run-function/run-window-function"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/functions/function-monitor"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/functions/produce-function-log"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/functions/function-debug"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Connectors",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.9.0/connectors/pulsar-io-overview"
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Pulsar connector CRD configurations",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-0.9.0/connectors/io-crd-config/source-crd-config"
+            },
+            {
+              "type": "doc",
+              "id": "version-0.9.0/connectors/io-crd-config/sink-crd-config"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/connectors/run-connector"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/connectors/pulsar-io-monitoring"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/connectors/pulsar-io-debug"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Meshes",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.9.0/function-mesh/function-mesh-overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/function-mesh/function-mesh-crd"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/function-mesh/run-function-mesh"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Function Mesh Worker",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.9.0/function-mesh-worker/function-mesh-worker-overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/function-mesh-worker/deploy-mesh-worker"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/function-mesh-worker/manage-builtin-connectors"
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Reference",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-0.9.0/function-mesh-worker/reference/general-option"
+            },
+            {
+              "type": "doc",
+              "id": "version-0.9.0/function-mesh-worker/reference/customizable-option"
+            },
+            {
+              "type": "doc",
+              "id": "version-0.9.0/function-mesh-worker/reference/rest-api"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "version-0.9.0/scaling"
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Migration",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.9.0/migration/migrate-function"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Reference",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.9.0/reference/function-mesh-config"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Releases",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-1-4"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-1-5"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-1-6"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-1-7"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-1-8"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-1-9"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-2-0"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-3-0"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-4-0"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-5-0"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-6-0"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-7-0"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-8-0"
+        },
+        {
+          "type": "doc",
+          "id": "version-0.9.0/releases/release-note-0-9-0"
+        }
+      ]
+    }
+  ]
+}

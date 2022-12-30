@@ -166,6 +166,8 @@ Figure 7. The Function Mesh architecture
 - [Scaling](/scaling.md)
 - Migration
   - [Migrate Pulsar Functions](/migration/migrate-function.md)
+- Reference
+  - [Function Mesh Operator configurations](/reference/function-mesh-config.md)
 - Releases
   - [Release notes v0.1.4](/releases/release-note-0-1-4.md)
   - [Release notes v0.1.5](/releases/release-note-0-1-5.md)
@@ -180,3 +182,4 @@ Figure 7. The Function Mesh architecture
   - [Release notes v0.6.0](/releases/release-note-0-6-0.md)
   - [Release notes v0.7.0](/releases/release-note-0-7-0.md)
   - [Release notes v0.8.0](/releases/release-note-0-8-0.md)
+  - [Release notes v0.9.0](/releases/release-note-0-9-0.md)

@@ -248,10 +248,10 @@ Function Mesh supports running Pulsar Functions in Java, Python and Go. This tab
 
 | Field | Description |
 | --- | --- |
-| `jarLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Java. |
+| `jarLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Java. If the package file uses the HTTP or HTTPS protocol, you need to set `enable-init-containers` to `true` when you install the Function Mesh Operator. For details about how to configure the Function Mesh Operator, see [Function Mesh Operator configurations](/reference/function-mesh-config.md).|
 | `javaOpts` | It specifies JVM options to better configure JVM behaviors, including `exitOnOOMError`, Garbage Collection logs, Garbage Collection tuning, and so on. |
-| `goLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Go.|
-| `pyLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Python.|
+| `goLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Go. If the package file uses the HTTP or HTTPS protocol, you need to set `enable-init-containers` to `true` when you install the Function Mesh Operator. For details about how to configure the Function Mesh Operator, see [Function Mesh Operator configurations](/reference/function-mesh-config.md). |
+| `pyLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Python. If the package file uses the HTTP or HTTPS protocol, you need to set `enable-init-containers` to `true` when you install the Function Mesh Operator. For details about how to configure the Function Mesh Operator, see [Function Mesh Operator configurations](/reference/function-mesh-config.md).|
 | `extraDependenciesDir` | It specifies the dependent directory for the JAR package. |
 
 ## Log levels

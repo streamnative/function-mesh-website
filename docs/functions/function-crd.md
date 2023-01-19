@@ -19,7 +19,7 @@ This table lists Pulsar Function configurations.
 | `clusterName` | The Pulsar cluster of a Pulsar Function. |
 | `replicas`| The number of instances that you want to run this Pulsar Function. If no value is set, the system will set it to `1`. |
 | `minReplicas`| The minimum number of instances that you want to run for this Pulsar function. If no value is set, the system will set it to `1`. When HPA auto-scaling is enabled, the HPA controller scales the Pods up / down based on the values of the `minReplicas` and `maxReplicas` options. The number of the Pods should be greater than the value of the `minReplicas` and be smaller than the value of the `maxReplicas`.  |
-| `downloaderImage` | The image for installing the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) that is used to download packages or functions from Pulsar if the [download path](#packages) is specified. |
+| `downloaderImage` | The image of the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) that is used to download a package from Pulsar if the [download path](#packages) is specified. By default, the `downloaderImage` is an [official pulsarctl image](https://hub.docker.com/r/streamnative/pulsarctl). |
 | `maxReplicas`| The maximum number of instances that you want to run for this Pulsar function. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller automatically scales the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
 | `timeout` | The message timeout in milliseconds. |
 | `deadLetterTopic` | The topic where all messages that were not processed successfully are sent. This parameter is not supported in Python Functions. |
@@ -248,10 +248,10 @@ Function Mesh supports running Pulsar Functions in Java, Python and Go. This tab
 
 | Field | Description |
 | --- | --- |
-| `jarLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Java. If the package file uses the HTTP or HTTPS protocol, you need to set `enable-init-containers` to `true` when you install the Function Mesh Operator. For details about how to configure the Function Mesh Operator, see [Function Mesh Operator configurations](/reference/function-mesh-config.md).|
+| `jarLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Java.|
 | `javaOpts` | It specifies JVM options to better configure JVM behaviors, including `exitOnOOMError`, Garbage Collection logs, Garbage Collection tuning, and so on. |
-| `goLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Go. If the package file uses the HTTP or HTTPS protocol, you need to set `enable-init-containers` to `true` when you install the Function Mesh Operator. For details about how to configure the Function Mesh Operator, see [Function Mesh Operator configurations](/reference/function-mesh-config.md). |
-| `pyLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Python. If the package file uses the HTTP or HTTPS protocol, you need to set `enable-init-containers` to `true` when you install the Function Mesh Operator. For details about how to configure the Function Mesh Operator, see [Function Mesh Operator configurations](/reference/function-mesh-config.md).|
+| `goLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Go. |
+| `pyLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Python. |
 | `extraDependenciesDir` | It specifies the dependent directory for the JAR package. |
 
 ## Log levels

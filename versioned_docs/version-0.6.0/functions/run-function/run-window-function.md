@@ -36,8 +36,8 @@ This section describes how to submit a window function through a function CRD.
       maxPendingAsyncRequests: 1000
       minReplicas: 1
       windowConfig:
-        windowLengthCount: 10       --- [1]
-        slidingIntervalCount: 5     --- [2]
+        windowLengthCount: 10       # --- [1]
+        slidingIntervalCount: 5     # --- [2]
       logTopic: persistent://public/default/logging-function-logs
       input:
         topics:

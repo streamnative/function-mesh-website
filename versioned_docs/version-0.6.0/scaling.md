@@ -114,14 +114,14 @@ This example shows how to auto-scale the number of Pods to `8` when 20% CPU is u
       forwardSourceMessageProperty: true
       maxPendingAsyncRequests: 1000
       replicas: 1
-      maxReplicas: 4                    --- [1]
+      maxReplicas: 4                    # --- [1]
       logTopic: persistent://public/default/logging-function-logs                    
       input:                   
         topics:                    
         - persistent://public/default/java-function-input-topic                    
         typeClassName: java.lang.String                    
       pod:                    
-        builtinAutoscaler:               --- [2]
+        builtinAutoscaler:               # --- [2]
           - AverageUtilizationCPUPercent20
       # Other function configs
     ```
@@ -154,16 +154,16 @@ Function Mesh supports automatically scaling up the number of Pods based on a cu
         forwardSourceMessageProperty: true
         maxPendingAsyncRequests: 1000
         replicas: 1
-        maxReplicas: 4                         --- [1]
+        maxReplicas: 4                         # --- [1]
         logTopic: persistent://public/default/logging-function-logs            
         pod:            
-          autoScalingMetrics:                  --- [2]
+          autoScalingMetrics:                  # --- [2]
           - type: Resource           
             resource:            
-              name: cpu                        --- [3]
+              name: cpu                        # --- [3]
               target:             
                 type: Utilization              
-                averageUtilization: 45         --- [4]
+                averageUtilization: 45         # --- [4]
         # Other function configs
       ```
 
@@ -200,16 +200,16 @@ Function Mesh supports automatically scaling up the number of Pods based on a cu
                   type: Utilization
                   averageUtilization: 80
           autoScalingBehavior:                     
-            scaleUp:                               --- [1]
-              stabilizationWindowSeconds: 120      --- [2]
-              policies:                            --- [3]
-              - type: Percent                      --- [4]
-                value: 100                         --- [5]
-                periodSeconds: 15                  --- [6]
+            scaleUp:                               # --- [1]
+              stabilizationWindowSeconds: 120      # --- [2]
+              policies:                            # --- [3]
+              - type: Percent                      # --- [4]
+                value: 100                         # --- [5]
+                periodSeconds: 15                  # --- [6]
               - type: Pods                         
                 value: 4                           
                 periodSeconds: 15                  
-              selectPolicy: Max                    --- [7]
+              selectPolicy: Max                    # --- [7]
       ```
 
      - [1] `scaleUp`: specifies the rules that are used to control scaling behavior while scaling up.

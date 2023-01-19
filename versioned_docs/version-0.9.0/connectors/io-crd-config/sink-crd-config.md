@@ -246,8 +246,8 @@ spec:
   replicas: 1
   maxReplicas: 5
   liveness:
-    initialDelaySeconds: 10        --- [1]
-    periodSeconds: 10              --- [2]
+    initialDelaySeconds: 10        # --- [1]
+    periodSeconds: 10              # --- [2]
   logTopic: persistent://public/default/logging-function-logs
 ... 
 # Other configs

@@ -23,9 +23,9 @@ metadata:
   name: function-sample
   namespace: default
 spec:
-  java:                     --- [1]
-    log:                    --- [2]
-      level: "debug"        --- [3]
+  java:                     # --- [1]
+    log:                    # --- [2]
+      level: "debug"        # --- [3]
 ```
 
 - [1] `java`: represents the runtime with a specific programming language. Currently, available options include the Java runtime, the Python runtime, and the Go runtime.
@@ -41,9 +41,9 @@ metadata:
   name: function-sample
   namespace: default
 spec:
-  java:                                 --- [1]
-    log:                                --- [2]
-      logConfig:                        --- [3]
+  java:                                 # --- [1]
+    log:                                # --- [2]
+      logConfig:                        # --- [3]
         name: "java-log-config-cm"
         key: "java-config-xml"
 ---
@@ -57,7 +57,7 @@ data:
         <name>pulsar-functions-kubernetes-instance</name>
         <monitorInterval>30</monitorInterval>
         <Properties>
-            <Property>                   --- [4]
+            <Property>                   # --- [4]
                 <name>pulsar.log.level</name>       
                 <value>DEBUG</value>
             </Property>
@@ -66,7 +66,7 @@ data:
                 <value>DEBUG</value>
             </Property>
         </Properties>
-        <Appenders>                      --- [5]
+        <Appenders>                      # --- [5]
             <Console>
                 <name>Console</name>          
                 <target>SYSTEM_OUT</target>
@@ -76,11 +76,11 @@ data:
             </Console>
         </Appenders>
         <Loggers>            
-            <Logger>                     --- [6]
+            <Logger>                     # --- [6]
                 <name>org.apache.pulsar.functions.runtime.shaded.org.apache.bookkeeper</name>
                 <level>${sys:bk.log.level}</level>
-                <additivity>false</additivity>              --- [7]
-                <AppenderRef>                               --- [8]
+                <additivity>false</additivity>              # --- [7]
+                <AppenderRef>                               # --- [8]
                     <ref>Console</ref>
                 </AppenderRef>
             </Logger>

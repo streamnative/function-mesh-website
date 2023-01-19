@@ -10,7 +10,7 @@ This table outlines the configurable parameters of the Function Mesh Operator an
 | --- | --- | --- |
 |`enable-leader-election`| Whether the Function Mesh Controller Manager should enable leader election. | `true` |
 | `enable-pprof` |Whether the Function Mesh Controller Manager should enable [pprof](https://github.com/google/pprof). | `false`|
-| `enable-init-containers` | Whether the Function Mesh Controller Manager should enable the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/). | `false` |
+| `enable-init-containers` | Whether the Function Mesh Controller Manager should enable the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/). <br />- When enabled, Function Mesh downloads an HTTP or HTTPs package through the [wget](https://www.gnu.org/software/wget/). <br />- When disabled, Function Mesh downloads an HTTP or HTTPs package through the `pulsar-admin` CLI tool. In this case, you need to grant your service account the `admin` access right. | `false` |
 |`pprof-addr`|The address of the pprof. |`:8090`|
 | `metrics-addr`| The address of the metrics. |`:8080`|
 | `health-probe-addr`|The address of the health probe. |`:8000`|

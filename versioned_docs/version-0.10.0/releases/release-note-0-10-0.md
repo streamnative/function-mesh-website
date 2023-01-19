@@ -8,7 +8,7 @@ Here are some highlights of this release. For a full list of updates available f
 
 ## Support using wget to download HTTP/HTTPS function packages
 
-In previous releases, if a function package uses the HTTP or HTTPS protocol, you cannot download the function package directly if you do not have the `admin` access right. In this release, Function Mesh supports downloading an HTTP or HTTPs function package using [wget](https://www.gnu.org/software/wget/) if you enable the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) when installing the Function Mesh Operator. For details, see [customizable options](/function-mesh-worker/reference/customizable-option.md).
+In previous releases, if a function package uses the HTTP or HTTPS protocol, you cannot download the function package directly if you do not have the `admin` access right. In this release, Function Mesh supports downloading an HTTP or HTTPs function package using [wget](https://www.gnu.org/software/wget/) if you enable the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) when installing the Function Mesh Operator. For details, see [Function Mesh Operator configurations](/reference/function-mesh-config.md).
 
 ## Function Mesh Worker service supports HPA and VPA specifications
 

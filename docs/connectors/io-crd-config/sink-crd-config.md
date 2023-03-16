@@ -258,6 +258,28 @@ spec:
 
 For more information about probe types, probe check mechanisms, and probe parameters, see Kubernetes documentation on [Pod lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle) and [configure probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes).
 
+## Security context
+
+A security context defines privilege and access control settings for a Pod.
+
+| Field | Description |
+| --- | --- |
+| `fsGroup` | A special supplemental group that applies to all containers in a Pod. |
+| `fsGroupChangePolicy` | Define the behavior of changing ownership and permission of the volume before being exposed inside a Pod. This field only applies to volume types that support `fsGroup`-based ownership and permissions. |
+| `runAsGroup`| The Group ID (GID) that is used to run the entry point of the container process. If it is unset, the runtime is used. |
+| `runAsNonRoot`| Indicate that the container must run as a non-root user. If it is set to `true`, the system will validate the image at runtime to ensure that it does not run as a root user (User ID 0) and fail to start the container if it does. If it is unset or is set to `false`, no such validation will be performed.|
+| `runAsUser` | The User ID (UID) that is used to run the entry point of the container process. |
+| `seLinuxOptions` | The SELinux context that is applied to a container. |
+| `seccompProfile` | The seccomp options that is used by a container. |
+| `supplementalGroups` | A list of groups that is applied to the first process running in each container, in addition to the container's primary GID, the `fsGroup` (if specified), and group memberships defined in the container image for the UID of the container process. |
+| `sysctls` | Sysctls hold a list of namespaced sysctls used for the Pod. |
+| `windowsOptions` | The windows-specific settings that are applied to all containers. |
+| `allowPrivilegeEscalation` | Control whether a process can gain more privileges than its parent process. |
+| `capabilities` | The capabilities to add/drop when running a container. |
+| `privileged` | Run the container in privileged or unprivileged mode. |
+| `procMount` | The type of proc mount that is used by a container. |
+| `readOnlyRootFilesystem`| Mount the container's root filesystem as read-only. |
+
 ## Pod specifications
 
 Function Mesh supports customizing the Pod running Pulsar connectors. This table lists sub-fields available for the `pod` field.
@@ -296,7 +318,7 @@ Function Mesh supports customizing the Pod running Pulsar connectors. This table
   </tr>
   <tr>
     <td><code>securityContext</code></td>
-    <td>Specify the security context for a Pod.</td>
+    <td>Specify the security context for a Pod. For details, see [security context](#security-context). </td>
   </tr>
   <tr>
     <td><code>terminationGracePeriodSeconds</code></td>

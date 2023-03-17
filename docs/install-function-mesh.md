@@ -102,6 +102,90 @@ This example shows how to install Function Mesh through [Helm](https://helm.sh/)
     function-mesh-controller-manager-5f867557c-d6vf4   1/1     Running   0          8s
     ```
 
+### Install Function Mesh using OLM
+
+This section describes how to install Function Mesh using [Operator Lifecycle Manage](https://olm.operatorframework.io/). OLM is a tool to manage the Operators running on your cluster.
+
+1. Install the Operator Lifecycle Manager (OLM).
+
+    ```bash
+    curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.24.0/install.sh | bash -s v0.24.0
+    ```
+
+2. Define a manifest.
+
+    Here is a sample YAML file.
+
+    ```yaml
+    apiVersion: operators.coreos.com/v1alpha1
+    kind: Subscription
+    metadata:
+      name: my-function-mesh
+      namespace: operators
+    spec:
+      channel: alpha
+      name: function-mesh
+      source: operatorhubio-catalog
+      sourceNamespace: olm
+      config:
+        env:
+        - name: 
+          value: 
+    ```
+
+3. Install the Function Mesh Operator.
+
+    ```bash
+    kubectl create -f <path/to/your/yaml/file>
+    ```
+
+    The Function Mesh Operator will be installed in the **operators** namespace and will be used for all namespaces in the cluster.
+
+4. Check whether Function Mesh is installed successfully.
+
+    ```bash
+    kubectl get csv -n operators
+    ```
+
+### Install Function Mesh using OpenShift Web Console
+
+This section describes how to install Function Mesh using the OpenShift Web Console.
+
+1. Navigate to your OpenShift Web Console and login to the OpenShift cluster as an Administrator role.
+
+    ![login to openshift web console](./assets/openshift_login.png)
+
+2. Create a new project or select an existing one.
+
+    ![create a project](./assets/openshift_create_project.png)
+
+3. Find the Operators on the OperatorHub of OpenShift. You can search for the keyword "FunctionMesh" or "StreamNative".
+
+    ![find operator](./assets/openshift_find_operator.png)
+
+4. Click the **Function Mesh Operator** tile, and then click **Install**.
+
+    ![Operator details](./assets/openshift_operator-details.png)
+
+5. Customize the configurations.
+
+      - **Installation mode**
+          - **All namespaces on the cluster (default)**: deploy the Function Mesh Operator with cluster-scoped permissions.
+          - **A specific namespace on the cluster**: deploy the PulFunction Meshsar Operator with namespace-scoped permissions.
+      - **Updated Approval**
+          - **Automatic**: automatically install or update the Function Mesh Operator.
+          - **Manual**: manually install or update the Function Mesh Operator.
+
+    ![install operator](./assets/openshift_install_operator.png)
+
+6. Click **Install**. A page displays, showing the Function Mesh Operator installation process.
+
+    ![installation process](./assets/openshift_install_process.png)
+
+7. After the Operator is installed, you can see the new status **Installed operator - ready for use**.
+
+    ![finish installation](./assets/openshift_install_finish.png)
+
 ## Verify installation
 
 - This example shows how to verify whether Function Mesh is installed successfully.

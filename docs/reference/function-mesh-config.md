@@ -6,6 +6,8 @@ id: function-mesh-config
 
 This table outlines the configurable parameters of the Function Mesh Operator and their default values.
 
+## Configuration properties
+
 | Parameters | Description | Default|
 | --- | --- | --- |
 |`enable-leader-election`| Whether the Function Mesh Controller Manager should enable leader election. | `true` |
@@ -17,9 +19,32 @@ This table outlines the configurable parameters of the Function Mesh Operator an
 |`config-file`| The configuration file of the Function Mesh Controller Manager, which includes `runnerImages`, `resourceLabels`, and `resourceAnnotations` configurations. <br />- `runnerImage`: the runner image to run the Pulsar Function instances. Currently, it supports Java, Python, and Go runner images. <br />- `resourceLabels`: set labels for Pulsar Functions, Sources, or Sinks. <br />- `resourceAnnotations`: set annotations for Pulsar Functions, Sources, or Sinks.  |`/etc/config/configs.yaml`|
 | `grpcurlPersistentVolumeClaim` | The [PersistentVolumeClaim (PVC)](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) for the [`grpcurl`](https://github.com/fullstorydev/grpcurl) CLI tool. | N/A |
 
-For example, if you want to enable `pprof` for the Function Mesh Operator, set the `controllerManager.pprof.enable` to `true`.
+## Configure Function Mesh Operator
+
+When you install the Function Mesh Operator through the [Helm chart](/install-function-mesh.md#install-function-mesh-through-helm), you can apply its configurations through the command flag. For example, if you want to enable `pprof` for the Function Mesh Operator, set the `controllerManager.pprof.enable` to `true`.
 
 ```shell
 helm install <release_name> function-mesh/function-mesh-operator -n <k8s_namespace> \
   --set controllerManager.pprof.enable=true
+```
+
+When you install the Function Mesh Operator through [Operator Lifecycle Manager (OLM)](/install-function-mesh.md#install-function-mesh-using-olm), you can apply its configurations through the `spec.config.env` field and then upgrade the resource.
+
+This example shows how to enable `pprof` for the Function Mesh Operator.
+
+```yaml
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: my-function-mesh
+  namespace: operators
+spec:
+  channel: alpha
+  name: function-mesh
+  source: operatorhubio-catalog
+  sourceNamespace: olm
+  config:
+    env:
+    - name: ENABLE_PPROF
+      value: true
 ```

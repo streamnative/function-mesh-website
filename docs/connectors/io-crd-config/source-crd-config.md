@@ -241,15 +241,19 @@ spec:
   replicas: 1
   maxReplicas: 5
   liveness:
-    initialDelaySeconds: 10        # --- [1]
-    periodSeconds: 10              # --- [2]
+    failureThreshold:              # --- [1]
+    initialDelaySeconds: 10        # --- [2]
+    periodSeconds: 10              # --- [3]
+    successThreshold: 1            # --- [4]
   logTopic: persistent://public/default/logging-function-logs
 ... 
 # Other configs
 ```
 
-- `initialDelaySeconds`: specify the time that should wait before performing the first liveness probe.
-- `periodSeconds`: specify the frequency to perform a liveness probe.
+- [1] `failureThreshold`: specify the times to restart a failed probe before giving up the probe. By default, it is set to `3`.
+- [2] `initialDelaySeconds`: specify the time that should wait before performing the first liveness probe.
+- [3] `periodSeconds`: specify the frequency to perform a liveness probe.
+- [4] `successThreshold`: specify the minimum consecutive successes for the probe to be considered successful after having failed. By default, it is set to `1`.
 
 For more information about probe types, probe check mechanisms, and probe parameters, see Kubernetes documentation on [Pod lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle) and [configure probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes).
 

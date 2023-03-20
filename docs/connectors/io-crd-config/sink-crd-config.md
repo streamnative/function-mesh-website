@@ -229,7 +229,7 @@ In Function Mesh, the Pulsar cluster is defined through a ConfigMap. Pods can co
 
 > **Note**
 >
-> To enable health checks, you need to create a [PVC](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim) and a [PV](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume), and bind the PVC to the PV. Then, you can use the `--set controllerManager.grpcurlPersistentVolumeClaim=<your_pvc_name>` option to specify the PVC when installing the Function Mesh Operator.
+> To enable health checks, you need to create a [PVC](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim) and a [PV](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolume), and bind the PVC to the PV.
 
 With the Kubernetes [liveness probe](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#types-of-probe), Function Mesh supports monitoring and acting on the state of Pods (Containers) to ensure that only healthy Pods serve traffic. Implementing health checks using probes provides Function Mesh a solid foundation, better reliability, and higher uptime.
 
@@ -246,12 +246,13 @@ spec:
   maxPendingAsyncRequests: 1000
   replicas: 1
   maxReplicas: 5
-  liveness:
-    failureThreshold:              # --- [1]
-    initialDelaySeconds: 10        # --- [2]
-    periodSeconds: 10              # --- [3]
-    successThreshold: 1            # --- [4]
   logTopic: persistent://public/default/logging-function-logs
+  pod:
+    liveness:
+      failureThreshold:              # --- [1]
+      initialDelaySeconds: 10        # --- [2]
+      periodSeconds: 10              # --- [3]
+      successThreshold: 1            # --- [4]
 ... 
 # Other configs
 ```

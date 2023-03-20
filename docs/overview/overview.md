@@ -168,6 +168,8 @@ Figure 7. The Function Mesh architecture
   - [Migrate Pulsar Functions](/migration/migrate-function.md)
 - Reference
   - [Function Mesh Operator configurations](/reference/function-mesh-config.md)
+  - CRD configurations
+    - [Connector catalog CRD configurations](/reference/crd-config/connnector-catalog.md)
 - Releases
   - [Release notes v0.1.4](/releases/release-note-0-1-4.md)
   - [Release notes v0.1.5](/releases/release-note-0-1-5.md)

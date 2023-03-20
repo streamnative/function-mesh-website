@@ -88,7 +88,16 @@ module.exports = {
     {
       type: 'category',
       label: 'Reference',
-      items: ['reference/function-mesh-config'],
+      items: [
+        'reference/function-mesh-config',
+        {
+          type: 'category',
+          label: 'CRD configurations',
+          items: [
+            'reference/crd-config/connnector-catalog'
+          ],
+        },
+      ],
     },
     {
       type: 'category',

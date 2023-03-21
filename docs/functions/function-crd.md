@@ -17,7 +17,7 @@ This table lists Pulsar Function configurations.
 | `tenant` | The tenant of a Pulsar Function. |
 | `namespace` | The Pulsar namespace of a Pulsar Function. |
 | `clusterName` | The Pulsar cluster of a Pulsar Function. |
-| `replicas`| The number of instances that you want to run for a function. If it is set to `0`, it means to stop the function. By default, it is set to `1`. When HPA is enabled, you cannot set the `replicas` parameter to `0` or a negative number. |
+| `replicas`| The number of instances that you want to run for a function. If it is set to `0`, it means to stop the function. When HPA is enabled, you cannot set the `replicas` parameter to `0` or a negative number. |
 | `ShowPreciseParallelism` | Configure whether to show the precise parallelism. If it is set to `true`, the `Parallelism` is equal to value of the `replicas` parameter. In this situation, when you update the value of the `replicas` parameter, it will cause all Pods to be recreated. By default, it is set to `false`.|
 | `minReplicas`| The minimum number of instances that you want to run for a function. If it is set to `0`, it means to stop the function. By default, it is set to `1`. When HPA auto-scaling is enabled, the HPA controller scales the Pods up / down based on the values of the `minReplicas` and `maxReplicas` options. The number of the Pods should be greater than the value of the `minReplicas` and be smaller than the value of the `maxReplicas`.  |
 | `downloaderImage` | The image of the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) that is used to download a package from Pulsar if the [download path](#packages) is specified. By default, the `downloaderImage` is an [official pulsarctl image](https://hub.docker.com/r/streamnative/pulsarctl). |
@@ -36,6 +36,7 @@ This table lists Pulsar Function configurations.
 | `cleanupSubscription` | Configure whether to clean up subscriptions. |
 | `subscriptionPosition` | The subscription position. |
 | `pulsar` | The configurations about the Pulsar cluster. For details, see [messaging](#messaging). |
+| `VolumeClaimTemplates` | A list of claims that a Pod is allowed to reference. It provides stable storage using [PersistentVolumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) provisioned by a PersistentVolume Provisioner. |
 
 ## Annotations
 

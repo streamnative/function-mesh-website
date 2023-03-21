@@ -16,7 +16,7 @@ This table lists source configurations.
 | `tenant` | The tenant of a source connector. |
 | `namespace` | The Pulsar namespace of a source connector. |
 | `clusterName` | The Pulsar cluster of a source connector. |
-| `replicas`| The number of instances that you want to run for a source connector. If it is set to `0`, it means to stop the source connector. By default, it is set to `1`. When HPA is enabled, you cannot set the `replicas` parameter to `0` or a negative number. |
+| `replicas`| The number of instances that you want to run for a source connector. If it is set to `0`, it means to stop the source connector. When HPA is enabled, you cannot set the `replicas` parameter to `0` or a negative number. |
 | `ShowPreciseParallelism` | Configure whether to show the precise parallelism. If it is set to `true`, the `Parallelism` is equal to value of the `replicas` parameter. In this situation, when you update the value of the `replicas` parameter, it will cause all Pods to be recreated. By default, it is set to `false`.|
 | `minReplicas`| The minimum number of instances that you want to run for a source connector. If it is set to `0`, it means to stop the source connector. By default, it is set to `1`. When HPA auto-scaling is enabled, the HPA controller scales the Pods up / down based on the values of the `minReplicas` and `maxReplicas` options. The number of the Pods should be greater than the value of the `minReplicas` and be smaller than the value of the `maxReplicas`.  |
 | `downloaderImage` | The image for installing the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) that is used to download packages or functions from Pulsar if the [download path](#packages) is specified. |

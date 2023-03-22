@@ -21,8 +21,3 @@ To configure individual PVs for each Pod, we add `spec.volumeClaimTemplates` to 
 ## Allow passing Function Mesh Operator configurations through the environment variables
 
 When you [deploy the Function Mesh operator using OLM](/install-function-mesh#install-function-mesh-using-olm.md), you can configure the Function Mesh Operator through the environment variables. For details, see [configure Function Mesh Operator](/reference/function-mesh-config.md#configure-function-mesh-operator).
-
-## Introduce the `ConnectorCatalog` CRD
-
-To manage the available connectors in StreamNative Cloud, Function Mesh provides a cluster-scoped CRD where you can provide their connector definitions. The connector catalog CRD is only used to store connector metadata. For details, see [connector catalog CRD configurations](/docs/reference/crd-config/connector-catalog.md).
-

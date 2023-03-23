@@ -28,10 +28,10 @@ This table lists Pulsar Function configurations.
 | `logTopic` | The topic to which the logs of a Pulsar Function are produced. |
 | `autoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
 | `maxMessageRetry` | How many times to process a message before giving up. |
-| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the function. Available values: `atleast_once`, `atmost_once`, `effectively_once`.|
+| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the function. Available values: `atleast_once`, `atmost_once`, `effectively_once`. When you set `ProcessingGuarantees` to `effectively_once`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`.|
 | `forwardSourceMessageProperty` | Configure whether to pass message properties to a target topic. |
-| `retainOrdering` | Function consumes and processes messages in order. |
-| `retainKeyOrdering`| Configure whether to retain the key order of messages. |
+| `retainOrdering` | The function consumes and processes messages in order. When you set `retainOrdering`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`. |
+| `retainKeyOrdering`| Configure whether to retain the key order of messages. When you set `retainKeyOrdering`, the runtime will set the subscription type to `KEY_SHARED`. By default, the subscription type is set to `SHARED`.  |
 | `subscriptionName` | Pulsar Functions’ subscription name if you want a specific subscription-name for the input-topic consumer. |
 | `cleanupSubscription` | Configure whether to clean up subscriptions. |
 | `subscriptionPosition` | The subscription position. |

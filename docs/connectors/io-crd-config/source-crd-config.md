@@ -254,7 +254,27 @@ For more information about probe types, probe check mechanisms, and probe parame
 
 ## Security context
 
-A security context defines privilege and access control settings for a Pod.
+A security context defines privilege and access control settings for a Pod. By default, Function Mesh uses the following `PodSecurityContext` as the default value and applies to every function's Pod.
+
+```yaml
+podSecurityContext:
+     fsGroup: 10001
+     runAsGroup: 10001
+     runAsNonRoot: false
+     runAsUser: 10000
+     seccompProfile:
+          type: "RuntimeDefault"
+```
+
+Apart from the `PodSecurityContext`, Function Mesh also applies the following `SecurityContext` to the Function's container to ensure the [Pod Security Standard](https://kubernetes.io/docs/concepts/security/pod-security-standards/) follows the restricted specification.
+
+```yaml
+SecurityContext:
+     capabilities:
+          drop: 
+               - ALL
+      allowPrivilegeEscalation: false
+```
 
 | Field | Description |
 | --- | --- |

@@ -1,30 +1,38 @@
 ---
-title: Source CRD configurations
-category: connectors
-id: source-crd-config
+title: Sink CRD configurations
+category: reference
+id: sink-crd-config
 ---
-This document lists CRD configurations available for Pulsar source connectors. The source CRD configurations consist of source connector configurations and the common CRD configurations.
+This document lists CRD configurations available for Pulsar sink connectors. The sink CRD configurations consist of sink connector configurations and the common CRD configurations.
 
-## Source configurations
+## Sink configurations
 
-This table lists source configurations.
+This table lists sink configurations.
 
 | Field | Description |
 | --- | --- |
 | `name` | The connector name is a string of up to `43` characters. |
-| `classname` | The class name of a source connector. |
-| `tenant` | The tenant of a source connector. |
-| `namespace` | The Pulsar namespace of a source connector. |
-| `clusterName` | The Pulsar cluster of a source connector. |
-| `replicas`| The number of instances that you want to run for a source connector. If it is set to `0`, it means to stop the source connector. When HPA is enabled, you cannot set the `replicas` parameter to `0` or a negative number. |
+| `classname` | The class name of a sink connector. |
+| `tenant` | The tenant of a sink connector. |
+| `namespace` | The Pulsar namespace of a sink connector. |
+| `clusterName` | The Pulsar cluster of a sink connector. |
+| `replicas`| The number of instances that you want to run for a sink connector. If it is set to `0`, it means to stop the sink connector. When HPA is enabled, you cannot set the `replicas` parameter to `0` or a negative number. |
 | `ShowPreciseParallelism` | Configure whether to show the precise parallelism. If it is set to `true`, the `Parallelism` is equal to value of the `replicas` parameter. In this situation, when you update the value of the `replicas` parameter, it will cause all Pods to be recreated. By default, it is set to `false`.|
-| `minReplicas`| The minimum number of instances that you want to run for a source connector. If it is set to `0`, it means to stop the source connector. By default, it is set to `1`. When HPA auto-scaling is enabled, the HPA controller scales the Pods up / down based on the values of the `minReplicas` and `maxReplicas` options. The number of the Pods should be greater than the value of the `minReplicas` and be smaller than the value of the `maxReplicas`.  |
+| `minReplicas`| The minimum number of instances that you want to run for a sink connector. If it is set to `0`, it means to stop the sink connector. By default, it is set to `1`. When HPA auto-scaling is enabled, the HPA controller scales the Pods up / down based on the values of the `minReplicas` and `maxReplicas` options. The number of the Pods should be greater than the value of the `minReplicas` and be smaller than the value of the `maxReplicas`.  |
 | `downloaderImage` | The image for installing the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) that is used to download packages or functions from Pulsar if the [download path](#packages) is specified. |
-| `maxReplicas`| The maximum number of instances that you want to run for this source connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the source controller automatically scales the source connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
-| `sourceConfig` | The source connector configurations in YAML format. |
-| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the source connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`.|
-| `forwardSourceMessageProperty` | Configure whether to pass message properties to a target topic.  |
-| `batchSourceConfig` | The batch source configurations in YAML format. You can configure the following properties. <br/> - `discoveryTriggererClassName`: the class that is used for triggering the discovery process. <br/> - `discoveryTriggererConfig`: the configurations that are required for initiating the discovery Triggerer. |
+| `maxReplicas`| The maximum number of instances that you want to run for this sink connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the sink controller automatically scales the sink connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
+| `sinkConfig` | The sink connector configurations in YAML format.|
+| `timeout` | The message timeout in milliseconds. |
+| `negativeAckRedeliveryDelayMs`| The number of redelivered messages due to negative acknowledgement. |
+| `autoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
+| `maxMessageRetry` | How many times to process a message before giving up. |
+| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the sink connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`. When you set `ProcessingGuarantees` to `effectively_once`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`.|
+| `retainOrdering` | The sink connector consumes and processes messages in order. When you set `retainOrdering`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`. |
+| `retainKeyOrdering`| Configure whether to retain the key order of messages. When you set `retainKeyOrdering`, the runtime will set the subscription type to `KEY_SHARED`. By default, the subscription type is set to `SHARED`.  |
+| `deadLetterTopic` | The topic where all messages that were not processed successfully are sent. |
+| `subscriptionName` | The subscription name of the sink connector if you want a specific subscription-name for the input-topic consumer. |
+| `cleanupSubscription` | Configure whether to clean up subscriptions. |
+| `subscriptionPosition` | The subscription position. |
 | `pulsar` | The configurations about the Pulsar cluster. For details, see [messaging](#messaging). |
 
 ## Annotations
@@ -35,7 +43,7 @@ This example shows how to use an annotation to make an object unmanaged. Therefo
 
 ```yaml
 apiVersion: compute.functionmesh.io/v1alpha1
-kind: Source
+kind: Sink
 metadata:
   annotations:
     compute.functionmesh.io/managed: "false"
@@ -43,7 +51,7 @@ metadata:
 
 ## Images
 
-This section describes image options available for Pulsar source CRDs.
+This section describes image options available for Pulsar sink CRDs.
 
 ### Base runner
 
@@ -80,7 +88,12 @@ Function Mesh provides Pulsar cluster configurations in the Function, Source, an
   </tr>
   <tr>
     <td><code>authConfig</code></td>
-    <td>The authentication configurations of the Pulsar cluster. Currently, you can only configure <a href="https://oauth.net/">OAuth2 authentication</a> through this field. For other authentication methods, you can configure them using the <code>authSecret</code> field. 
+    <td>The authentication configurations of the Pulsar cluster. Currently, you can only configure generic authentication and <a href="https://oauth.net/">OAuth2 authentication</a> through this field. For other authentication methods, you can configure them using the <code>authSecret</code> field. <p><b>Generic authentication</b></p>
+    <ul>
+      <li><code>clientAuthenticationParameters</code>: specify the client authentication parameters.</li>
+      <li><code>clientAuthenticationPlugin</code>: specify the client authentication plugin.</li>
+    </ul>
+    <p><b>OAuth2 authentication</b></p>
       <ul>
         <li><code>audience</code>: specify the OAuth2 resource server identifier for the Pulsar cluster.</li>
         <li><code>issuerUrl</code>: specify the URL of the OAuth2 identity provider that allows a Pulsar client to obtain an access token.</li>
@@ -138,29 +151,28 @@ Function Mesh provides the following fields for stateful configurations in the C
 
 | Field | Description |
 |  ---|  --- |
-| `statefulConfig` | The state storage configuration for the source connector. |
+| `statefulConfig` | The state storage configuration for the sink connector. |
 | `statefulConfig.pulsar.serviceUrl` | The service URL that points to the state storage service. By default, the state storage service is the BookKeeper table service. |
 | `statefulConfig.pulsar.javaProvider` | (Optional) If you want to overwrite the default configuration, you can use the state storage configuration for the Java runtime. For example, you can change it to other backend services other than the BookKeeper table service. |
 | `statefulConfig.pulsar.javaProvider.className` | The Java class name of the state storage provider implementation. The class must implement the `org.apache.pulsar.functions.instance.state.StateStoreProvider` interface. If not, `org.apache.pulsar.functions.instance.state.BKStateStoreProviderImpl` will be used. |
 | `statefulConfig.pulsar.javaProvider.config` | The configurations that are passed to the state storage provider. |
 
-## Output
+## Input
 
-The output topics of a Pulsar Function. This table lists options available for the `Output`.
+The input topics of a Pulsar Function. The following table lists options available for the `Input`.
 
-|Name | Description |
+| Field | Description |
 | --- | --- |
-| `topics` | The output topic of a Pulsar Function (If none is specified, no output is written). | 
-| `sinkSerdeClassName` | The map of output topics to SerDe class names (as a JSON string). |
-| `sinkSchemaType` | The built-in schema type or custom schema class name to be used for messages sent by the function.|
-| `producerConf` | The producer specifications. Available options: <br />- `maxPendingMessages`: the maximum number of pending messages. <br />- `maxPendingMessagesAcrossPartitions`: the maximum number of pending messages across partitions. <br />- `useThreadLocalProducers`: configure whether the producer uses a thread. <br />- `cryptoConfig`: cryptography configurations of the producer. <br />- `batchBuilder`: support key-based batcher. 
-| `customSchemaSinks` | The map of output topics to Schema class names (as a JSON string). |
+| `topics` | The configuration of the topic from which messages are fetched. |
+| `customSerdeSources` | The map of input topics to SerDe class names (as a JSON string). |
+| `customSchemaSources` | The map of input topics to Schema class names (as a JSON string). |
+| `sourceSpecs` | The map of source specifications to consumer specifications. Consumer specifications include these options: <br />- `SchemaType`: the built-in schema type or custom schema class name to be used for messages fetched by the connector. <br />- `SerdeClassName`: the SerDe class to be used for messages fetched by the connector. <br />- `IsRegexPattern`: configure whether the input topic adopts a Regex pattern. <br />- `SchemaProperties`: the schema properties for messages fetched by the connector. <br />- `ConsumerProperties`: the consumer properties for messages fetched by the connector. <br />- `ReceiverQueueSize`: the size of the consumer receive queue. <br /> - `cryptoConfig`: cryptography configurations of the consumer. |
 
 ## Resources
 
 When you specify a function or connector, you can optionally specify how much of each resource they need. The resources available to specify are CPU and memory (RAM).
 
-If the node where a Pod is running has enough of a resource available, it's possible (and allowed) for a Pod to use more resources than its `request` for that resource. However, a Pod is not allowed to use more than its resource `limit`.
+If the node where a Pod is running has enough of a resource available, it is possible (and allowed) for a Pod to use more resources than its `request` for that resource. However, a Pod is not allowed to use more than its resource `limit`.
 
 ## Secrets
 
@@ -206,7 +218,7 @@ Function Mesh supports running Pulsar connectors in Java.
 
 | Field | Description |
 | --- | --- |
-| `jarLocation` | The path to the JAR file for the connector. |
+| `jarLocation` | The path to the JAR file for the connector.|
 | `javaOpts` | It specifies JVM options to better configure JVM behaviors, including `exitOnOOMError`, Garbage Collection logs, Garbage Collection tuning, and so on. |
 | `extraDependenciesDir` | It specifies the dependent directory for the JAR package. |
 
@@ -302,7 +314,7 @@ SecurityContext:
 
 ## Pod specifications
 
-Function Mesh supports customizing the Pod running connectors. This table lists sub-fields available for the `pod` field.
+Function Mesh supports customizing the Pod running Pulsar connectors. This table lists sub-fields available for the `pod` field.
 
 <table>
 <thead>
@@ -338,7 +350,7 @@ Function Mesh supports customizing the Pod running connectors. This table lists 
   </tr>
   <tr>
     <td><code>securityContext</code></td>
-    <td>Specify the security context for a Pod. For details, see [security context](#security-context).</td>
+    <td>Specify the security context for a Pod. For details, see [security context](#security-context). </td>
   </tr>
   <tr>
     <td><code>terminationGracePeriodSeconds</code></td>

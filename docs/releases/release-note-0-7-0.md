@@ -14,8 +14,8 @@ Here are some highlights of this release. For a full list of updates available f
 
 - **Customizable options**
 
-  In release v0.5.0, Function Mesh supported setting multiple [log levels](/functions/function-crd.md#log-levels) and [log rotation policies](/functions/function-crd.md#log-rotation-policies) for different Pulsar function runtimes. In this release, you can set log levels and log rotation policies for Function Mesh worker service. For details, see [customizable options](/function-mesh-worker/reference/customizable-option.md).
+  In release v0.5.0, Function Mesh supported setting multiple [log levels](/reference/crd-config/function-crd.md#log-levels) and [log rotation policies](/reference/crd-config/function-crd.md#log-rotation-policies) for different Pulsar function runtimes. In this release, you can set log levels and log rotation policies for Function Mesh worker service. For details, see [customizable options](/reference/function-mesh-worker/customizable-option.md).
 
 ## Download packages/functions using init container
 
-  In this release, a `downloaderImage` option is introduced that specifies the image that is used to install the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/). The init container is responsible for downloading packages or functions from Pulsar if the [download path](/functions/function-crd.md#packages) is specified.
+  In this release, a `downloaderImage` option is introduced that specifies the image that is used to install the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/). The init container is responsible for downloading packages or functions from Pulsar if the [download path](/reference/crd-config/function-crd.md#packages) is specified.

@@ -11,7 +11,7 @@ This document describes how to deploy the Function Mesh Worker service.
 > - Function Mesh Worker service is only available for Pulsar 2.8.0 or higher.
 > - Function Mesh Worker service cannot manage the FunctionMesh CRD.
 > - You need to configure the `clusterName`, `inputTypeClassName`, `outputTypeClassName` parameters through the `custom-runtime-options` option when creating or updating Pulsar functions or connectors.
-> - You need to manually manage the [`ConfigMap`](/functions/function-crd.md#cluster-location), such as the Pulsar service URL.
+> - You need to manually manage the [`ConfigMap`](/reference/crd-config/function-crd.md#cluster-location), such as the Pulsar service URL.
 
 ## Deploy Function Mesh Worker service separately
 
@@ -223,7 +223,7 @@ To start the Function Mesh Worker service, follow these steps.
 
    - Add `functionsWorkerServiceCustomConfigs` to your `functions_worker.yml` configuration file.
 
-        This is a sample. For details about available configurations of Function Mesh Worker service, see [customizable options](/function-mesh-worker/reference/customizable-option.md).
+        This is a sample. For details about available configurations of Function Mesh Worker service, see [customizable options](/reference/function-mesh-worker/customizable-option.md).
 
         ```yaml
         functionsWorkerServiceCustomConfigs:

@@ -8,7 +8,7 @@ Here are some highlights of this release. For a full list of updates available f
 
 ## Set function log levels
 
-In this release, Function Mesh supports setting multiple [log levels](/functions/function-crd.md#log-levels) for different Pulsar function runtimes. By default, the log level for Pulsar functions is `info`. You can use the `spec.log.level` option to specify a particular log level. Or, you can customize a log configuration file based on your requirements and reference to the log configuration file by using the `spec.log.logConfig` option.
+In this release, Function Mesh supports setting multiple [log levels](/reference/crd-config/function-crd.md#log-levels) for different Pulsar function runtimes. By default, the log level for Pulsar functions is `info`. You can use the `spec.log.level` option to specify a particular log level. Or, you can customize a log configuration file based on your requirements and reference to the log configuration file by using the `spec.log.logConfig` option.
 For details, see [set log levels](/functions/produce-function-log.md#set-log-levels).
 
 ## Build function images using Buildpacks

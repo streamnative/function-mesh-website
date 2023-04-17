@@ -12,7 +12,7 @@ When you want to isolate resources for running the Function Mesh Worker service 
 
 ## Support specifying a resource as an unmanaged object
 
-In this release, Function Mesh Worker service supports specifying the Pulsar functions, sources, and sinks as unmanaged resources by using the `managed` customizable option. Therefore, the Controller can skip unmanaged objects when checking in the reconciliation loop. For details, see [customizable options](/function-mesh-worker/reference/customizable-option.md).
+In this release, Function Mesh Worker service supports specifying the Pulsar functions, sources, and sinks as unmanaged resources by using the `managed` customizable option. Therefore, the Controller can skip unmanaged objects when checking in the reconciliation loop. For details, see [customizable options](/reference/function-mesh-worker/customizable-option.md).
 
 ## Support key-value environment variables
 
@@ -31,4 +31,4 @@ env:
 
 ## Provide the `tlsConfig` option to specify required TLS parameters
 
-Starting with Function Mesh v0.1.5, you can use the `tlsSecret` option to provide Secret-related information when submitting Pulsar functions, sources, or sinks. However, you need to provide parameters for the `tlsSecret` option, which is not easy to use. In this release, Function Mesh provides the `tlsConfig` option that allows you to provide Secret information as required. For details, see [authentication configurations](/functions/function-crd.md#authentication).
+Starting with Function Mesh v0.1.5, you can use the `tlsSecret` option to provide Secret-related information when submitting Pulsar functions, sources, or sinks. However, you need to provide parameters for the `tlsSecret` option, which is not easy to use. In this release, Function Mesh provides the `tlsConfig` option that allows you to provide Secret information as required. For details, see [authentication configurations](/reference/crd-config/function-crd.md#authentication).

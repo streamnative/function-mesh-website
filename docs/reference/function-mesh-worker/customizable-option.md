@@ -1,6 +1,6 @@
 ---
 title: Customizable options
-category: function-mesh-worker
+category: reference
 id: customizable-option
 ---
 

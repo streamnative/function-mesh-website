@@ -1,6 +1,6 @@
 ---
 title: General options
-category: function-mesh-worker
+category: reference
 id: general-option
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: REST APIs
-category: function-mesh-worker
+category: reference
 id: rest-api
 ---
 

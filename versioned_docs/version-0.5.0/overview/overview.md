@@ -81,7 +81,7 @@ The foundational concepts described above are delivered as Kubernetes Custom Res
 The available Function Mesh CRDs are:
 
 - [**Function**](/functions/function-crd.md): The `Function` resource automatically manages the whole lifecycle of a Pulsar Function.
-- [**Source**](/connectors/io-crd-config/source-crd-config.md): The `Source` resource automatically manages the whole lifecyle of a Pulsar Source connector.
+- [**Source**](/connectors/io-crd-config/source-crd-config.md): The `Source` resource automatically manages the whole lifecycle of a Pulsar Source connector.
 - [**Sink**](/connectors/io-crd-config/sink-crd-config.md): The `Sink` resource automatically manages the whole lifecycle of a Pulsar Sink connector.
 - [**FunctionMesh**](/function-mesh/function-mesh-crd.md): The `FunctionMesh` resource automatically manages the whole lifecycle of your event streaming application. It controls the creation of other objects to ensure that the **functions** and **connectors** defined in your mesh are running and they are connected via the defined **streams**. 
 

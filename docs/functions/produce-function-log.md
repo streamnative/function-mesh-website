@@ -10,7 +10,7 @@ This document describes how to set log levels and produce logs for Pulsar functi
 
 ## Set log levels
 
-A [log level](/functions/function-crd.md#log-levels) is a piece of information that indicates how important a given log message is. By default, the log level for Pulsar functions is `info`. If you want to check logs at different levels, you can configure the log levels for different Pulsar function runtimes.
+A [log level](/reference/crd-config/function-crd.md#log-levels) is a piece of information that indicates how important a given log message is. By default, the log level for Pulsar functions is `info`. If you want to check logs at different levels, you can configure the log levels for different Pulsar function runtimes.
 
 You can use the `spec.log.level` option to specify a particular log level. Or, you can customize a log configuration file based on your requirements and reference to the log configuration file by using the `spec.log.logConfig` option.
 
@@ -30,7 +30,7 @@ spec:
 
 - [1] `java`: represents the runtime with a specific programming language. Currently, available options include the Java runtime, the Python runtime, and the Go runtime.
 - [2] `log`: represents the log configurations for a Pulsar function.
-- [3] `level`: represents the [log levels](/functions/function-crd.md#log-levels) available for a Pulsar function.
+- [3] `level`: represents the [log levels](/reference/crd-config/function-crd.md#log-levels) available for a Pulsar function.
 
 This example shows how to specify a `debug` log level by using the customized configuration file.
 
@@ -98,7 +98,7 @@ data:
 - [1] `java`: represents the runtime with a specific programming language. Currently, available options include the Java runtime, the Python runtime, and the Go runtime.
 - [2] `log`: represents the log configurations for a Pulsar function.
 - [3] `logConfig`: represents the log configuration file in a format of [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/).
-- [4] `Property`: it is a name-value pair that represents the [log levels](/functions/function-crd.md#log-levels) available for a Pulsar function.
+- [4] `Property`: it is a name-value pair that represents the [log levels](/reference/crd-config/function-crd.md#log-levels) available for a Pulsar function.
 - [5] `Appenders`: represents the destination that the logs are delivered to.
 - [6] `Loggers`: represents a class or module type that is used to perform logging.
 - [7] `additivity`: indicates whether log messages will be duplicated if multiple `<Logger>` entries overlap. If it is set to `false`, it means to prevent duplication of log messages when one or more `<Logger>` entries contain classes or modules that overlap.
@@ -126,7 +126,7 @@ spec:
 
 - [1] `java`: represents the runtime with a specific programming language. Currently, available options include the Java runtime, the Python runtime, and the Go runtime.
 - [2] `log`: represents the log configurations for a Pulsar function.
-- [3] `rotatePolicy`: represents the [log rotation policies](/functions/function-crd.md#log-rotation-policies) available for a Pulsar function.
+- [3] `rotatePolicy`: represents the [log rotation policies](/reference/crd-config/function-crd.md#log-rotation-policies) available for a Pulsar function.
 
 ## Produce logs for Pulsar functions
 

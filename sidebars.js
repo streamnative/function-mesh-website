@@ -11,7 +11,6 @@ module.exports = {
       label: 'Functions',
       items: [
         'functions/function-overview',
-        'functions/function-crd',
         {
           type: 'category',
           label: 'Package Pulsar Functions',
@@ -43,41 +42,20 @@ module.exports = {
       label: 'Connectors',
       items: [
         'connectors/pulsar-io-overview',
-        {
-          type: 'category',
-          label: 'Pulsar connector CRD configurations',
-          items: [
-            'connectors/io-crd-config/source-crd-config', 
-            'connectors/io-crd-config/sink-crd-config'
-          ],
-        },
         'connectors/run-connector',
         'connectors/pulsar-io-monitoring',
-        'connectors/pulsar-io-debug',
+        'connectors/pulsar-io-debug'
       ]
     },
     {
       type: 'category',
       label: 'Meshes',
-      items: ['function-mesh/function-mesh-overview', 'function-mesh/function-mesh-crd', 'function-mesh/run-function-mesh'],
+      items: ['function-mesh/function-mesh-overview', 'function-mesh/run-function-mesh'],
     },
     {
       type: 'category',
       label: 'Function Mesh Worker',
-      items: [
-        'function-mesh-worker/function-mesh-worker-overview',
-        'function-mesh-worker/deploy-mesh-worker',
-        'function-mesh-worker/manage-builtin-connectors',
-        {
-          type: 'category',
-          label: 'Reference',
-          items: [
-            'function-mesh-worker/reference/general-option',
-            'function-mesh-worker/reference/customizable-option',
-            'function-mesh-worker/reference/rest-api'
-          ],
-        },
-      ],
+      items: ['function-mesh-worker/function-mesh-worker-overview', 'function-mesh-worker/deploy-mesh-worker', 'function-mesh-worker/manage-builtin-connectors']
     },
     'scaling',
     {
@@ -88,7 +66,28 @@ module.exports = {
     {
       type: 'category',
       label: 'Reference',
-      items: ['reference/function-mesh-config'],
+      items: [
+        'reference/function-mesh-config',
+        {
+          type: 'category',
+          label: 'CRD configurations',
+          items: [
+            'reference/crd-config/function-crd',
+            'reference/crd-config/source-crd-config',
+            'reference/crd-config/sink-crd-config',
+            'reference/crd-config/function-mesh-crd'
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Function Mesh Worker configurations',
+          items: [
+            'reference/function-mesh-worker/general-option',
+            'reference/function-mesh-worker/customizable-option',
+            'reference/function-mesh-worker/rest-api'
+          ],
+        },
+      ],
     },
     {
       type: 'category',

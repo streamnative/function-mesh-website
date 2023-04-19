@@ -1,42 +1,31 @@
 ---
-title: Pulsar Function CRD configurations
-category: functions
-id: function-crd
+title: Source CRD configurations
+category: reference
+id: source-crd-config
 ---
+This document lists CRD configurations available for Pulsar source connectors. The source CRD configurations consist of source connector configurations and the common CRD configurations.
 
-This document lists CRD configurations available for Pulsar Functions. The CRD configurations for Pulsar Functions consist of Function configurations and common CRD configurations.
+## Source configurations
 
-## Function configurations
-
-This table lists Pulsar Function configurations.
+This table lists source configurations.
 
 | Field | Description |
-| ---|---|
-| `name` | The function name is a string of up to `43` characters. |
-| `classname` | The class name of a Pulsar Function. |
-| `tenant` | The tenant of a Pulsar Function. |
-| `namespace` | The Pulsar namespace of a Pulsar Function. |
-| `clusterName` | The Pulsar cluster of a Pulsar Function. |
-| `replicas`| The number of instances that you want to run for a function. If it is set to `0`, it means to stop the function. When HPA is enabled, you cannot set the `replicas` parameter to `0` or a negative number. |
+| --- | --- |
+| `name` | The connector name is a string of up to `43` characters. |
+| `classname` | The class name of a source connector. |
+| `tenant` | The tenant of a source connector. |
+| `namespace` | The Pulsar namespace of a source connector. |
+| `clusterName` | The Pulsar cluster of a source connector. |
+| `replicas`| The number of instances that you want to run for a source connector. If it is set to `0`, it means to stop the source connector. When HPA is enabled, you cannot set the `replicas` parameter to `0` or a negative number. |
 | `ShowPreciseParallelism` | Configure whether to show the precise parallelism. If it is set to `true`, the `Parallelism` is equal to value of the `replicas` parameter. In this situation, when you update the value of the `replicas` parameter, it will cause all Pods to be recreated. By default, it is set to `false`.|
-| `minReplicas`| The minimum number of instances that you want to run for a function. If it is set to `0`, it means to stop the function. By default, it is set to `1`. When HPA auto-scaling is enabled, the HPA controller scales the Pods up / down based on the values of the `minReplicas` and `maxReplicas` options. The number of the Pods should be greater than the value of the `minReplicas` and be smaller than the value of the `maxReplicas`.  |
-| `downloaderImage` | The image of the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) that is used to download a package from Pulsar if the [download path](#packages) is specified. By default, the `downloaderImage` is an [official pulsarctl image](https://hub.docker.com/r/streamnative/pulsarctl). |
-| `maxReplicas`| The maximum number of instances that you want to run for this Pulsar function. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller automatically scales the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
-| `timeout` | The message timeout in milliseconds. |
-| `deadLetterTopic` | The topic where all messages that were not processed successfully are sent. This parameter is not supported in Python Functions. |
-| `funcConfig` | Pulsar Functions configurations in YAML format. |
-| `logTopic` | The topic to which the logs of a Pulsar Function are produced. |
-| `autoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
-| `maxMessageRetry` | How many times to process a message before giving up. |
-| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the function. Available values: `atleast_once`, `atmost_once`, `effectively_once`. When you set `ProcessingGuarantees` to `effectively_once`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`.|
-| `forwardSourceMessageProperty` | Configure whether to pass message properties to a target topic. |
-| `retainOrdering` | The function consumes and processes messages in order. When you set `retainOrdering`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`. |
-| `retainKeyOrdering`| Configure whether to retain the key order of messages. When you set `retainKeyOrdering`, the runtime will set the subscription type to `KEY_SHARED`. By default, the subscription type is set to `SHARED`.  |
-| `subscriptionName` | Pulsar Functions’ subscription name if you want a specific subscription-name for the input-topic consumer. |
-| `cleanupSubscription` | Configure whether to clean up subscriptions. |
-| `subscriptionPosition` | The subscription position. |
+| `minReplicas`| The minimum number of instances that you want to run for a source connector. If it is set to `0`, it means to stop the source connector. By default, it is set to `1`. When HPA auto-scaling is enabled, the HPA controller scales the Pods up / down based on the values of the `minReplicas` and `maxReplicas` options. The number of the Pods should be greater than the value of the `minReplicas` and be smaller than the value of the `maxReplicas`.  |
+| `downloaderImage` | The image for installing the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) that is used to download packages or functions from Pulsar if the [download path](#packages) is specified. |
+| `maxReplicas`| The maximum number of instances that you want to run for this source connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the source controller automatically scales the source connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
+| `sourceConfig` | The source connector configurations in YAML format. |
+| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the source connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`.|
+| `forwardSourceMessageProperty` | Configure whether to pass message properties to a target topic.  |
+| `batchSourceConfig` | The batch source configurations in YAML format. You can configure the following properties. <br/> - `discoveryTriggererClassName`: the class that is used for triggering the discovery process. <br/> - `discoveryTriggererConfig`: the configurations that are required for initiating the discovery Triggerer. |
 | `pulsar` | The configurations about the Pulsar cluster. For details, see [messaging](#messaging). |
-| `VolumeClaimTemplates` | A list of claims that a Pod is allowed to reference. It provides stable storage using [PersistentVolumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) provisioned by a PersistentVolume Provisioner. |
 
 ## Annotations
 
@@ -46,7 +35,7 @@ This example shows how to use an annotation to make an object unmanaged. Therefo
 
 ```yaml
 apiVersion: compute.functionmesh.io/v1alpha1
-kind: Function
+kind: Source
 metadata:
   annotations:
     compute.functionmesh.io/managed: "false"
@@ -54,7 +43,7 @@ metadata:
 
 ## Images
 
-This section describes image options available for Pulsar Function, source, sink and Function Mesh CRDs.
+This section describes image options available for Pulsar source CRDs.
 
 ### Base runner
 
@@ -62,15 +51,9 @@ The base runner is an image base for other runners. The base runner is located a
 
 ### Runner images
 
-Function Mesh uses runner images as images of Pulsar functions and connectors. Each runner image only contains necessary tool-chains and libraries for specified runtime.
+Function Mesh uses runner images as images of Pulsar connectors. Each runner image only contains necessary tool-chains and libraries for specified runtime.
 
-This table lists available Function runtime runner images.
-
-| Type | Description |
-| --- | --- |
-| Java runner | The Java runner is based on the base runner and contains the Java function instance to run Java functions or connectors. The `streamnative/pulsar-functions-java-runner` Java runner is stored at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-java-runner) and is automatically updated to align with Apache Pulsar release.
-| Python runner | The Python runner is based on the base runner and contains the Python function instance to run Python functions. You can build your own Python runner to customize Python dependencies. The `streamnative/pulsar-functions-python-runner` Python runner is located at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-java-runner) and is automatically updated to align with Apache Pulsar release.
-| Golang runner | The Golang runner provides all the tool-chains and dependencies required to run Golang functions. The `streamnative/pulsar-functions-go-runner` Golang runner is located at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-java-runner) and is automatically updated to align with Apache Pulsar release.
+Pulsar connectors support using the Java runner images as their images. The Java runner is based on the base runner and contains the Java function instance to run Java functions or connectors. The `streamnative/pulsar-functions-java-runner` Java runner is stored at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-java-runner) and is automatically updated to align with Apache Pulsar release.
 
 ## Image pull policies
 
@@ -97,7 +80,12 @@ Function Mesh provides Pulsar cluster configurations in the Function, Source, an
   </tr>
   <tr>
     <td><code>authConfig</code></td>
-    <td>The authentication configurations of the Pulsar cluster. Currently, you can only configure <a href="https://oauth.net/">OAuth2 authentication</a> through this field. For other authentication methods, you can configure them using the <code>authSecret</code> field. 
+    <td>The authentication configurations of the Pulsar cluster. Currently, you can only configure generic authentication and <a href="https://oauth.net/">OAuth2 authentication</a> through this field. For other authentication methods, you can configure them using the <code>authSecret</code> field. <p><b>Generic authentication</b></p>
+    <ul>
+      <li><code>clientAuthenticationParameters</code>: specify the client authentication parameters.</li>
+      <li><code>clientAuthenticationPlugin</code>: specify the client authentication plugin.</li>
+    </ul>
+    <p><b>OAuth2 authentication</b></p>
       <ul>
         <li><code>audience</code>: specify the OAuth2 resource server identifier for the Pulsar cluster.</li>
         <li><code>issuerUrl</code>: specify the URL of the OAuth2 identity provider that allows a Pulsar client to obtain an access token.</li>
@@ -151,42 +139,15 @@ Function Mesh provides Pulsar cluster configurations in the Function, Source, an
 
 ## State storage
 
-Function Mesh provides the following fields for Stateful functions in the CRD definition.
+Function Mesh provides the following fields for stateful configurations in the CRD definition.
 
 | Field | Description |
 |  ---|  --- |
-| `statefulConfig` | The state storage configuration for the Stateful Functions. |
+| `statefulConfig` | The state storage configuration for the source connector. |
 | `statefulConfig.pulsar.serviceUrl` | The service URL that points to the state storage service. By default, the state storage service is the BookKeeper table service. |
 | `statefulConfig.pulsar.javaProvider` | (Optional) If you want to overwrite the default configuration, you can use the state storage configuration for the Java runtime. For example, you can change it to other backend services other than the BookKeeper table service. |
 | `statefulConfig.pulsar.javaProvider.className` | The Java class name of the state storage provider implementation. The class must implement the `org.apache.pulsar.functions.instance.state.StateStoreProvider` interface. If not, `org.apache.pulsar.functions.instance.state.BKStateStoreProviderImpl` will be used. |
 | `statefulConfig.pulsar.javaProvider.config` | The configurations that are passed to the state storage provider. |
-
-## Window function configurations
-
-Function Mesh provides the following fields for window functions in the CRD definition.
-
-| Field                           | Description                                                                                                                                                                 |
-|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `actualWindowFunctionClassName` | Optional. The runner class name of the implemented window function. By default, the value is the same as the `spec.className`.                                              |
-| `lateDataTopic`                 | Optional. The late data topic for the late tuple messages. The late data topic must be defined when specifying a timestamp extractor class (`timestampExtractorClassName`). |
-| `maxLagMs`                      | Optional. The maximum lag duration (in milliseconds) of the window function. By default, it is set to 0.                                                                    |
-| `slidingIntervalCount`          | Optional. The number of messages before the window slides.                                                                                                             |
-| `slidingIntervalDurationMs`     | Optional. The time duration (in milliseconds) after which the window slides.                                                                                                |
-| `timestampExtractorClassName`   | Optional. The timestamp extractor class name.  It should be set to `org.apache.pulsar.functions.windowing.TimestampExtractor`.                                              |
-| `watermarkEmitIntervalMs`       | Optional. The watermark interval (in milliseconds) of the window function.  By default, it is set to 1000 ms.                                                               |
-| `windowLengthCount`             | Optional. The number of messages per window.                                                                                                                                |
-| `windowLengthDurationMs`        | Optional. The time duration (in milliseconds) of the window.                                                                                                                |
-
-## Input
-
-The input topics of a Pulsar Function. The following table lists options available for the `Input`.
-
-| Field | Description |
-| --- | --- |
-| `topics` | The configuration of the topic from which messages are fetched. |
-| `customSerdeSources` | The map of input topics to SerDe class names (as a JSON string). |
-| `customSchemaSources` | The map of input topics to Schema class names (as a JSON string). |
-| `sourceSpecs` | The map of source specifications to consumer specifications. Consumer specifications include these options: <br />- `SchemaType`: the built-in schema type or custom schema class name to be used for messages fetched by the function. <br />- `SerdeClassName`: the SerDe class to be used for messages fetched by the function. <br />- `IsRegexPattern`: configure whether the input topic adopts a Regex pattern. <br />- `SchemaProperties`: the schema properties for messages fetched by the function. <br />- `ConsumerProperties`: the consumer properties for messages fetched by the function. <br />- `ReceiverQueueSize`: the size of the consumer receive queue. br /> - `cryptoConfig`: cryptography configurations of the consumer. |
 
 ## Output
 
@@ -197,14 +158,14 @@ The output topics of a Pulsar Function. This table lists options available for t
 | `topics` | The output topic of a Pulsar Function (If none is specified, no output is written). | 
 | `sinkSerdeClassName` | The map of output topics to SerDe class names (as a JSON string). |
 | `sinkSchemaType` | The built-in schema type or custom schema class name to be used for messages sent by the function.|
-| `producerConf` | The producer specifications. Available options: < br />- `maxPendingMessages`: the maximum number of pending messages. <br />- `maxPendingMessagesAcrossPartitions`: the maximum number of pending messages across partitions. <br />- `useThreadLocalProducers`: configure whether the producer uses a thread. <br />- `cryptoConfig`: cryptography configurations of the producer. <br />- `batchBuilder`: support key-based batcher.
+| `producerConf` | The producer specifications. Available options: <br />- `maxPendingMessages`: the maximum number of pending messages. <br />- `maxPendingMessagesAcrossPartitions`: the maximum number of pending messages across partitions. <br />- `useThreadLocalProducers`: configure whether the producer uses a thread. <br />- `cryptoConfig`: cryptography configurations of the producer. <br />- `batchBuilder`: support key-based batcher. 
 | `customSchemaSinks` | The map of output topics to Schema class names (as a JSON string). |
 
 ## Resources
 
 When you specify a function or connector, you can optionally specify how much of each resource they need. The resources available to specify are CPU and memory (RAM).
 
-If the node where a Pod is running has enough of a resource available, it's possible (and allowed) for a pod to use more resources than its `request` for that resource specifies. However, a pod is not allowed to use more than its resource `limit`.
+If the node where a Pod is running has enough of a resource available, it's possible (and allowed) for a Pod to use more resources than its `request` for that resource. However, a Pod is not allowed to use more than its resource `limit`.
 
 ## Secrets
 
@@ -246,51 +207,13 @@ Then, in the Pulsar Functions and Connectors, you can call `context.getSecret("u
 
 ## Packages
 
-Function Mesh supports running Pulsar Functions in Java, Python and Go. This table lists fields available for running Pulsar Functions in different languages.
+Function Mesh supports running Pulsar connectors in Java.
 
 | Field | Description |
 | --- | --- |
-| `jarLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Java. |
+| `jarLocation` | The path to the JAR file for the connector. |
 | `javaOpts` | It specifies JVM options to better configure JVM behaviors, including `exitOnOOMError`, Garbage Collection logs, Garbage Collection tuning, and so on. |
-| `goLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Go.|
-| `pyLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Python.|
 | `extraDependenciesDir` | It specifies the dependent directory for the JAR package. |
-
-## Log levels
-
-By default, the log level for Pulsar functions is `info`. Function Mesh supports setting multiple log levels for Pulsar functions.
-
-> **Notes**
->
-> The log levels are only available for the Go runtime 2.11 or higher.
-
-| Critical | Description | Java runtime | Python runtime | Go runtime |
-|---|---|---|---|---|
-| `off` | Nothing will be logged. | ✔ | ✗ | ✗ |
-| `trace` | The logs that contain the most detailed messages.  | ✔ | ✔ |  ✔ |
-| `debug` | The logs that are used for interactive investigation during development. These logs primarily contain information useful for debugging and have no long-term value. | ✔ | ✔ |  ✔ |
-| `warn` | The logs that highlight an abnormal or unexpected event in the function, but do not cause the function to stop. | ✔ | ✔ |  ✔ |
-| `error` | The logs that highlight when the function is stopped due to a failure. These indicate a failure in the current activity, not an application-wide failure. | ✔ | ✔ |  ✔ |
-| `fatal` | The logs that contain fatal errors. It indicates that the function is unusable. | ✔ | ✔ |  ✔ |
-| `all` | All events are logged. | ✔ | ✗ | ✗ |
-| `panic` | It indicates the function is in panic. | ✗ | ✗ | ✔ |
-
-For details about how to set log levels and produce logs for Pulsar functions, see [produce function logs](/functions/produce-function-log.md).
-
-## Log rotation policies
-
-With more and more logs being written to the log file, the log file grows in size. Therefore, Function Mesh supports log rotation to avoid large files that could create issues when opening them. You can set the log rotation policies based on the time or the log file size.
-
-| Field | Description |
-| --- | --- |
-| `TimedPolicyWithDaily` | Rotate the log file daily.   |
-| `TimedPolicyWithWeekly` | Rotate the log file weekly.   |
-| `TimedPolicyWithMonthly` | Rotate the log file monthly. |
-| `SizedPolicyWith10MB` | Rotate the log file at every 10 MB. |
-| `SizedPolicyWith50MB` | Rotate the log file at every 50 MB.  |
-| `SizedPolicyWith100MB` | Rotate the log file at every 100 MB.  |
-
-For details about how to set a log rotation policy, see [set log rotation policies](/functions/produce-function-log.md#set-log-rotation-policies).
 
 ## Cluster location
 
@@ -329,7 +252,6 @@ spec:
       initialDelaySeconds: 10        # --- [2]
       periodSeconds: 10              # --- [3]
       successThreshold: 1            # --- [4]
-
 ... 
 # Other configs
 ```
@@ -385,7 +307,7 @@ SecurityContext:
 
 ## Pod specifications
 
-Function Mesh supports customizing the Pod running function instance. This table lists sub-fields available for the `pod` field.
+Function Mesh supports customizing the Pod running connectors. This table lists sub-fields available for the `pod` field.
 
 <table>
 <thead>
@@ -458,10 +380,6 @@ Function Mesh supports customizing the Pod running function instance. This table
   <tr>
     <td><code>autoScalingBehavior</code></td>
     <td>Configure the scaling behavior of the target in both up and down directions (<code>scaleUp</code> and <code>scaleDown</code> fields respectively). If not specified, the default Kubernetes scaling behaviors are adopted. For details, see <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#horizontalpodautoscalerbehavior-v2beta2-autoscaling">HorizontalPodAutoscalerBehavior v2beta2 autoscaling</a>. </td>
-  </tr>
-  <tr>
-    <td><code>vpa</code></td>
-    <td>Configure the behavior of the Vertical Pod Autoscaling (VPA). It contains two fields: <ul> <li><a href="https://github.com/kubernetes/autoscaler/blob/vertical-pod-autoscaler-0.12.0/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/types.go#L109-L120">updatePolicy</a>: define the policy for updating Pods.</li> <li><a href="https://github.com/kubernetes/autoscaler/blob/vertical-pod-autoscaler-0.12.0/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/types.go#L149-L155">resourcePolicy</a>: define the resource policy for each container. </li> </ul></td>
   </tr>
   <tr>
     <td><code>env</code></td>

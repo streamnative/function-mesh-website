@@ -49,24 +49,24 @@ The following diagram illustrates the architecture for Function Mesh.
 - [Installation](/install-function-mesh.md)
 - Functions
   - [Pulsar Functions overview](/functions/function-overview.md)
-  - [Pulsar Functions CRD configurations](/functions/function-crd.md)
+  - [Pulsar Functions CRD configurations](/reference/crd-config/function-crd.md)
   - [Run Pulsar Functions](/functions/run-function/run-java-function.md)
   - [Monitor Pulsar Functions](/functions/function-monitor.md)
   - [Debug Pulsar Functions](/functions/function-debug.md)
 - Connectors
   - [Pulsar connectors overview](/connectors/pulsar-io-overview.md)
   - Pulsar connector CRD configurations
-    - [Source CRD configurations](/connectors/io-crd-config/source-crd-config.md)
-    - [Sink CRD configurations](/connectors/io-crd-config/sink-crd-config.md)
+    - [Source CRD configurations](/reference/crd-config/source-crd-config.md)
+    - [Sink CRD configurations](/reference/crd-config/sink-crd-config.md)
   - [Run Pulsar connectors](/connectors/run-connector.md)
   - [Monitor Pulsar connectors](/connectors/pulsar-io-monitoring.md)
   - [Debug Pulsar connectors](/connectors/pulsar-io-debug.md)
 - Function Mesh
-  - [Function Mesh CRD configurations](/function-mesh/function-mesh-crd.md)
+  - [Function Mesh CRD configurations](/reference/crd-config/function-mesh-crd.md)
   - [Run Function Mesh](/function-mesh/run-function-mesh.md)
   - Reference
-    - [General options](/function-mesh-worker/reference/general-option.md)
-    - [Customizable options](/function-mesh-worker/reference/customizable-option.md)
+    - [General options](/reference/function-mesh-worker/general-option.md)
+    - [Customizable options](/reference/function-mesh-worker/customizable-option.md)
 - [Scaling](/scaling.md)
 - Migration
   - [Migrate Pulsar Functions](/migration/migrate-function.md)

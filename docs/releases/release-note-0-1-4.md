@@ -16,7 +16,7 @@ Function Mesh is a valuable tool for users who are seeking cloud-native serverle
 
 ## New Features and Enhancements
 
-- Provide [Function](/functions/function-crd.md), [source](/connectors/io-crd-config/source-crd-config.md), [sink](/connectors/io-crd-config/sink-crd-config.md), and [FunctionMesh](/function-mesh/function-mesh-crd.md) Custom Resource Definitions (CRDs) to manages the whole lifecycle of a Pulsar Functions, Pulsar IO connectors, and your event streaming application.
+- Provide [Function](/reference/crd-config/function-crd.md), [source](/reference/crd-config/source-crd-config.md), [sink](/reference/crd-config/sink-crd-config.md), and [FunctionMesh](/reference/crd-config/function-mesh-crd.md) Custom Resource Definitions (CRDs) to manages the whole lifecycle of a Pulsar Functions, Pulsar IO connectors, and your event streaming application.
 
 - Support deploying Function Mesh to Kubernetes clusters through Helm.
 

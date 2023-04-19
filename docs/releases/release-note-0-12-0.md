@@ -8,7 +8,7 @@ Here are some highlights of this release. For a full list of updates available f
 
 ## Enhance Pod security context and container security context
 
-In previous releases, Function Mesh Operator applied a security context to the Pods. To ensure Pod and container security, the Pods should follow the [`Restricted` policy](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted). Therefore, in this release, we updated some codes to enhance Pod security context and container security context. For details, see [security context](/function-mesh/function-mesh-crd.md#security-context).
+In previous releases, Function Mesh Operator applied a security context to the Pods. To ensure Pod and container security, the Pods should follow the [`Restricted` policy](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted). Therefore, in this release, we updated some codes to enhance Pod security context and container security context. For details, see [security context](/reference/crd-config/function-mesh-crd.md#security-context).
 
 ## Support scaling `replicas` to zero when HPA is disabled
 

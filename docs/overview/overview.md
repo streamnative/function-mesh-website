@@ -80,10 +80,10 @@ The foundational concepts described above are delivered as Kubernetes Custom Res
 
 The available Function Mesh CRDs are:
 
-- [**Function**](/functions/function-crd.md): The `Function` resource automatically manages the whole lifecycle of a Pulsar Function.
-- [**Source**](/connectors/io-crd-config/source-crd-config.md): The `Source` resource automatically manages the whole lifecyle of a Pulsar Source connector.
-- [**Sink**](/connectors/io-crd-config/sink-crd-config.md): The `Sink` resource automatically manages the whole lifecycle of a Pulsar Sink connector.
-- [**FunctionMesh**](/function-mesh/function-mesh-crd.md): The `FunctionMesh` resource automatically manages the whole lifecycle of your event streaming application. It controls the creation of other objects to ensure that the **functions** and **connectors** defined in your mesh are running and they are connected via the defined **streams**. 
+- [**Function**](/reference/crd-config/function-crd.md): The `Function` resource automatically manages the whole lifecycle of a Pulsar Function.
+- [**Source**](/reference/crd-config/source-crd-config.md): The `Source` resource automatically manages the whole lifecycle of a Pulsar Source connector.
+- [**Sink**](/reference/crd-config/sink-crd-config.md): The `Sink` resource automatically manages the whole lifecycle of a Pulsar Sink connector.
+- [**FunctionMesh**](/reference/crd-config/function-mesh-crd.md): The `FunctionMesh` resource automatically manages the whole lifecycle of your event streaming application. It controls the creation of other objects to ensure that the **functions** and **connectors** defined in your mesh are running and they are connected via the defined **streams**. 
 
 A typical user workflow is illustrated in Figure 6.
 
@@ -128,7 +128,6 @@ Figure 7. The Function Mesh architecture
 - [Installation](/install-function-mesh.md)
 - Functions
   - [Pulsar Functions overview](/functions/function-overview.md)
-  - [Pulsar Functions CRD configurations](/functions/function-crd.md)
   - Package Pulsar Functions
     - [Overview](/functions/package-function/package-function-overview.md)  
     - [Package Java Functions](/functions/package-function/package-function-java.md)
@@ -145,29 +144,30 @@ Figure 7. The Function Mesh architecture
   - [Debug Pulsar Functions](/functions/function-debug.md)
 - Connectors
   - [Pulsar connectors overview](/connectors/pulsar-io-overview.md)
-  - Pulsar connector CRD configurations
-    - [Source CRD configurations](/connectors/io-crd-config/source-crd-config.md)
-    - [Sink CRD configurations](/connectors/io-crd-config/sink-crd-config.md)
   - [Run Pulsar connectors](/connectors/run-connector.md)
   - [Monitor Pulsar connectors](/connectors/pulsar-io-monitoring.md)
   - [Debug Pulsar connectors](/connectors/pulsar-io-debug.md)
 - Meshes
   - [Function Mesh overview](/function-mesh/function-mesh-overview.md)
-  - [Function Mesh CRD configurations](/function-mesh/function-mesh-crd.md)
   - [Run Function Mesh](/function-mesh/run-function-mesh.md)
 - Function Mesh Worker
   - [Function Mesh Worker service overview](/function-mesh-worker/function-mesh-worker-overview.md)
   - [Deploy Function Mesh Worker service](/function-mesh-worker/deploy-mesh-worker.md)
   - [Manage built-in connectors](/function-mesh-worker/manage-builtin-connectors.md)
-  - Reference
-    - [General options](/function-mesh-worker/reference/general-option.md)
-    - [Customizable options](/function-mesh-worker/reference/customizable-option.md)
-    - [REST APIs](/function-mesh-worker/reference/rest-api.md)
 - [Scaling](/scaling.md)
 - Migration
   - [Migrate Pulsar Functions](/migration/migrate-function.md)
 - Reference
   - [Function Mesh Operator configurations](/reference/function-mesh-config.md)
+  - CRD configurations
+    - [Pulsar Functions CRD configurations](/reference/crd-config/function-crd.md)
+    - [Source CRD configurations](/reference/crd-config/source-crd-config.md)
+    - [Sink CRD configurations](/reference/crd-config/sink-crd-config.md)
+    - [Function Mesh CRD configurations](/reference/crd-config/function-mesh-crd.md)
+  - Function Mesh Worker configurations
+    - [General options](/reference/function-mesh-worker/general-option.md)
+    - [Customizable options](/reference/function-mesh-worker/customizable-option.md)
+    - [REST APIs](/reference/function-mesh-worker/rest-api.md)
 - Releases
   - [Release notes v0.12.0](/releases/release-note-0-12-0.md)
   - [Release notes v0.11.0](/releases/release-note-0-11-0.md)

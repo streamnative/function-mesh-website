@@ -21,7 +21,7 @@ This section describes how to submit a window function through a function CRD.
 
 1. Define a window function in a YAML file.
 
-    This example shows how to publish a `java-window-function:v1` window function to a Pulsar cluster. You can use the `spec.windowConfig` option to specify the window function configurations. For details, see [window function configurations](/functions/function-crd.md#window-function-configurations).
+    This example shows how to publish a `java-window-function:v1` window function to a Pulsar cluster. You can use the `spec.windowConfig` option to specify the window function configurations. For details, see [window function configurations](/reference/crd-config/function-crd.md#window-function-configurations).
 
     ```yaml
     apiVersion: compute.functionmesh.io/v1alpha1

@@ -99,7 +99,7 @@ Function Mesh provides Pulsar cluster configurations in the Function, Source, an
     <td><code>authConfig</code></td>
     <td>The authentication configurations of the Pulsar cluster. Currently, you can only configure generic authentication and <a href="https://oauth.net/">OAuth2 authentication</a> through this field. For other authentication methods, you can configure them using the <code>authSecret</code> field. <p><b>Generic authentication</b></p>
     <ul>
-      <li><code>clientAuthenticationParameters</code>: sp specify the client authentication parameters.</li>
+      <li><code>clientAuthenticationParameters</code>: specify the client authentication parameters.</li>
       <li><code>clientAuthenticationPlugin</code>: specify the client authentication plugin.</li>
     </ul>
     <p><b>OAuth2 authentication</b></p>

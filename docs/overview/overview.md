@@ -169,6 +169,7 @@ Figure 7. The Function Mesh architecture
     - [Customizable options](/reference/function-mesh-worker/customizable-option.md)
     - [REST APIs](/reference/function-mesh-worker/rest-api.md)
 - Releases
+  - [Release notes v0.13.0](/releases/release-note-0-13-0.md)
   - [Release notes v0.12.0](/releases/release-note-0-12-0.md)
   - [Release notes v0.11.0](/releases/release-note-0-11-0.md)
   - [Release notes v0.10.0](/releases/release-note-0-10-0.md)

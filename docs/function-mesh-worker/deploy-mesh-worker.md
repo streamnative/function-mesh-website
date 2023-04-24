@@ -73,7 +73,7 @@ To start the Function Mesh Worker service in Docker, follow these steps.
     To ensure the Function Mesh worker service and the `pulsar-admin` CLI tool work together, you should start a Pulsar Proxy. For details, see [configure Pulsar Proxy](https://pulsar.apache.org/docs/next/functions-worker-run-separately#configure-proxies-for-standalone-function-workers).
 
     ```bash
-    ./bin/pulsar-admin --admin-url  <web_service_url> functions status --tenant <tenant_name> --namespace <namespace_name> --name <function_name>
+    ./bin/pulsar-admin functions create --tenant <tenant_name> --namespace <namespace_name> --name <function_name> --className org.apache.pulsar.functions.api.examples.ExclamationFunction --inputs <input_topic> --jar /pulsar/examples/api-examples.jar
     ```
 
     The output is similar to:
@@ -81,27 +81,7 @@ To start the Function Mesh Worker service in Docker, follow these steps.
     **Output**
 
     ```bash
-    {
-    "numInstances" : 1,
-    "numRunning" : 1,
-    "instances" : [ {
-      "instanceId" : 0,
-      "status" : {
-      "running" : true,
-      "error" : "",
-      "numRestarts" : 0,
-      "numReceived" : 0,
-      "numSuccessfullyProcessed" : 0,
-      "numUserExceptions" : 0,
-      "latestUserExceptions" : [ ],
-      "numSystemExceptions" : 0,
-      "latestSystemExceptions" : [ ],
-      "averageLatency" : 0.0,
-      "lastInvocationTime" : 0,
-      "workerId" : ""
-      }
-    } ]
-    }
+    Created successfully
     ```
 
 ### Run Function Mesh Worker service in Kubernetes
@@ -157,7 +137,7 @@ To start the Function Mesh Worker service in Kubernetes, follow these steps.
     To ensure the Function Mesh worker service and the `pulsar-admin` CLI tool work together, you should start a Pulsar Proxy. For details, see [configure Pulsar Proxy](https://pulsar.apache.org/docs/next/functions-worker-run-separately#configure-proxies-for-standalone-function-workers).
 
     ```bash
-    ./bin/pulsar-admin --admin-url  <web_service_url> functions status --tenant <tenant_name> --namespace <namespace_name> --name <function_name>
+    ./bin/pulsar-admin functions create --tenant <tenant_name> --namespace <namespace_name> --name <function_name> --className org.apache.pulsar.functions.api.examples.ExclamationFunction --inputs <input_topic> --jar /pulsar/examples/api-examples.jar
     ```
 
     The output is similar to:
@@ -165,27 +145,7 @@ To start the Function Mesh Worker service in Kubernetes, follow these steps.
     **Output**
 
     ```bash
-    {
-    "numInstances" : 1,
-    "numRunning" : 1,
-    "instances" : [ {
-      "instanceId" : 0,
-      "status" : {
-      "running" : true,
-      "error" : "",
-      "numRestarts" : 0,
-      "numReceived" : 0,
-      "numSuccessfullyProcessed" : 0,
-      "numUserExceptions" : 0,
-      "latestUserExceptions" : [ ],
-      "numSystemExceptions" : 0,
-      "latestSystemExceptions" : [ ],
-      "averageLatency" : 0.0,
-      "lastInvocationTime" : 0,
-      "workerId" : ""
-      }
-    } ]
-    }
+    Created successfully
     ```
 
 ## Deploy Function Mesh Worker service with Pulsar brokers
@@ -277,7 +237,7 @@ To start the Function Mesh Worker service, follow these steps.
 5. Verify that the Function Mesh Worker service is started successfully with the `pulsar-admin` CLI tool.
 
     ```bash
-    ./bin/pulsar-admin --admin-url  <web_service_url> functions status --tenant <tenant_name> --namespace <namespace_name> --name <function_name>
+    ./bin/pulsar-admin functions create --tenant <tenant_name> --namespace <namespace_name> --name <function_name> --className org.apache.pulsar.functions.api.examples.ExclamationFunction --inputs <input_topic> --jar /pulsar/examples/api-examples.jar
     ```
 
     The output is similar to:
@@ -285,25 +245,5 @@ To start the Function Mesh Worker service, follow these steps.
     **Output**
 
     ```bash
-    {
-    "numInstances" : 1,
-    "numRunning" : 1,
-    "instances" : [ {
-      "instanceId" : 0,
-      "status" : {
-      "running" : true,
-      "error" : "",
-      "numRestarts" : 0,
-      "numReceived" : 0,
-      "numSuccessfullyProcessed" : 0,
-      "numUserExceptions" : 0,
-      "latestUserExceptions" : [ ],
-      "numSystemExceptions" : 0,
-      "latestSystemExceptions" : [ ],
-      "averageLatency" : 0.0,
-      "lastInvocationTime" : 0,
-      "workerId" : ""
-      }
-    } ]
-    }
+    Created successfully
     ```

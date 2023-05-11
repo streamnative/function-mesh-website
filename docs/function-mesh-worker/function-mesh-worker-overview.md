@@ -22,7 +22,16 @@ In previous releases, Function Mesh Worker service used the super admin account 
 
 > **Note**
 >
-> Currently, only OAuth2 authentication is supported.
+> Currently, only OAuth2 and Token authentication is supported.
+
+To enable separate authentication, you need to configure Function Mesh Worker Service like below:
+
+```yaml
+functions:
+  configData:
+    functionsWorkerServiceCustomConfigs:
+      usingInsecureAuth: false # default is true
+```
 
 ### OAuth2 authentication
 
@@ -37,12 +46,17 @@ data:
       "client_secret": "xxxx",
       "issuer_url": "xxx"
     }
-  clientAuthenticationParameters: {"privateKey":"file:///${SOME-PATH-OF-FILE}","issuerUrl":"${OAUTH-ISSUER-URL}","audience":"${OAUTH-AUDIENCE}","scope":"${OAUTH-SCOPE}"}
 kind: Secret
 metadata:
-  name: ${OAUTH-CLIENT-NAME}
+  name: any-name
+  annotations:
+    cloud.streamnative.io/service-account.email: ${OAUTH-CLIENT-ROLE}
 type: Opaque
 ```
+
+### Token authentication
+
+For clients that use Token authentication, nothing is required to do. FunctionMeshWorkerService will take the token passed from client and pass it to FunctionMesh
 
 ## Version matrix
 

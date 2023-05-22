@@ -78,6 +78,7 @@ To create a Function Mesh, follow these steps.
             extraDependenciesDir: random-dir/
             jar: pulsar-functions-api-examples.jar
             jarLocation: public/default/nlu-test-functionmesh-ex1
+          # following value must be provided if no auto-filling is enabled
           forwardSourceMessageProperty: true
           autoAck: true
           resources:

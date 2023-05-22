@@ -24,9 +24,9 @@ This table lists sink configurations.
 | `sinkConfig` | The sink connector configurations in YAML format.|
 | `timeout` | The message timeout in milliseconds. |
 | `negativeAckRedeliveryDelayMs`| The number of redelivered messages due to negative acknowledgement. |
-| `autoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
+| `autoAck` (Deprecated) | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
 | `maxMessageRetry` | How many times to process a message before giving up. |
-| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the sink connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`. When you set `ProcessingGuarantees` to `effectively_once`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`.|
+| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the sink connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`, and `manual`. When you set `ProcessingGuarantees` to `effectively_once`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`.|
 | `retainOrdering` | The sink connector consumes and processes messages in order. When you set `retainOrdering`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`. |
 | `retainKeyOrdering`| Configure whether to retain the key order of messages. When you set `retainKeyOrdering`, the runtime will set the subscription type to `KEY_SHARED`. By default, the subscription type is set to `SHARED`.  |
 | `deadLetterTopic` | The topic where all messages that were not processed successfully are sent. |

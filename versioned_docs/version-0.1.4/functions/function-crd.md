@@ -28,7 +28,7 @@ This table lists Pulsar Function configurations.
 | `processingGuarantee` | The processing guarantees (delivery semantics) applied to the function. Available values: `atleast_once`, `atmost_once`, `effectively_once`.|
 | `retainOrdering` | Function consumes and processes messages in order. |
 | `retainKeyOrdering`| Configure whether to retain the key order of messages. |
-| `subscriptionName` | Pulsar Functions’ subscription name if you want a specific subscription-name for the input-topic consumer. |
+| `subscriptionName` | Pulsar Functions' subscription name if you want a specific subscription name for the input-topic consumer. |
 | `cleanupSubscription` | Configure whether to clean up subscriptions. |
 | `subscriptionPosition` | The subscription position. |
 

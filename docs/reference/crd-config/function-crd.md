@@ -33,10 +33,10 @@ This table lists Pulsar Function configurations.
 | `retainOrdering` | The function consumes and processes messages in order. When you set `retainOrdering`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`. |
 | `retainKeyOrdering`| Configure whether to retain the key order of messages. When you set `retainKeyOrdering`, the runtime will set the subscription type to `KEY_SHARED`. By default, the subscription type is set to `SHARED`.  |
 | `skipToLatest` | Configure whether the consumer should skip to the latest message once the function instance restarts. |
-| `subscriptionName` | Pulsar Functions’ subscription name if you want a specific subscription-name for the input-topic consumer. |
+| `subscriptionName` | Pulsar Functions' subscription name if you want a specific subscription name for the input-topic consumer. |
 | `cleanupSubscription` | Configure whether to clean up subscriptions. |
 | `subscriptionPosition` | The subscription position. |
-| `pulsar` | The configurations about the Pulsar cluster. For details, see [messaging](#messaging). |
+| `pulsar` | The configurations of the Pulsar cluster. For details, see [messaging](#messaging). |
 | `VolumeClaimTemplates` | A list of claims that a Pod is allowed to reference. It provides stable storage using [PersistentVolumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) provisioned by a PersistentVolume Provisioner. |
 
 ## Annotations

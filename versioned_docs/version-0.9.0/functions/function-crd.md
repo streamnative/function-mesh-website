@@ -31,10 +31,10 @@ This table lists Pulsar Function configurations.
 | `forwardSourceMessageProperty` | Configure whether to pass message properties to a target topic. |
 | `retainOrdering` | Function consumes and processes messages in order. |
 | `retainKeyOrdering`| Configure whether to retain the key order of messages. |
-| `subscriptionName` | Pulsar Functions’ subscription name if you want a specific subscription-name for the input-topic consumer. |
+| `subscriptionName` | Pulsar Functions' subscription name if you want a specific subscription name for the input-topic consumer. |
 | `cleanupSubscription` | Configure whether to clean up subscriptions. |
 | `subscriptionPosition` | The subscription position. |
-| `pulsar` | The configurations about the Pulsar cluster. For details, see [messaging](#messaging). |
+| `pulsar` | The configurations of the Pulsar cluster. For details, see [messaging](#messaging). |
 
 ## Annotations
 

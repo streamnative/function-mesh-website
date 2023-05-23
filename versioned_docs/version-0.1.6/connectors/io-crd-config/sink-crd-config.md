@@ -25,7 +25,7 @@ This table lists sink configurations.
 | `processingGuarantee` | The processing guarantees (delivery semantics) applied to the sink connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`.|
 | `retainOrdering` | The sink connector consumes and processes messages in order. |
 | `deadLetterTopic` | The topic where all messages that were not processed successfully are sent. |
-| `subscriptionName` | The subscription name of the sink connector if you want a specific subscription-name for the input-topic consumer. |
+| `subscriptionName` | The subscription name of the sink connector if you want a specific subscription name for the input-topic consumer. |
 | `cleanupSubscription` | Configure whether to clean up subscriptions. |
 | `subscriptionPosition` | The subscription position. |
 

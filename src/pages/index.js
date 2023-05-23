@@ -121,7 +121,7 @@ const twoSections = [
         <ul>
           <li>
             A Kubernetes Operator to run Pulsar Functions and I/O connectors
-            natively on Kubernetes, unlocking the full power of Kubernetes’
+            natively on Kubernetes, unlocking the full power of Kubernetes'
             application deployment, scaling and management.
           </li>
           <li>

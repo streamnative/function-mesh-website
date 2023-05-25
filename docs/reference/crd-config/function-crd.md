@@ -36,7 +36,8 @@ This table lists Pulsar Function configurations.
 | `cleanupSubscription` | Configure whether to clean up subscriptions. |
 | `subscriptionPosition` | The subscription position. |
 | `pulsar` | The configurations about the Pulsar cluster. For details, see [messaging](#messaging). |
-| `VolumeClaimTemplates` | A list of claims that a Pod is allowed to reference. It provides stable storage using [PersistentVolumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) provisioned by a PersistentVolume Provisioner. |
+| `VolumeClaimTemplates` | A list of claims that a Pod is allowed to reference. It provides stable storage using [PersistentVolumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) provisioned by a PersistentVolume Provisioner. This property is specified at the first time when you create the function and it cannot be modified when you update the resource. |
+| `persistentVolumeClaimRetentionPolicy` | Configure whether and how PVCs are deleted during the lifecycle of a StatefulSet. Available options are `whenDeleted` and `whenScaled`. <br >- `whenDeleted`: configure the volume retention behavior that applies when the StatefulSet is deleted. <br >- `whenScaled`: configure the volume retention behavior that applies when the replica count of the StatefulSet is deleted. |
 
 ## Annotations
 

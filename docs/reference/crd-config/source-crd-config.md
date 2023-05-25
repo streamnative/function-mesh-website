@@ -107,7 +107,7 @@ Function Mesh provides Pulsar cluster configurations in the Function, Source, an
   </tr>
   <tr>
     <td><code>cleanupAuthConfig</code></td>
-    <td>The authentication configurations for removing subscriptions and intermediate topics. You can configure generic authentication or <a href="https://oauth.net/">OAuth2 authentication</a> through this field. <p><b>Generic authentication</b></p>
+    <td>The authentication configurations for removing subscriptions and intermediate topics. You can configure generic authentication or <a href="https://oauth.net/">OAuth2 authentication</a> through this field. If not provided, the `authConfig` will be used. <p><b>Generic authentication</b></p>
     <ul>
       <li><code>clientAuthenticationParameters</code>: specify the client authentication parameters.</li>
       <li><code>clientAuthenticationPlugin</code>: specify the client authentication plugin.</li>

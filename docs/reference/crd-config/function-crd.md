@@ -21,6 +21,7 @@ This table lists Pulsar Function configurations.
 | `ShowPreciseParallelism` | Configure whether to show the precise parallelism. If it is set to `true`, the `Parallelism` is equal to value of the `replicas` parameter. In this situation, when you update the value of the `replicas` parameter, it will cause all Pods to be recreated. By default, it is set to `false`.|
 | `minReplicas`| The minimum number of instances that you want to run for a function. If it is set to `0`, it means to stop the function. By default, it is set to `1`. When HPA auto-scaling is enabled, the HPA controller scales the Pods up / down based on the values of the `minReplicas` and `maxReplicas` options. The number of the Pods should be greater than the value of the `minReplicas` and be smaller than the value of the `maxReplicas`.  |
 | `downloaderImage` | The image of the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) that is used to download a package from Pulsar if the [download path](#packages) is specified. By default, the `downloaderImage` is an [official pulsarctl image](https://hub.docker.com/r/streamnative/pulsarctl). |
+| `cleanupImage` | The image that is used to remove the subscriptions created or used by a function when the function is deleted. If no clean-up image is set, the runner image will be used. |
 | `maxReplicas`| The maximum number of instances that you want to run for this Pulsar function. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the Functions controller automatically scales the Pulsar Functions based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
 | `timeout` | The message timeout in milliseconds. |
 | `deadLetterTopic` | The topic where all messages that were not processed successfully are sent. This parameter is not supported in Python Functions. |
@@ -33,7 +34,7 @@ This table lists Pulsar Function configurations.
 | `retainOrdering` | The function consumes and processes messages in order. When you set `retainOrdering`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`. |
 | `retainKeyOrdering`| Configure whether to retain the key order of messages. When you set `retainKeyOrdering`, the runtime will set the subscription type to `KEY_SHARED`. By default, the subscription type is set to `SHARED`.  |
 | `subscriptionName` | Pulsar Functions’ subscription name if you want a specific subscription-name for the input-topic consumer. |
-| `cleanupSubscription` | Configure whether to clean up subscriptions. |
+| `cleanupSubscription` | Configure whether to clean up subscriptions that are created or used by a function when the function is deleted. |
 | `subscriptionPosition` | The subscription position. |
 | `pulsar` | The configurations about the Pulsar cluster. For details, see [messaging](#messaging). |
 | `VolumeClaimTemplates` | A list of claims that a Pod is allowed to reference. It provides stable storage using [PersistentVolumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) provisioned by a PersistentVolume Provisioner. This property is specified at the first time when you create the function and it cannot be modified when you update the resource. |
@@ -98,7 +99,7 @@ Function Mesh provides Pulsar cluster configurations in the Function, Source, an
   </tr>
   <tr>
     <td><code>authConfig</code></td>
-    <td>The authentication configurations of the Pulsar cluster. Currently, you can only configure generic authentication and <a href="https://oauth.net/">OAuth2 authentication</a> through this field. For other authentication methods, you can configure them using the <code>authSecret</code> field. <p><b>Generic authentication</b></p>
+    <td>The authentication configurations of the Pulsar cluster. Currently, you can only configure generic authentication or <a href="https://oauth.net/">OAuth2 authentication</a> through this field. For other authentication methods, you can configure them using the <code>authSecret</code> field. <p><b>Generic authentication</b></p>
     <ul>
       <li><code>clientAuthenticationParameters</code>: specify the client authentication parameters.</li>
       <li><code>clientAuthenticationPlugin</code>: specify the client authentication plugin.</li>
@@ -119,6 +120,23 @@ Function Mesh provides Pulsar cluster configurations in the Function, Source, an
       <ul>
         <li><code>clientAuthenticationPlugin</code>: specify the client authentication plugin.</li>
         <li><code>clientAuthenticationParameters</code>: specify the client authentication parameters.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>cleanupAuthConfig</code></td>
+    <td>The authentication configurations for removing subscriptions and intermediate topics. You can configure generic authentication or <a href="https://oauth.net/">OAuth2 authentication</a> through this field. If not provided, the `authConfig` will be used. <p><b>Generic authentication</b></p>
+    <ul>
+      <li><code>clientAuthenticationParameters</code>: specify the client authentication parameters.</li>
+      <li><code>clientAuthenticationPlugin</code>: specify the client authentication plugin.</li>
+    </ul>
+    <p><b>OAuth2 authentication</b></p>
+      <ul>
+        <li><code>audience</code>: specify the OAuth2 resource server identifier.</li>
+        <li><code>issuerUrl</code>: specify the URL of the OAuth2 identity provider that allows a Pulsar client to obtain an access token.</li>
+        <li><code>scope</code>: specify the scope of an access request. For more information, see <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-3.3">access token scope</a>.</li>
+        <li><code>keySecretName</code>: specify the name of the Kubernetes Secret.</li>
+        <li><code>keySecretKey</code>: specify the key of the Kubernetes Secret that contains the content of the OAuth2 private key.</li>
       </ul>
     </td>
   </tr>

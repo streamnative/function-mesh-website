@@ -20,6 +20,7 @@ This table lists source configurations.
 | `ShowPreciseParallelism` | Configure whether to show the precise parallelism. If it is set to `true`, the `Parallelism` is equal to value of the `replicas` parameter. In this situation, when you update the value of the `replicas` parameter, it will cause all Pods to be recreated. By default, it is set to `false`.|
 | `minReplicas`| The minimum number of instances that you want to run for a source connector. If it is set to `0`, it means to stop the source connector. By default, it is set to `1`. When HPA auto-scaling is enabled, the HPA controller scales the Pods up / down based on the values of the `minReplicas` and `maxReplicas` options. The number of the Pods should be greater than the value of the `minReplicas` and be smaller than the value of the `maxReplicas`.  |
 | `downloaderImage` | The image for installing the [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) that is used to download packages or functions from Pulsar if the [download path](#packages) is specified. |
+| `cleanupImage` | The image that is used to delete the subscriptions created or used by a source when the source is deleted. If no clean-up image is set, the runner image will be used. |
 | `maxReplicas`| The maximum number of instances that you want to run for this source connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the source controller automatically scales the source connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
 | `sourceConfig` | The source connector configurations in YAML format. |
 | `processingGuarantee` | The processing guarantees (delivery semantics) applied to the source connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`, and `manual`. The `manual` option is only available for the runner image v2.11.0 or above.|
@@ -101,6 +102,23 @@ Function Mesh provides Pulsar cluster configurations in the Function, Source, an
       <ul>
         <li><code>clientAuthenticationPlugin</code>: specify the client authentication plugin.</li>
         <li><code>clientAuthenticationParameters</code>: specify the client authentication parameters.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>cleanupAuthConfig</code></td>
+    <td>The authentication configurations for removing subscriptions and intermediate topics. You can configure generic authentication or <a href="https://oauth.net/">OAuth2 authentication</a> through this field. If not provided, the `authConfig` will be used. <p><b>Generic authentication</b></p>
+    <ul>
+      <li><code>clientAuthenticationParameters</code>: specify the client authentication parameters.</li>
+      <li><code>clientAuthenticationPlugin</code>: specify the client authentication plugin.</li>
+    </ul>
+    <p><b>OAuth2 authentication</b></p>
+      <ul>
+        <li><code>audience</code>: specify the OAuth2 resource server identifier.</li>
+        <li><code>issuerUrl</code>: specify the URL of the OAuth2 identity provider that allows a Pulsar client to obtain an access token.</li>
+        <li><code>scope</code>: specify the scope of an access request. For more information, see <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-3.3">access token scope</a>.</li>
+        <li><code>keySecretName</code>: specify the name of the Kubernetes Secret.</li>
+        <li><code>keySecretKey</code>: specify the key of the Kubernetes Secret that contains the content of the OAuth2 private key.</li>
       </ul>
     </td>
   </tr>

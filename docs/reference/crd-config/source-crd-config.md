@@ -23,10 +23,10 @@ This table lists source configurations.
 | `cleanupImage` | The image that is used to delete the subscriptions created or used by a source when the source is deleted. If no clean-up image is set, the runner image will be used. |
 | `maxReplicas`| The maximum number of instances that you want to run for this source connector. When the value of the `maxReplicas` parameter is greater than the value of `replicas`, it indicates that the source controller automatically scales the source connector based on the CPU usage. By default, `maxReplicas` is set to 0, which indicates that auto-scaling is disabled. |
 | `sourceConfig` | The source connector configurations in YAML format. |
-| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the source connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`.|
+| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the source connector. Available values: `atleast_once`, `atmost_once`, `effectively_once`, and `manual`. The `manual` option is only available for the runner image v2.11.0 or above.|
 | `forwardSourceMessageProperty` | Configure whether to pass message properties to a target topic.  |
 | `batchSourceConfig` | The batch source configurations in YAML format. You can configure the following properties. <br/> - `discoveryTriggererClassName`: the class that is used for triggering the discovery process. <br/> - `discoveryTriggererConfig`: the configurations that are required for initiating the discovery Triggerer. |
-| `pulsar` | The configurations about the Pulsar cluster. For details, see [messaging](#messaging). |
+| `pulsar` | The configurations of the Pulsar cluster. For details, see [messaging](#messaging). |
 
 ## Annotations
 
@@ -176,7 +176,7 @@ The output topics of a Pulsar Function. This table lists options available for t
 | `topics` | The output topic of a Pulsar Function (If none is specified, no output is written). | 
 | `sinkSerdeClassName` | The map of output topics to SerDe class names (as a JSON string). |
 | `sinkSchemaType` | The built-in schema type or custom schema class name to be used for messages sent by the function.|
-| `producerConf` | The producer specifications. Available options: <br />- `maxPendingMessages`: the maximum number of pending messages. <br />- `maxPendingMessagesAcrossPartitions`: the maximum number of pending messages across partitions. <br />- `useThreadLocalProducers`: configure whether the producer uses a thread. <br />- `cryptoConfig`: cryptography configurations of the producer. <br />- `batchBuilder`: support key-based batcher. 
+| `producerConf` | The producer specifications. Available options:  <br />- `batchBuilder`: The type of batch construction method. Support the key-based batcher. <br />- `compressionType`: the message data compression type used by a producer. Available options are `LZ4`, `NONE`, `ZLIB`, `ZSTD`, and `SNAPPY`. By default, it is set to `LZ4`. This option is only available for the runner image v3.0.0 or above. <br />- `cryptoConfig`: the cryptography configurations of the producer. <br />- `maxPendingMessages`: the maximum number of pending messages. <br />- `maxPendingMessagesAcrossPartitions`: the maximum number of pending messages across all partitions. <br />- `useThreadLocalProducers`: configure whether the producer uses a thread. |
 | `customSchemaSinks` | The map of output topics to Schema class names (as a JSON string). |
 
 ## Resources

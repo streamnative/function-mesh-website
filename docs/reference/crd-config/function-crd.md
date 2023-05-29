@@ -27,9 +27,9 @@ This table lists Pulsar Function configurations.
 | `deadLetterTopic` | The topic where all messages that were not processed successfully are sent. This parameter is not supported in Python Functions. |
 | `funcConfig` | Pulsar Functions configurations in YAML format. |
 | `logTopic` | The topic to which the logs of a Pulsar Function are produced. |
-| `autoAck` | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
+| `autoAck` (Deprecated) | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
 | `maxMessageRetry` | How many times to process a message before giving up. |
-| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the function. Available values: `atleast_once`, `atmost_once`, `effectively_once`. When you set `ProcessingGuarantees` to `effectively_once`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`.|
+| `processingGuarantee` | The processing guarantees (delivery semantics) applied to the function. Available values: `atleast_once`, `atmost_once`, `effectively_once`, and `manual`. When you set `ProcessingGuarantees` to `effectively_once`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`. The `manual` option is only available for the runner image v2.11.0 or above.|
 | `forwardSourceMessageProperty` | Configure whether to pass message properties to a target topic. |
 | `retainOrdering` | The function consumes and processes messages in order. When you set `retainOrdering`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`. |
 | `retainKeyOrdering`| Configure whether to retain the key order of messages. When you set `retainKeyOrdering`, the runtime will set the subscription type to `KEY_SHARED`. By default, the subscription type is set to `SHARED`.  |
@@ -221,7 +221,7 @@ The output topics of a Pulsar Function. This table lists options available for t
 | `topics` | The output topic of a Pulsar Function (If none is specified, no output is written). | 
 | `sinkSerdeClassName` | The map of output topics to SerDe class names (as a JSON string). |
 | `sinkSchemaType` | The built-in schema type or custom schema class name to be used for messages sent by the function.|
-| `producerConf` | The producer specifications. Available options: < br />- `maxPendingMessages`: the maximum number of pending messages. <br />- `maxPendingMessagesAcrossPartitions`: the maximum number of pending messages across partitions. <br />- `useThreadLocalProducers`: configure whether the producer uses a thread. <br />- `cryptoConfig`: cryptography configurations of the producer. <br />- `batchBuilder`: support key-based batcher.
+| `producerConf` | The producer specifications. Available options:  <br />- `batchBuilder`: The type of batch construction method. Support the key-based batcher. <br />- `compressionType`: the message data compression type used by a producer. Available options are `LZ4`, `NONE`, `ZLIB`, `ZSTD`, and `SNAPPY`. By default, it is set to `LZ4`. This option is only available for the runner image v3.0.0 or above. <br />- `cryptoConfig`: the cryptography configurations of the producer. <br />- `maxPendingMessages`: the maximum number of pending messages. <br />- `maxPendingMessagesAcrossPartitions`: the maximum number of pending messages across all partitions. <br />- `useThreadLocalProducers`: configure whether the producer uses a thread. |
 | `customSchemaSinks` | The map of output topics to Schema class names (as a JSON string). |
 
 ## Resources

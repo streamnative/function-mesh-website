@@ -92,7 +92,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Release Notes',
-      items: ['releases/release-note-0-13-0','releases/release-note-0-12-0','releases/release-note-0-11-0', 'releases/release-note-0-10-0', 'releases/release-note-0-9-0', 'releases/release-note-0-8-0', 'releases/release-note-0-7-0', 'releases/release-note-0-6-0', 'releases/release-note-0-5-0', 'releases/release-note-0-4-0', 'releases/release-note-0-3-0', 'releases/release-note-0-2-0', 'releases/release-note-0-1-11', 'releases/release-note-0-1-9', 'releases/release-note-0-1-8','releases/release-note-0-1-7','releases/release-note-0-1-6','releases/release-note-0-1-5','releases/release-note-0-1-4'],
+      items: ['releases/release-note-0-14-0','releases/release-note-0-13-0','releases/release-note-0-12-0','releases/release-note-0-11-0', 'releases/release-note-0-10-0', 'releases/release-note-0-9-0', 'releases/release-note-0-8-0', 'releases/release-note-0-7-0', 'releases/release-note-0-6-0', 'releases/release-note-0-5-0', 'releases/release-note-0-4-0', 'releases/release-note-0-3-0', 'releases/release-note-0-2-0', 'releases/release-note-0-1-11', 'releases/release-note-0-1-9', 'releases/release-note-0-1-8','releases/release-note-0-1-7','releases/release-note-0-1-6','releases/release-note-0-1-5','releases/release-note-0-1-4'],
     }
   ],
 }

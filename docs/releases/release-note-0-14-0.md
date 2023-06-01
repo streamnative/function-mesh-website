@@ -8,7 +8,7 @@ Here are some highlights of this release. For a full list of updates available f
 
 ## Update the Statefulset configurations
 
-The `VolumeClaimTemplates` describes a list of claims that a Pod is allowed to reference. In previous releases, when you updated resources, some unmodified fields of the statefulset (or other Kubernetes resources) may be changed even with the same YAML file. This causes a failure in updating existing functions, sinks, or sources and results in an infinite reconcile loop. In this release, this property is specified at the first time when you create a function and it cannot be modified when you update the resource.
+The `VolumeClaimTemplates` describes a list of claims that a Pod is allowed to reference. In previous releases, when you updated resources, some unmodified fields of the statefulset (or other Kubernetes resources) may be changed even with the same YAML file. This causes a failure in updating existing functions, sinks, or sources and results in an infinite reconciliation loop. In this release, this property is specified at the first time when you create a function, and it cannot be modified when you update the resource.
 
 You can only update the following fields for a StatefulSet.
 
@@ -28,5 +28,5 @@ The Pulsar community introduced some `prototype` data properties. In this releas
 
 - Add the `Manual` delivery semantics to functions, sinks, and sources.
 - Add the `CompressionType` configuration to functions and sources.
-- Add the `SkipToLatest` to configuration to functions.
+- Add the `SkipToLatest` configuration to functions.
 - Deprecate the `autoAck` configuration.

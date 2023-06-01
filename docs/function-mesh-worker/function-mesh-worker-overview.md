@@ -79,3 +79,4 @@ This table lists the version mapping relationships between Function Mesh and Fun
 | v0.11.0| <br />- v2.10.3.5+ <br />- v2.9.4.4+ |
 | v0.12.0| <br />- v2.11.0.5+ <br />- v2.10.3.7+ <br />- v2.9.4.6+ |
 | v0.13.0| <br />- v2.11.0.6+ <br />- v2.10.3.8+ <br />- v2.9.4.7+ |
+| v0.14.0| <br />- v3.0.0.1+ <br />- v2.11.1.3+ <br />- v2.10.4.4+ <br />- v2.9.5.2+ |

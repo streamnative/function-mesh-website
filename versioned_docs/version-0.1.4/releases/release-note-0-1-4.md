@@ -8,7 +8,7 @@ Function Mesh v0.1.4 provides a serverless framework purpose-built for stream pr
 
 Function Mesh is a valuable tool for users who are seeking cloud-native serverless streaming solutions. Key benefits include:
 
-- Utilize the full power of Kubernetes Scheduler, including rebalancing, rescheduling, fault-tolerance, and more.
+- Utilize the full power of Kubernetes to provision, schedule, and even auto-scale Pulsar Functions and Pulsar IO connectors.
 
 - Make Pulsar Functions and connectors run natively in the cloud environment, which leads to greater possibilities when more resources become available in the cloud.
 

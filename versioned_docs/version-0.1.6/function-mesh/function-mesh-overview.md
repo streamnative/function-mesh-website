@@ -17,7 +17,7 @@ By providing a Kubernetes operator dedicated to Pulsar Functions, Function Mesh 
 - Utilize the full power of Kubernetes to provision, schedule, and even auto-scale Pulsar Functions and Pulsar IO connectors.
 ## How Function Mesh works
 
-Function Mesh is designed to run Pulsar Functions and connectors natively on Kubernetes. Instead of using the `pulsar-admin` CLI tool to send function requests to Pulsar clusters, you can use `kubectl` to submit a Function Mesh CRD directly to Kubernetes clusters. The installed Function Mesh operator launches functions and connectors individually, organize scheduling, and load balance them together.
+Function Mesh is designed to run Pulsar Functions and connectors natively on Kubernetes. Instead of using the `pulsar-admin` CLI tool to send function requests to Pulsar clusters, you can use `kubectl` to submit a Function Mesh CRD directly to Kubernetes clusters. The installed Function Mesh operator launches functions and connectors individually, organizes scheduling, and load-balances them together.
 
 Function Mesh stores both the functions and connectors metadata and running status directly in Kubernetes.
 

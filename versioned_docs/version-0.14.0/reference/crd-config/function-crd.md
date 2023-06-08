@@ -291,7 +291,7 @@ By default, the log level for Pulsar functions is `info`. Function Mesh supports
 | Critical | Description | Java runtime | Python runtime | Go runtime |
 |---|---|---|---|---|
 | `off` | Nothing will be logged. | ✔ | ✗ | ✗ |
-| `trace` | The logs that contain the most detailed messages.  | ✔ | ✔ |  ✔ |
+| `trace` | The logs that contain the most detailed messages.  | ✔ | ✗ |  ✔ |
 | `debug` | The logs that are used for interactive investigation during development. These logs primarily contain information useful for debugging and have no long-term value. | ✔ | ✔ |  ✔ |
 | `warn` | The logs that highlight an abnormal or unexpected event in the function, but do not cause the function to stop. | ✔ | ✔ |  ✔ |
 | `error` | The logs that highlight when the function is stopped due to a failure. These indicate a failure in the current activity, not an application-wide failure. | ✔ | ✔ |  ✔ |

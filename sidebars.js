@@ -52,11 +52,6 @@ module.exports = {
       label: 'Meshes',
       items: ['function-mesh/function-mesh-overview', 'function-mesh/run-function-mesh'],
     },
-    {
-      type: 'category',
-      label: 'Function Mesh Worker',
-      items: ['function-mesh-worker/function-mesh-worker-overview', 'function-mesh-worker/deploy-mesh-worker', 'function-mesh-worker/manage-builtin-connectors']
-    },
     'scaling',
     {
       type: 'category',
@@ -76,15 +71,6 @@ module.exports = {
             'reference/crd-config/source-crd-config',
             'reference/crd-config/sink-crd-config',
             'reference/crd-config/function-mesh-crd'
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Function Mesh Worker configurations',
-          items: [
-            'reference/function-mesh-worker/general-option',
-            'reference/function-mesh-worker/customizable-option',
-            'reference/function-mesh-worker/rest-api'
           ],
         },
       ],

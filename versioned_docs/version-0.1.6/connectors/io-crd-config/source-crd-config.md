@@ -104,6 +104,6 @@ Function Mesh supports customizing the Pod running connectors. This table lists 
 | `terminationGracePeriodSeconds` | It is the amount of time that Kubernetes gives for a Pod before terminating it. |
 | `volumes` | It is a list of volumes that can be mounted by containers belonging to a Pod. |
 | `imagePullSecrets` | It is an optional list of references to secrets in the same namespace for pulling any of the images used by a Pod. |
-| `serviceAccountName` | Specify the name of the service account which is used to run Pulsar Functions or connectors in the Function Mesh Worker service.|
+| `serviceAccountName` | Specify the name of the service account which is used to run Pulsar Functions or connectors.|
 | `initContainers` | Initialization containers belonging to a Pod. A typical use case could be using an Initialization container to download a remote JAR to a local path. |
 | `sidecars` | Sidecar containers run together with the main function container in a Pod. |

@@ -19,14 +19,6 @@ In the first release, both the authentication and TLS configurations are passed 
 
 In this release, we add the `extraDependenciesDir` option to the Java runtime. The `extraDependenciesDir` option is used to specify the dependent directory for the JAR package. Multiple libraries or JARs can be in that directory. Therefore, users can customize their own dependencies for the Java runtime to run Pulsar functions.
 
-## Add API access and JAR uploading configurations in Function Mesh Worker service
-
-Function Mesh Worker service can forward requests to the Kubernetes cluster. After Function Mesh Worker service is started, users can use the [pulsar-admin](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
-
-In this release, we add `functionsWorkerServiceCustomConfigs` to `WorkerConfig`. Therefore, users can pass some customized settings to the Function Mesh Worker service.
-
-We also provide the Pulsar cluster ConfigMap and the authentication Secret and pass the ConfigMap name and Secret name as the environment variables in Pulsar broker, so that the Function Mesh Java Proxy can refer to the configs when users manage connectors.
-
 ## Support installing CRDs with helm charts
 
 In the first release, we install CRDs by defining a YAML file and then using the `kubectl apply -f` command to apply it. In this release, we add the `crds` directory to Function Mesh helm charts. Therefore, users can directly use the `helm install` command to install Function Mesh CRDs.

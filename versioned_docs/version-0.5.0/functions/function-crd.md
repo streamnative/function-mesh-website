@@ -280,7 +280,7 @@ Function Mesh supports customizing the Pod running function instance. This table
   </tr>
   <tr>
     <td><code>serviceAccountName</code></td>
-    <td>Specify the name of the service account that is used to run Pulsar Functions or connectors in the Function Mesh Worker service.</td>
+    <td>Specify the name of the service account that is used to run Pulsar Functions or connectors.</td>
   </tr>
   <tr>
     <td><code>initContainers</code></td>

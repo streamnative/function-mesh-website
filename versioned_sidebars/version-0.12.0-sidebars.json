@@ -68,24 +68,6 @@
         "function-mesh/run-function-mesh"
       ]
     },
-    {
-      "type": "category",
-      "label": "Function Mesh Worker",
-      "items": [
-        "function-mesh-worker/function-mesh-worker-overview",
-        "function-mesh-worker/deploy-mesh-worker",
-        "function-mesh-worker/manage-builtin-connectors",
-        {
-          "type": "category",
-          "label": "Reference",
-          "items": [
-            "function-mesh-worker/reference/general-option",
-            "function-mesh-worker/reference/customizable-option",
-            "function-mesh-worker/reference/rest-api"
-          ]
-        }
-      ]
-    },
     "scaling",
     {
       "type": "category",

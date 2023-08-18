@@ -154,44 +154,6 @@
       ]
     },
     {
-      "collapsed": true,
-      "type": "category",
-      "label": "Function Mesh Worker",
-      "items": [
-        {
-          "type": "doc",
-          "id": "version-0.11.0/function-mesh-worker/function-mesh-worker-overview"
-        },
-        {
-          "type": "doc",
-          "id": "version-0.11.0/function-mesh-worker/deploy-mesh-worker"
-        },
-        {
-          "type": "doc",
-          "id": "version-0.11.0/function-mesh-worker/manage-builtin-connectors"
-        },
-        {
-          "collapsed": true,
-          "type": "category",
-          "label": "Reference",
-          "items": [
-            {
-              "type": "doc",
-              "id": "version-0.11.0/function-mesh-worker/reference/general-option"
-            },
-            {
-              "type": "doc",
-              "id": "version-0.11.0/function-mesh-worker/reference/customizable-option"
-            },
-            {
-              "type": "doc",
-              "id": "version-0.11.0/function-mesh-worker/reference/rest-api"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "type": "doc",
       "id": "version-0.11.0/scaling"
     },

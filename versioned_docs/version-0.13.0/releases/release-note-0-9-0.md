@@ -12,10 +12,6 @@ Kubernetes provides several [probes](https://kubernetes.io/docs/concepts/workloa
 
 For details about how to configure health checks, see [health checks](/reference/crd-config/function-crd.md#health-checks).
 
-## Support passing the `imageTag` through the custom runtime option
-
-Function Mesh uses [runner images](/reference/crd-config/function-crd.md#runner-images) as images of Pulsar functions, sources, and sinks. In this release, Function Mesh worker service supports passing the runner image tag configuration through the custom `runnerImageTag` runtime option. Therefore, the Function Mesh Controller can get the runner image tag and replace it based on configurations.
-
 ## Support validating Pulsar configurations using Webhook
 
 The `spec.pulsar` and `spec.pulsar.pulsarConfig` options are mandatory for creating and updating a Pulsar function, source, and sink. In practice, it is impossible to set default values for them. Therefore, in this release, a validating webhook is introduced to validate Pulsar configurations. For details, see [messaging](/reference/crd-config/function-crd.md#messaging).

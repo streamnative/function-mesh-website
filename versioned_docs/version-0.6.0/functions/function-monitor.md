@@ -4,7 +4,7 @@ category: functions
 id: function-monitor
 ---
 
-This document describes how to monitor Pulsar functions with Prometheus and `pulsar-admin` commands.
+This document describes how to monitor Pulsar functions with Prometheus.
 
 ## Monitoring with Prometheus
 
@@ -31,50 +31,3 @@ All the Pulsar Functions metrics are labelled with the following labels:
 | pulsar_function_received_total | Counter | The total number of messages received from source. |
 | pulsar_function_received_total_1min | Counter | The total number of messages received from source in the last 1 minute. |
 pulsar_function_user_metric_ | Summary|The user-defined metrics.
-
-## Monitoring with `pulsar-admin` CLI tool
-
-> **Note**
->
-> To use the `pulsar-admin` CLI tool to monitor Pulsar functions and connectors, you should start Function Mesh Worker service in advance. For details, see [work with `pulsar-admin` CLI tool](/install-function-mesh.md#work-with-pulsar-admin-cli-tool).
-
-To monitor a Pulsar function, you can perform the following operations.
-
-* [Get the information of a Pulsar function](#get).
-* [Get a list of running Pulsar functions](#list).
-* [Get the current status of a Pulsar function](#status).
-* [Get the current stats of a Pulsar function](#stats).
-
-For more information, see [Pulsar Functions CLIs](http://pulsar.apache.org/tools/pulsar-admin/2.8.0-SNAPSHOT/#functions).
-
-### `get`
-
-The `pulsar-admin functions get` command is used to get information about a Pulsar Function.
-
-```bash
-pulsar-admin functions get options
-```
-
-### `list`
-
-The `pulsar-admin functions list` command is used to lists all running Pulsar functions.
-
-```bash
-pulsar-admin functions list options
-```
-
-### `status`
-
-The `pulsar-admin functions status` command is used to check the current status of a Pulsar function.
-
-```bash
-pulsar-admin functions status options
-```
-
-### `stats`
-
-The `pulsar-admin functions stats` command is used to get the current stats of a Pulsar Function.
-
-```bash
-pulsar-admin functions stats options
-```

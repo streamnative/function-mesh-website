@@ -22,14 +22,6 @@ Function Mesh v0.7.0 provided a `downloaderImage` option to specify the image th
 
 In previous releases, Function Mesh did not provide good support for mapping from the `batchSourceConfig` option to the `sourceConfig` option. In this release, a `batchSourceConfig` option is introduced. Therefore, you can run a batch source connector with Function Mesh.
 
-## Manage built-in connectors with Function Mesh Worker service
-
-Pulsar distribution includes a set of common connectors that have been packaged and tested with the rest of Apache Pulsar. These connectors import/export data into/from some of the most commonly used data systems.
-
-Function Mesh Worker service requires a customized YAML file that contains the metadata of each built-in connector. The YAML file is placed in `conf/connectors.yaml`. This table outlines the configurable fields of built-in connectors.
-
-For details about how to use the Function Mesh Worker service to manage built-in connectors, see [manage built-in connectors](/function-mesh-worker/manage-builtin-connectors.md).
-
 ## Performance tuning
 
 In this release, a `javaOpts` option is introduced. This option can be used to specify some JVM options for better configuring JVM behaviors, including `exitOnOOMError`, Garbage Collection logs, Garbage Collection tuning, and so on.

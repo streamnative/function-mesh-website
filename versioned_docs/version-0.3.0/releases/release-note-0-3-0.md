@@ -13,7 +13,3 @@ In this release, Function Mesh supports the [admission control webhook](https://
 ## Support specifying an object as an unmanaged object
 
 In Kubernetes, [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) define an unstructured Key Value Map (KVM) that can be set by external tools to store and retrieve metadata. In this release, Function Mesh supports specifying Pulsar functions, sources, and sinks as unmanaged objects by using `annotations`. Therefore, the Controller will skip reconciling unmanaged objects in reconciliation loop. For details, see [Annotations](/functions/function-crd.md#annotations).
-
-## Support configuring trusted mode for Function Mesh Worker service
-
-To facilitate submitting Pulsar functions based on your requirements, Function Mesh Worker service provides some [customizable options](/function-mesh-worker/reference/customizable-option.md). However, some customizable options are only available in trusted mode. After you enable trusted mode, you can then override some default configurations across the Pulsar cluster.

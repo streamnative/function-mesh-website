@@ -23,5 +23,3 @@ Function Mesh is a valuable tool for users who are seeking cloud-native serverle
 - Provide a migration tool to migrate existing Pulsar Functions to Function Mesh.
 
 - Provide runner images on Apache Pulsar 2.7.1 to build event streaming applications using your favorite languages, such as Java, Python, and Go.
-
-- Provide the Function Mesh Worker service to manage connectors through the `pulsar-admin` CLI tool.

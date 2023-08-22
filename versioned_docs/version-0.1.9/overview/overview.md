@@ -147,9 +147,6 @@ Figure 7. The Function Mesh architecture
   - [Function Mesh overview](/function-mesh/function-mesh-overview.md)
   - [Function Mesh CRD configurations](/function-mesh/function-mesh-crd.md)
   - [Run Function Mesh](/function-mesh/run-function-mesh.md)
-- Function Mesh Worker
-  - [Function Mesh Worker service overview](/function-mesh-worker/function-mesh-worker-overview.md)
-  - [Deploy Function Mesh Worker service](/function-mesh-worker/deploy-mesh-worker.md)
 - [Scaling](/scaling.md)
 - Migration
   - [Migrate Pulsar Functions](/migration/migrate-function.md)

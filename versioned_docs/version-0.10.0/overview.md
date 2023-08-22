@@ -64,9 +64,6 @@ The following diagram illustrates the architecture for Function Mesh.
 - Function Mesh
   - [Function Mesh CRD configurations](/function-mesh/function-mesh-crd.md)
   - [Run Function Mesh](/function-mesh/run-function-mesh.md)
-  - Reference
-    - [General options](/function-mesh-worker/reference/general-option.md)
-    - [Customizable options](/function-mesh-worker/reference/customizable-option.md)
 - [Scaling](/scaling.md)
 - Migration
   - [Migrate Pulsar Functions](/migration/migrate-function.md)

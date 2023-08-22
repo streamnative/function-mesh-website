@@ -26,7 +26,9 @@ This table lists Pulsar Function configurations.
 | `timeout` | The message timeout in milliseconds. |
 | `deadLetterTopic` | The topic where all messages that were not processed successfully are sent. This parameter is not supported in Python Functions. |
 | `funcConfig` | Pulsar Functions configurations in YAML format. |
-| `logTopic` | The topic to which the logs of a Pulsar Function are produced. |
+| `logTopic` | If it is configured, Function Mesh will produce logs of the function to this log topic. Otherwise, you can only view the printed logs for the Pod.  |
+| `logTopicAgent` | The log agent that reads the logs and sends them to the Pulsar log topic (`logTopic`). Available options are `runtime` and `sidecar`. </br> - `runtime`: when you set the `logTopic` option, Function Mesh will send the predefined logs of the function to the Pulsar log topic (`logTopic`). </br> - `runtime`: when you set the `logTopic` option, Function Mesh will send all logs of the pod to the Pulsar log topic (`logTopic`) through the [Pulsar Beat output plugin](https://docs.streamnative.io/hub/logging-pulsar-beat-output-master.undefined). |
+| `filebeatImage` | The Docker image that is used to run [Filebeat](https://www.elastic.co/beats/filebeat), which is used to send logs of the pod to the Pulsar log topic when you use a `sidecar` log agent. |
 | `autoAck` (Deprecated) | Whether or not the framework acknowledges messages automatically. This field is required. You can set it to `true` or `false`.|
 | `maxMessageRetry` | How many times to process a message before giving up. |
 | `processingGuarantee` | The processing guarantees (delivery semantics) applied to the function. Available values: `atleast_once`, `atmost_once`, `effectively_once`, and `manual`. When you set `ProcessingGuarantees` to `effectively_once`, the runtime will set the subscription type to `FAILOVER`. By default, the subscription type is set to `SHARED`. The `manual` option is only available for the runner image v2.11.0 or above.|

@@ -17,7 +17,7 @@ Before installing Function Mesh, ensure to perform the following operations.
 - Kubernetes server v1.16 - v1.21.
 - Create and connect to a [Kubernetes cluster](https://kubernetes.io/).
 - Create a [Pulsar cluster](https://pulsar.apache.org/docs/en/kubernetes-helm/) in the Kubernetes cluster.
-- Deploy [Pulsar Functions](https://pulsar.apache.org/docs/en/functions-overview/).
+- Install [Helm v3](https://helm.sh/docs/intro/install/).
 - (Optional) enable [Role-based Access Control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 ### Install Function Mesh through `install.sh` script

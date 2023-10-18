@@ -403,11 +403,11 @@ Function Mesh supports customizing the Pod running Pulsar connectors. This table
   </tr>
   <tr>
     <td><code>autoScalingMetrics</code></td>
-    <td>Specify how to scale based on customized metrics defined in connectors. For details, see <a herf="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#metricspec-v2beta2-autoscaling">MetricSpec v2beta2 autoscaling</a>.</td>
+    <td>Specify how to scale based on customized metrics defined in connectors. For details, see <a herf="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#metricspec-v2-autoscaling">MetricSpec v2 autoscaling</a>.</td>
   </tr>
   <tr>
     <td><code>autoScalingBehavior</code></td>
-    <td>Configure the scaling behavior of the target in both up and down directions (<code>scaleUp</code> and <code>scaleDown</code> fields respectively). If not specified, the default Kubernetes scaling behaviors are adopted. For details, see <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#horizontalpodautoscalerbehavior-v2beta2-autoscaling">HorizontalPodAutoscalerBehavior v2beta2 autoscaling</a>. </td>
+    <td>Configure the scaling behavior of the target in both up and down directions (<code>scaleUp</code> and <code>scaleDown</code> fields respectively). If not specified, the default Kubernetes scaling behaviors are adopted. For details, see <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#horizontalpodautoscalerbehavior-v2-autoscaling">HorizontalPodAutoscalerBehavior v2 autoscaling</a>. </td>
   </tr>
   <tr>
     <td><code>env</code></td>

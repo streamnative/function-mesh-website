@@ -128,6 +128,28 @@ spec:
 - [2] `log`: represents the log configurations for a Pulsar function.
 - [3] `rotatePolicy`: represents the [log rotation policies](/reference/crd-config/function-crd.md#log-rotation-policies) available for a Pulsar function.
 
+## Set log formats
+
+The log format defines how the content of a log file should be interpreted. Currently, only Java and Python runtimes support the `json` or `text` log format.
+
+This example shows how to set the log format to `json` by using the `spec.<runtime>.log.format` option.
+
+```yaml
+apiVersion: compute.functionmesh.io/v1alpha1
+kind: Function
+metadata:
+  name: function-sample
+  namespace: default
+spec:
+  java:                                                 # --- [1]
+    log:                                                # --- [2]
+      format: "json"                                    # --- [3]        
+```
+
+- [1] `java`: represents the runtime with a specific programming language. Currently, available options include the Java runtime and the Python runtime.
+- [2] `log`: represents the log configurations for a Pulsar function.
+- [3] `format`: represents the log format available for a Pulsar function. Available options are `json` and `text`.
+
 ## Produce logs for Pulsar functions
 
 This section describes how to produce logs for Pulsar functions.

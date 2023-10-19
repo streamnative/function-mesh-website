@@ -60,10 +60,6 @@ metadata:
 
 This section describes image options available for Pulsar Function, source, sink and Function Mesh CRDs.
 
-### Base runner
-
-The base runner is an image base for other runners. The base runner is located at `./pulsar-functions-base-runner`. The base runner image contains basic tool-chains like `/pulsar/bin`, `/pulsar/conf` and `/pulsar/lib` to ensure that the `pulsar-admin` CLI tool works properly to support [Apache Pulsar Packages](http://pulsar.apache.org/docs/en/next/admin-api-packages/).
-
 ### Runner images
 
 Function Mesh uses runner images as images of Pulsar functions and connectors. Each runner image only contains necessary tool-chains and libraries for specified runtime.
@@ -72,9 +68,9 @@ This table lists available Function runtime runner images.
 
 | Type | Description |
 | --- | --- |
-| Java runner | The Java runner is based on the base runner and contains the Java function instance to run Java functions or connectors. The `streamnative/pulsar-functions-java-runner` Java runner is stored at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-java-runner) and is automatically updated to align with Apache Pulsar release.
-| Python runner | The Python runner is based on the base runner and contains the Python function instance to run Python functions. You can build your own Python runner to customize Python dependencies. The `streamnative/pulsar-functions-python-runner` Python runner is located at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-java-runner) and is automatically updated to align with Apache Pulsar release.
-| Golang runner | The Golang runner provides all the tool-chains and dependencies required to run Golang functions. The `streamnative/pulsar-functions-go-runner` Golang runner is located at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-java-runner) and is automatically updated to align with Apache Pulsar release.
+| Java runner | The Java runner is based on the base runner and contains the Java function instance to run Java functions or connectors. The `streamnative/pulsar-functions-pulsarctl-java-runner`(`streamnative/pulsar-functions-java-runner` will be deprecated) Java runner is stored at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-pulsarctl-java-runner) and is automatically updated to align with Apache Pulsar release.
+| Python runner | The Python runner is based on the base runner and contains the Python function instance to run Python functions. You can build your own Python runner to customize Python dependencies. The `streamnative/pulsar-functions-pulsarctl-python-runner`(`streamnative/pulsar-functions-python-runner` will be deprecated) Python runner is located at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-pulsarctl-python-runner) and is automatically updated to align with Apache Pulsar release.
+| Golang runner | The Golang runner provides all the tool-chains and dependencies required to run Golang functions. The `streamnative/pulsar-functions-pulsarctl-go-runner`(`streamnative/pulsar-functions-go-runner` will be deprecated) Golang runner is located at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-pulsarctl-go-runner) and is automatically updated to align with Apache Pulsar release.
 
 ## Image pull policies
 

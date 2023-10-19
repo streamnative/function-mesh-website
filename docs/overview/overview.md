@@ -161,6 +161,7 @@ Figure 7. The Function Mesh architecture
     - [Sink CRD configurations](/reference/crd-config/sink-crd-config.md)
     - [Function Mesh CRD configurations](/reference/crd-config/function-mesh-crd.md)
 - Releases
+  - [Release notes v0.16.0](/releases/release-note-0-16-0.md)
   - [Release notes v0.15.0](/releases/release-note-0-15-0.md)
   - [Release notes v0.14.0](/releases/release-note-0-14-0.md)
   - [Release notes v0.13.0](/releases/release-note-0-13-0.md)

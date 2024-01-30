@@ -4,7 +4,7 @@ category: connectors
 id: pulsar-io-monitoring
 ---
 
-This document describes how to monitor Pulsar connectors (sources and sinks) with Prometheus and `pulsar-admin` commands.
+This document describes how to monitor Pulsar connectors (sources and sinks) with Prometheus.
 
 ## Monitoring with Prometheus
 
@@ -50,65 +50,3 @@ pulsar_sink_system_exception|Gauge|The exception from system code.
 pulsar_sink_system_exceptions_total|Counter|The total number of system exceptions.
 pulsar_sink_system_exceptions_total_1min|Counter|The total number of system exceptions in the last 1 minute.
 pulsar_sink_user_metric_ | Summary|The user-defined metrics.
-
-## Monitoring with `pulsar-admin` CLI tool
-
-> **Note**
->
-> To use the `pulsar-admin` CLI tool to monitor Pulsar functions and connectors, you should start Function Mesh Worker service in advance. For details, see [work with `pulsar-admin` CLI tool](/install-function-mesh.md#work-with-pulsar-admin-cli-tool).
-
-To monitor a Pulsar connector, you can perform the following operations.
-
-* [Get the information of a Pulsar connector](#get).
-* [Get a list of running Pulsar connectors](#list).
-* [Get the current status of a Pulsar connector](#status).
-
-For more information, see [Pulsar source CLIs](http://pulsar.apache.org/tools/pulsar-admin/2.8.0-SNAPSHOT/#sources) and  [Pulsar sink CLIs](http://pulsar.apache.org/tools/pulsar-admin/2.8.0-SNAPSHOT/#sinks).
-
-### `get`
-
-You can get the information of a Pulsar connector.
-
-- The `pulsar-admin sources get` command is used to get the information of a Pulsar source connector.
-
-    ```bash
-    pulsar-admin sources get options
-    ```
-
-- The `pulsar-admin sinks get` command is used to get the information of a Pulsar sink connector.
-
-    ```bash
-    pulsar-admin sinks get options
-    ```
-
-### `list`
-
-You can get a list of running Pulsar connectors.
-
-- The `pulsar-admin sources list` command is used to list all running Pulsar source connectors.
-
-    ```bash
-    pulsar-admin sources list options
-    ```
-
-- The `pulsar-admin sinks list` command is used to list all running Pulsar sink connectors.
-
-    ```bash
-    pulsar-admin sinks list options
-    ```
-
-### `status`
-
-You can get the current status of a Pulsar connector.
-
-- The `pulsar-admin sources status` command is used to check the current status of a Pulsar source connector.
-
-    ```bash
-    pulsar-admin sources status options
-    ```
-
-- The `pulsar-admin sinks status` command is used to check the current status of a Pulsar sink connector.
-
-    ```bash
-    pulsar-admin sinks status options
-    ```

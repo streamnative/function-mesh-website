@@ -63,7 +63,7 @@ sinkConfig:
 
 In previous releases, Pulsar source connectors could not pass message properties to a target topic because the `forwardSourceMessageProperty` was not applied to the source connector.
 
-In this release, the `forwardSourceMessageProperty` parameter is added to the source connectors. You can use Function Mesh or the pulsar-admin CLI tool to pass message properties to the target topic.
+In this release, the `forwardSourceMessageProperty` parameter is added to the source connectors. You can use Function Mesh to pass message properties to the target topic.
 
 ## Function Mesh provides multiple options for auto-scaling the number of Pods
 
@@ -76,9 +76,3 @@ In this release, Function Mesh auto-scales the number of Pods based on the CPU u
 - Metrics: auto-scale the number of Pods based on a single metric.
 
 For details, see [scaling](/scaling.md).
-
-## Function Mesh supports creating Pulsar Functions by package URLs
-
-Pulsar 2.8 introduced the package management service, which enables you to manage your Pulsar Function and connector packages.
-
-In this release, based on Function Mesh Worker service, Function Mesh enables you to create Pulsar Functions with package URLs. And, you can manage Pulsar Function JARs with the pulsar-admin CLI tool.

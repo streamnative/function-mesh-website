@@ -119,21 +119,6 @@
       ]
     },
     {
-      "collapsed": true,
-      "type": "category",
-      "label": "Function Mesh Worker",
-      "items": [
-        {
-          "type": "doc",
-          "id": "version-0.1.10/function-mesh-worker/function-mesh-worker-overview"
-        },
-        {
-          "type": "doc",
-          "id": "version-0.1.10/function-mesh-worker/deploy-mesh-worker"
-        }
-      ]
-    },
-    {
       "type": "doc",
       "id": "version-0.1.10/scaling"
     },

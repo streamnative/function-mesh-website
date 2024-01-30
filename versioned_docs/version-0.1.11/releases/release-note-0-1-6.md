@@ -9,21 +9,3 @@ Here are some highlights of this release. For a full list of updates available f
 ## Remove the `logTopic` option from source and sink CRDs
 
 Currently, Pulsar connectors do not support the `logTopic` option. Therefore, we remove the `logTopic` option from connector CRDs.
-
-## Support Pulsar Functions and connectors (sinks and sources) status API in Function Mesh Worker service
-
-Function Mesh Worker service can forward requests to the Kubernetes cluster. After Function Mesh Worker service is started, users can use the [pulsar-admin](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
-
-In this release, we add Pulsar Functions and connectors (sinks and sources) status API, including adding Function metrics in Function Mesh Worker service. Therefore, users can get status of Pulsar Functions and connectors (sinks and sources).
-
-Along with these changes, we also set the `serviceName` option in StatefulSet to communicate with the Function instance Pods.
-
-## Support setting the service account name for running Pods
-
-In release v0.1.4, we introduced the Function Mesh Worker service, which ensures users can use the Pulsar CLI tools, such as the pulsar-admin CLI tool, to configure and manage Pulsar Functions and connectors.
-
-In this release, we expose the `serviceAccountName` option in the CRDs of Pulsar Functions and connectors. Therefore, users can run Pulsar Functions and connectors using the Function Mesh Worker service.
-
-## Fix the NPE that is generated when the `autoAck` option is not set
-
-If the `autoAck` option is not set in the CRDs of Pulsar Functions and connectors, a Null Pointer Exception (NPE) is generated when creating a function, connector (sink or source) using the pulsar-admin CLI tool. To fix this bug, we set the `autoAck` option to `true` by default. Therefore, users can successfully create Pulsar Functions and connectors.

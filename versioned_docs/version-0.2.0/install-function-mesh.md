@@ -4,7 +4,7 @@ category: installation
 id: install-function-mesh
 ---
 
-This document describes how to install Function Mesh based on your application in Kubernetes and how to start Function Mesh Worker service in case you want to use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
+This document describes how to install Function Mesh based on your application in Kubernetes.
 
 ## Install Function Mesh
 
@@ -17,7 +17,7 @@ Before installing Function Mesh, ensure to perform the following operations.
 - Kubernetes server v1.17 or higher.
 - Create and connect to a [Kubernetes cluster](https://kubernetes.io/).
 - Create a [Pulsar cluster](https://pulsar.apache.org/docs/en/kubernetes-helm/) in the Kubernetes cluster.
-- Deploy [Pulsar Functions](https://pulsar.apache.org/docs/en/functions-overview/).
+- Install [Helm v3](https://helm.sh/docs/intro/install/).
 - (Optional) enable [Role-based Access Control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 ### Install Function Mesh through `install.sh` script
@@ -150,78 +150,3 @@ Use the following command to uninstall Function Mesh through Helm.
 ```bash
 helm delete function-mesh -n ${NAMESPACE}
 ```
-
-## Work with `pulsar-admin` CLI tool
-
-Function Mesh supports Function Mesh Worker service, which can forward requests to the Kubernetes cluster. After Function Mesh Worker service is started, users can use the [`pulsar-admin`](https://pulsar.apache.org/docs/en/pulsar-admin/) CLI tool to manage Pulsar Functions and connectors.
-
-> **Limitations**
->
-> - Function Mesh Worker service is only available for Pulsar 2.8.0 or higher.
-> - The Function Mesh Worker service cannot manage the FunctionMesh CRD.
-> - You need to configure the `clusterName`, `inputTypeClassName`, `outputTypeClassName` parameters through the `custom-runtime-options` option when creating or updating Pulsar Functions or connectors.
-> - You need to manually manage the [`ConfigMap`](/functions/function-crd.md#cluster-location), such as the Pulsar service URL.
-
-To start Function Mesh Worker service, follow these steps.
-
-1. Add the following Function Mesh Worker service configuration to your `functions_worker.yml` configuration file.
-
-    ```bash
-    functionsWorkerServiceNarPackage: /YOUR-NAR-PATH/function-mesh-worker-service-{version}.nar
-    ```
-
-    Replace the `YOUR-NAR-PATH` variable with your real local path.
-
-2. Start Pulsar.
-
-    This example shows how to start Pulsar through Helm.
-
-    ```bash
-    helm install \
-        --values examples/values-minikube.yaml \
-        --set initialize=true \
-        --namespace pulsar \
-        pulsar-mini apache/pulsar
-    ```
-
-3. Start Function Mesh Operator.
-
-    > If the namespace `function-mesh` doesn't exist yet, you can add the parameter `--create-namespace ` to create it automatically.
-
-    ```shell
-    helm install function-mesh function-mesh/function-mesh-operator -n function-mesh
-    ```
-
-4. Verify whether the Function Mesh Worker service is started successfully.
-
-    ```bash
-    ./bin/pulsar-admin --admin-url  WEB_SERVICE_URL functions status --tenant TENANT_NAME --namespace NAMESPACE_NAME --name FUNCTION_NAME
-    ```
-
-    You should see a similar output as below.
-
-    **Output**
-
-    ```
-    {
-    "numInstances" : 1,
-    "numRunning" : 1,
-    "instances" : [ {
-        "instanceId" : 0,
-        "status" : {
-        "running" : true,
-        "error" : "",
-        "numRestarts" : 0,
-        "numReceived" : 0,
-        "numSuccessfullyProcessed" : 0,
-        "numUserExceptions" : 0,
-        "latestUserExceptions" : [ ],
-        "numSystemExceptions" : 0,
-        "latestSystemExceptions" : [ ],
-        "averageLatency" : 0.0,
-        "lastInvocationTime" : 0,
-        "workerId" : ""
-        }
-    } ]
-    }
-    ```

@@ -75,7 +75,7 @@ When the Function Mesh Operator creates a container, it uses the `imagePullPolic
 Function Mesh provides Pulsar cluster configurations in the Function, Source, and Sink CRDs. You can configure TLS encryption, TLS authentication, and OAuth2 authentication using the following configurations.
 
 > **Note**
-> 
+>
 > The `tlsConfig` and `tlsSecret` are exclusive. If you configure TLS configurations, the TLS Secret will not take effect.
 
 <table>
@@ -177,7 +177,7 @@ The output topics of a Pulsar Function. This table lists options available for t
 
 |Name | Description |
 | --- | --- |
-| `topics` | The output topic of a Pulsar Function (If none is specified, no output is written). | 
+| `topics` | The output topic of a Pulsar Function (If none is specified, no output is written). |
 | `sinkSerdeClassName` | The map of output topics to SerDe class names (as a JSON string). |
 | `sinkSchemaType` | The built-in schema type or custom schema class name to be used for messages sent by the function.|
 | `producerConf` | The producer specifications. Available options:  <br />- `batchBuilder`: The type of batch construction method. Support the key-based batcher. <br />- `compressionType`: the message data compression type used by a producer. Available options are `LZ4`, `NONE`, `ZLIB`, `ZSTD`, and `SNAPPY`. By default, it is set to `LZ4`. This option is only available for the runner image v3.0.0 or above. <br />- `cryptoConfig`: the cryptography configurations of the producer. <br />- `maxPendingMessages`: the maximum number of pending messages. <br />- `maxPendingMessagesAcrossPartitions`: the maximum number of pending messages across all partitions. <br />- `useThreadLocalProducers`: configure whether the producer uses a thread. |
@@ -188,6 +188,9 @@ The output topics of a Pulsar Function. This table lists options available for t
 When you specify a function or connector, you can optionally specify how much of each resource they need. The resources available to specify are CPU and memory (RAM).
 
 If the node where a Pod is running has enough of a resource available, it's possible (and allowed) for a Pod to use more resources than its `request` for that resource. However, a Pod is not allowed to use more than its resource `limit`.
+
+If the CPU and memory are the same and the function is a Java function then we only allow 90% of the memory available from the request for the JVM size to prevent
+out of memory errors.
 
 ## Secrets
 
@@ -274,7 +277,7 @@ spec:
       initialDelaySeconds: 10        # --- [2]
       periodSeconds: 10              # --- [3]
       successThreshold: 1            # --- [4]
-... 
+...
 # Other configs
 ```
 
@@ -304,7 +307,7 @@ Apart from the `PodSecurityContext`, Function Mesh also applies the following `S
 ```yaml
 SecurityContext:
      capabilities:
-          drop: 
+          drop:
                - ALL
       allowPrivilegeEscalation: false
 ```

@@ -82,7 +82,7 @@ When the Function Mesh Operator creates a container, it uses the `imagePullPolic
 Function Mesh provides Pulsar cluster configurations in the Function, Source, and Sink CRDs. You can configure TLS encryption, TLS authentication, and OAuth2 authentication using the following configurations.
 
 > **Note**
-> 
+>
 > The `tlsConfig` and `tlsSecret` are exclusive. If you configure TLS configurations, the TLS Secret will not take effect.
 
 <table>
@@ -195,6 +195,8 @@ When you specify a function or connector, you can optionally specify how much of
 
 If the node where a Pod is running has enough of a resource available, it is possible (and allowed) for a Pod to use more resources than its `request` for that resource. However, a Pod is not allowed to use more than its resource `limit`.
 
+For Java functions we only allow a maximum memory usage by the JVM of 40% of the heap, 40% of direct memory and 20% misc.
+
 ## Secrets
 
 Function Mesh provides the `secretsMap` field for Function, Source, and Sink in the CRD definition. You can refer to the created secrets under the same namespace and the controller can include those referred secrets. The secrets are provide by `EnvironmentBasedSecretsProvider`, which can be used by `context.getSecret()` in Pulsar functions and connectors.
@@ -280,7 +282,7 @@ spec:
       initialDelaySeconds: 10        # --- [2]
       periodSeconds: 10              # --- [3]
       successThreshold: 1            # --- [4]
-... 
+...
 # Other configs
 ```
 
@@ -310,7 +312,7 @@ Apart from the `PodSecurityContext`, Function Mesh also applies the following `S
 ```yaml
 SecurityContext:
      capabilities:
-          drop: 
+          drop:
                - ALL
       allowPrivilegeEscalation: false
 ```

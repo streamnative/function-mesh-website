@@ -4,7 +4,7 @@ category: releases
 id: release-note-0-16-0
 ---
 
-Here are some highlights of this release. For a full list of updates available for Release v0.16.0, check out the [Function Mesh change log](https://github.com/streamnative/function-mesh/releases/tag/v0.16.0).
+Here are some highlights of this release. For a full list of updates available for Release v0.15.0, check out the [Function Mesh change log](https://github.com/streamnative/function-mesh/releases/tag/v0.16.0).
 
 ## Use runner images with pulsarctl
 

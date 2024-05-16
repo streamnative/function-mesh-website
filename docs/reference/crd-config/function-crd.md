@@ -71,6 +71,9 @@ This table lists available Function runtime runner images.
 | Java runner | The Java runner is based on the base runner and contains the Java function instance to run Java functions or connectors. The `streamnative/pulsar-functions-pulsarctl-java-runner`(`streamnative/pulsar-functions-java-runner` will be deprecated) Java runner is stored at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-pulsarctl-java-runner) and is automatically updated to align with Apache Pulsar release.
 | Python runner | The Python runner is based on the base runner and contains the Python function instance to run Python functions. You can build your own Python runner to customize Python dependencies. The `streamnative/pulsar-functions-pulsarctl-python-runner`(`streamnative/pulsar-functions-python-runner` will be deprecated) Python runner is located at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-pulsarctl-python-runner) and is automatically updated to align with Apache Pulsar release.
 | Golang runner | The Golang runner provides all the tool-chains and dependencies required to run Golang functions. The `streamnative/pulsar-functions-pulsarctl-go-runner`(`streamnative/pulsar-functions-go-runner` will be deprecated) Golang runner is located at the [Docker Hub](https://hub.docker.com/r/streamnative/pulsar-functions-pulsarctl-go-runner) and is automatically updated to align with Apache Pulsar release.
+| Generic Python Runnner | A python function runner built on top of the generic base runner image. It is hosted [here](https://hub.docker.com/r/streamnative/pulsar-functions-generic-python-runner).
+| Generic Node Runner | A node function runner built on top of the generic base runner image. It is hosted [here](https://hub.docker.com/r/streamnative/pulsar-functions-generic-node-runner).
+| Generic base runner | If you do not want to build your function on a specific version of Pulsar this base image is available for use. It is hosted [here](https://hub.docker.com/r/streamnative/pulsar-functions-generic-base-runner).
 
 ## Image pull policies
 
@@ -87,7 +90,7 @@ When the Function Mesh Operator creates a container, it uses the `imagePullPolic
 Function Mesh provides Pulsar cluster configurations in the Function, Source, and Sink CRDs. You can configure TLS encryption, TLS authentication, and OAuth2 authentication using the following configurations.
 
 > **Note**
-> 
+>
 > The `tlsConfig` and `tlsSecret` are exclusive. If you configure TLS configurations, the TLS Secret will not take effect.
 
 <table>
@@ -216,7 +219,7 @@ The output topics of a Pulsar Function. This table lists options available for t
 
 |Name | Description |
 | --- | --- |
-| `topics` | The output topic of a Pulsar Function (If none is specified, no output is written). | 
+| `topics` | The output topic of a Pulsar Function (If none is specified, no output is written). |
 | `sinkSerdeClassName` | The map of output topics to SerDe class names (as a JSON string). |
 | `sinkSchemaType` | The built-in schema type or custom schema class name to be used for messages sent by the function.|
 | `producerConf` | The producer specifications. Available options:  <br />- `batchBuilder`: The type of batch construction method. Support the key-based batcher. <br />- `compressionType`: the message data compression type used by a producer. Available options are `LZ4`, `NONE`, `ZLIB`, `ZSTD`, and `SNAPPY`. By default, it is set to `LZ4`. This option is only available for the runner image v3.0.0 or above. <br />- `cryptoConfig`: the cryptography configurations of the producer. <br />- `maxPendingMessages`: the maximum number of pending messages. <br />- `maxPendingMessagesAcrossPartitions`: the maximum number of pending messages across all partitions. <br />- `useThreadLocalProducers`: configure whether the producer uses a thread. |
@@ -268,7 +271,25 @@ Then, in the Pulsar Functions and Connectors, you can call `context.getSecret("u
 
 ## Packages
 
-Function Mesh supports running Pulsar Functions in Java, Python and Go. This table lists fields available for running Pulsar Functions in different languages.
+Function Mesh supports running Pulsar Functions in Java, Python, Go and a generic runtime. This table lists fields available for running Pulsar Functions in different languages.
+
+The language fields are nested under each type in the CRD.
+
+For example, a java runtime would nest under a `java` key.
+
+```
+java:
+  extraDependenciesDir: /pulsar/lib
+  jar: /tmp/api-examples.jar
+  jarLocation: function://public/default/test
+  log:
+    javaLog4JConfigFileType: yaml
+    logConfig:
+      key: log4j2-function.yaml
+      name: new-metrics-test-broker-log4j-config
+```
+
+The key for the generic runtime is `genericRuntime`.
 
 | Field | Description |
 | --- | --- |
@@ -277,6 +298,9 @@ Function Mesh supports running Pulsar Functions in Java, Python and Go. This tab
 | `goLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Go.|
 | `pyLocation` | The path to the JAR file for the function. It is only available for Pulsar functions written in Python.|
 | `extraDependenciesDir` | It specifies the dependent directory for the JAR package. |
+| `functionFile` | This is the location of the executable to run. |
+| `functionFileLocation` | The location on the filesystem where the function is at. |
+| `language` | The programming language used for the function. Currently supports `nodejs`, `python`, `executable`, and `wasm`. |
 
 ## Runtime logs
 
@@ -364,7 +388,7 @@ spec:
       periodSeconds: 10              # --- [3]
       successThreshold: 1            # --- [4]
 
-... 
+...
 # Other configs
 ```
 
@@ -394,7 +418,7 @@ Apart from the `PodSecurityContext`, Function Mesh also applies the following `S
 ```yaml
 SecurityContext:
      capabilities:
-          drop: 
+          drop:
                - ALL
       allowPrivilegeEscalation: false
 ```

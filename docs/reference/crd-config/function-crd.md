@@ -231,8 +231,7 @@ When you specify a function or connector, you can optionally specify how much of
 
 If the node where a Pod is running has enough of a resource available, it's possible (and allowed) for a pod to use more resources than its `request` for that resource specifies. However, a pod is not allowed to use more than its resource `limit`.
 
-If the CPU and memory are the same and the function is a Java function then we only allow 90% of the memory available from the request for the JVM size to prevent
-out of memory errors.
+For Java functions we only allow a maximum memory usage by the JVM of 40% of the heap, 40% of direct memory and 20% misc.
 
 ## Secrets
 

@@ -51,3 +51,8 @@ spec:
       memory: 1G
   # Other source configs
 ```
+
+## Metrics
+
+Metrics can be a very valuable piece of debug information and add context on to what is occuring. Functions, sources, sinks and the mesh itself
+provide Prometheus metrics. For more information, see the relevant documentation.

@@ -33,3 +33,12 @@ Function Mesh stores both the functions and connectors metadata and running stat
 The following diagram illustrates how Function Mesh works.
 
 ![Function Mesh](./../assets/function-mesh-overview.png)
+
+## Metrics
+
+Function Mesh exposes the following metrics from the operator.
+
+### function_mesh_reconcile_count
+Number of reconcile operations Type: Counter.
+### function_mesh_reconcile_latency
+Latency of reconcile operations, bucket boundaries are 10ms, 100ms, 1s, 10s, 30s and 60s. Type: Histogram.

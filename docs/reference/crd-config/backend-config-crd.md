@@ -14,14 +14,19 @@ with a namespace *only* the namespace specified will have it's containers enviro
 is addititve.
 
 <table>
-  <tr>
-    <th>Field</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>env</td>
-    <td>A key value pair of environment variables to values that you wish for the containers in your pods to have.</td>
-  <tr>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>env</td>
+      <td>A key value pair of environment variables to values that you wish for the containers in your pods to have.</td>
+    </tr>
+  </tbody>
 </table>
 
 
